@@ -1,0 +1,1 @@
+export const colors: Record<string, `#${string}`> = { title: "#0f0f0f", subtitle: "#818181", accentColor: "#8CBE2D" }

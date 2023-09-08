@@ -1,0 +1,15 @@
+{
+  "translation": {
+    "common": {
+      "error": "Errore",
+      "share": "Condividi",
+      "back_home": "Torna alla Home"
+    },
+    "pages": {
+      "notFound": {
+        "title": "Pagina non trovata",
+        "description": "Mi dispiace ma la pagina che stai cercando non esiste"
+      }
+    }
+  }
+}

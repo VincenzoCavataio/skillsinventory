@@ -1,1 +1,1 @@
-export const colors: Record<string, `#${string}`> = { title: "#0f0f0f", subtitle: "#818181", accentColor: "#8CBE2D" }
+export const commonColors: Record<string, `#${string}`> = { title: "#0f0f0f", subtitle: "#818181", accentColor: "#8CBE2D", white: "#fff" }

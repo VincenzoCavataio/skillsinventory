@@ -1,11 +1,20 @@
 {
   "translation": {
     "common": {
+      "title": "Skills Inventory",
       "error": "Errore",
       "share": "Condividi",
       "back_home": "Torna alla Home"
     },
     "pages": {
+      "dashboard": {
+        "search": {
+          "name": "Nome e Cognome",
+          "selectSkills": "Seleziona skills",
+          "noOptions": "Nessuna opzione trovata",
+          "advancedSearch": "Ricerca Avanzata"
+        }
+      },
       "notFound": {
         "title": "Pagina non trovata",
         "description": "Mi dispiace ma la pagina che stai cercando non esiste"

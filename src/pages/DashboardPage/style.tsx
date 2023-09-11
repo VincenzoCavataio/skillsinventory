@@ -17,6 +17,13 @@ const style: Record<string, CSSProperties> = {
     minHeight: "20vh",
     backgroundColor: "white",
   },
+  container: {
+    background: "white",
+    marginTop: 2,
+    padding: 2,
+    display: "flex",
+    justifyContent: "space-between",
+  },
 };
 
 export default style;

@@ -1,0 +1,1 @@
+export type TecnologyData = { id: number, name: string }

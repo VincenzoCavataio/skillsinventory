@@ -1,11 +1,4 @@
-import {
-  Autocomplete,
-  Box,
-  Button,
-  Container,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Autocomplete, Box, Button, Container, TextField } from "@mui/material";
 import HeaderNavbar from "../../components/HeaderNavbar";
 import { t } from "i18next";
 import { useState } from "react";
@@ -18,14 +11,12 @@ import {
   allSkillslMetadata,
 } from "./DashboardPage.controller";
 import style from "./style";
-import { CompiledFields, EducationalLevelData, TecnologyData } from "./types";
-import { commonColors } from "../../common/commonColors";
+import { CompiledFields, ResponseElementObjectData } from "./types";
 import useApi from "../../utilities/useApi";
-import SliderComponent from "../../components/SliderComponent";
+import SkillsContainer from "../../components/SkillsContainer";
 
 const DashboardPage = () => {
   const [selectedInput, setSelectedInput] = useState<CompiledFields>({});
-  const [sliderValue, setSliderValue] = useState<number>(1);
 
   const allEducationalData = useApi(allEducationalMetadata);
   const allEducationalLevelsData = useApi(allEducationalLevelslMetadata);
@@ -38,14 +29,15 @@ const DashboardPage = () => {
     <>
       <HeaderNavbar />
       <Container maxWidth="xl" sx={style.container}>
-        <Box display={"flex"} flexDirection={"row"}>
+        <Box display={"flex"} flexDirection={"row"} mb={2}>
           <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
             <Autocomplete
               disablePortal
               id="combo-box-demo"
               options={
                 allSkillslData?.data?.final_object.map(
-                  (tecnologyData: TecnologyData) => tecnologyData?.name
+                  (tecnologyData: ResponseElementObjectData) =>
+                    tecnologyData?.name
                 ) || []
               }
               onChange={(_, newValue) =>
@@ -62,14 +54,6 @@ const DashboardPage = () => {
                 />
               )}
             />
-            <SliderComponent
-              sliderValue={sliderValue}
-              setSliderValue={setSliderValue}
-            />
-            <Typography
-              component={"p"}
-              color={commonColors.subtitle}
-            >{`Livello ${sliderValue}`}</Typography>
           </Box>
           <Box sx={{ mr: 2 }}>
             <Autocomplete
@@ -77,7 +61,8 @@ const DashboardPage = () => {
               id="combo-box-demo"
               options={
                 allEducationalData?.data?.final_object.map(
-                  (certificationData: TecnologyData) => certificationData?.name
+                  (certificationData: ResponseElementObjectData) =>
+                    certificationData?.name
                 ) || [""]
               }
               onChange={(_, newValue) =>
@@ -133,7 +118,7 @@ const DashboardPage = () => {
               id="combo-box-demo"
               options={
                 allEducationalLevelsData?.data?.final_object.map(
-                  (educationalLevel: EducationalLevelData) =>
+                  (educationalLevel: ResponseElementObjectData) =>
                     educationalLevel?.name
                 ) || []
               }
@@ -158,7 +143,7 @@ const DashboardPage = () => {
               id="combo-box-demo"
               options={
                 allInstitutesData?.data?.final_object.map(
-                  (educationalLevel: EducationalLevelData) =>
+                  (educationalLevel: ResponseElementObjectData) =>
                     educationalLevel?.name
                 ) || []
               }
@@ -183,7 +168,7 @@ const DashboardPage = () => {
               id="combo-box-demo"
               options={
                 allCoursessData?.data?.final_object.map(
-                  (educationalLevel: EducationalLevelData) =>
+                  (educationalLevel: ResponseElementObjectData) =>
                     educationalLevel?.name
                 ) || []
               }
@@ -204,6 +189,18 @@ const DashboardPage = () => {
           </Box>
         </Box>
       </Container>
+      <SkillsContainer
+        skills={[
+          "Javascript",
+          "Python",
+          "Java",
+          "PHP",
+          "jQuery",
+          "React",
+          "Angular",
+          "MongoDB",
+        ]}
+      />
     </>
   );
 };

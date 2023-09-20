@@ -22,7 +22,36 @@ const requestOption = {
 
 export const getTecnologiesData = async () => {
     const response = await fetch(URL, requestOption);
+
     const data = await response.json();
     return data
+}
 
+//Federico, Claudio chiamata per le certificazioni
+
+const PAYLOADCertification: Record<string, string | number | boolean> = {
+    offset: 0,
+    value: 1000,
+    skill_filter: "",
+    certificate_filter: "",
+    city_filter: "",
+    level_filter: 0,
+    course_filter: 0,
+    institute_filter: 0,
+    char_sequence: "",
+    isAND: 1,
+    selected_procedure: 1,
+};
+
+const requestOptionCertification = {
+    method: "POST",
+    body: JSON.stringify(PAYLOADCertification),
+};
+
+export const getCertificationData = async () => {
+    const response = await fetch(URL, requestOptionCertification);
+
+    const data = await response.json();
+
+    return data
 }

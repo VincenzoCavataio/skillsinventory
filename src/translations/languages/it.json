@@ -11,6 +11,7 @@
         "search": {
           "name": "Nome e Cognome",
           "selectSkills": "Seleziona skills",
+          "certification": "Certificazioni",
           "noOptions": "Nessuna opzione trovata",
           "advancedSearch": "Ricerca Avanzata"
         }

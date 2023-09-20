@@ -15,7 +15,11 @@
           "name": "Nome e Cognome",
           "selectSkills": "Seleziona skills",
           "certification": "Certificazioni",
+          "cities": "Città di Residenza",
           "noOptions": "Nessuna opzione trovata",
+          "educationalLevels": "Livello di Istruzione",
+          "institute": "Instituto",
+          "course": "Corso",
           "advancedSearch": "Ricerca Avanzata"
         }
       },

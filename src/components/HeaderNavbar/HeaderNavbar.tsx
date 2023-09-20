@@ -6,6 +6,7 @@ import logo from "./../../assets/pict.svg";
 import style from "./style";
 import commonStyle from "../../common/commonStyle";
 import { t } from "i18next";
+import Searchbar from "./Searchbar";
 
 const HeaderNavbar = () => {
   return (
@@ -23,6 +24,9 @@ const HeaderNavbar = () => {
               {t("common.title")}
             </Typography>
           </Typography>
+        </Box>
+        <Box display={"flex"} flexDirection={"column"}>
+          <Searchbar />
         </Box>
       </Toolbar>
     </AppBar>

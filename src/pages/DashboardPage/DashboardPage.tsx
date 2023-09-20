@@ -3,62 +3,29 @@ import {
   Box,
   Button,
   Container,
-  FormControlLabel,
-  Slider,
-  Switch,
   TextField,
   Typography,
 } from "@mui/material";
 import HeaderNavbar from "../../components/HeaderNavbar";
 import { t } from "i18next";
-import { useEffect, useState } from "react";
-import { getCertificationData, getTecnologiesData } from "./DashboardPage.controller";
+import { useState } from "react";
+import {
+  allEducationalMetadata,
+  allSkillslMetadata,
+} from "./DashboardPage.controller";
 import style from "./style";
-import { TecnologyData } from "./types";
+import { CompiledFields, TecnologyData } from "./types";
 import { commonColors } from "../../common/commonColors";
-import { ArrowForwardIos } from "@mui/icons-material";
+import useApi from "../../utilities/useApi";
+import SliderComponent from "../../components/SliderComponent";
 
 const DashboardPage = () => {
-  const [advancedSearch, setAdvancedSearch] = useState(false);
-  const [tecnologiesData, setTecnologiesData] = useState([]);
-  const [selectedInput, setSelectedInput] = useState<InputStates>({});
+  const [selectedInput, setSelectedInput] = useState<CompiledFields>({});
   const [fullName, setFullName] = useState("");
-
-  //Federico, Claudio add use state setInputStates
-  type InputStates = { fullName?: string, skill?: string, certifications?: string[] }
-  const [inputStates, setInputStates] = useState<InputStates>({});
-
-
   const [sliderValue, setSliderValue] = useState<number>(1);
 
-  //Federico, Claudio dynamic method start
-  const handleChangeInput = (_: Event, newValue: string, key: string) => {
-    console.log('newvalue: ', event);
-    setSelectedInput({ ...selectedInput, [key]: newValue })
-  };
-  //Federico, Claudio dynamic method end
-
-  const handleChangeSlider = (_: Event, newValue: number | number[]) => {
-    setSliderValue(newValue as number);
-  };
-
-  useEffect(() => {
-    getTecnologiesData()
-      .then((data) => setTecnologiesData(data?.final_object))
-      .catch((e) => console.log(e));
-
-    //Federico, Claudio add method for useeffect start
-    /* getCertificationData()
-       .then((data) => setCertificationData(data?.final_object))
-       .catch((e) => console.log(e));*/
-    getCertificationData()
-      .then((data) => setInputStates({ ...inputStates, certifications: data?.final_object }))
-      .catch((e) => console.log(e));
-
-
-    //Federico, Claudio add method for useeffect end
-
-  }, []);
+  const allEducationalData = useApi(allEducationalMetadata);
+  const allSkillslData = useApi(allSkillslMetadata);
 
   return (
     <>
@@ -80,11 +47,13 @@ const DashboardPage = () => {
               disablePortal
               id="combo-box-demo"
               options={
-                tecnologiesData?.map(
+                allSkillslData?.data?.final_object.map(
                   (tecnologyData: TecnologyData) => tecnologyData?.name
                 ) || []
               }
-              onChange={(event, newValue) => handleChangeInput(event, newValue, 'skill')}
+              onChange={(_, newValue) =>
+                setSelectedInput({ ...selectedInput, skill: newValue || "" })
+              }
               noOptionsText={
                 <Button>{t("pages.dashboard.search.noOptions")}</Button>
               }
@@ -96,37 +65,30 @@ const DashboardPage = () => {
                 />
               )}
             />
-            <Slider
-              aria-label="Always visible"
-              style={{ width: 280, marginTop: 10, left: 10 }}
-              max={5}
-              min={1}
-              disabled={false
-                /*selectedInput?.skill.length === 0 ||
-              selectedInput?.skill[0] === null*/
-              }
-              value={sliderValue}
-              marks
-              onChange={handleChangeSlider}
-              valueLabelDisplay="auto"
+            <SliderComponent
+              sliderValue={sliderValue}
+              setSliderValue={setSliderValue}
             />
             <Typography
               component={"p"}
               color={commonColors.subtitle}
             >{`Livello ${sliderValue}`}</Typography>
-
           </Box>
-          {/*Federico, Claudio fix add component start*/}
           <Box>
             <Autocomplete
               disablePortal
               id="combo-box-demo"
               options={
-                inputStates.certifications?.map(
+                allEducationalData?.data?.final_object.map(
                   (certificationData: TecnologyData) => certificationData?.name
-                ) || ['']
+                ) || [""]
               }
-              onChange={(event, newValue) => handleChangeInput(event, newValue, 'certifications')}
+              onChange={(_, newValue) =>
+                setSelectedInput({
+                  ...selectedInput,
+                  certification: newValue || "",
+                })
+              }
               noOptionsText={
                 <Button>{t("pages.dashboard.search.noOptions")}</Button>
               }
@@ -139,42 +101,8 @@ const DashboardPage = () => {
               )}
             />
           </Box>
-          {/*Federico, Claudio fix add component end*/}
-
-        </Box>
-
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Button
-            variant="contained"
-            sx={{
-              color: commonColors.white,
-            }}
-          >
-            <ArrowForwardIos />
-          </Button>
-          {/* <FormControlLabel
-            onChange={() => setAdvancedSearch(!advancedSearch)}
-            value={advancedSearch}
-            control={<Switch color="primary" />}
-            label={t("pages.dashboard.search.advancedSearch")}
-            labelPlacement="start"
-          /> */}
         </Box>
       </Container>
-
-      <Container
-        maxWidth="lg"
-        sx={{
-          background: "white",
-          position: "relative",
-          mt: 0,
-          p: advancedSearch ? 2 : 0,
-          display: "flex",
-          justifyContent: "space-between",
-          transition: "all .2s",
-          height: advancedSearch ? "100px" : 0,
-        }}
-      ></Container>
     </>
   );
 };

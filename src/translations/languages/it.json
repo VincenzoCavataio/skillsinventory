@@ -1,5 +1,8 @@
 {
   "translation": {
+    "error": {
+      "responseError": "Errore risposta API"
+    },
     "common": {
       "title": "Skills Inventory",
       "error": "Errore",

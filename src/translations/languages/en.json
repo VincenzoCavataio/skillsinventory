@@ -7,6 +7,15 @@
       "back_home": "Back Home"
     },
     "pages": {
+      "dashboard": {
+        "search": {
+          "name": "First and Last Name",
+          "selectSkills": "Select skills",
+          "certification": "Certifications",
+          "noOptions": "No Options",
+          "advancedSearch": "Advanced Search"
+        }
+      },
       "notFound": {
         "title": "Page not found",
         "description": "Sorry but the page you are looking for does not exists"

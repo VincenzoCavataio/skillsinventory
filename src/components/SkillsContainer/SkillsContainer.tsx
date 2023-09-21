@@ -1,22 +1,12 @@
 import { Container } from "@mui/material";
-import style from "../../pages/DashboardPage/style";
-import SkillBadge from "../SkillBadge";
+import SkillCard from "../SkillCard";
+import style from "./style";
 
 const SkillsContainer = ({ skills }: { skills: string[] }) => {
   return (
-    <Container
-      maxWidth="xl"
-      sx={{
-        ...style.container,
-        mt: 0,
-        transition: "all .2s",
-        overflowX: "scroll",
-        justifyContent: "left",
-        flexWrap: "nowrap",
-      }}
-    >
+    <Container maxWidth="xl" sx={style.container}>
       {skills.map((skill) => (
-        <SkillBadge name={skill} />
+        <SkillCard key={skill} name={skill} />
       ))}
     </Container>
   );

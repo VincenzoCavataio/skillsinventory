@@ -19,8 +19,15 @@
           "noOptions": "Nessuna opzione trovata",
           "educationalLevels": "Livello di Istruzione",
           "institute": "Instituto",
-          "course": "Corso",
-          "advancedSearch": "Ricerca Avanzata"
+          "course": "Corso"
+        },
+        "slider": {
+          "advancedSearch": "Ricerca Avanzata",
+          "from": "Da ",
+          "to": "Fino a ",
+          "equals": "Uguale a",
+          "between": "Tra",
+          "buttonContainer": "Seleziona Tipo"
         }
       },
       "notFound": {

@@ -10,6 +10,7 @@ const style: Record<string, CSSProperties> = {
     transition: "all .2s",
     overflowX: "scroll",
     flexWrap: "nowrap",
+    marginTop: 0,
   },
 };
 

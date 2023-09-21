@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Tooltip, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SliderComponent from "../SliderComponent";
 import style from "./style";
@@ -17,17 +17,19 @@ const SkillCard = ({ name }: { name: string }) => {
           alignItems: "center",
         }}
       >
-        <Typography
-          sx={{
-            mr: 2,
-            textOverflow: "ellipsis",
-            maxWidth: "100%",
-            overflow: "hidden",
-            whiteSpace: "nowrap",
-          }}
-        >
-          {name?.toUpperCase()}
-        </Typography>
+        <Tooltip title={name?.toUpperCase()} arrow placement="top">
+          <Typography
+            sx={{
+              mr: 2,
+              textOverflow: "ellipsis",
+              maxWidth: "100%",
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {name?.toUpperCase()}
+          </Typography>
+        </Tooltip>
 
         <Button variant="outlined" sx={{ ml: 1 }}>
           <DeleteIcon />

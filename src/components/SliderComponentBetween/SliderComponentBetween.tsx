@@ -9,8 +9,6 @@ import { SliderType } from "../../common/commonTypes";
 const SliderComponent = ({ sliderType, setSliderType }: SliderType) => {
   const [values, setValues] = useState([2, 4]);
 
-  console.log("VALUES", values);
-
   return (
     <>
       <SliderToggles sliderType={sliderType} setSliderType={setSliderType} />

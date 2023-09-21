@@ -189,7 +189,7 @@ const DashboardPage = () => {
           </Box>
         </Box>
       </Container>
-      <SkillsContainer skills={["Javascript", "MongoDB"]} />
+      <SkillsContainer skills={["Javascript", "MongoDB", "Spring boot"]} />
     </>
   );
 };

@@ -16,7 +16,7 @@ const SliderToggles = ({
   sliderType: string;
   setSliderType: Dispatch<SetStateAction<string>> | undefined;
 }) => {
-  const handleAlignment = (
+  const handleSliderTypeSelection = (
     _: React.MouseEvent<HTMLElement>,
     selectedType: string
   ) => {
@@ -38,7 +38,7 @@ const SliderToggles = ({
       value={sliderType}
       sx={{ pt: 1 }}
       exclusive
-      onChange={handleAlignment}
+      onChange={handleSliderTypeSelection}
       aria-label={t(`pages.dashboard.slider.buttonContainerl`)}
     >
       {ButtonsLabels.map((button) => (

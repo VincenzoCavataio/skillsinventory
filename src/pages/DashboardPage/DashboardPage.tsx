@@ -189,18 +189,7 @@ const DashboardPage = () => {
           </Box>
         </Box>
       </Container>
-      <SkillsContainer
-        skills={[
-          "Javascript",
-          "Python",
-          "Java",
-          "PHP",
-          "jQuery",
-          "React",
-          "Angular",
-          "MongoDB",
-        ]}
-      />
+      <SkillsContainer skills={["Javascript", "MongoDB"]} />
     </>
   );
 };

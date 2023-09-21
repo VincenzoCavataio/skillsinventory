@@ -14,7 +14,17 @@ const SkillCard = ({ name }: { name: string }) => {
           alignItems: "center",
         }}
       >
-        <Typography sx={{ mr: 2 }}>{name?.toUpperCase()}</Typography>
+        <Typography
+          sx={{
+            mr: 2,
+            textOverflow: "ellipsis",
+            maxWidth: "100%",
+            overflow: "hidden",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {name?.toUpperCase()}
+        </Typography>
 
         <Button variant="outlined" sx={{ ml: 1 }}>
           <DeleteIcon />

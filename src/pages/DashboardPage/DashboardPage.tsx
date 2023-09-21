@@ -14,21 +14,16 @@ import style from "./style";
 import { CompiledFields, ResponseElementObjectData } from "./types";
 import useApi from "../../utilities/useApi";
 import SkillsContainer from "../../components/SkillsContainer";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addSkill } from "../../redux/filtersSlice";
 import InputChecks from "../../components/InputCheck/InputCheck";
 import InputSelect from "../../components/InputSelect/InputSelect";
+import ButtonsContainer from "../../components/ButtonsContainer";
 
 const DashboardPage = () => {
   const [selectedInput, setSelectedInput] = useState<CompiledFields>({});
   const dispatch = useDispatch();
 
-  // TODO: da sistemare, i tipi non coincidono [VEDI SOTTO]
-  const allSkills = useSelector(
-    (state: Record<string, Record<string, string>>) => state.filters.skills
-  );
-
-  console.log(allSkills, "LOL");
   useEffect(() => {
     dispatch(addSkill({ label: selectedInput.skill, levelType: "from" }));
   }, [dispatch, selectedInput.skill]);
@@ -113,7 +108,8 @@ const DashboardPage = () => {
           </Box>
         </Box>
       </Container>
-      <SkillsContainer skills={allSkills} />
+      <SkillsContainer />
+      <ButtonsContainer />
     </>
   );
 };

@@ -6,10 +6,10 @@ import { t } from "i18next";
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.85),
+  backgroundColor: alpha(theme.palette.common.white, 0.45),
   transition: "all .2s",
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.95),
+    backgroundColor: alpha(theme.palette.common.white, 0.55),
   },
   marginLeft: 0,
   width: "100%",
@@ -30,7 +30,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
+  color: '"inherit"',
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon

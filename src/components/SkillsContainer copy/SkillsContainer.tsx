@@ -3,6 +3,7 @@ import SkillCard from "../SkillCard";
 import style from "./style";
 import { useSelector } from "react-redux";
 import { ReduxStore, Skill } from "../../redux/types";
+import SubmitButton from "../CustomButton";
 
 const SkillsContainer = () => {
   const allSkills: Skill[] =
@@ -13,6 +14,7 @@ const SkillsContainer = () => {
       {allSkills?.map((skill) => (
         <SkillCard key={skill.label} name={skill.label} />
       ))}
+      <SubmitButton />
     </Container>
   );
 };

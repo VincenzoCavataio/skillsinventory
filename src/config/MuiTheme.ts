@@ -1,9 +1,10 @@
 import { createTheme } from "@mui/material";
+import { commonColors } from "../common/commonColors";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#8CBE2D",
+      main: commonColors.accentColor,
     },
     secondary: {
       main: "#fff",

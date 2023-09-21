@@ -2,13 +2,10 @@ import { Box, Button, Tooltip, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SliderComponent from "../SliderComponent";
 import style from "./style";
-import SliderComponentBetween from "../SliderComponentBetween";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { removeSkill } from "../../redux/filtersSlice";
 
 const SkillCard = ({ name }: { name: string }) => {
-  const [sliderType, setSliderType] = useState<string>("from");
   const dispatch = useDispatch();
   const handleDelete = () => {
     dispatch(removeSkill({ label: name }));
@@ -42,17 +39,7 @@ const SkillCard = ({ name }: { name: string }) => {
           <DeleteIcon />
         </Button>
       </Box>
-      {sliderType === "between" ? (
-        <SliderComponentBetween
-          sliderType={sliderType}
-          setSliderType={setSliderType}
-        />
-      ) : (
-        <SliderComponent
-          sliderType={sliderType}
-          setSliderType={setSliderType}
-        />
-      )}
+      <SliderComponent name={name} />
     </Box>
   );
 };

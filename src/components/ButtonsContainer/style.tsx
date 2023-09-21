@@ -2,15 +2,14 @@ import { CSSProperties } from "@mui/styled-engine";
 
 const style: Record<string, CSSProperties> = {
   container: {
-    background: "white",
-    padding: 2,
-    paddingRight: 0,
+    background: "transparent",
+    padding: "0 !important",
     display: "flex",
-    justifyContent: "left",
+    justifyContent: "right",
     transition: "all .2s",
     overflowX: "scroll",
     flexWrap: "nowrap",
-    marginTop: 0,
+    marginTop: 2,
   },
 };
 

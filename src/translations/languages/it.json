@@ -8,7 +8,9 @@
       "error": "Errore",
       "share": "Condividi",
       "back_home": "Torna alla Home",
-      "and": "e"
+      "and": "e",
+      "search": "Cerca",
+      "clear": "Reset"
     },
     "pages": {
       "dashboard": {

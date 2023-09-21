@@ -1,5 +1,4 @@
-import * as React from "react";
-import { Dispatch, SetStateAction } from "react";
+import { useEffect, useState } from "react";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import SwipeRightAltIcon from "@mui/icons-material/SwipeRightAlt";
@@ -8,20 +7,17 @@ import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import UnfoldLessDoubleIcon from "@mui/icons-material/UnfoldLessDouble";
 import { Tooltip } from "@mui/material";
 import { t } from "i18next";
+import { useDispatch } from "react-redux";
+import { editSkillLevelType } from "../../redux/filtersSlice";
 
-const SliderToggles = ({
-  sliderType,
-  setSliderType,
-}: {
-  sliderType: string;
-  setSliderType: Dispatch<SetStateAction<string>> | undefined;
-}) => {
-  const handleSliderTypeSelection = (
-    _: React.MouseEvent<HTMLElement>,
-    selectedType: string
-  ) => {
-    selectedType !== null && setSliderType && setSliderType(selectedType);
-  };
+const SliderToggles = ({ name }: { name: string }) => {
+  const [sliderType, setSliderType] = useState("from");
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(editSkillLevelType({ name, sliderType }));
+  }, [sliderType]);
 
   const ButtonsLabels = [
     { label: "from", component: <SwipeRightAltIcon /> },
@@ -38,7 +34,7 @@ const SliderToggles = ({
       value={sliderType}
       sx={{ pt: 1 }}
       exclusive
-      onChange={handleSliderTypeSelection}
+      onChange={(_, value) => setSliderType(value)}
       aria-label={t(`pages.dashboard.slider.buttonContainerl`)}
     >
       {ButtonsLabels.map((button) => (

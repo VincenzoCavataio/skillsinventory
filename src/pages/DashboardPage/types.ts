@@ -8,18 +8,3 @@ export type CompiledFields = {
     institute?: string,
     course?: string
 };
-
-type SkillArr = {
-    label: string,
-    level?: number,
-    levelType: string
-}
-
-export type ReduxFiltersObj = {
-    fullName: string;
-    skills: SkillArr[];
-    certifications: string[];
-    cities: string[],
-    institute: "",
-    course: ""
-};

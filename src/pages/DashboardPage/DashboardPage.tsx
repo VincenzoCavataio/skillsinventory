@@ -1,7 +1,7 @@
 import { Autocomplete, Box, Button, Container, TextField } from "@mui/material";
 import HeaderNavbar from "../../components/HeaderNavbar";
 import { t } from "i18next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   allCitiesMetadata,
   allCoursesMetadata,
@@ -14,9 +14,24 @@ import style from "./style";
 import { CompiledFields, ResponseElementObjectData } from "./types";
 import useApi from "../../utilities/useApi";
 import SkillsContainer from "../../components/SkillsContainer";
+import { useDispatch, useSelector } from "react-redux";
+import { addSkill } from "../../redux/filtersSlice";
+import InputChecks from "../../components/InputCheck/InputCheck";
+import InputSelect from "../../components/InputSelect/InputSelect";
 
 const DashboardPage = () => {
   const [selectedInput, setSelectedInput] = useState<CompiledFields>({});
+  const dispatch = useDispatch();
+
+  // TODO: da sistemare, i tipi non coincidono [VEDI SOTTO]
+  const allSkills = useSelector(
+    (state: Record<string, Record<string, string>>) => state.filters.skills
+  );
+
+  console.log(allSkills, "LOL");
+  useEffect(() => {
+    dispatch(addSkill({ label: selectedInput.skill, levelType: "from" }));
+  }, [dispatch, selectedInput.skill]);
 
   const allEducationalData = useApi(allEducationalMetadata);
   const allEducationalLevelsData = useApi(allEducationalLevelslMetadata);
@@ -31,135 +46,44 @@ const DashboardPage = () => {
       <Container maxWidth="xl" sx={style.container}>
         <Box display={"flex"} flexDirection={"row"} mb={2}>
           <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
-            <Autocomplete
-              disablePortal
-              id="combo-box-demo"
-              options={
-                allSkillslData?.data?.final_object.map(
-                  (tecnologyData: ResponseElementObjectData) =>
-                    tecnologyData?.name
-                ) || []
-              }
-              onChange={(_, newValue) =>
-                setSelectedInput({ ...selectedInput, skill: newValue || "" })
-              }
-              noOptionsText={
-                <Button>{t("pages.dashboard.search.noOptions")}</Button>
-              }
-              sx={{ width: 300 }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label={t("pages.dashboard.search.selectSkills")}
-                />
-              )}
+            <InputSelect
+              selectedInput={selectedInput}
+              setSelectedInput={setSelectedInput}
+              data={allSkillslData?.data}
+              label={t("pages.dashboard.search.selectSkills")}
+              objKey={"skill"}
             />
           </Box>
           <Box sx={{ mr: 2 }}>
-            <Autocomplete
-              disablePortal
-              id="combo-box-demo"
-              options={
-                allEducationalData?.data?.final_object.map(
-                  (certificationData: ResponseElementObjectData) =>
-                    certificationData?.name
-                ) || [""]
-              }
-              onChange={(_, newValue) =>
-                setSelectedInput({
-                  ...selectedInput,
-                  certification: newValue || "",
-                })
-              }
-              noOptionsText={
-                <Button>{t("pages.dashboard.search.noOptions")}</Button>
-              }
-              sx={{ width: 300 }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label={t("pages.dashboard.search.certification")}
-                />
-              )}
+            <InputChecks
+              data={allEducationalData?.data}
+              label={"pages.dashboard.search.certification"}
             />
           </Box>
           <Box>
-            <Autocomplete
-              disablePortal
-              id="combo-box-demo"
-              options={
-                allCitiesData?.data?.final_object.map(
-                  (cityData: string[]) => cityData
-                ) || [""]
-              }
-              onChange={(_, newValue) =>
-                setSelectedInput({
-                  ...selectedInput,
-                  city: String(newValue),
-                })
-              }
-              noOptionsText={
-                <Button>{t("pages.dashboard.search.noOptions")}</Button>
-              }
-              sx={{ width: 300 }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label={t("pages.dashboard.search.cities")}
-                />
-              )}
+            <InputChecks
+              data={allCitiesData?.data}
+              label={"pages.dashboard.search.cities"}
             />
           </Box>
         </Box>
         <Box display={"flex"} flexDirection={"row"}>
           <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
-            <Autocomplete
-              disablePortal
-              id="combo-box-demo"
-              options={
-                allEducationalLevelsData?.data?.final_object.map(
-                  (educationalLevel: ResponseElementObjectData) =>
-                    educationalLevel?.name
-                ) || []
-              }
-              onChange={(_, newValue) =>
-                setSelectedInput({ ...selectedInput, skill: newValue || "" })
-              }
-              noOptionsText={
-                <Button>{t("pages.dashboard.search.noOptions")}</Button>
-              }
-              sx={{ width: 300 }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label={t("pages.dashboard.search.educationalLevels")}
-                />
-              )}
+            <InputSelect
+              selectedInput={selectedInput}
+              setSelectedInput={setSelectedInput}
+              data={allEducationalLevelsData?.data}
+              label={t("pages.dashboard.search.educationalLevels")}
+              objKey={"educationalLevel"}
             />
           </Box>
           <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
-            <Autocomplete
-              disablePortal
-              id="combo-box-demo"
-              options={
-                allInstitutesData?.data?.final_object.map(
-                  (educationalLevel: ResponseElementObjectData) =>
-                    educationalLevel?.name
-                ) || []
-              }
-              onChange={(_, newValue) =>
-                setSelectedInput({ ...selectedInput, skill: newValue || "" })
-              }
-              noOptionsText={
-                <Button>{t("pages.dashboard.search.noOptions")}</Button>
-              }
-              sx={{ width: 300 }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label={t("pages.dashboard.search.institute")}
-                />
-              )}
+            <InputSelect
+              selectedInput={selectedInput}
+              setSelectedInput={setSelectedInput}
+              data={allInstitutesData?.data}
+              label={t("pages.dashboard.search.institute")}
+              objKey={"institute"}
             />
           </Box>
           <Box display={"flex"} flexDirection={"column"}>
@@ -173,7 +97,7 @@ const DashboardPage = () => {
                 ) || []
               }
               onChange={(_, newValue) =>
-                setSelectedInput({ ...selectedInput, skill: newValue || "" })
+                setSelectedInput({ ...selectedInput, course: newValue || "" })
               }
               noOptionsText={
                 <Button>{t("pages.dashboard.search.noOptions")}</Button>
@@ -189,7 +113,7 @@ const DashboardPage = () => {
           </Box>
         </Box>
       </Container>
-      <SkillsContainer skills={["Javascript", "MongoDB", "Spring boot"]} />
+      <SkillsContainer skills={allSkills} />
     </>
   );
 };

@@ -6,32 +6,9 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
+import { t } from "i18next";
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-
-const names = [
-  "Oliver Hansen",
-  "Van Henry",
-  "April Tucker",
-  "Ralph Hubbard",
-  "Omar Alexander",
-  "Carlos Abbott",
-  "Miriam Wagner",
-  "Bradley Wilkerson",
-  "Virginia Andrews",
-  "Kelly Snyder",
-];
-
-export default function InputChecks({ data }) {
+export default function InputChecks({ data, label }) {
   const [personName, setPersonName] = React.useState<string[]>([]);
   const { final_object } = data;
 
@@ -44,12 +21,11 @@ export default function InputChecks({ data }) {
       typeof value === "string" ? value.split(",") : value
     );
   };
-  console.log(data);
 
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
+      <FormControl sx={{ width: 300 }}>
+        <InputLabel id="demo-multiple-checkbox-label">{t(label)}</InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
@@ -58,12 +34,16 @@ export default function InputChecks({ data }) {
           onChange={handleChange}
           input={<OutlinedInput label="Tag" />}
           renderValue={(selected) => selected.join(", ")}
-          MenuProps={MenuProps}
         >
-          {final_object?.map(({ name }) => (
-            <MenuItem key={name.title} value={name}>
-              <Checkbox checked={personName.indexOf(name) > -1} />
-              <ListItemText primary={name} />
+          {final_object?.map((element) => (
+            <MenuItem
+              key={element.name || element}
+              value={element.name || element}
+            >
+              <Checkbox
+                checked={personName.indexOf(element.name || element) > -1}
+              />
+              <ListItemText primary={element.name || element} />
             </MenuItem>
           ))}
         </Select>

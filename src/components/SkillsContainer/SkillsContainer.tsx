@@ -9,7 +9,13 @@ const SkillsContainer = () => {
     useSelector((state: ReduxStore) => state.filters?.skills) || [];
 
   return (
-    <Container maxWidth="xl" sx={style.container}>
+    <Container
+      maxWidth="xl"
+      sx={{
+        ...style.container,
+        overflowX: allSkills?.length > 0 ? "scroll" : "hidden",
+      }}
+    >
       {allSkills?.map((skill) => (
         <SkillCard key={skill.label} name={skill.label} />
       ))}

@@ -7,7 +7,6 @@ const style: Record<string, CSSProperties> = {
     display: "flex",
     justifyContent: "right",
     transition: "all .2s",
-    overflowX: "scroll",
     flexWrap: "nowrap",
     marginTop: 2,
   },

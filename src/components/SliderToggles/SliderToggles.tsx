@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import { Dispatch, SetStateAction } from "react";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
@@ -8,6 +8,8 @@ import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import UnfoldLessDoubleIcon from "@mui/icons-material/UnfoldLessDouble";
 import { Tooltip } from "@mui/material";
 import { t } from "i18next";
+import { useDispatch } from "react-redux";
+import { editSkillLevelType } from "../../redux/filtersSlice";
 
 const SliderToggles = ({
   sliderType,
@@ -16,6 +18,10 @@ const SliderToggles = ({
   sliderType: string;
   setSliderType: Dispatch<SetStateAction<string>> | undefined;
 }) => {
+
+
+
+
   const handleSliderTypeSelection = (
     _: React.MouseEvent<HTMLElement>,
     selectedType: string
@@ -33,6 +39,15 @@ const SliderToggles = ({
     },
   ];
 
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(editSkillLevelType({ levelType: sliderType }));
+  }, [dispatch, sliderType])
+
+
+
   return (
     <ToggleButtonGroup
       value={sliderType}
@@ -46,6 +61,7 @@ const SliderToggles = ({
           key={button.label}
           value={button.label}
           aria-label={button.label}
+          onClick={(event, value) => setSliderType(value)}
         >
           <Tooltip title={t(`pages.dashboard.slider.${button.label}`)} arrow>
             {button.component}

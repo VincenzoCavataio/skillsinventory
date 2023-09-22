@@ -21,5 +21,5 @@ export type ReduxFiltersObj = {
     certifications: string[];
     cities: string[],
     institute: "",
-    course: ""
+    course: "",
 };

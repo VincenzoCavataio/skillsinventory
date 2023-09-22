@@ -46,11 +46,13 @@ const SkillCard = ({ name }: { name: string }) => {
         <SliderComponentBetween
           sliderType={sliderType}
           setSliderType={setSliderType}
+
         />
       ) : (
         <SliderComponent
           sliderType={sliderType}
           setSliderType={setSliderType}
+
         />
       )}
     </Box>

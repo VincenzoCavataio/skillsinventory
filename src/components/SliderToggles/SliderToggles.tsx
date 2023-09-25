@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
+=======
+import React, { useEffect } from "react";
+import { Dispatch, SetStateAction } from "react";
+>>>>>>> f9404e131004952fffb6594d1f00637a23d8a663
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import SwipeRightAltIcon from "@mui/icons-material/SwipeRightAlt";
@@ -10,6 +15,7 @@ import { t } from "i18next";
 import { useDispatch } from "react-redux";
 import { editSkillLevelType } from "../../redux/filtersSlice";
 
+<<<<<<< HEAD
 const SliderToggles = ({ name }: { name: string }) => {
   const [sliderType, setSliderType] = useState("from");
 
@@ -18,6 +24,25 @@ const SliderToggles = ({ name }: { name: string }) => {
   useEffect(() => {
     dispatch(editSkillLevelType({ name, sliderType }));
   }, [sliderType]);
+=======
+const SliderToggles = ({
+  sliderType,
+  setSliderType,
+}: {
+  sliderType: string;
+  setSliderType: Dispatch<SetStateAction<string>> | undefined;
+}) => {
+
+
+
+
+  const handleSliderTypeSelection = (
+    _: React.MouseEvent<HTMLElement>,
+    selectedType: string
+  ) => {
+    selectedType !== null && setSliderType && setSliderType(selectedType);
+  };
+>>>>>>> f9404e131004952fffb6594d1f00637a23d8a663
 
   const ButtonsLabels = [
     { label: "from", component: <SwipeRightAltIcon /> },
@@ -28,6 +53,15 @@ const SliderToggles = ({ name }: { name: string }) => {
       component: <UnfoldLessDoubleIcon sx={{ rotate: "90deg" }} />,
     },
   ];
+
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(editSkillLevelType({ levelType: sliderType }));
+  }, [dispatch, sliderType])
+
+
 
   return (
     <ToggleButtonGroup
@@ -42,6 +76,7 @@ const SliderToggles = ({ name }: { name: string }) => {
           key={button.label}
           value={button.label}
           aria-label={button.label}
+          onClick={(event, value) => setSliderType(value)}
         >
           <Tooltip title={t(`pages.dashboard.slider.${button.label}`)} arrow>
             {button.component}

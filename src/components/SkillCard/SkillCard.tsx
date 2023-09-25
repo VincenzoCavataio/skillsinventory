@@ -39,7 +39,23 @@ const SkillCard = ({ name }: { name: string }) => {
           <DeleteIcon />
         </Button>
       </Box>
+<<<<<<< HEAD
       <SliderComponent name={name} />
+=======
+      {sliderType === "between" ? (
+        <SliderComponentBetween
+          sliderType={sliderType}
+          setSliderType={setSliderType}
+
+        />
+      ) : (
+        <SliderComponent
+          sliderType={sliderType}
+          setSliderType={setSliderType}
+
+        />
+      )}
+>>>>>>> f9404e131004952fffb6594d1f00637a23d8a663
     </Box>
   );
 };

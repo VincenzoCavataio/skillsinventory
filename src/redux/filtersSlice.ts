@@ -3,6 +3,7 @@ import { Filters } from "./types";
 
 const initialState: Filters = { skills: [], fullName: "", cities: [], certifications: [], institute: "", course: "" }
 
+
 const filtersSlice = createSlice({
     name: 'filtersState',
     initialState,
@@ -15,6 +16,7 @@ const filtersSlice = createSlice({
             }
         },
         editSkillLevel: (state, action) => {
+<<<<<<< HEAD
             const { name, value } = action.payload;
             const updatedObj = state.skills.map(e => e.label === name
                 ? { label: e.label, level: value, levelType: e.levelType }
@@ -29,6 +31,17 @@ const filtersSlice = createSlice({
                 : { label: e.label, level: e.level, levelType: e.levelType }
             )
             state.skills = updatedObj
+=======
+            if (action.payload.label && action.payload.levelType) {
+                const newObj = { label: action.payload.label, levelType: action.payload.levelType }
+                state.skills = [...state.skills, newObj];
+            }
+        },
+        editSkillLevelType: (state, action) => {
+            if (action.payload.levelType) {
+                state.skills.map((skill) => skill.levelType !== action.payload.levelType);
+            }
+>>>>>>> f9404e131004952fffb6594d1f00637a23d8a663
         },
         removeSkill: (state, action) => {
             if (action.payload.label) {
@@ -47,4 +60,8 @@ const filtersSlice = createSlice({
 })
 
 export default filtersSlice.reducer;
+<<<<<<< HEAD
 export const { addSkill, removeSkill, editSkillLevel, editSkillLevelType, resetFilters } = filtersSlice.actions;
+=======
+export const { addSkill, removeSkill, editSkillLevelType } = filtersSlice.actions;
+>>>>>>> f9404e131004952fffb6594d1f00637a23d8a663

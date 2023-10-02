@@ -19,6 +19,8 @@ import { addSkill } from "../../redux/filtersSlice";
 import InputChecks from "../../components/InputCheck/InputCheck";
 import InputSelect from "../../components/InputSelect/InputSelect";
 import ButtonsContainer from "../../components/ButtonsContainer";
+import Searchbar from "../../components/HeaderNavbar/Searchbar";
+import SkillsTable from "../../components/SkillsTable/SkillsTable";
 
 const DashboardPage = () => {
   const [selectedInput, setSelectedInput] = useState<CompiledFields>({});
@@ -35,11 +37,18 @@ const DashboardPage = () => {
   const allInstitutesData = useApi(allInstitutesMetadata);
   const allCoursessData = useApi(allCoursesMetadata);
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  console.log(isOpen);
+
   return (
     <>
       <HeaderNavbar />
       <Container maxWidth="xl" sx={style.container}>
         <Box display={"flex"} flexDirection={"row"} mb={2}>
+          {/* <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
+            <Searchbar />
+          </Box> */}
           <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
             <InputSelect
               selectedInput={selectedInput}
@@ -63,6 +72,9 @@ const DashboardPage = () => {
           </Box>
         </Box>
         <Box display={"flex"} flexDirection={"row"}>
+          {/* <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
+            <Searchbar />
+          </Box> */}
           <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
             <InputSelect
               selectedInput={selectedInput}
@@ -109,7 +121,15 @@ const DashboardPage = () => {
         </Box>
       </Container>
       <SkillsContainer />
-      <ButtonsContainer />
+      <ButtonsContainer
+        setSelectedInput={setSelectedInput}
+        submit={setIsOpen}
+      />
+      {isOpen && (
+        <Container maxWidth="xl" sx={style.container}>
+          <SkillsTable />
+        </Container>
+      )}
     </>
   );
 };

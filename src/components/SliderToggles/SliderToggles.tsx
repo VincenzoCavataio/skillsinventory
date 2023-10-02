@@ -34,7 +34,7 @@ const SliderToggles = ({ name }: { name: string }) => {
       value={sliderType}
       sx={{ pt: 1 }}
       exclusive
-      onChange={(_, value) => setSliderType(value)}
+      onChange={(_, value) => value && setSliderType(value)}
       aria-label={t(`pages.dashboard.slider.buttonContainerl`)}
     >
       {ButtonsLabels.map((button) => (

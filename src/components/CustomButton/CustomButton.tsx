@@ -14,7 +14,7 @@ const CustomButton = ({
   return (
     <Button
       color={color}
-      sx={{ color: "white", marginLeft: 2 }}
+      sx={{ color: "white", marginLeft: 2, height: "100%" }}
       variant="contained"
       endIcon={icon}
       onClick={callback}

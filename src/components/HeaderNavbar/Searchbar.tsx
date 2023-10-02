@@ -8,9 +8,6 @@ const Search = styled("div")(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.45),
   transition: "all .2s",
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.55),
-  },
   marginLeft: 0,
   width: "100%",
   [theme.breakpoints.up("sm")]: {
@@ -20,7 +17,7 @@ const Search = styled("div")(({ theme }) => ({
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
+  padding: theme.spacing(0, 0.5),
   height: "100%",
   position: "absolute",
   pointerEvents: "none",
@@ -37,18 +34,19 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "20ch",
-      "&:focus": {
-        width: "25ch",
-      },
-    },
   },
 }));
 
 export default function Searchbar() {
   return (
-    <Search>
+    <Search
+      sx={{
+        border: "solid 1px #c4c4c4",
+        padding: 0,
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>

@@ -25,6 +25,9 @@ const HeaderNavbar = () => {
             </Typography>
           </Typography>
         </Box>
+        {/* <Box display={"flex"} flexDirection={"column"}>
+          <Searchbar />
+        </Box> */}
         <Box display={"flex"} flexDirection={"column"}>
           <Searchbar />
         </Box>

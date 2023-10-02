@@ -5,7 +5,7 @@ const style: Record<string, CSSProperties> = {
     background: "transparent",
     padding: "0 !important",
     display: "flex",
-    justifyContent: "right",
+    justifyContent: "space-between",
     transition: "all .2s",
     flexWrap: "nowrap",
     marginTop: 2,

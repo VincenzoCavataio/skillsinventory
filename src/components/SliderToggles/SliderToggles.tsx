@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import SwipeRightAltIcon from "@mui/icons-material/SwipeRightAlt";
-import SwipeLeftAltIcon from "@mui/icons-material/SwipeLeftAlt";
-import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
-import UnfoldLessDoubleIcon from "@mui/icons-material/UnfoldLessDouble";
+import DragHandle from "@mui/icons-material/DragHandle";
+import UnfoldLessIcon from "@mui/icons-material/UnfoldLess";
+
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+
 import { Tooltip } from "@mui/material";
 import { t } from "i18next";
 import { useDispatch } from "react-redux";
@@ -20,12 +22,12 @@ const SliderToggles = ({ name }: { name: string }) => {
   }, [sliderType]);
 
   const ButtonsLabels = [
-    { label: "from", component: <SwipeRightAltIcon /> },
-    { label: "to", component: <SwipeLeftAltIcon /> },
-    { label: "equals", component: <RadioButtonUncheckedIcon /> },
+    { label: "from", component: <ChevronRightIcon /> },
+    { label: "to", component: <ChevronLeftIcon /> },
+    { label: "equals", component: <DragHandle /> },
     {
       label: "between",
-      component: <UnfoldLessDoubleIcon sx={{ rotate: "90deg" }} />,
+      component: <UnfoldLessIcon sx={{ rotate: "90deg" }} />,
     },
   ];
 

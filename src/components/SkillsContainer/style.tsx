@@ -9,7 +9,7 @@ const style: Record<string, CSSProperties> = {
     justifyContent: "left",
     transition: "all .2s",
     flexWrap: "nowrap",
-    marginTop: 0,
+    marginTop: 2,
   },
 };
 

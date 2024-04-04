@@ -19,7 +19,6 @@ import { addSkill } from "../../redux/filtersSlice";
 import InputChecks from "../../components/InputCheck/InputCheck";
 import InputSelect from "../../components/InputSelect/InputSelect";
 import ButtonsContainer from "../../components/ButtonsContainer";
-import Searchbar from "../../components/HeaderNavbar/Searchbar";
 import SkillsTable from "../../components/SkillsTable/SkillsTable";
 
 const DashboardPage = () => {
@@ -44,12 +43,14 @@ const DashboardPage = () => {
   return (
     <>
       <HeaderNavbar />
+      <SkillsContainer />
+
       <Container maxWidth="xl" sx={style.container}>
         <Box display={"flex"} flexDirection={"row"} mb={2}>
           {/* <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
             <Searchbar />
           </Box> */}
-          <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
+          {/* <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
             <InputSelect
               selectedInput={selectedInput}
               setSelectedInput={setSelectedInput}
@@ -57,21 +58,20 @@ const DashboardPage = () => {
               label={t("pages.dashboard.search.selectSkills")}
               objKey={"skill"}
             />
-          </Box>
+          </Box> */}
           <Box sx={{ mr: 2 }}>
             <InputChecks
               data={allEducationalData?.data}
               label={"pages.dashboard.search.certification"}
             />
           </Box>
-          <Box>
+          <Box sx={{ mr: 2 }}>
             <InputChecks
               data={allCitiesData?.data}
               label={"pages.dashboard.search.cities"}
             />
           </Box>
-        </Box>
-        <Box display={"flex"} flexDirection={"row"}>
+
           {/* <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
             <Searchbar />
           </Box> */}
@@ -120,7 +120,6 @@ const DashboardPage = () => {
           </Box>
         </Box>
       </Container>
-      <SkillsContainer />
       <ButtonsContainer
         setSelectedInput={setSelectedInput}
         submit={setIsOpen}

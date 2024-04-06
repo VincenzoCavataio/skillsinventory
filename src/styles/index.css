@@ -1,3 +1,8 @@
+:root {
+  --main-primary: #8cbe2d;
+  --main-secondary: #006fb9;
+}
+
 body,
 html {
   margin: 0;
@@ -11,7 +16,7 @@ html {
 }
 
 .MuiToggleButtonGroup-root > .Mui-selected {
-  background-color: #8cbe2d !important;
+  background-color: var(--main-primary) !important;
 }
 
 .MuiToggleButton-root {

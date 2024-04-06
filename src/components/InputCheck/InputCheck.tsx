@@ -49,7 +49,10 @@ export default function InputChecks({
         renderValue={(selected) => selected.join(", ")}
       >
         {final_object?.map((element) => (
-          <MenuItem key={label} value={element.name ?? element}>
+          <MenuItem
+            key={element.name ?? element}
+            value={element.name ?? element}
+          >
             <Checkbox
               checked={personName.indexOf(element.name ?? element) > -1}
             />

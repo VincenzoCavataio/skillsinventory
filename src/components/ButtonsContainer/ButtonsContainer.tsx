@@ -37,7 +37,8 @@ const ButtonsContainer = ({
       <Box>
         <CustomButton
           label={t("common.clear")}
-          color={"info"}
+          color={"primary"}
+          variant="outlined"
           callback={() => {
             dispatch(resetFilters());
             setSelectedInput(init);
@@ -50,7 +51,6 @@ const ButtonsContainer = ({
           color={"primary"}
           callback={() => {
             submit(true);
-            console.log("SUBMIT");
           }}
           icon={<SearchIcon />}
         />

@@ -18,3 +18,7 @@ html {
   padding: 3px !important;
   height: 30px;
 }
+
+.MuiTableBody-root > tr:nth-child(even) {
+  background: rgb(0, 0, 0, 0.03);
+}

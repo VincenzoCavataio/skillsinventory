@@ -9,14 +9,14 @@ const InputSelect = ({
   data,
   label,
   objKey,
-  width = 300
+  width = 300,
 }: InputSelectType) => {
   return (
     <Autocomplete
       disablePortal
       id="combo-box-demo"
       options={
-        data?.final_object.map(
+        data?.final_object?.map(
           (tecnologyData: ResponseElementObjectData) => tecnologyData?.name
         ) || []
       }

@@ -2,9 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Metadata } from "./types";
 import { t } from "i18next";
+import { ResponseElementObjectData } from "../../pages/DashboardPage/types";
 
 const useApi = ({ URL, requestOption }: Metadata) => {
-  const [data, setData] = useState({ final_object: [] });
+  type Data = {
+    final_object?: ResponseElementObjectData[];
+  };
+  const [data, setData] = useState<Data>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<unknown>();
   const countRef = useRef(false);

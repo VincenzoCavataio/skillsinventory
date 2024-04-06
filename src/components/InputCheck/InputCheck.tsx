@@ -8,10 +8,17 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import { t } from "i18next";
 
-// TODO: tipizzare data  e label
-export default function InputChecks({ data, label, width = 300 }) {
+export default function InputChecks({
+  data,
+  label,
+  width = 300,
+}: {
+  data?: { final_object?: { name: string }[] };
+  label: string;
+  width?: number;
+}) {
   const [personName, setPersonName] = React.useState<string[]>([]);
-  const { final_object } = data;
+  const final_object = data?.final_object;
 
   const handleChange = (event: SelectChangeEvent<typeof personName>) => {
     const {
@@ -23,6 +30,7 @@ export default function InputChecks({ data, label, width = 300 }) {
     );
   };
 
+  //! TOFIX: Fixa altra cagata Backend (element.name ?? element)
   return (
     <FormControl sx={{ width: width }}>
       <InputLabel
@@ -41,14 +49,11 @@ export default function InputChecks({ data, label, width = 300 }) {
         renderValue={(selected) => selected.join(", ")}
       >
         {final_object?.map((element) => (
-          <MenuItem
-            key={element.name || element}
-            value={element.name || element}
-          >
+          <MenuItem key={label} value={element.name ?? element}>
             <Checkbox
-              checked={personName.indexOf(element.name || element) > -1}
+              checked={personName.indexOf(element.name ?? element) > -1}
             />
-            <ListItemText primary={element.name || element} />
+            <ListItemText primary={element.name ?? element} />
           </MenuItem>
         ))}
       </Select>

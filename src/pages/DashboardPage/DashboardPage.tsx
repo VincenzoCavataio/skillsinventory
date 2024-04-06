@@ -100,10 +100,12 @@ const DashboardPage = () => {
               disablePortal
               id="combo-box-demo"
               options={
-                allCoursessData?.data?.final_object.map(
-                  (educationalLevel: ResponseElementObjectData) =>
-                    educationalLevel?.name
-                ) || []
+                allCoursessData?.data?.final_object
+                  ? allCoursessData.data.final_object.map(
+                      (educationalLevel: ResponseElementObjectData) =>
+                        educationalLevel?.name
+                    )
+                  : []
               }
               onChange={(_, newValue) =>
                 setSelectedInput({ ...selectedInput, course: newValue || "" })

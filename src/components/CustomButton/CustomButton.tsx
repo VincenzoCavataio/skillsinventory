@@ -1,21 +1,29 @@
 import { Button } from "@mui/material";
+import { commonColors } from "../../common/commonColors";
 
 const CustomButton = ({
   label,
   callback,
-  color,
+  color = "primary",
   icon,
+  variant = "contained",
 }: {
   label: string;
   callback: VoidFunction;
   color: "primary" | "secondary" | "error" | "info" | "warning" | "success";
   icon: JSX.Element;
+  variant?: "contained" | "outlined" | "text";
 }) => {
   return (
     <Button
       color={color}
-      sx={{ color: "white", marginLeft: 2, height: "100%" }}
-      variant="contained"
+      sx={{
+        color: variant !== "outlined" ? "white" : commonColors.primary,
+        marginLeft: 2,
+        height: "100%",
+        background: variant === "outlined" ? "white" : undefined,
+      }}
+      variant={variant}
       endIcon={icon}
       onClick={callback}
     >

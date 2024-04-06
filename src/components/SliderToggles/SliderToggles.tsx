@@ -3,10 +3,8 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import DragHandle from "@mui/icons-material/DragHandle";
 import UnfoldLessIcon from "@mui/icons-material/UnfoldLess";
-
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-
 import { Tooltip } from "@mui/material";
 import { t } from "i18next";
 import { useDispatch } from "react-redux";
@@ -49,7 +47,6 @@ const SliderToggles = ({ name }: { name: string }) => {
             selected={sliderType === button.label}
             color="secondary"
           >
-
             {button.component}
           </ToggleButton>
         </Tooltip>

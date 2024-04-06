@@ -2,6 +2,7 @@ import { Autocomplete, Box, Button, Container, TextField } from "@mui/material";
 import HeaderNavbar from "../../components/HeaderNavbar";
 import { t } from "i18next";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import {
   allCitiesMetadata,
   allCoursesMetadata,
@@ -14,7 +15,6 @@ import style from "./style";
 import { CompiledFields, ResponseElementObjectData } from "./types";
 import useApi from "../../utilities/useApi";
 import SkillsContainer from "../../components/SkillsContainer";
-import { useDispatch } from "react-redux";
 import { addSkill } from "../../redux/filtersSlice";
 import InputChecks from "../../components/InputCheck/InputCheck";
 import InputSelect from "../../components/InputSelect/InputSelect";
@@ -39,8 +39,6 @@ const DashboardPage = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(isOpen);
-
   return (
     <>
       <HeaderNavbar />
@@ -63,7 +61,6 @@ const DashboardPage = () => {
 
       <Container maxWidth="xl" sx={style.container}>
         <Box display={"flex"} flexDirection={"row"} mb={2}>
-          {/*TODO: Rendere dinamica la generazione dei box sotto */}
           <Box sx={{ mr: 2 }}>
             <InputChecks
               data={allEducationalData?.data}
@@ -78,10 +75,6 @@ const DashboardPage = () => {
               label={"pages.dashboard.search.cities"}
             />
           </Box>
-
-          {/* <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
-            <Searchbar />
-          </Box> */}
           <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
             <InputSelect
               selectedInput={selectedInput}

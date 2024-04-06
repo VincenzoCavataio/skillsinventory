@@ -15,7 +15,7 @@ const ButtonsContainer = ({
   submit,
 }: {
   setSelectedInput: Dispatch<SetStateAction<CompiledFields>>;
-  submit: SetStateAction<boolean>;
+  submit: (value: boolean) => void;
 }) => {
   const dispatch = useDispatch();
 

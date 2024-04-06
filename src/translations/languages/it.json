@@ -14,7 +14,10 @@
     },
     "pages": {
       "dashboard": {
-        "buttonGroup": { "and": "AND", "or": "OR" },
+        "buttonGroup": {
+          "and": "AND",
+          "or": "OR"
+        },
         "search": {
           "name": "Nome e Cognome",
           "selectSkills": "Seleziona skills",
@@ -29,7 +32,7 @@
           "advancedSearch": "Ricerca Avanzata",
           "from": "Da ",
           "to": "Fino a ",
-          "equals": "Uguale a",
+          "equals": "",
           "between": "Tra",
           "buttonContainer": "Seleziona Tipo"
         }

@@ -9,7 +9,7 @@ import Checkbox from "@mui/material/Checkbox";
 import { t } from "i18next";
 
 // TODO: tipizzare data  e label
-export default function InputChecks({ data, label }) {
+export default function InputChecks({ data, label, width = 300 }) {
   const [personName, setPersonName] = React.useState<string[]>([]);
   const { final_object } = data;
 
@@ -24,7 +24,7 @@ export default function InputChecks({ data, label }) {
   };
 
   return (
-    <FormControl sx={{ width: 300 }}>
+    <FormControl sx={{ width: width }}>
       <InputLabel
         id="demo-multiple-checkbox-label"
         sx={{ background: "white" }}

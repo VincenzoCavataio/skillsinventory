@@ -9,6 +9,7 @@ const InputSelect = ({
   data,
   label,
   objKey,
+  width = 300
 }: InputSelectType) => {
   return (
     <Autocomplete
@@ -23,7 +24,7 @@ const InputSelect = ({
         setSelectedInput({ ...selectedInput, [objKey]: newValue || "" })
       }
       noOptionsText={<Button>{t("pages.dashboard.search.noOptions")}</Button>}
-      sx={{ width: 300 }}
+      sx={{ width: width }}
       renderInput={(params) => <TextField {...params} label={label} />}
     />
   );

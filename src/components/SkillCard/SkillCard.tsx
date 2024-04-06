@@ -1,5 +1,7 @@
 import { Box, Button, Tooltip, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import DeleteIconOutline from "@mui/icons-material/DeleteOutlineSharp";
+import Cancel from "@mui/icons-material/Cancel";
 import SliderComponent from "../SliderComponent";
 import style from "./style";
 import { useDispatch } from "react-redux";
@@ -24,19 +26,18 @@ const SkillCard = ({ name }: { name: string }) => {
         <Tooltip title={name?.toUpperCase()} arrow placement="top">
           <Typography
             sx={{
-              mr: 2,
               textOverflow: "ellipsis",
               maxWidth: "100%",
               overflow: "hidden",
               whiteSpace: "nowrap",
+              fontSize: 14,
             }}
           >
             {name?.toUpperCase()}
           </Typography>
         </Tooltip>
-
-        <Button variant="outlined" sx={{ ml: 1 }} onClick={handleDelete}>
-          <DeleteIcon />
+        <Button sx={{ w: 0, p: 0, minWidth: 0 }} onClick={handleDelete}>
+          <DeleteIconOutline color="primary" />
         </Button>
       </Box>
       <SliderComponent name={name} />

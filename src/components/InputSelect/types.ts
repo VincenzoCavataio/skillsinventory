@@ -9,4 +9,5 @@ export type InputSelectType = {
     data: { final_object: ResponseElementObjectData[] },
     label: Label,
     objKey: string,
+    width?: number
 }

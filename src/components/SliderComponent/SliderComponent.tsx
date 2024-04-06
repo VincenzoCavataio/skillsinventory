@@ -37,6 +37,7 @@ const SliderComponent = ({ name }: { name: string }) => {
       <SliderToggles name={name} />
       <Slider
         style={{ maxWidth: 280, marginTop: 10 }}
+        size="small"
         max={5}
         min={1}
         disabled={false}

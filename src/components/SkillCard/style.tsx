@@ -5,7 +5,7 @@ const style: Record<string, CSSProperties> = {
     display: "flex",
     flexDirection: "column",
     marginRight: 3,
-    maxWidth: 200,
+    width: 125,
     justifyContent: "center",
     border: "solid 1px rgba(0,0,0,0.2)",
     padding: 2,

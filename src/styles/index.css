@@ -1,15 +1,20 @@
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   border: 0;
   background: #e8e8e8;
 }
 
-.MuiToggleButton-standard{
-  background-color: rgba(255,255,255,0.5) !important;
+.MuiToggleButton-standard {
+  background-color: rgba(255, 255, 255, 0.5) !important;
 }
 
-.Mui-selected {
-  background-color: rgba(255,255,255,0.2) !important;
+.MuiToggleButtonGroup-root > .Mui-selected {
+  background-color: #8cbe2d !important;
+}
 
+.MuiToggleButton-root {
+  padding: 3px !important;
+  height: 30px;
 }

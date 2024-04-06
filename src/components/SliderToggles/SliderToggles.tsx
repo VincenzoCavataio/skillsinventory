@@ -40,15 +40,19 @@ const SliderToggles = ({ name }: { name: string }) => {
       aria-label={t(`pages.dashboard.slider.buttonContainerl`)}
     >
       {ButtonsLabels.map((button) => (
-        <ToggleButton
-          key={button.label}
-          value={button.label}
-          aria-label={button.label}
-        >
-          <Tooltip title={t(`pages.dashboard.slider.${button.label}`)} arrow>
+        <Tooltip title={t(`pages.dashboard.slider.${button.label}`)} arrow>
+          <ToggleButton
+            key={button.label}
+            value={button.label}
+            aria-label={button.label}
+            size="small"
+            selected={sliderType === button.label}
+            color="secondary"
+          >
+
             {button.component}
-          </Tooltip>
-        </ToggleButton>
+          </ToggleButton>
+        </Tooltip>
       ))}
     </ToggleButtonGroup>
   );

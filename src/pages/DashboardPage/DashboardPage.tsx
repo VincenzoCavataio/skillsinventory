@@ -23,6 +23,7 @@ import SkillsTable from "../../components/SkillsTable/SkillsTable";
 
 const DashboardPage = () => {
   const [selectedInput, setSelectedInput] = useState<CompiledFields>({});
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,30 +44,36 @@ const DashboardPage = () => {
   return (
     <>
       <HeaderNavbar />
+      <Container
+        maxWidth="xl"
+        sx={{
+          ...style.container,
+          overflow: "hidden",
+        }}
+      >
+        <InputSelect
+          selectedInput={selectedInput}
+          setSelectedInput={setSelectedInput}
+          data={allSkillslData?.data}
+          label={t("pages.dashboard.search.selectSkills")}
+          objKey={"skill"}
+        />
+      </Container>
       <SkillsContainer />
 
       <Container maxWidth="xl" sx={style.container}>
         <Box display={"flex"} flexDirection={"row"} mb={2}>
-          {/* <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
-            <Searchbar />
-          </Box> */}
-          {/* <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
-            <InputSelect
-              selectedInput={selectedInput}
-              setSelectedInput={setSelectedInput}
-              data={allSkillslData?.data}
-              label={t("pages.dashboard.search.selectSkills")}
-              objKey={"skill"}
-            />
-          </Box> */}
+          {/*TODO: Rendere dinamica la generazione dei box sotto */}
           <Box sx={{ mr: 2 }}>
             <InputChecks
               data={allEducationalData?.data}
               label={"pages.dashboard.search.certification"}
+              width={200}
             />
           </Box>
           <Box sx={{ mr: 2 }}>
             <InputChecks
+              width={200}
               data={allCitiesData?.data}
               label={"pages.dashboard.search.cities"}
             />
@@ -82,6 +89,7 @@ const DashboardPage = () => {
               data={allEducationalLevelsData?.data}
               label={t("pages.dashboard.search.educationalLevels")}
               objKey={"educationalLevel"}
+              width={200}
             />
           </Box>
           <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
@@ -91,6 +99,7 @@ const DashboardPage = () => {
               data={allInstitutesData?.data}
               label={t("pages.dashboard.search.institute")}
               objKey={"institute"}
+              width={200}
             />
           </Box>
           <Box display={"flex"} flexDirection={"column"}>
@@ -109,7 +118,7 @@ const DashboardPage = () => {
               noOptionsText={
                 <Button>{t("pages.dashboard.search.noOptions")}</Button>
               }
-              sx={{ width: 300 }}
+              sx={{ width: 200 }}
               renderInput={(params) => (
                 <TextField
                   {...params}

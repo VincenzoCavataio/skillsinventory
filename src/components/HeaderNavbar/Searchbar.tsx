@@ -6,7 +6,7 @@ import { t } from "i18next";
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.45),
+  backgroundColor: alpha(theme.palette.common.white, 0.65),
   transition: "all .2s",
   marginLeft: 0,
   width: "100%",

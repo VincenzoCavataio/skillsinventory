@@ -37,7 +37,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function Searchbar() {
+export const Searchbar = () => {
   return (
     <Search
       sx={{
@@ -56,4 +56,4 @@ export default function Searchbar() {
       />
     </Search>
   );
-}
+};

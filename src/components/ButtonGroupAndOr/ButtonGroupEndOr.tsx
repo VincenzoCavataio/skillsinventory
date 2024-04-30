@@ -3,7 +3,7 @@ import { t } from "i18next";
 import { commonColors } from "../../common/commonColors";
 import { useState } from "react";
 
-const ButtonGroupAndOr = () => {
+export const ButtonGroupAndOr = () => {
   const [value, setValue] = useState("AND");
 
   return (
@@ -32,5 +32,3 @@ const ButtonGroupAndOr = () => {
     </ToggleButtonGroup>
   );
 };
-
-export default ButtonGroupAndOr;

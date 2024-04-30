@@ -1,14 +1,14 @@
 import { Slider, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { commonColors } from "../../common/commonColors";
-import SliderToggles from "../SliderToggles";
-import { SWITCH_TYPE } from "./../../constants";
+import { commonColors } from "../../../common/commonColors";
+import { SliderToggles } from "../SliderToggles";
+import { SWITCH_TYPE } from "../../../constants";
 import { t } from "i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { editSkillLevel } from "../../redux/filtersSlice";
-import { ReduxStore, Skill } from "../../redux/types";
+import { editSkillLevel } from "../../../redux/filtersSlice";
+import { ReduxStore, Skill } from "../../../redux/types";
 
-const SliderComponent = ({ name }: { name: string }) => {
+export const SliderComponent = ({ name }: { name: string }) => {
   const [value, setValue] = useState<number | number[]>(1);
   const dispatch = useDispatch();
 
@@ -58,5 +58,3 @@ const SliderComponent = ({ name }: { name: string }) => {
     </>
   );
 };
-
-export default SliderComponent;

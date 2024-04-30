@@ -1,11 +1,11 @@
 import { Container } from "@mui/material";
-import SkillCard from "../SkillCard";
 import style from "./style";
 import { useDispatch, useSelector } from "react-redux";
 import { ReduxStore, Skill } from "../../redux/types";
 import { useEffect } from "react";
 import { addSkill } from "../../redux/filtersSlice";
 import { CompiledFields } from "../../pages/DashboardPage/types";
+import { SkillBox } from "../SkillBox";
 
 const SkillsContainer = (selectedInput: CompiledFields) => {
   const allSkills: Skill[] =
@@ -35,7 +35,7 @@ const SkillsContainer = (selectedInput: CompiledFields) => {
         }}
       >
         {allSkills?.map((skill) => (
-          <SkillCard key={skill.label} name={skill.label} />
+          <SkillBox key={skill.label} name={skill.label} />
         ))}
       </Container>
     </Container>

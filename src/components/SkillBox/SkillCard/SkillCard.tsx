@@ -1,11 +1,11 @@
 import { Box, Button, Tooltip, Typography } from "@mui/material";
 import DeleteIconOutline from "@mui/icons-material/DeleteOutlineSharp";
-import SliderComponent from "../SliderComponent";
+import { SliderComponent } from "../SliderComponent";
 import style from "./style";
 import { useDispatch } from "react-redux";
-import { removeSkill } from "../../redux/filtersSlice";
+import { removeSkill } from "../../../redux/filtersSlice";
 
-const SkillCard = ({ name }: { name: string }) => {
+export const SkillCard = ({ name }: { name: string }) => {
   const dispatch = useDispatch();
   const handleDelete = () => {
     dispatch(removeSkill({ label: name }));
@@ -42,5 +42,3 @@ const SkillCard = ({ name }: { name: string }) => {
     </Box>
   );
 };
-
-export default SkillCard;

@@ -3,7 +3,7 @@ import { ResponseElementObjectData } from "../../pages/DashboardPage/types";
 import { t } from "i18next";
 import { InputSelectType } from "./types";
 
-const InputSelect = ({
+export const InputSelect = ({
   selectedInput,
   setSelectedInput,
   data,
@@ -29,5 +29,3 @@ const InputSelect = ({
     />
   );
 };
-
-export default InputSelect;

@@ -1,10 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import { t } from "i18next";
 import { commonColors } from "../../common/commonColors";
-import style from "./style";
-import NavigationButton from "../../components/NavigationButton";
+import { style } from "./style";
+import { NavigationButton } from "../../components/NavigationButton";
 
-const NotFoundPage = () => {
+export const NotFoundPage = () => {
   return (
     <Box sx={style.wrapper}>
       <Box sx={style.element}>
@@ -19,5 +19,3 @@ const NotFoundPage = () => {
     </Box>
   );
 };
-
-export default NotFoundPage;

@@ -6,7 +6,7 @@ import commonStyle from "../../common/commonStyle";
 
 type Props = { to?: string };
 
-const NavigationButton = ({ to }: Props) => {
+export const NavigationButton = ({ to }: Props) => {
   const navigate = useNavigate();
 
   const handleClick = (path: string) => {
@@ -25,5 +25,3 @@ const NavigationButton = ({ to }: Props) => {
     </Button>
   );
 };
-
-export default NavigationButton;

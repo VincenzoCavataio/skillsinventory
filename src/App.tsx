@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import NotFoundPage from "./pages/NotFoundPage";
-import DashboardPage from "./pages/DashboardPage";
+import { NotFoundPage } from "./pages/NotFoundPage";
+import { DashboardPage } from "./pages/DashboardPage";
 
 const App = () => {
   return (

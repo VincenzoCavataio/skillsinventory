@@ -20,7 +20,7 @@ function createData(
   return { lastName, firstName, education, addressInfo, certifications };
 }
 
-export default function SkillsTable() {
+export const SkillsTable = () => {
   const tableHeaderStyle = {
     fontSize: 16,
     textAlign: "center",
@@ -105,4 +105,4 @@ export default function SkillsTable() {
       </Table>
     </TableContainer>
   );
-}
+};

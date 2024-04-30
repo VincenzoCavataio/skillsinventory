@@ -3,12 +3,12 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import { Typography } from "@mui/material";
 import logo from "./../../assets/pict.svg";
-import style from "./style";
+import { style } from "./style";
 import commonStyle from "../../common/commonStyle";
 import { t } from "i18next";
-import Searchbar from "./Searchbar";
+import { Searchbar } from "./Searchbar";
 
-const HeaderNavbar = () => {
+export const HeaderNavbar = () => {
   return (
     <AppBar position="relative">
       <Toolbar sx={commonStyle.spaceBetween}>
@@ -35,5 +35,3 @@ const HeaderNavbar = () => {
     </AppBar>
   );
 };
-
-export default HeaderNavbar;

@@ -1,2 +1,1 @@
-import HeaderNavbar from "./HeaderNavbar";
-export default HeaderNavbar
+export { HeaderNavbar } from "./HeaderNavbar";

@@ -1,6 +1,6 @@
 import { CSSProperties } from "@mui/styled-engine";
 
-const style: Record<string, CSSProperties> = {
+export const style: Record<string, CSSProperties> = {
   wrapper: {
     display: "flex",
     justifyContent: "space-around",
@@ -27,5 +27,3 @@ const style: Record<string, CSSProperties> = {
     overflowX: "scroll",
   },
 };
-
-export default style;

@@ -8,6 +8,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import { t } from "i18next";
 
+//TODO: Componente da rivedere
 export default function InputChecks({
   data,
   label,

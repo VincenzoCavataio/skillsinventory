@@ -1,2 +1,1 @@
-import ButtonGroupAndOr from "./ButtonGroupEndOr";
-export default ButtonGroupAndOr
+export { ButtonGroupAndOr } from "./ButtonGroupEndOr";

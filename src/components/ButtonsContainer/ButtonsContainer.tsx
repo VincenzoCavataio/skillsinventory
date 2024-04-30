@@ -1,6 +1,6 @@
 import { Box, Container } from "@mui/material";
-import style from "./style";
-import CustomButton from "../CustomButton";
+import { style } from "./style";
+import { CustomButton } from "../CustomButton";
 import { t } from "i18next";
 import SearchIcon from "@mui/icons-material/Search";
 import CancelButton from "@mui/icons-material/Cancel";
@@ -8,9 +8,9 @@ import { useDispatch } from "react-redux";
 import { resetFilters } from "../../redux/filtersSlice";
 import { Dispatch, SetStateAction } from "react";
 import { CompiledFields } from "../../pages/DashboardPage/types";
-import ButtonGroupAndOr from "../ButtonGroupAndOr";
+import { ButtonGroupAndOr } from "../ButtonGroupAndOr";
 
-const ButtonsContainer = ({
+export const ButtonsContainer = ({
   setSelectedInput,
   submit,
 }: {
@@ -58,5 +58,3 @@ const ButtonsContainer = ({
     </Container>
   );
 };
-
-export default ButtonsContainer;

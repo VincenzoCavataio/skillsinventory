@@ -1,5 +1,5 @@
 import { Autocomplete, Box, Button, Container, TextField } from "@mui/material";
-import HeaderNavbar from "../../components/HeaderNavbar";
+import { HeaderNavbar } from "../../components/HeaderNavbar";
 import { t } from "i18next";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -11,17 +11,17 @@ import {
   allInstitutesMetadata,
   allSkillslMetadata,
 } from "./DashboardPage.controller";
-import style from "./style";
+import { style } from "./style";
 import { CompiledFields, ResponseElementObjectData } from "./types";
 import useApi from "../../utilities/useApi";
 import SkillsContainer from "../../components/SkillsContainer";
 import { addSkill } from "../../redux/filtersSlice";
 import InputChecks from "../../components/InputCheck/InputCheck";
-import InputSelect from "../../components/InputSelect/InputSelect";
-import ButtonsContainer from "../../components/ButtonsContainer";
-import SkillsTable from "../../components/SkillsTable/SkillsTable";
+import { InputSelect } from "../../components/InputSelect/InputSelect";
+import { ButtonsContainer } from "../../components/ButtonsContainer";
+import { SkillsTable } from "../../components/SkillsTable/SkillsTable";
 
-const DashboardPage = () => {
+export const DashboardPage = () => {
   const [selectedInput, setSelectedInput] = useState<CompiledFields>({});
 
   const dispatch = useDispatch();
@@ -136,5 +136,3 @@ const DashboardPage = () => {
     </>
   );
 };
-
-export default DashboardPage;

@@ -8,9 +8,9 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Tooltip } from "@mui/material";
 import { t } from "i18next";
 import { useDispatch } from "react-redux";
-import { editSkillLevelType } from "../../redux/filtersSlice";
+import { editSkillLevelType } from "../../../redux/filtersSlice";
 
-const SliderToggles = ({ name }: { name: string }) => {
+export const SliderToggles = ({ name }: { name: string }) => {
   const [sliderType, setSliderType] = useState("from");
 
   const dispatch = useDispatch();
@@ -58,5 +58,3 @@ const SliderToggles = ({ name }: { name: string }) => {
     </ToggleButtonGroup>
   );
 };
-
-export default SliderToggles;

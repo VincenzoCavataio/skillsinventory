@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { commonColors } from "../../common/commonColors";
 
-const CustomButton = ({
+export const CustomButton = ({
   label,
   callback,
   color = "primary",
@@ -31,5 +31,3 @@ const CustomButton = ({
     </Button>
   );
 };
-
-export default CustomButton;

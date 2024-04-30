@@ -1,6 +1,6 @@
 import { CSSProperties } from "@mui/styled-engine";
 
-const style: Record<string, CSSProperties> = {
+export const style: Record<string, CSSProperties> = {
   headerTitle: {
     marginRight: 2,
     display: "flex",
@@ -10,5 +10,3 @@ const style: Record<string, CSSProperties> = {
     textDecoration: "none",
   },
 };
-
-export default style;

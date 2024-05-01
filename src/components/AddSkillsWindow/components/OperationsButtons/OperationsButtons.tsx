@@ -38,9 +38,9 @@ export const OperationsButtons = ({ data }: Props) => {
   };
 
   // TODO
-  // const removeFromStore = () => {
-  //   dispatch(() => {});
-  // };
+  const removeFromStore = () => {
+    dispatch(() => {});
+  };
 
   const selectedSkills = data
     .filter((skill) => skill.selected)

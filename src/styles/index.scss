@@ -27,3 +27,23 @@ html {
 .MuiTableBody-root > tr:nth-child(even) {
   background: rgb(0, 0, 0, 0.03);
 }
+
+.custom-scrollbars {
+  /* for chromium based and safari*/
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 50px;
+  }
+
+  /* For Firefox and offshoots */
+  scrollbar-color: gray transparent;
+  scrollbar-width: thin;
+}

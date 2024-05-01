@@ -14,12 +14,12 @@ import {
 import { style } from "./style";
 import { CompiledFields, ResponseElementObjectData } from "./types";
 import useApi from "../../utilities/useApi";
-import SkillsContainer from "../../components/SkillsContainer";
 import { addSkill } from "../../redux/filtersSlice";
 import InputChecks from "../../components/InputCheck/InputCheck";
 import { InputSelect } from "../../components/InputSelect/InputSelect";
 import { ButtonsContainer } from "../../components/ButtonsContainer";
 import { SkillsTable } from "../../components/SkillsTable/SkillsTable";
+import { AddSkillsWindows } from "../../components/AddSkillsWindow";
 
 export const DashboardPage = () => {
   const [selectedInput, setSelectedInput] = useState<CompiledFields>({});
@@ -47,30 +47,44 @@ export const DashboardPage = () => {
         sx={{
           ...style.container,
           overflow: "hidden",
+          height: 200,
         }}
       >
-        <InputSelect
-          selectedInput={selectedInput}
-          setSelectedInput={setSelectedInput}
-          data={allSkillslData?.data}
-          label={t("pages.dashboard.search.selectSkills")}
-          objKey={"skill"}
-        />
-      </Container>
-      <SkillsContainer />
-
-      <Container maxWidth="xl" sx={style.container}>
-        <Box display={"flex"} flexDirection={"row"} mb={2}>
-          <Box sx={{ mr: 2 }}>
+        <Box
+          style={{
+            position: "relative",
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <AddSkillsWindows data={allSkillslData?.data} />
+        </Box>
+        <Box
+          display={"flex"}
+          flexDirection={"row"}
+          justifyContent={"center"}
+          flexWrap={"wrap"}
+          width={"100%"}
+          mb={2}
+        >
+          <Box sx={{ m: 2, mt: 0 }}>
+            <TextField
+              id="outlined-basic"
+              label={t("pages.dashboard.search.name")}
+              variant="outlined"
+              sx={{ width: 180 }}
+            />
+          </Box>
+          <Box sx={{ mr: 2, mb: 2 }}>
             <InputChecks
               data={allEducationalData?.data}
               label={"pages.dashboard.search.certification"}
-              width={200}
+              width={180}
             />
           </Box>
-          <Box sx={{ mr: 2 }}>
+          <Box sx={{ mr: 2, mb: 2 }}>
             <InputChecks
-              width={200}
+              width={180}
               data={allCitiesData?.data}
               label={"pages.dashboard.search.cities"}
             />
@@ -82,7 +96,7 @@ export const DashboardPage = () => {
               data={allEducationalLevelsData?.data}
               label={t("pages.dashboard.search.educationalLevels")}
               objKey={"educationalLevel"}
-              width={200}
+              width={180}
             />
           </Box>
           <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
@@ -92,7 +106,7 @@ export const DashboardPage = () => {
               data={allInstitutesData?.data}
               label={t("pages.dashboard.search.institute")}
               objKey={"institute"}
-              width={200}
+              width={180}
             />
           </Box>
           <Box display={"flex"} flexDirection={"column"}>
@@ -113,7 +127,7 @@ export const DashboardPage = () => {
               noOptionsText={
                 <Button>{t("pages.dashboard.search.noOptions")}</Button>
               }
-              sx={{ width: 200 }}
+              sx={{ width: 180 }}
               renderInput={(params) => (
                 <TextField
                   {...params}

@@ -1,6 +1,6 @@
 import { CSSProperties } from "@mui/styled-engine";
 
-const style: Record<string, CSSProperties> = {
+export const style: Record<string, CSSProperties> = {
   container: {
     background: "white",
     padding: 2,
@@ -11,5 +11,3 @@ const style: Record<string, CSSProperties> = {
     flexWrap: "nowrap",
   },
 };
-
-export default style;

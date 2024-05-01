@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import style from "./style";
+import { style } from "./style";
 import { useDispatch, useSelector } from "react-redux";
 import { ReduxStore, Skill } from "../../redux/types";
 import { useEffect } from "react";
@@ -7,7 +7,7 @@ import { addSkill } from "../../redux/filtersSlice";
 import { CompiledFields } from "../../pages/DashboardPage/types";
 import { SkillBox } from "../SkillBox";
 
-const SkillsContainer = (selectedInput: CompiledFields) => {
+export const SkillsContainer = (selectedInput: CompiledFields) => {
   const allSkills: Skill[] =
     useSelector((state: ReduxStore) => state.filters?.skills) || [];
   const dispatch = useDispatch();
@@ -41,5 +41,3 @@ const SkillsContainer = (selectedInput: CompiledFields) => {
     </Container>
   );
 };
-
-export default SkillsContainer;

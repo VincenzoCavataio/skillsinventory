@@ -1,2 +1,1 @@
-import SkillsContainer from "./SkillsContainer";
-export default SkillsContainer
+export { SkillsContainer } from "./SkillsContainer";

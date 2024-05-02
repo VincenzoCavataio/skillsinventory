@@ -106,12 +106,7 @@ export const OperationsButtons = ({
         }}
       >
         <Typography variant="caption">Operator</Typography>
-        <Select
-          value={operator}
-          size="small"
-          sx={{ width: 65 }}
-          onChange={handleChangeOperator}
-        >
+        <Select value={operator} size="small" onChange={handleChangeOperator}>
           {OPERATORS.map((operator) => (
             <MenuItem key={operator} value={operator}>
               {operator}
@@ -129,12 +124,7 @@ export const OperationsButtons = ({
       >
         <Typography variant="caption">Level</Typography>
 
-        <Select
-          value={String(level)}
-          size="small"
-          sx={{ width: 65 }}
-          onChange={handleChangeLevel}
-        >
+        <Select value={String(level)} size="small" onChange={handleChangeLevel}>
           {LEVELS.map((level) => (
             <MenuItem key={level} value={level}>
               {level}

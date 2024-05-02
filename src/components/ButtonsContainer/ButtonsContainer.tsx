@@ -38,7 +38,7 @@ export const ButtonsContainer = ({
         <CustomButton
           label={t("common.clear")}
           color={"primary"}
-          variant="outlined"
+          // variant="outlined"
           callback={() => {
             dispatch(resetFilters());
             setSelectedInput(init);

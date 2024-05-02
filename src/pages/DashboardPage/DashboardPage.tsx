@@ -61,87 +61,106 @@ export const DashboardPage = () => {
         </Box>
         <Box
           display={"flex"}
-          flexDirection={"row"}
-          justifyContent={"center"}
           flexWrap={"wrap"}
+          justifyContent={"center"}
           width={"100%"}
           mb={2}
         >
-          <Box sx={{ m: 2, mt: 0 }}>
-            <TextField
-              id="outlined-basic"
-              label={t("pages.dashboard.search.name")}
-              variant="outlined"
-              sx={{ width: 180 }}
-            />
+          <Box
+            display={"flex"}
+            flexDirection={"row"}
+            justifyContent={"space-evenly"}
+            flexWrap={"nowrap"}
+            width={600}
+          >
+            <Box sx={{ m: 0, mt: 0 }}>
+              <TextField
+                id="outlined-basic"
+                label={t("pages.dashboard.search.name")}
+                variant="outlined"
+                sx={{ width: 180 }}
+              />
+            </Box>
+            <Box sx={{ mr: 0, mb: 2 }}>
+              <InputChecks
+                data={allEducationalData?.data}
+                label={"pages.dashboard.search.certification"}
+                width={180}
+              />
+            </Box>
+            <Box sx={{ mr: 0, mb: 2 }}>
+              <InputChecks
+                width={180}
+                data={allCitiesData?.data}
+                label={"pages.dashboard.search.cities"}
+              />
+            </Box>
           </Box>
-          <Box sx={{ mr: 2, mb: 2 }}>
-            <InputChecks
-              data={allEducationalData?.data}
-              label={"pages.dashboard.search.certification"}
-              width={180}
-            />
+          <Box
+            display={"flex"}
+            flexDirection={"row"}
+            justifyContent={"space-evenly"}
+            flexWrap={"nowrap"}
+            width={600}
+            mb={2}
+          >
+            <Box display={"flex"} flexDirection={"column"} sx={{ mr: 0 }}>
+              <InputSelect
+                selectedInput={selectedInput}
+                setSelectedInput={setSelectedInput}
+                data={allEducationalLevelsData?.data}
+                label={t("pages.dashboard.search.educationalLevels")}
+                objKey={"educationalLevel"}
+                width={180}
+              />
+            </Box>
+            <Box display={"flex"} flexDirection={"column"} sx={{ mr: 0 }}>
+              <InputSelect
+                selectedInput={selectedInput}
+                setSelectedInput={setSelectedInput}
+                data={allInstitutesData?.data}
+                label={t("pages.dashboard.search.institute")}
+                objKey={"institute"}
+                width={180}
+              />
+            </Box>
+            <Box display={"flex"} flexDirection={"column"}>
+              <Autocomplete
+                disablePortal
+                id="combo-box-demo"
+                options={
+                  allCoursessData?.data?.final_object
+                    ? allCoursessData.data.final_object.map(
+                        (educationalLevel: ResponseElementObjectData) =>
+                          educationalLevel?.name
+                      )
+                    : []
+                }
+                onChange={(_, newValue) =>
+                  setSelectedInput({ ...selectedInput, course: newValue || "" })
+                }
+                noOptionsText={
+                  <Button>{t("pages.dashboard.search.noOptions")}</Button>
+                }
+                sx={{ width: 180 }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label={t("pages.dashboard.search.course")}
+                  />
+                )}
+              />
+            </Box>
           </Box>
-          <Box sx={{ mr: 2, mb: 2 }}>
-            <InputChecks
-              width={180}
-              data={allCitiesData?.data}
-              label={"pages.dashboard.search.cities"}
-            />
-          </Box>
-          <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
-            <InputSelect
-              selectedInput={selectedInput}
-              setSelectedInput={setSelectedInput}
-              data={allEducationalLevelsData?.data}
-              label={t("pages.dashboard.search.educationalLevels")}
-              objKey={"educationalLevel"}
-              width={180}
-            />
-          </Box>
-          <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
-            <InputSelect
-              selectedInput={selectedInput}
-              setSelectedInput={setSelectedInput}
-              data={allInstitutesData?.data}
-              label={t("pages.dashboard.search.institute")}
-              objKey={"institute"}
-              width={180}
-            />
-          </Box>
+
           <Box display={"flex"} flexDirection={"column"}>
-            <Autocomplete
-              disablePortal
-              id="combo-box-demo"
-              options={
-                allCoursessData?.data?.final_object
-                  ? allCoursessData.data.final_object.map(
-                      (educationalLevel: ResponseElementObjectData) =>
-                        educationalLevel?.name
-                    )
-                  : []
-              }
-              onChange={(_, newValue) =>
-                setSelectedInput({ ...selectedInput, course: newValue || "" })
-              }
-              noOptionsText={
-                <Button>{t("pages.dashboard.search.noOptions")}</Button>
-              }
-              sx={{ width: 180 }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label={t("pages.dashboard.search.course")}
-                />
-              )}
+            <ButtonsContainer
+              setSelectedInput={setSelectedInput}
+              submit={setIsOpen}
             />
           </Box>
         </Box>
       </Container>
-      <ButtonsContainer
-        setSelectedInput={setSelectedInput}
-        submit={setIsOpen}
-      />
       {isOpen && (
         <Container maxWidth="xl" sx={style.container}>
           <SkillsTable />

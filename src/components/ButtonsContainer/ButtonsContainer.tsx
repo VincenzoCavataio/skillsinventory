@@ -1,5 +1,5 @@
-import { Box, Container } from "@mui/material";
-import { style } from "./style";
+// import { Box, Container } from "@mui/material";
+// import { style } from "./style";
 import { CustomButton } from "../CustomButton";
 import { t } from "i18next";
 import SearchIcon from "@mui/icons-material/Search";
@@ -9,6 +9,7 @@ import { resetFilters } from "../../redux/filtersSlice";
 import { Dispatch, SetStateAction } from "react";
 import { CompiledFields } from "../../pages/DashboardPage/types";
 import { ButtonGroupAndOr } from "../ButtonGroupAndOr";
+import { Box } from "@mui/material";
 
 export const ButtonsContainer = ({
   setSelectedInput,
@@ -30,11 +31,8 @@ export const ButtonsContainer = ({
   };
 
   return (
-    <Container maxWidth="xl" sx={style.container}>
-      <Box display={"flex"} flexDirection={"column"} sx={{ mr: 2 }}>
-        <ButtonGroupAndOr />
-      </Box>
-      <Box>
+    <>
+      <Box display={"flex"} flexDirection={"column"}>
         <CustomButton
           label={t("common.clear")}
           color={"primary"}
@@ -46,6 +44,11 @@ export const ButtonsContainer = ({
           }}
           icon={<CancelButton />}
         />
+      </Box>
+      <Box display={"flex"} flexDirection={"column"}>
+        <ButtonGroupAndOr />
+      </Box>
+      <Box display={"flex"} flexDirection={"column"}>
         <CustomButton
           label={t("common.search")}
           color={"primary"}
@@ -55,6 +58,6 @@ export const ButtonsContainer = ({
           icon={<SearchIcon />}
         />
       </Box>
-    </Container>
+    </>
   );
 };

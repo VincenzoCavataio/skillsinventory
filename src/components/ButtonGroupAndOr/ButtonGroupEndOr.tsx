@@ -18,13 +18,17 @@ export const ButtonGroupAndOr = () => {
       <ToggleButton
         key={"AND"}
         value={"AND"}
-        sx={{ width: 60, fontWeight: 800 }}
+        sx={{ width: 60, fontWeight: 800, height: 36.5 }}
       >
         <Typography variant="caption" color={"white"}>
           {t(`pages.dashboard.buttonGroup.and`)}
         </Typography>
       </ToggleButton>
-      <ToggleButton key={"OR"} value={"OR"} sx={{ width: 60, fontWeight: 800 }}>
+      <ToggleButton
+        key={"OR"}
+        value={"OR"}
+        sx={{ width: 60, fontWeight: 800, height: 36.5 }}
+      >
         <Typography variant="caption" color={"white"}>
           {t(`pages.dashboard.buttonGroup.or`)}
         </Typography>

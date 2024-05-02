@@ -47,7 +47,7 @@ export const DashboardPage = () => {
         sx={{
           ...style.container,
           overflow: "hidden",
-          height: 200,
+          height: 210,
         }}
       >
         <Box
@@ -69,7 +69,7 @@ export const DashboardPage = () => {
           <Box
             display={"flex"}
             flexDirection={"row"}
-            justifyContent={"space-evenly"}
+            justifyContent={"space-between"}
             flexWrap={"nowrap"}
             width={600}
           >
@@ -99,7 +99,7 @@ export const DashboardPage = () => {
           <Box
             display={"flex"}
             flexDirection={"row"}
-            justifyContent={"space-evenly"}
+            justifyContent={"space-between"}
             flexWrap={"nowrap"}
             width={600}
             mb={2}
@@ -152,8 +152,14 @@ export const DashboardPage = () => {
               />
             </Box>
           </Box>
-
-          <Box display={"flex"} flexDirection={"column"}>
+          <Box
+            display={"flex"}
+            flexDirection={"row"}
+            justifyContent={"space-between"}
+            flexWrap={"nowrap"}
+            width={520}
+            mb={2}
+          >
             <ButtonsContainer
               setSelectedInput={setSelectedInput}
               submit={setIsOpen}

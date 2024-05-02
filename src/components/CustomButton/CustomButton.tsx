@@ -19,8 +19,8 @@ export const CustomButton = ({
       color={color}
       sx={{
         color: variant !== "outlined" ? "white" : commonColors.primary,
-        marginLeft: 2,
         height: "100%",
+
         background: variant === "outlined" ? "white" : undefined,
       }}
       variant={variant}

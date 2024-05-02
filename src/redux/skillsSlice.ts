@@ -20,11 +20,7 @@ const skillsSlice = createSlice({
       });
     },
     deleteSkills: (state, action) => {
-      if (action.payload.label) {
-        state.skills = state.skills.filter(
-          (skill) => skill.label !== action.payload.label
-        );
-      }
+      state.skills = action.payload.skills
     },
   },
 });

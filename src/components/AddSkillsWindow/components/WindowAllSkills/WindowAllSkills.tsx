@@ -14,7 +14,12 @@ export const WindowAllSkills = ({ data, setMappedData }: Props) => {
       setMappedData(
         data.map((el: ResponseElementObjectData) =>
           el.name === element.name
-            ? { name: el.name, id: el.id, selected: !el.selected }
+            ? {
+                name: el.name,
+                id: el.id,
+                selected: !el.selected,
+                selectedToBeDeleted: el.selectedToBeDeleted,
+              }
             : el
         )
       );
@@ -26,7 +31,6 @@ export const WindowAllSkills = ({ data, setMappedData }: Props) => {
       style={{
         background: "white",
         width: 250,
-        height: "calc('100%' + 20px) !important",
         overflowY: "scroll",
         display: "flex",
         flexDirection: "column",
@@ -34,10 +38,12 @@ export const WindowAllSkills = ({ data, setMappedData }: Props) => {
         listStyle: "none",
         paddingLeft: 8,
         margin: 0,
+        height: "100%",
       }}
     >
       {data?.map((e) => (
         <li
+          key={e.id}
           style={{
             background: e.selected ? commonColors.accentColor : "transparent",
             color: e.selected ? "white" : "black",

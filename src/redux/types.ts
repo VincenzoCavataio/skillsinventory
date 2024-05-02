@@ -1,9 +1,10 @@
 export type Skill = {
-  label: string;
-  levelType: string;
+  name: string;
+  operator: string;
   level: number;
   id?: number;
   selected?: boolean;
+  selectedToBeDeleted?: boolean;
 };
 
 export type Filters = {

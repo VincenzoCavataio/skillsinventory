@@ -5,9 +5,12 @@ import { OperationsButtons } from "../OperationsButtons";
 import { Props } from "../../types";
 import { useEffect, useState } from "react";
 import { Box } from "@mui/material";
+import { SkillSearch } from "../SkillSearch";
 
 export const Wrapper = ({ data }: Props) => {
   const [mappedData, setMappedData] = useState<ResponseElementObjectData[]>([]);
+  const [searchString, setSearchString] = useState<string>("");
+  const [selectedElements, setSelectedElements] = useState<number[]>([]);
 
   useEffect(() => {
     if (data?.final_object) {
@@ -16,9 +19,9 @@ export const Wrapper = ({ data }: Props) => {
           name: el.name,
           id: el.id,
           selected: false,
+          selectedToBeDeleted: false,
         })
       );
-      console.log({ data, updatedData });
       setMappedData(updatedData);
     }
   }, [data]);
@@ -33,9 +36,24 @@ export const Wrapper = ({ data }: Props) => {
         justifyContent: "space-between",
       }}
     >
-      <WindowAllSkills data={mappedData} setMappedData={setMappedData} />
-      <OperationsButtons data={mappedData} />
-      <WindowSelectedSkills data={mappedData} setMappedData={setMappedData} />
+      <Box
+        sx={{ height: "calc('100%' - 20px) !important", overflow: "hidden" }}
+      >
+        <SkillSearch data={data} setData={setMappedData} />
+        <WindowAllSkills data={mappedData} setMappedData={setMappedData} />
+      </Box>
+      <OperationsButtons
+        data={mappedData}
+        setMappedData={setMappedData}
+        selectedElements={selectedElements}
+        setSelectedElements={setSelectedElements}
+      />
+      <WindowSelectedSkills
+        data={mappedData}
+        setMappedData={setMappedData}
+        selectedElements={selectedElements}
+        setSelectedElements={setSelectedElements}
+      />
     </Box>
   );
 };

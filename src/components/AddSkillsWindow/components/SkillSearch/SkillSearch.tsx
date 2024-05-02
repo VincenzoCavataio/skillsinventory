@@ -1,6 +1,6 @@
 import { Input } from "@mui/material";
 import { ResponseElementObjectData } from "../../../../pages/DashboardPage/types";
-
+import { t } from "i18next";
 type Props = {
   data: {
     final_object?: ResponseElementObjectData[];
@@ -18,7 +18,7 @@ export const SkillSearch = ({ data, setData }: Props) => {
   return (
     <Input
       sx={{ width: "100%" }}
-      placeholder="Search skill by name..."
+      placeholder={t("pages.dashboard.search.ricerca")}
       onChange={onChange}
     />
   );

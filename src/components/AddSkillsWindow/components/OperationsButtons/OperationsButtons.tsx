@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteSkills, insertSkills } from "../../../../redux/skillsSlice";
 import { ReduxStore, Skill } from "../../../../redux/types";
+import { t } from "i18next";
 
 type Props = {
   data: ResponseElementObjectData[];
@@ -102,10 +103,12 @@ export const OperationsButtons = ({
           display: "flex",
           justifyContent: "center",
           flexDirection: "column",
-          mb: 2,
+          mb: 1.25,
         }}
       >
-        <Typography variant="caption">Operator</Typography>
+        <Typography variant="caption">
+          {t("pages.dashboard.search.operator")}
+        </Typography>
         <Select value={operator} size="small" onChange={handleChangeOperator}>
           {OPERATORS.map((operator) => (
             <MenuItem key={operator} value={operator}>
@@ -119,10 +122,12 @@ export const OperationsButtons = ({
           display: "flex",
           justifyContent: "center",
           flexDirection: "column",
-          mb: 2,
+          mb: 1.25,
         }}
       >
-        <Typography variant="caption">Level</Typography>
+        <Typography variant="caption">
+          {t("pages.dashboard.search.level")}
+        </Typography>
 
         <Select value={String(level)} size="small" onChange={handleChangeLevel}>
           {LEVELS.map((level) => (
@@ -133,8 +138,10 @@ export const OperationsButtons = ({
         </Select>
       </Box>
       <Box>
-        <Button onClick={addToStore}>Add</Button>
-        <Button onClick={removeFromStore}>Remove</Button>
+        <Button onClick={addToStore}>{t("pages.dashboard.search.add")}</Button>
+        <Button onClick={removeFromStore}>
+          {t("pages.dashboard.search.remove")}
+        </Button>
       </Box>
     </Box>
   );

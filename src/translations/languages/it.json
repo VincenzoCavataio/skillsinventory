@@ -26,7 +26,14 @@
           "noOptions": "Nessuna opzione trovata",
           "educationalLevels": "Livello di Istruzione",
           "institute": "Instituto",
-          "course": "Corso"
+          "course": "Corso",
+          "operator": "Operatore",
+          "level": "Livello",
+          "ricerca": "Ricerca skill per nome...",
+          "risultato": "Abilità filtrate",
+          "noskillfound": "Nessuna abilità selezionata",
+          "add": "AGGIUNGI",
+          "remove": "RIMUOVI"
         },
         "slider": {
           "advancedSearch": "Ricerca Avanzata",

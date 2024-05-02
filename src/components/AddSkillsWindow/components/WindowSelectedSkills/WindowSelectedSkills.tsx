@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { commonColors } from "../../../../common/commonColors";
 import { useSelector } from "react-redux";
 import { ReduxStore, Skill } from "../../../../redux/types";
-
+import { t } from "i18next";
 type Props = {
   selectedElements: number[];
   setSelectedElements: React.Dispatch<React.SetStateAction<number[]>>;
@@ -34,7 +34,7 @@ export const WindowSelectedSkills = ({
         variant="body1"
         sx={{ borderBottom: "dashed 1px #949494", pb: 0.5 }}
       >
-        Skill Search Criteria
+        {t("pages.dashboard.search.risultato")}
       </Typography>
       <ul
         className="custom-scrollbars"
@@ -74,7 +74,9 @@ export const WindowSelectedSkills = ({
         })}
         {skillsInStore?.skills.length === 0 && (
           <li>
-            <Typography variant="caption">No skills selected</Typography>
+            <Typography variant="caption">
+              {t("pages.dashboard.search.noskillfound")}
+            </Typography>
           </li>
         )}
       </ul>

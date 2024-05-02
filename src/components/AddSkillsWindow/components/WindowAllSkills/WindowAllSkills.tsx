@@ -38,7 +38,7 @@ export const WindowAllSkills = ({ data, setMappedData }: Props) => {
         listStyle: "none",
         paddingLeft: 8,
         margin: 0,
-        height: "100%",
+        height: "calc( 100% - 30px) ",
       }}
     >
       {data?.map((e) => (

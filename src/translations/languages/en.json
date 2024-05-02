@@ -13,7 +13,14 @@
           "selectSkills": "Select skills",
           "certification": "Certifications",
           "noOptions": "No Options",
-          "advancedSearch": "Advanced Search"
+          "advancedSearch": "Advanced Search",
+          "operator": "Operator",
+          "level": "Level",
+          "ricerca": "Search skill by name...",
+          "risultato": "Skill Search Criteria",
+          "noskillfound": "No skill selected",
+          "add": "ADD",
+          "remove": "REMOVE"
         }
       },
       "notFound": {

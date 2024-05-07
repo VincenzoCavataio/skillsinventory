@@ -36,7 +36,7 @@ export const ButtonsContainer = ({
         <CustomButton
           label={t("common.clear")}
           color={"primary"}
-          // variant="outlined"
+          variant="outlined"
           callback={() => {
             dispatch(resetFilters());
             setSelectedInput(init);
@@ -52,6 +52,7 @@ export const ButtonsContainer = ({
         <CustomButton
           label={t("common.search")}
           color={"primary"}
+          variant="outlined"
           callback={() => {
             submit(true);
           }}

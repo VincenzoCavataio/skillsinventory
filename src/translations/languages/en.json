@@ -4,10 +4,16 @@
       "title": "Skills Inventory",
       "error": "Error",
       "share": "Share",
-      "back_home": "Back Home"
+      "back_home": "Back Home",
+      "search": "Search",
+      "clear": "Reset"
     },
     "pages": {
       "dashboard": {
+        "buttonGroup": {
+          "and": "AND",
+          "or": "OR"
+        },
         "search": {
           "name": "First and Last Name",
           "selectSkills": "Select skills",
@@ -20,7 +26,11 @@
           "risultato": "Skill Search Criteria",
           "noskillfound": "No skill selected",
           "add": "ADD",
-          "remove": "REMOVE"
+          "remove": "REMOVE",
+          "institute": "Institute",
+          "course": "Course",
+          "cities": "City of Residence",
+          "educationalLevels": "Level of Education"
         }
       },
       "notFound": {

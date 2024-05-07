@@ -24,7 +24,14 @@ export const InputSelect = ({
         setSelectedInput({ ...selectedInput, [objKey]: newValue || "" })
       }
       noOptionsText={<Button>{t("pages.dashboard.search.noOptions")}</Button>}
-      sx={{ width: width }}
+      sx={{
+        width: width,
+        anchorOrigin: {
+          vertical: "bottom",
+          horizontal: "left",
+        },
+        getContentAnchorEl: null,
+      }}
       renderInput={(params) => <TextField {...params} label={label} />}
     />
   );

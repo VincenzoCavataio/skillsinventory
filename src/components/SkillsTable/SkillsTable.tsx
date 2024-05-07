@@ -42,6 +42,20 @@ export const SkillsTable = () => {
     "course-filter": "COURSES:0",
     "levels-filter": "EDU_LEVELS:0",
     "institute-filter": "INSTITUTES:0",
+    // "starting-from": "P_FETCH_FIRST:0", |1421;=1
+    // "number-of-items": "P_OFFSET:20",   {cities: []} si userebbe così
+    // "skill-name": "SKILLS:",
+    // "certificate-name": "CERTIFICATES:",
+    // "user-filter": "USERS:",
+    // isAnd: "OR",
+    // "name-ascending": "",
+    // "edu-ascending": "",
+    // "city-ascending": "",
+    // "city-filter": "CITIES:",
+    // "ranking-order": "DEFAULT",
+    // "course-filter": "COURSES:0",
+    // "levels-filter": "EDU_LEVELS:0",
+    // "institute-filter": "INSTITUTES:0",
   };
 
   //! TOFIX: Fixa cagata Backend

@@ -142,7 +142,9 @@ export const DashboardPage = () => {
                 noOptionsText={
                   <Button>{t("pages.dashboard.search.noOptions")}</Button>
                 }
-                sx={{ width: 180 }}
+                sx={{
+                  width: 180,
+                }}
                 renderInput={(params) => (
                   <TextField
                     {...params}

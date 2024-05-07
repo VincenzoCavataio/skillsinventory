@@ -29,6 +29,7 @@ export default function InputChecks({
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
+    console.log(personName);
   };
 
   //! TOFIX: Fixa altra cagata Backend (element.name ?? element)

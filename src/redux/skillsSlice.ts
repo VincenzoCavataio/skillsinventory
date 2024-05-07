@@ -17,10 +17,11 @@ const skillsSlice = createSlice({
         if (skill.id && !alreadyUsedSkillsID.includes(skill.id)) {
           state.skills.push(skill);
         }
+        console.log(initialState);
       });
     },
     deleteSkills: (state, action) => {
-      state.skills = action.payload.skills
+      state.skills = action.payload.skills;
     },
   },
 });

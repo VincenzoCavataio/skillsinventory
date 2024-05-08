@@ -21,10 +21,22 @@ import { SkillsTable } from "../../components/SkillsTable/SkillsTable";
 import { AddSkillsWindows } from "../../components/AddSkillsWindow";
 import { updateFilter } from "../../redux/searchSlice";
 
+type Values = {
+  value: string;
+  id: string;
+};
+
+type CompiledFieldsWithID = {
+  fullName?: string;
+  certification?: Values;
+  city?: string[];
+  educationalLevel?: Values;
+  institute?: Values;
+  course?: Values;
+};
+
 export const DashboardPage = () => {
-  const [selectedInput, setSelectedInput] = useState<
-    Omit<CompiledFields, "skill">
-  >({});
+  const [selectedInput, setSelectedInput] = useState<CompiledFieldsWithID>({});
 
   const dispatch = useDispatch();
 

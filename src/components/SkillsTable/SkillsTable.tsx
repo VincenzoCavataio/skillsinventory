@@ -10,17 +10,10 @@ import useApi from "../../utilities/useApi";
 import { allTabledata } from "./SkillsTable.controller";
 import { useSelector } from "react-redux";
 import { Filtri } from "../../redux/searchSlice";
+import { ReduxStore } from "../../redux/types";
+import { useEffect } from "react";
 
 // TODO: componente bozza, da fare per bene
-function createData(
-  lastName: string,
-  firstName: string,
-  education: string,
-  addressInfo: string,
-  certifications: string
-) {
-  return { lastName, firstName, education, addressInfo, certifications };
-}
 
 export const SkillsTable = () => {
   const tableHeaderStyle = {
@@ -28,13 +21,30 @@ export const SkillsTable = () => {
     textAlign: "center",
     color: commonColors.white,
   };
-  // const filtroStore = useSelector((state: Filtri) => state.institute);
+
+  function createData(
+    lastName: string,
+    firstName: string,
+    education: string,
+    addressInfo: string,
+    certifications: string
+  ) {
+    return { lastName, firstName, education, addressInfo, certifications };
+  }
+
+  const filterStore = useSelector((state: ReduxStore) => state.search);
+  const skillsFilterStore = useSelector((state: ReduxStore) => state.skills);
+
+  console.log(filterStore?.filters);
+
   const FAKE_PAYLOAD = {
     "starting-from": "P_FETCH_FIRST:0",
     "number-of-items": "P_OFFSET:20",
     "skill-name": "SKILLS:",
     "certificate-name": "CERTIFICATES:",
-    "user-filter": "USERS:",
+    "user-filter": `USERS:${
+      filterStore?.filters.fullName ? `|${filterStore?.filters.fullName}|` : ""
+    }`,
     isAnd: "OR",
     "name-ascending": "",
     "edu-ascending": "",
@@ -62,21 +72,15 @@ export const SkillsTable = () => {
 
   //! TOFIX: Fixa cagata Backend
   const tableData = useApi(allTabledata(FAKE_PAYLOAD))?.data;
-  if (tableData && tableData[tableData.length - 1].totalResult) tableData.pop();
-  // const tableDataTest = tableData?.filter(
-  //   (e) => e.institute === filtroStore.institute
-  // );
+  console.log({ tableData });
 
-  // const tabella tableDataTest.filter((e)=> e.institute === filtroStore.institute);
-  // const rows = tableDataTest?.map((data) =>
-  //   createData(
-  //     data.lastName,
-  //     data.firstName,
-  //     data.educationList,
-  //     data.residenceInfo,
-  //     data.certificationList
-  //   )
-  // );
+  if (
+    tableData &&
+    tableData.length &&
+    tableData[tableData.length - 1].totalResult
+  )
+    tableData.pop();
+
   const rows = tableData?.map((data) =>
     createData(
       data.lastName,
@@ -111,25 +115,34 @@ export const SkillsTable = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows?.map((row, index) => (
-            <TableRow
-              key={index}
-              sx={{
-                "&:last-child td, &:last-child th": { border: 0 },
-              }}
-            >
+          {rows &&
+            rows.length > 0 &&
+            rows?.map((row, index) => (
+              <TableRow
+                key={index}
+                sx={{
+                  "&:last-child td, &:last-child th": { border: 0 },
+                }}
+              >
+                <TableCell align="center" component="th" scope="row">
+                  {index + 1}
+                </TableCell>
+                <TableCell align="center" component="th" scope="row">
+                  {row.lastName}
+                </TableCell>
+                <TableCell align="center">{row.firstName}</TableCell>
+                <TableCell align="center">{row.education}</TableCell>
+                <TableCell align="center">{row.addressInfo}</TableCell>
+                <TableCell align="center">{row.certifications}</TableCell>
+              </TableRow>
+            ))}
+          {rows?.length === 0 && (
+            <TableRow>
               <TableCell align="center" component="th" scope="row">
-                {index + 1}
+                Nessun risultato
               </TableCell>
-              <TableCell align="center" component="th" scope="row">
-                {row.lastName}
-              </TableCell>
-              <TableCell align="center">{row.firstName}</TableCell>
-              <TableCell align="center">{row.education}</TableCell>
-              <TableCell align="center">{row.addressInfo}</TableCell>
-              <TableCell align="center">{row.certifications}</TableCell>
             </TableRow>
-          ))}
+          )}
         </TableBody>
       </Table>
     </TableContainer>

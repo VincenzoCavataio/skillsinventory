@@ -1,3 +1,5 @@
+import { CompiledFields } from "../pages/DashboardPage/types";
+
 export type Skill = {
   name: string;
   operator: string;
@@ -19,6 +21,7 @@ export type Filters = {
 export type ReduxStore = {
   filters?: Filters;
   skills?: { skills: Skill[] };
+  search?: { filters: Omit<CompiledFields, "skill"> };
 };
 export type Filtri = {
   skills: Skill[];

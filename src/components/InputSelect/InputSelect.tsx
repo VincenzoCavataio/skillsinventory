@@ -22,8 +22,6 @@ export const InputSelect = ({
       }
       onChange={(_, newValue) => {
         setSelectedInput({ ...selectedInput, [objKey]: newValue || "" });
-        // ricercaFiltrata();
-        console.log(selectedInput);
       }}
       noOptionsText={<Button>{t("pages.dashboard.search.noOptions")}</Button>}
       sx={{

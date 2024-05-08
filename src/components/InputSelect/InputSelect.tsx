@@ -2,9 +2,6 @@ import { Autocomplete, Button, TextField } from "@mui/material";
 import { ResponseElementObjectData } from "../../pages/DashboardPage/types";
 import { t } from "i18next";
 import { InputSelectType } from "./types";
-import { useDispatch } from "react-redux";
-import { insertEduLevel, insertInstitute } from "../../redux/searchSlice";
-import { useEffect } from "react";
 
 export const InputSelect = ({
   selectedInput,
@@ -14,15 +11,6 @@ export const InputSelect = ({
   objKey,
   width = 300,
 }: InputSelectType) => {
-  const dispatch = useDispatch();
-  const ricercaFiltrata = () => {
-    dispatch(insertEduLevel({ eduLevel: selectedInput?.educationalLevel }));
-    dispatch(insertInstitute({ institute: selectedInput?.institute })); so che li fa entrambi ogni volta
-  };
-  useEffect(() => {
-    ricercaFiltrata();
-  }, [ricercaFiltrata, selectedInput]);
-
   return (
     <Autocomplete
       disablePortal

@@ -34,7 +34,7 @@ export const OperationsButtons = ({
   const OPERATORS = ["=", ">", "<", ">=", "<="];
 
   const [operator, setOperator] = useState<Operators>("=");
-  const [level, setLevel] = useState<number>(2);
+  const [level, setLevel] = useState<number>(1);
   const [selectedSkills, setSelectedSkills] = useState<Skill[]>([]);
 
   const skillsInStore = useSelector((state: ReduxStore) => state.skills);

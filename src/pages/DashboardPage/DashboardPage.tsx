@@ -14,22 +14,25 @@ import {
 import { style } from "./style";
 import { CompiledFields, ResponseElementObjectData } from "./types";
 import useApi from "../../utilities/useApi";
-import { addSkill } from "../../redux/filtersSlice";
-import InputChecks from "../../components/InputCheck/InputCheck";
+import { InputChecks } from "../../components/InputCheck/InputCheck";
 import { InputSelect } from "../../components/InputSelect/InputSelect";
 import { ButtonsContainer } from "../../components/ButtonsContainer";
 import { SkillsTable } from "../../components/SkillsTable/SkillsTable";
 import { AddSkillsWindows } from "../../components/AddSkillsWindow";
+import { updateFilter } from "../../redux/searchSlice";
 
 export const DashboardPage = () => {
-  const [selectedInput, setSelectedInput] = useState<CompiledFields>({});
+  const [selectedInput, setSelectedInput] = useState<
+    Omit<CompiledFields, "skill">
+  >({});
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(addSkill({ label: selectedInput.skill, levelType: "from" }));
-  }, [dispatch, selectedInput.skill]);
+    dispatch(updateFilter({ filters: selectedInput }));
+  }, [dispatch, selectedInput]);
 
+  // TODO: aggiungere fallback, forse meglio dentro UseApi
   const allEducationalData = useApi(allEducationalMetadata);
   const allEducationalLevelsData = useApi(allEducationalLevelslMetadata);
   const allSkillslData = useApi(allSkillslMetadata);
@@ -79,6 +82,12 @@ export const DashboardPage = () => {
                 label={t("pages.dashboard.search.name")}
                 variant="outlined"
                 sx={{ width: 180 }}
+                onChange={(e) => {
+                  setSelectedInput({
+                    ...selectedInput,
+                    fullName: e.target.value,
+                  });
+                }}
               />
             </Box>
             <Box sx={{ mr: 0, mb: 2 }}>
@@ -86,6 +95,9 @@ export const DashboardPage = () => {
                 data={allEducationalData?.data}
                 label={"pages.dashboard.search.certification"}
                 width={180}
+                setSelectedInput={setSelectedInput}
+                selectedInput={selectedInput}
+                type="certifications"
               />
             </Box>
             <Box sx={{ mr: 0, mb: 2 }}>
@@ -93,6 +105,9 @@ export const DashboardPage = () => {
                 width={180}
                 data={allCitiesData?.data}
                 label={"pages.dashboard.search.cities"}
+                setSelectedInput={setSelectedInput}
+                selectedInput={selectedInput}
+                type="cities"
               />
             </Box>
           </Box>

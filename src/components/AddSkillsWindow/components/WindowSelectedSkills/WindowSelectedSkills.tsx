@@ -3,7 +3,12 @@ import { commonColors } from "../../../../common/commonColors";
 import { useSelector } from "react-redux";
 import { ReduxStore, Skill } from "../../../../redux/types";
 import { t } from "i18next";
+import { ResponseElementObjectData } from "../../../../pages/DashboardPage/types";
 type Props = {
+  data?: ResponseElementObjectData[];
+  setMappedData?: React.Dispatch<
+    React.SetStateAction<ResponseElementObjectData[]>
+  >;
   selectedElements: number[];
   setSelectedElements: React.Dispatch<React.SetStateAction<number[]>>;
 };

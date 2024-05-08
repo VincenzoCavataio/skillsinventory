@@ -3,6 +3,8 @@ import { ResponseElementObjectData } from "../../pages/DashboardPage/types";
 import { t } from "i18next";
 import { InputSelectType } from "./types";
 
+type Item = { id: string; value?: string };
+
 export const InputSelect = ({
   selectedInput,
   setSelectedInput,
@@ -21,8 +23,33 @@ export const InputSelect = ({
         ) || []
       }
       onChange={(_, newValue) => {
-        setSelectedInput({ ...selectedInput, [objKey]: newValue || "" });
+        const object: Item = {
+          id: "0",
+          value: newValue,
+        };
+        if (object.value == "Master") {
+          object.id = "3";
+        }
+        if (object.value == "Bachelor") {
+          object.id = "2";
+        }
+        if (object.value == "Bicocca") {
+          object.id = "258";
+        }
+        if (object.value == "Università degli studi del Piemonte Orientale") {
+          object.id = "259";
+        }
+        if (object.value == "Università degli studi dell'Insubria") {
+          object.id = "256";
+        }
+
+        setSelectedInput({ ...selectedInput, [objKey]: object });
+        console.log(object);
       }}
+      // onChange={(_, newValue) => {
+      //   setSelectedInput({ ...selectedInput, [objKey]: newValue || "" });
+      //   console.log(objKey, newValue);
+      // }}
       noOptionsText={<Button>{t("pages.dashboard.search.noOptions")}</Button>}
       sx={{
         width: width,
@@ -36,3 +63,21 @@ export const InputSelect = ({
     />
   );
 };
+
+// const item: { id: number; value: string };
+
+// onChange={(_, newValue: string) => {
+//   let object: item = {
+//     id: 0,
+//     value: newValue,
+//   };
+//   if (object.value == "Master") {
+//     object.id = 3;
+//   }
+//   if (object.value == "Bachelor") {
+//     object.id = 2;
+//   }
+
+//   setSelectedInput({ ...selectedInput, [objKey]: object });
+//   console.log(newValue);
+// }}

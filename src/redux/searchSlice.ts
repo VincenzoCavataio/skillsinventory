@@ -20,8 +20,8 @@ export type Filtri = {
   eduLevel: string;
 };
 
-const ricercaSlice = createSlice({
-  name: "ricercaSlice",
+const searchSlice = createSlice({
+  name: "searchSlice",
   initialState,
   reducers: {
     insertEduLevel: (state, action) => {
@@ -33,7 +33,7 @@ const ricercaSlice = createSlice({
       console.log(action.payload);
     },
 
-    // filtraOp: (state, action) => {
+    // filtraOp: (state, action) => { 258 259 256
     //     action.payload.skills.forEach((skill: Skill) => {
     //       const alreadyUsedSkillsID = state.skills.map((skill) => skill.id);
     //       if (skill.id && !alreadyUsedSkillsID.includes(skill.id)) {
@@ -44,5 +44,5 @@ const ricercaSlice = createSlice({
   },
 });
 
-export default ricercaSlice.reducer;
-export const { insertEduLevel, insertInstitute } = ricercaSlice.actions;
+export default searchSlice.reducer;
+export const { insertEduLevel, insertInstitute } = searchSlice.actions;

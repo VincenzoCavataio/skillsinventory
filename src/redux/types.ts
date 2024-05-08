@@ -20,3 +20,12 @@ export type ReduxStore = {
   filters?: Filters;
   skills?: { skills: Skill[] };
 };
+export type Filtri = {
+  skills: Skill[];
+  fullName: string;
+  cities: string[];
+  certifications: string[];
+  institute: string;
+  course: string;
+  eduLevel: string;
+};

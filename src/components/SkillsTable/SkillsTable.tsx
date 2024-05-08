@@ -8,6 +8,8 @@ import Paper from "@mui/material/Paper";
 import { NEXTRE_ENG, commonColors } from "../../common/commonColors";
 import useApi from "../../utilities/useApi";
 import { allTabledata } from "./SkillsTable.controller";
+import { useSelector } from "react-redux";
+import { Filtri } from "../../redux/searchSlice";
 
 // TODO: componente bozza, da fare per bene
 function createData(
@@ -26,7 +28,7 @@ export const SkillsTable = () => {
     textAlign: "center",
     color: commonColors.white,
   };
-
+  // const filtroStore = useSelector((state: Filtri) => state.institute);
   const FAKE_PAYLOAD = {
     "starting-from": "P_FETCH_FIRST:0",
     "number-of-items": "P_OFFSET:20",
@@ -61,7 +63,20 @@ export const SkillsTable = () => {
   //! TOFIX: Fixa cagata Backend
   const tableData = useApi(allTabledata(FAKE_PAYLOAD))?.data;
   if (tableData && tableData[tableData.length - 1].totalResult) tableData.pop();
+  // const tableDataTest = tableData?.filter(
+  //   (e) => e.institute === filtroStore.institute
+  // );
 
+  // const tabella tableDataTest.filter((e)=> e.institute === filtroStore.institute);
+  // const rows = tableDataTest?.map((data) =>
+  //   createData(
+  //     data.lastName,
+  //     data.firstName,
+  //     data.educationList,
+  //     data.residenceInfo,
+  //     data.certificationList
+  //   )
+  // );
   const rows = tableData?.map((data) =>
     createData(
       data.lastName,

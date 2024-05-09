@@ -138,10 +138,28 @@ export const OperationsButtons = ({
         </Select>
       </Box>
       <Box>
-        <Button onClick={addToStore}>{t("pages.dashboard.search.add")}</Button>
-        <Button onClick={removeFromStore}>
-          {t("pages.dashboard.search.remove")}
+        <Button onClick={addToStore}>
+          <button
+            style={{
+              backgroundColor: "transparent",
+              borderWidth: "15px 30px 15px 0 ",
+              borderColor: "transparent #e12113 transparent transparent",
+            }}
+          ></button>
         </Button>
+        <Button onClick={removeFromStore}>
+          <button
+            style={{
+              backgroundColor: "transparent",
+              borderWidth: "15px 0 15px 30px", //VERSIONE BRUTTA
+              borderColor: "transparent transparent transparent #4baa3c",
+            }}
+          ></button>
+        </Button>
+        {/* <Button onClick={addToStore}>{t("pages.dashboard.search.add")}</Button>
+        <Button onClick={removeFromStore}>    //VERSIONE BELLA
+          {t("pages.dashboard.search.remove")}
+        </Button> */}
       </Box>
     </Box>
   );

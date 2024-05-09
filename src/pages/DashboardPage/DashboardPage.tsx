@@ -54,6 +54,8 @@ export const DashboardPage = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  console.log({ allEducationalData });
+
   return (
     <>
       <HeaderNavbar />

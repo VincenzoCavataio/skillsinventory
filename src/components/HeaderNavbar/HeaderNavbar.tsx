@@ -10,7 +10,7 @@ import { Searchbar } from "./Searchbar";
 
 export const HeaderNavbar = () => {
   return (
-    <AppBar position="relative">
+    <AppBar position="relative" sx={{ boxShadow: "none" }}>
       <Toolbar sx={commonStyle.spaceBetween}>
         <Box>
           <Typography
@@ -28,9 +28,6 @@ export const HeaderNavbar = () => {
         {/* <Box display={"flex"} flexDirection={"column"}>
           <Searchbar />
         </Box> */}
-        <Box display={"flex"} flexDirection={"column"}>
-          <Searchbar />
-        </Box>
       </Toolbar>
     </AppBar>
   );

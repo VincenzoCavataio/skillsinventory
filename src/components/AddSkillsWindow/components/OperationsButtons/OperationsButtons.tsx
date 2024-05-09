@@ -138,10 +138,10 @@ export const OperationsButtons = ({
         </Select>
       </Box>
       <Box>
-        <Button onClick={addToStore}>{t("pages.dashboard.search.add")}</Button>
         <Button onClick={removeFromStore}>
           {t("pages.dashboard.search.remove")}
         </Button>
+        <Button onClick={addToStore}>{t("pages.dashboard.search.add")}</Button>
       </Box>
     </Box>
   );

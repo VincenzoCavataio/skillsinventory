@@ -21,7 +21,11 @@ const useApi = ({ URL, requestOption }: Metadata) => {
           url: URL,
           headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvcmdhZG1pbkBleGFtcGxlLmNvbSIsImlkIjoxMDQ4MiwiYXV0aG9yaXR5IjpbeyJhdXRob3JpdHkiOiJPUkdBRE1JTiJ9XSwicm9sZUxhYmVsIjoiMTEwMTAiLCJvcmdzU3RyaW5nIjoiMiIsImlhdCI6MTcxNTM1MjQ3OSwiZXhwIjoxNzE1MzUzNjc5fQ.44L7rU5kguSRK5VnqArj-_E90OKG4gMcuJC2B44nSlE",
           },
+
           data: requestOption.body,
         });
 

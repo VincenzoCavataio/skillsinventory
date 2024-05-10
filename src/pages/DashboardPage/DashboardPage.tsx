@@ -56,7 +56,7 @@ export const DashboardPage = () => {
   const allCoursessData = useApi(allCoursesMetadata);
 
   const [isOpen, setIsOpen] = useState(false);
-
+  console.log(allEducationalData);
   return (
     <>
       <HeaderNavbar />
@@ -112,7 +112,7 @@ export const DashboardPage = () => {
                 width={180}
                 setSelectedInput={setSelectedInput}
                 selectedInput={selectedInput}
-                type="certifications"
+                objKey="certification"
               />
             </Box>
             <Box sx={{ mr: 0, mb: 2 }}>

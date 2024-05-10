@@ -36,7 +36,6 @@ export const InputSelect = ({
         }
 
         setSelectedInput({ ...selectedInput, [objKey]: object });
-        console.log(object);
       }}
       noOptionsText={<Button>{t("pages.dashboard.search.noOptions")}</Button>}
       sx={{

@@ -35,7 +35,7 @@ export const SkillsTable = () => {
   const filterStore = useSelector((state: ReduxStore) => state.search);
   const skillsFilterStore = useSelector((state: ReduxStore) => state.skills);
 
-  // console.log(filterStore?.filters);
+  console.log(filterStore?.filters);
 
   const FAKE_PAYLOAD = {
     "starting-from": "P_FETCH_FIRST:0",
@@ -51,7 +51,7 @@ export const SkillsTable = () => {
     "city-ascending": "",
     "city-filter": "CITIES:",
     "ranking-order": "DEFAULT",
-    "course-filter": "COURSES:0", //qui dovrò dare= `COURSES:${filterStore?.filters.course.id ? : 0}` informatica id:1
+    "course-filter": `COURSES:${filterStore?.filters.course?.id}`, //qui dovrò dare= `COURSES:${filterStore?.filters.course.id ? : 0}` informatica id:1
     "levels-filter": `EDU_LEVELS:${filterStore?.filters.educationalLevel?.id}`, //filters.educationalLevel.id ? : 0}, //qui dovrò dare= `EDU_LEVELS:${filterStore?.filters.educationalLevel.id ? : 0}` bachelor id:2, master id:3
     "institute-filter": `INSTITUTES:${filterStore?.filters.institute?.id}`, //qui dovrò dare= `INSTITUTES:${filterStore?.filters.institute.id ? : 0}` bicocca id:258, Università degli studi del Piemonte Orientale id:259, Università degli studi dell'Insubria id:256
     // "starting-from": "P_FETCH_FIRST:0", |1421;=1

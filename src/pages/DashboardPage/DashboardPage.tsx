@@ -23,9 +23,12 @@ import { updateFilter } from "../../redux/searchSlice";
 
 type Values = {
   value: string;
-  id: string;
+  id: number;
 };
-
+const obj: Values = {
+  value: "",
+  id: 0,
+};
 type CompiledFieldsWithID = {
   fullName?: string;
   certification?: Values;
@@ -54,7 +57,7 @@ export const DashboardPage = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log({ allEducationalData });
+  console.log({ allCoursessData });
 
   return (
     <>
@@ -165,9 +168,50 @@ export const DashboardPage = () => {
                       )
                     : []
                 }
-                onChange={(_, newValue) =>
-                  setSelectedInput({ ...selectedInput, course: newValue || "" })
-                }
+                onChange={(_, newValue) => {
+                  console.log(newValue);
+                  if (newValue === null) {
+                    setSelectedInput({
+                      ...selectedInput,
+                      course: obj, //soluzione non corretta, funziona solo perchè abbiamo un dato solo
+                      //newValue || ""
+                    });
+                  } else {
+                    setSelectedInput({
+                      ...selectedInput,
+                      course: allCoursessData?.data?.final_object[0], //soluzione non corretta, funziona solo perchè abbiamo un dato solo
+                      //newValue || ""
+                    });
+                  }
+                }}
+                // onChange={(_, newValue) => { allCoursessData?.data?.final_object
+                //   const object: Values = {
+                //     id: 0,
+                //     value: newValue,
+                //   };
+                //   for (const obj of data.final_object) {
+                //     if (object.value === obj.name) {
+                //       object.id = obj.id;
+                //     }
+                //   }
+
+                //   setSelectedInput({ ...selectedInput, course: object });
+                //   console.log(object);
+                // }}
+                //
+
+                // onChange={(_, newValue) => {
+                //   const object: Values = {
+                //     id: 0,
+                //     value: newValue,
+                //   };
+                //   if (object.value === data.final_object.name) {
+                //     object.id = data.final_object.id;
+                //   }
+
+                //   setSelectedInput({ ...selectedInput, course: object });
+                //   console.log(object);
+                // }}
                 noOptionsText={
                   <Button>{t("pages.dashboard.search.noOptions")}</Button>
                 }

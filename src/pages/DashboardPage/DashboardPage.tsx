@@ -156,7 +156,43 @@ export const DashboardPage = () => {
                 width={180}
               />
             </Box>
-            <Box display={"flex"} flexDirection={"column"}>
+            <Box display={"flex"} flexDirection={"column"} sx={{ mr: 0 }}>
+              <InputSelect
+                selectedInput={selectedInput}
+                setSelectedInput={setSelectedInput}
+                data={allCoursessData?.data}
+                label={t("pages.dashboard.search.course")}
+                objKey={"course"}
+                width={180}
+              />
+            </Box>
+          </Box>
+          <Box
+            display={"flex"}
+            flexDirection={"row"}
+            justifyContent={"space-between"}
+            flexWrap={"nowrap"}
+            width={520}
+            mb={2}
+          >
+            <ButtonsContainer
+              setSelectedInput={setSelectedInput}
+              submit={setIsOpen}
+            />
+          </Box>
+        </Box>
+      </Container>
+      {isOpen && (
+        <Container maxWidth="xl" sx={style.container}>
+          <SkillsTable />
+        </Container>
+      )}
+    </>
+  );
+};
+
+//{  VERSIONE PRECEDENTE COMPONENTE COURSE
+/* <Box display={"flex"} flexDirection={"column"}>
               <Autocomplete
                 disablePortal
                 id="combo-box-demo"
@@ -184,34 +220,7 @@ export const DashboardPage = () => {
                     });
                   }
                 }}
-                // onChange={(_, newValue) => { allCoursessData?.data?.final_object
-                //   const object: Values = {
-                //     id: 0,
-                //     value: newValue,
-                //   };
-                //   for (const obj of data.final_object) {
-                //     if (object.value === obj.name) {
-                //       object.id = obj.id;
-                //     }
-                //   }
 
-                //   setSelectedInput({ ...selectedInput, course: object });
-                //   console.log(object);
-                // }}
-                //
-
-                // onChange={(_, newValue) => {
-                //   const object: Values = {
-                //     id: 0,
-                //     value: newValue,
-                //   };
-                //   if (object.value === data.final_object.name) {
-                //     object.id = data.final_object.id;
-                //   }
-
-                //   setSelectedInput({ ...selectedInput, course: object });
-                //   console.log(object);
-                // }}
                 noOptionsText={
                   <Button>{t("pages.dashboard.search.noOptions")}</Button>
                 }
@@ -225,28 +234,5 @@ export const DashboardPage = () => {
                   />
                 )}
               />
-            </Box>
-          </Box>
-          <Box
-            display={"flex"}
-            flexDirection={"row"}
-            justifyContent={"space-between"}
-            flexWrap={"nowrap"}
-            width={520}
-            mb={2}
-          >
-            <ButtonsContainer
-              setSelectedInput={setSelectedInput}
-              submit={setIsOpen}
-            />
-          </Box>
-        </Box>
-      </Container>
-      {isOpen && (
-        <Container maxWidth="xl" sx={style.container}>
-          <SkillsTable />
-        </Container>
-      )}
-    </>
-  );
-};
+            </Box> */
+//}

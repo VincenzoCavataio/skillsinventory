@@ -49,7 +49,11 @@ export const SkillsTable = () => {
     "name-ascending": "",
     "edu-ascending": "",
     "city-ascending": "",
-    "city-filter": "CITIES:",
+    "city-filter": `CITIES:${
+      filterStore?.filters.city && filterStore.filters.city.length > 0
+        ? `|${filterStore.filters.city.join("|")}|`
+        : ""
+    }`,
     "ranking-order": "DEFAULT",
     "course-filter": `COURSES:${filterStore?.filters.course?.id}`, //qui dovrò dare= `COURSES:${filterStore?.filters.course.id ? : 0}` informatica id:1
     "levels-filter": `EDU_LEVELS:${filterStore?.filters.educationalLevel?.id}`, //filters.educationalLevel.id ? : 0}, //qui dovrò dare= `EDU_LEVELS:${filterStore?.filters.educationalLevel.id ? : 0}` bachelor id:2, master id:3

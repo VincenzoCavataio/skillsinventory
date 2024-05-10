@@ -8,15 +8,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import { t } from "i18next";
 import { CompiledFields } from "../../pages/DashboardPage/types";
-
-type Props = {
-  data?: { final_object?: { name: string; id: string }[] };
-  label: string;
-  width?: number;
-  selectedInput: Omit<CompiledFields, "skill">;
-  setSelectedInput: (value: React.SetStateAction<CompiledFields>) => void;
-  type: string;
-};
+import { InputSelectType } from "../InputSelect/types";
 
 export function InputChecks({
   data,
@@ -24,38 +16,30 @@ export function InputChecks({
   width = 300,
   setSelectedInput,
   selectedInput,
-  type,
-}: Props) {
-  const [elements, setElements] = useState<
-    { name: string; id: string }[] | undefined
-  >([]);
+  objKey,
+}: InputSelectType) {
+  const [elements, setElements] = React.useState<string[]>([]);
   const final_object = data?.final_object;
 
   const handleChange = (event: SelectChangeEvent<typeof elements>) => {
     const {
       target: { value },
     } = event;
-    // fare un filtro di data per ottenere i valori checkati, sia id che name
-    // string > {id: string, name: string}
-    const filteredData = final_object?.filter((element) => {
-      if (typeof value === "string" || typeof element.name === "object") {
-        return;
-      }
-      const temp = value && value.includes(element.name);
-
-      return temp;
-    });
-
-    setElements(filteredData);
+    setElements(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
   };
-
   useEffect(() => {
-    //TODO: Capire perché all'atterraggio in pagina popola lo stato "cities" su redux con []
-    console.log({ elements, type });
-    setSelectedInput({ ...selectedInput, [type]: elements });
+    //TODO: Capire perché all'atterraggio in pagina popola lo stato "cities" su redux con [];
+    if (elements.length == 0) {
+      setSelectedInput({ ...selectedInput, [objKey]: null });
+    } else {
+      setSelectedInput({ ...selectedInput, [objKey]: elements });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [elements]);
-
+  console.log(selectedInput);
   //! TOFIX: Fixa altra cagata Backend (element.name ?? element)
   return (
     <FormControl sx={{ width: width }}>
@@ -86,3 +70,33 @@ export function InputChecks({
     </FormControl>
   );
 }
+// {
+//   const [elements, setElements] = useState<
+//     { name: string; id: string }[] | undefined
+//   >([]);
+//   const final_object = data?.final_object;
+
+//   const handleChange = (event: SelectChangeEvent<typeof elements>) => {
+//     const {
+//       target: { value },
+//     } = event;
+//     // fare un filtro di data per ottenere i valori checkati, sia id che name
+//     // string > {id: string, name: string}
+//     const filteredData = final_object?.filter((element) => {
+//       if (typeof value === "string" || typeof element.name === "object") {
+//         return;
+//       }
+//       const temp = value && value.includes(element.name);
+
+//       return temp;
+//     });
+
+//     setElements(filteredData);
+//   };
+
+// useEffect(() => {
+//   //TODO: Capire perché all'atterraggio in pagina popola lo stato "cities" su redux con []
+//   console.log({ elements, type });
+//   setSelectedInput({ ...selectedInput, [type]: elements });
+//   // eslint-disable-next-line react-hooks/exhaustive-deps
+// }, [elements]);

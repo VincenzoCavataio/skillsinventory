@@ -57,8 +57,6 @@ export const DashboardPage = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log({ allCoursessData });
-
   return (
     <>
       <HeaderNavbar />
@@ -124,7 +122,7 @@ export const DashboardPage = () => {
                 label={"pages.dashboard.search.cities"}
                 setSelectedInput={setSelectedInput}
                 selectedInput={selectedInput}
-                type="cities"
+                objKey="city"
               />
             </Box>
           </Box>

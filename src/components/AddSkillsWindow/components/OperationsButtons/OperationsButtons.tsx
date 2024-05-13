@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteSkills, insertSkills } from "../../../../redux/skillsSlice";
 import { ReduxStore, Skill } from "../../../../redux/types";
 import { t } from "i18next";
+import { Triangle } from "../Triangle/Triangle";
 
 type Props = {
   data: ResponseElementObjectData[];
@@ -137,50 +138,9 @@ export const OperationsButtons = ({
           ))}
         </Select>
       </Box>
-      <Box>
-        <button
-          onClick={removeFromStore}
-          style={{
-            backgroundColor: "transparent",
-            borderWidth: "15px 30px 15px 0 ",
-            borderColor: "transparent #e12113 transparent transparent",
-            marginRight: "7px",
-          }}
-        ></button>
-
-        <button
-          onClick={addToStore}
-          style={{
-            backgroundColor: "transparent",
-            borderWidth: "15px 0 15px 30px", //VERSIONEc BRUTTA
-            borderColor: "transparent transparent transparent #8CBE2D",
-            marginLeft: "7px",
-          }}
-        ></button>
-
-        {/* <Button onClick={removeFromStore}>
-          <button
-            style={{
-              backgroundColor: "transparent",
-              borderWidth: "15px 30px 15px 0 ",
-              borderColor: "transparent #e12113 transparent transparent",
-            }}
-          ></button>
-        </Button>
-        <Button onClick={addToStore}>
-          <button
-            style={{
-              backgroundColor: "transparent",
-              borderWidth: "15px 0 15px 30px", //VERSIONEc BRUTTA
-              borderColor: "transparent transparent transparent #8CBE2D",
-            }}
-          ></button>
-        </Button> */}
-
-        {/* <Button onClick={removeFromStore}>
-          {t("pages.dashboard.search.remove")}
-        </Button>
-        <Button onClick={addToStore}>{t("pages.dashboard.search.add")}</Button> */}
+      <Box display="flex" width={100} justifyContent={"space-between"}>
+        <Triangle action={removeFromStore} direction="left" />
+        <Triangle action={addToStore} direction="right" />
       </Box>
     </Box>
   );

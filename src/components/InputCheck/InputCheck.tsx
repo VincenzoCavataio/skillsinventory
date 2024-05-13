@@ -39,7 +39,6 @@ export function InputChecks({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [elements]);
-  console.log(selectedInput);
   //! TOFIX: Fixa altra cagata Backend (element.name ?? element)
   return (
     <FormControl sx={{ width: width }}>

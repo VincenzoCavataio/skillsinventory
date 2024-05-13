@@ -20,6 +20,7 @@ import { ButtonsContainer } from "../../components/ButtonsContainer";
 import { SkillsTable } from "../../components/SkillsTable/SkillsTable";
 import { AddSkillsWindows } from "../../components/AddSkillsWindow";
 import { updateFilter } from "../../redux/searchSlice";
+import { InputChecks2 } from "../../components/InputCheck2";
 
 type Values = {
   value: string;
@@ -56,7 +57,7 @@ export const DashboardPage = () => {
   const allCoursessData = useApi(allCoursesMetadata);
 
   const [isOpen, setIsOpen] = useState(false);
-  console.log(allEducationalData);
+
   return (
     <>
       <HeaderNavbar />
@@ -106,7 +107,7 @@ export const DashboardPage = () => {
               />
             </Box>
             <Box sx={{ mr: 0, mb: 2 }}>
-              <InputChecks
+              <InputChecks2
                 data={allEducationalData?.data}
                 label={"pages.dashboard.search.certification"}
                 width={180}

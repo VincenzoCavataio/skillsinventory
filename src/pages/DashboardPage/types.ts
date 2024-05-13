@@ -15,12 +15,12 @@ export type CompiledFields = {
 };
 export type Values = {
   value: string;
-  id: string;
+  id: number;
 };
 
 export type CompiledFieldsWithID = {
   fullName?: string;
-  certification?: Values;
+  certification?: Values[];
   city?: string[];
   educationalLevel?: Values;
   institute?: Values;

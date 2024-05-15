@@ -22,6 +22,8 @@ export const style: Record<string, CSSProperties> = {
     marginTop: 2,
     padding: 2,
     display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
     overflowX: "scroll",
   },
   container2: {

@@ -1,38 +1,45 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 export const Infos = ({
-  information,
-  personalInformation,
+  title,
+  data,
+  type,
 }: {
-  information: string;
-  personalInformation: string;
+  title: string;
+  data: string | string[];
+  type: string;
 }) => {
-  return (
-    <>
-      <Box
-        sx={{
-          width: "100%",
-          textAlign: "left",
-          fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-          display: "flex",
-          ml: 3,
-        }}
-      >
-        <Box sx={{ width: "30%", direction: "column" }}>
-          <p style={{ fontWeight: "600" }}>{information}:</p>
-        </Box>
-        <Box sx={{ width: "60%", direction: "column" }}>
-          <p style={{ color: "grey" }}>{personalInformation}</p>
-        </Box>
+  return type === "list" && typeof data === "object" ? (
+    <Box
+      sx={{
+        textAlign: "left",
+        display: "flex",
+        p: 2,
+        borderBottom: "1px solid #e4e4e4",
+      }}
+    >
+      <Box sx={{ flex: 1, alignContent: "center" }}>
+        <Typography variant="body1">{title}:</Typography>
       </Box>
-      <hr
-        style={{
-          marginLeft: 25,
-          marginRight: 25,
-          borderColor: "#eee",
-          borderWidth: "0.5px",
-        }}
-      />
-    </>
+      <Box sx={{ flex: 2, alignContent: "center" }}>
+        <Typography variant="body2">{data.join(", ")}</Typography>
+      </Box>
+    </Box>
+  ) : (
+    <Box
+      sx={{
+        textAlign: "left",
+        display: "flex",
+        p: 2,
+        borderBottom: "1px solid #e4e4e4",
+      }}
+    >
+      <Box sx={{ flex: 1, alignContent: "center" }}>
+        <Typography variant="body1">{title}:</Typography>
+      </Box>
+      <Box sx={{ flex: 2, alignContent: "center" }}>
+        <Typography variant="body2">{data}</Typography>
+      </Box>
+    </Box>
   );
 };

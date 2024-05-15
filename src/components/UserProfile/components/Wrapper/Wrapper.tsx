@@ -43,7 +43,7 @@ const TitleAndName: React.FC<Identity> = ({ title, nameSurname }) => {
 };
 export const Wrapper = () => {
   return (
-    <>
+    <Box display="flex" flexDirection="column" alignItems="center">
       <CustomAvatar alt="User Name" src="" />
       <TitleAndName title="Frontend Developer" nameSurname="Joseph Colombo" />
       <BoxSkillEduCert />
@@ -59,6 +59,6 @@ export const Wrapper = () => {
         selectedElements={selectedElements}
         setSelectedElements={setSelectedElements}
       /> */}
-    </>
+    </Box>
   );
 };

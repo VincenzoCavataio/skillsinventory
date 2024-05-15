@@ -4,8 +4,8 @@ import HomeIcon from "@mui/icons-material/Home";
 
 export const CustomizedBreadcrumb = () => {
   return (
-    <Box paddingTop={2} paddingBottom={2}>
-      <Breadcrumbs aria-label="breadcrumb" separator="›">
+    <Box pt={2} pb={2}>
+      <Breadcrumbs separator="›">
         <StyledBreadcrumb
           component="a"
           href="/"

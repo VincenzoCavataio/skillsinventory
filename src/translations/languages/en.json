@@ -33,6 +33,22 @@
           "educationalLevels": "Level of Education"
         }
       },
+      "userPage": {
+        "info": {
+          "hardSkills": "Hard Skills",
+          "education": "Education",
+          "certificates": "Certificates"
+        },
+        "informationDetails": {
+          "fullName": "Full Name",
+          "email": "E-Mail",
+          "firstEmploymentStartDate": "First Employment Start Date",
+          "actualEmploymentStartDate": "Actual Employment Start Date",
+          "privateNumber": "Private Number",
+          "workNumber": "Work Number",
+          "address": "Address"
+        }
+      },
       "notFound": {
         "title": "Page not found",
         "description": "Sorry but the page you are looking for does not exists"

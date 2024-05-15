@@ -17,3 +17,25 @@ const URL_MAPPER: Record<string, string> = {
 };
 
 export const URL = `${URL_MAPPER[ENVIRONMENT]}/api/v1/cv-record`;
+
+export const MOCK_USER_DATA: Record<string, Record<string, string>> = {
+  generic: {
+    fullName: "Joseph Colombo",
+    position: "Frontend Developer",
+  },
+  details: {
+    fullName: "Joseph Colombo",
+    email: "Joseph.Colombo.96@gmail.com",
+    firstEmploymentStartDate: "02-05-2016",
+    actualEmploymentStartDate: "04-04-2024",
+    privateNumber: "+39 3453048655",
+    workNumber: "+39 3453048655",
+  },
+};
+
+export const MOCK_USER_DATA_ADDRESS: string[] = [
+  "Via Giuseppe Giuliani, 1",
+  "00185",
+  "Milano",
+  "Italy",
+];

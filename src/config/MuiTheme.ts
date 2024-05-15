@@ -14,6 +14,16 @@ const theme = createTheme(
         fontSize: "12px",
         fontWeight: "normal",
       },
+      subtitle1: {
+        color: commonColors.subtitle,
+        fontSize: "24px",
+        fontWeight: "normal",
+      },
+      subtitle2: {
+        color: commonColors.gray,
+        fontSize: "16px",
+        fontWeight: "normal",
+      },
     },
   },
   {

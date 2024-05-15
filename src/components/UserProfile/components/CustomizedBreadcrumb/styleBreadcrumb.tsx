@@ -1,20 +1,18 @@
 import { emphasize, styled } from "@mui/material/styles";
 import Chip from "@mui/material/Chip";
+import { commonColors } from "../../../../common/commonColors";
 
-export const StyledBreadcrumb = styled(Chip)(({ theme }) => {
-  const backgroundColor = "rgba(140, 190, 45, 0.6)";
+export const StyledBreadcrumb = styled(Chip)(() => {
+  const { title, white } = commonColors;
   return {
-    backgroundColor,
-    height: theme.spacing(3),
+    backgroundColor: white,
     cursor: "pointer",
-    color: theme.palette.text.primary,
-    fontWeight: theme.typography.fontWeightRegular,
+    color: title,
     "&:hover, &:focus": {
-      backgroundColor: emphasize(backgroundColor, 0.2),
+      backgroundColor: emphasize(white, 0.2),
     },
     "&:active": {
-      boxShadow: theme.shadows[1],
-      backgroundColor: emphasize(backgroundColor, 0.12),
+      backgroundColor: emphasize(white, 0.12),
     },
   };
 }) as typeof Chip;

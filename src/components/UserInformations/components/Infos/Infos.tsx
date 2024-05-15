@@ -1,4 +1,6 @@
 import { Box, Typography } from "@mui/material";
+import { t } from "i18next";
+import { commonColors } from "../../../../common/commonColors";
 
 export const Infos = ({
   title,
@@ -11,33 +13,31 @@ export const Infos = ({
 }) => {
   return type === "list" && typeof data === "object" ? (
     <Box
-      sx={{
-        textAlign: "left",
-        display: "flex",
-        p: 2,
-        borderBottom: "1px solid #e4e4e4",
-      }}
+      textAlign={"left"}
+      display={"flex"}
+      p={2}
+      borderBottom={`1px solid ${commonColors.lightGray}`}
     >
-      <Box sx={{ flex: 1, alignContent: "center" }}>
+      <Box flex={1} alignContent="center">
         <Typography variant="body1">{title}:</Typography>
       </Box>
-      <Box sx={{ flex: 2, alignContent: "center" }}>
+      <Box flex={2} alignContent="center">
         <Typography variant="body2">{data.join(", ")}</Typography>
       </Box>
     </Box>
   ) : (
     <Box
-      sx={{
-        textAlign: "left",
-        display: "flex",
-        p: 2,
-        borderBottom: "1px solid #e4e4e4",
-      }}
+      textAlign="left"
+      display="flex"
+      p={2}
+      borderBottom={`1px solid ${commonColors.lightGray}`}
     >
-      <Box sx={{ flex: 1, alignContent: "center" }}>
-        <Typography variant="body1">{title}:</Typography>
+      <Box flex={1} alignContent="center">
+        <Typography variant="body1">
+          {t(`pages.userPage.informationDetails.${title}`)}
+        </Typography>
       </Box>
-      <Box sx={{ flex: 2, alignContent: "center" }}>
+      <Box flex={2} alignContent="center">
         <Typography variant="body2">{data}</Typography>
       </Box>
     </Box>

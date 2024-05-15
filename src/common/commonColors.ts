@@ -6,4 +6,6 @@ export const commonColors: Record<string, string> = {
   subtitle: "#000000",
   accentColor: NEXTRE_ENG,
   white: "#fff",
+  gray: "#a4a4a4",
+  lightGray: "#f2f2f2",
 };

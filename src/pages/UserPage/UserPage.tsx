@@ -5,9 +5,6 @@ import { CustomizedBreadcrumb } from "../../components/UserProfile/components/Cu
 import { ProfileInfo } from "../../components/UserInformations";
 
 export const UserPage = () => {
-  //fill here
-  //
-  //
   return (
     <Box>
       <HeaderNavbar />
@@ -19,11 +16,12 @@ export const UserPage = () => {
           justifyContent="center"
           maxWidth="xl"
           gap={2}
+          className="userPageWrapper"
         >
-          <Box sx={{ flex: 1, backgroundColor: "white" }}>
+          <Box flex={1} bgcolor="white" height="100%">
             <ProfilePage />
           </Box>
-          <Box sx={{ flex: 2, backgroundColor: "white" }}>
+          <Box flex={2} bgcolor="white" height="100%">
             <ProfileInfo />
           </Box>
         </Box>

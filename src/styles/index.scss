@@ -83,3 +83,9 @@ html {
 .triangle-right:active {
   transform: rotate(90deg) scale(1.1);
 }
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+  .userPageWrapper {
+    flex-direction: column !important;
+  }
+}

@@ -44,6 +44,22 @@
           "buttonContainer": "Seleziona Tipo"
         }
       },
+      "userPage": {
+        "info": {
+          "hardSkills": "Lista Skill",
+          "education": "Istruzione",
+          "certificates": "Certificati"
+        },
+        "informationDetails": {
+          "fullName": "Nome Completo",
+          "email": "E-Mail",
+          "firstEmploymentStartDate": "Data di primo impiego",
+          "actualEmploymentStartDate": "Data di impiego attuale",
+          "privateNumber": "Numero Privato",
+          "workNumber": "Numero di Lavoro",
+          "address": "Indirizzo"
+        }
+      },
       "notFound": {
         "title": "Pagina non trovata",
         "description": "Mi dispiace ma la pagina che stai cercando non esiste"

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,11 +7,8 @@ import ListItemText from "@mui/material/ListItemText";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import { t } from "i18next";
-import {
-  CompiledFields,
-  ResponseElementObjectData,
-  Values,
-} from "../../pages/DashboardPage/types";
+// import { CompiledFieldsWithID, ResponseElementObjectData } from "../../pages/DashboardPage/types";
+import { CompiledFieldsWithID } from "../../pages/DashboardPage/types";
 import { InputSelectType } from "../InputSelect/types";
 
 export function InputChecks2({
@@ -22,13 +19,17 @@ export function InputChecks2({
   selectedInput,
   objKey,
 }: InputSelectType) {
-  const [elements, setElements] = React.useState<ResponseElementObjectData[]>(
-    []
-  );
+  // const [elements, setElements] = React.useState<ResponseElementObjectData[]>(
+  const [elements, setElements] = React.useState<CompiledFieldsWithID[]>([]);
   const final_object = data?.final_object;
 
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    const selectedValues = event.target.value as ResponseElementObjectData[];
+  //const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleChange = (
+    // event: SelectChangeEvent<ResponseElementObjectData[]>
+    event: SelectChangeEvent<CompiledFieldsWithID[]>
+  ) => {
+    // const selectedValues = event.target.value as ResponseElementObjectData[];
+    const selectedValues = event.target.value as CompiledFieldsWithID[];
     setElements(selectedValues);
     setSelectedInput({ ...selectedInput, [objKey]: selectedValues });
   };
@@ -49,9 +50,12 @@ export function InputChecks2({
         onChange={handleChange}
         input={<OutlinedInput label="Tag" />}
         renderValue={(selected) =>
-          (selected as ResponseElementObjectData[]).length === 1
-            ? (selected as ResponseElementObjectData[])[0].name
-            : (selected as ResponseElementObjectData[])
+          // (selected as ResponseElementObjectData[]).length === 1
+          //   ? (selected as ResponseElementObjectData[])[0].name
+          //   : (selected as ResponseElementObjectData[])
+          (selected as CompiledFieldsWithID[]).length === 1
+            ? (selected as CompiledFieldsWithID[])[0].name
+            : (selected as CompiledFieldsWithID[])
                 .map((item) => item.name)
                 .join(", ")
         }

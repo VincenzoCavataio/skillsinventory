@@ -19,6 +19,12 @@ export type Values = {
 };
 
 export type CompiledFieldsWithID = {
+  //try
+  id?: number;
+  name?: string;
+  selected?: boolean;
+  selectedToBeDeleted?: boolean;
+  //try
   fullName?: string;
   certification?: Values[];
   city?: string[];

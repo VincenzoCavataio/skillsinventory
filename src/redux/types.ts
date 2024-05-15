@@ -1,7 +1,4 @@
-import {
-  CompiledFields,
-  CompiledFieldsWithID,
-} from "../pages/DashboardPage/types";
+import { CompiledFieldsWithID } from "../pages/DashboardPage/types";
 
 export type Skill = {
   name: string;

@@ -9,9 +9,8 @@ import { NEXTRE_ENG, commonColors } from "../../common/commonColors";
 import useApi from "../../utilities/useApi";
 import { allTabledata } from "./SkillsTable.controller";
 import { useSelector } from "react-redux";
-import { Filtri } from "../../redux/searchSlice";
+
 import { ReduxStore } from "../../redux/types";
-import { useEffect } from "react";
 
 // TODO: componente bozza, da fare per bene
 
@@ -25,9 +24,9 @@ export const SkillsTable = () => {
   function createData(
     lastName: string,
     firstName: string,
-    skillsList: string[],
-    skillsRanking: string,
-    anniEsperienza: string,
+    // skillsList: string[],
+    // skillsRanking: string,
+    // anniEsperienza: string,
     education: string,
     addressInfo: string,
     certifications: string
@@ -35,9 +34,9 @@ export const SkillsTable = () => {
     return {
       lastName,
       firstName,
-      skillsList,
-      skillsRanking,
-      anniEsperienza,
+      // skillsList,
+      // skillsRanking,
+      // anniEsperienza,
       education,
       addressInfo,
       certifications,
@@ -47,7 +46,7 @@ export const SkillsTable = () => {
   const filterStore = useSelector((state: ReduxStore) => state.search);
   const skillsFilterStore = useSelector((state: ReduxStore) => state.skills);
   console.log(filterStore?.filters);
-  console.log(skillsFilterStore?.skills);
+  // console.log(skillsFilterStore?.skills);
 
   const allCertificationsID =
     filterStore?.filters?.certification?.map(
@@ -104,7 +103,7 @@ export const SkillsTable = () => {
 
   //! TOFIX: Fixa cagata Backend
   const tableData = useApi(allTabledata(FAKE_PAYLOAD))?.data;
-  console.log({ tableData });
+  // console.log({ tableData });
 
   if (
     tableData &&
@@ -117,15 +116,15 @@ export const SkillsTable = () => {
     createData(
       data.lastName,
       data.firstName,
-      data.skillsList,
-      data.skillRanking,
-      data.anniEsperienza,
+      // data.skillsList,
+      // data.skillRanking,
+      // data.anniEsperienza,
       data.educationList,
       data.residenceInfo,
       data.certificationList
     )
   );
-  console.log(rows);
+  // console.log(rows);
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -138,7 +137,7 @@ export const SkillsTable = () => {
             <TableCell sx={[tableHeaderStyle, { width: 40 }]} align="right">
               First Name
             </TableCell>
-            <TableCell sx={[tableHeaderStyle, { width: 150 }]} align="right">
+            {/* <TableCell sx={[tableHeaderStyle, { width: 150 }]} align="right">
               Skill List
             </TableCell>
             <TableCell sx={[tableHeaderStyle, { width: 150 }]} align="right">
@@ -146,7 +145,7 @@ export const SkillsTable = () => {
             </TableCell>
             <TableCell sx={[tableHeaderStyle, { width: 150 }]} align="right">
               Experience Years
-            </TableCell>
+            </TableCell> */}
             <TableCell sx={[tableHeaderStyle, { width: 150 }]} align="right">
               Education
             </TableCell>
@@ -175,11 +174,11 @@ export const SkillsTable = () => {
                   {row.lastName}
                 </TableCell>
                 <TableCell align="center">{row.firstName}</TableCell>
-                <TableCell align="center">
+                {/* <TableCell align="center">
                   {row.skillsList?.join(" ")}
                 </TableCell>
                 <TableCell align="center">{row.skillsRanking}</TableCell>
-                <TableCell align="center">{row.anniEsperienza}</TableCell>
+                <TableCell align="center">{row.anniEsperienza}</TableCell> */}
                 <TableCell align="center">{row.education}</TableCell>
                 <TableCell align="center">{row.addressInfo}</TableCell>
                 <TableCell align="center">{row.certifications}</TableCell>

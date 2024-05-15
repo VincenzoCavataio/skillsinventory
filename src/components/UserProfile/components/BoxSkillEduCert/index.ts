@@ -1,0 +1,1 @@
+export { BoxSkillEduCert } from "./BoxSkillEduCert";

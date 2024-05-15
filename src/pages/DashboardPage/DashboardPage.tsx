@@ -1,4 +1,4 @@
-import { Autocomplete, Box, Button, Container, TextField } from "@mui/material";
+import { Box, Container, TextField } from "@mui/material";
 import { HeaderNavbar } from "../../components/HeaderNavbar";
 import { t } from "i18next";
 import { useEffect, useState } from "react";
@@ -12,7 +12,6 @@ import {
   allSkillslMetadata,
 } from "./DashboardPage.controller";
 import { style } from "./style";
-import { CompiledFields, ResponseElementObjectData } from "./types";
 import useApi from "../../utilities/useApi";
 import { InputChecks } from "../../components/InputCheck/InputCheck";
 import { InputSelect } from "../../components/InputSelect/InputSelect";
@@ -26,11 +25,14 @@ type Values = {
   value: string;
   id: number;
 };
-const obj: Values = {
-  value: "",
-  id: 0,
-};
+
 type CompiledFieldsWithID = {
+  //try
+  id?: number;
+  name?: string;
+  selected?: boolean;
+  selectedToBeDeleted?: boolean;
+  //try
   fullName?: string;
   certification?: Values;
   city?: string[];
@@ -57,7 +59,7 @@ export const DashboardPage = () => {
   const allCoursessData = useApi(allCoursesMetadata);
 
   const [isOpen, setIsOpen] = useState(false);
-
+  console.log(allSkillslData);
   return (
     <>
       <HeaderNavbar />
@@ -109,7 +111,7 @@ export const DashboardPage = () => {
             <Box sx={{ mr: 0, mb: 2 }}>
               <InputChecks2
                 data={allEducationalData?.data}
-                label={"pages.dashboard.search.certification"}
+                label={t("pages.dashboard.search.certification")}
                 width={180}
                 setSelectedInput={setSelectedInput}
                 selectedInput={selectedInput}
@@ -120,7 +122,7 @@ export const DashboardPage = () => {
               <InputChecks
                 width={180}
                 data={allCitiesData?.data}
-                label={"pages.dashboard.search.cities"}
+                label={t("pages.dashboard.search.cities")}
                 setSelectedInput={setSelectedInput}
                 selectedInput={selectedInput}
                 objKey="city"

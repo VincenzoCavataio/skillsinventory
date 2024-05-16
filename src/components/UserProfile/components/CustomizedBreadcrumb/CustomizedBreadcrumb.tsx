@@ -12,7 +12,7 @@ export const CustomizedBreadcrumb = () => {
           label="Home"
           icon={<HomeIcon fontSize="small" />}
         />
-        <StyledBreadcrumb component="a" href="#" label="User" />
+        <StyledBreadcrumb component="a" href="" label="User" disabled />
       </Breadcrumbs>
     </Box>
   );

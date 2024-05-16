@@ -16,7 +16,7 @@ const URL_MAPPER: Record<string, string> = {
   prod: BASE_URL_PROD,
 };
 
-export const URL = `${URL_MAPPER[ENVIRONMENT]}/api/v1/cv-record`;
+export const URL = `${URL_MAPPER[ENVIRONMENT]}`;
 
 export const MOCK_USER_DATA: Record<string, Record<string, string>> = {
   generic: {
@@ -39,3 +39,9 @@ export const MOCK_USER_DATA_ADDRESS: string[] = [
   "Milano",
   "Italy",
 ];
+
+export const PAGES = {
+  dashboardPage: "/dashboard",
+  userPage: "/user",
+  notFoundPage: "/notFound",
+};

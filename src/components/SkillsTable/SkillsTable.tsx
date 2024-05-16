@@ -11,10 +11,16 @@ import { allTabledata } from "./SkillsTable.controller";
 import { useSelector } from "react-redux";
 
 import { ReduxStore } from "../../redux/types";
+import { Chip } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { PAGES } from "../../constants";
 
 // TODO: componente bozza, da fare per bene
 
 export const SkillsTable = () => {
+  const navigate = useNavigate();
+  const { userPage } = PAGES;
+
   const tableHeaderStyle = {
     fontSize: 16,
     textAlign: "center",
@@ -29,7 +35,8 @@ export const SkillsTable = () => {
     // anniEsperienza: string,
     education: string,
     addressInfo: string,
-    certifications: string
+    certifications: string,
+    userId: string
   ) {
     return {
       lastName,
@@ -40,6 +47,7 @@ export const SkillsTable = () => {
       education,
       addressInfo,
       certifications,
+      userId,
     };
   }
 
@@ -121,7 +129,8 @@ export const SkillsTable = () => {
       // data.anniEsperienza,
       data.educationList,
       data.residenceInfo,
-      data.certificationList
+      data.certificationList,
+      data.userId
     )
   );
   // console.log(rows);
@@ -171,7 +180,10 @@ export const SkillsTable = () => {
                   {index + 1}
                 </TableCell>
                 <TableCell align="center" component="th" scope="row">
-                  {row.lastName}
+                  <Chip
+                    label={row.lastName}
+                    onClick={() => navigate(`${userPage}/${row.userId}`)}
+                  />
                 </TableCell>
                 <TableCell align="center">{row.firstName}</TableCell>
                 {/* <TableCell align="center">

@@ -1,7 +1,7 @@
 import { URL as BASEURL } from "../../constants";
 import { generateRequestOpt } from "../../utilities/generateRequestOpt/";
 
-const URL = `${BASEURL}/getAllEducational`;
+const URL = `${BASEURL}/api/v1/cv-record/getAllEducational`;
 
 export const allEducationalMetadata = {
   URL,

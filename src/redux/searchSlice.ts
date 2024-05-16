@@ -11,8 +11,11 @@ const searchSlice = createSlice({
     updateFilter: (state, action) => {
       state.filters = action.payload.filters;
     },
+    resetFilters: (state) => {
+      state.filters = initialState;
+    },
   },
 });
 
 export default searchSlice.reducer;
-export const { updateFilter } = searchSlice.actions;
+export const { updateFilter, resetFilters } = searchSlice.actions;

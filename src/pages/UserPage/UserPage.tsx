@@ -21,7 +21,6 @@ export const UserPage = () => {
   const payload: Payload = { userId: id || "", dataType: "full" };
 
   const userDataByUserId = useApi(allUserDataByUserId(payload));
-  console.log(userDataByUserId.data);
 
   if (userDataByUserId.data === undefined || userDataByUserId.data === "") {
     navigate(notFoundPage);

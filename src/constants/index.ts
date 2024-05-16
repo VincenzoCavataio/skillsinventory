@@ -25,7 +25,7 @@ export const MOCK_USER_DATA: Record<string, Record<string, string>> = {
   },
   details: {
     fullName: "Joseph Colombo",
-    email: "Joseph.Colombo.96@gmail.com",
+    email: "joseph.colombo.96@gmail.com",
     firstEmploymentStartDate: "02-05-2016",
     actualEmploymentStartDate: "04-04-2024",
     privateNumber: "+39 3453048655",

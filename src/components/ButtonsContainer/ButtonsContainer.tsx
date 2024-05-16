@@ -5,7 +5,7 @@ import { t } from "i18next";
 import SearchIcon from "@mui/icons-material/Search";
 import CancelButton from "@mui/icons-material/Cancel";
 import { useDispatch } from "react-redux";
-import { resetFilters } from "../../redux/filtersSlice";
+import { resetFilters } from "../../redux/searchSlice";
 import { Dispatch, SetStateAction } from "react";
 import { CompiledFields } from "../../pages/DashboardPage/types";
 import { ButtonGroupAndOr } from "../ButtonGroupAndOr";
@@ -23,8 +23,8 @@ export const ButtonsContainer = ({
   const init = {
     fullName: "",
     skill: "",
-    certification: "",
-    city: "",
+    certification: [],
+    city: [],
     educationalLevel: "",
     institute: "",
     course: "",

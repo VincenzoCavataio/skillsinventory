@@ -8,15 +8,22 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-const MOCK_DATA = [
-  "placeholder_1",
-  "placeholder_2",
-  "placeholder_3",
-  "placeholder_4",
-  "placeholder_5",
-];
-
-export const CheckboxList = ({ showCheckbox }: { showCheckbox: boolean }) => {
+// const MOCK_DATA = [
+//   "placeholder_1",
+//   "placeholder_2",
+//   "placeholder_3",
+//   "placeholder_4",
+//   "placeholder_5",
+// ];
+type CheckboxListProps = {
+  showCheckbox: boolean;
+  data?: string[]; // Aggiungi questa riga
+};
+// export const CheckboxList = ({ showCheckbox }: { showCheckbox: boolean }) => {
+export const CheckboxList: React.FC<CheckboxListProps> = ({
+  showCheckbox,
+  data,
+}) => {
   const [checked, setChecked] = useState<string[]>([]);
 
   const handleToggle = (value: string) => () => {
@@ -33,14 +40,16 @@ export const CheckboxList = ({ showCheckbox }: { showCheckbox: boolean }) => {
   };
 
   const handleSelectAll = () => {
-    setChecked(MOCK_DATA);
+    if (data) {
+      setChecked(data);
+    }
   };
 
   const handleRemoveAll = () => {
     setChecked([]);
   };
 
-  const allChecked = checked.length === MOCK_DATA.length;
+  const allChecked = checked.length === data?.length;
 
   return (
     <List>
@@ -54,10 +63,14 @@ export const CheckboxList = ({ showCheckbox }: { showCheckbox: boolean }) => {
           </ListItemButton>
         </ListItem>
       )}
-      {MOCK_DATA.map((value) => {
+      {data?.map((value) => {
         return (
           <ListItem key={value} disablePadding>
-            <ListItemButton onClick={handleToggle(value)} dense>
+            <ListItemButton
+              onClick={handleToggle(value)}
+              dense
+              disabled={!showCheckbox}
+            >
               {showCheckbox && (
                 <ListItemIcon>
                   <Checkbox

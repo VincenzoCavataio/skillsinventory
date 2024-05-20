@@ -58,7 +58,10 @@
           "email_login": "E-Mail",
           "personalPhoneNumber": "Numero di Telefono",
           "driver_license": "Patente",
-          "birthDate": "Compleanno"
+          "birthDate": "Compleanno",
+          "workPhoneNumber": "N. Telefono Lavoro",
+          "actualEmploymentDate": "Data di impiego attuale",
+          "firstEmploymentDate": "Data di primo impiego"
         }
       },
       "notFound": {

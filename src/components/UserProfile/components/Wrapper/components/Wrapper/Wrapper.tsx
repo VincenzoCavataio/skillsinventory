@@ -1,13 +1,23 @@
 import { Box } from "@mui/material";
 import { WrapperHeader } from "../WrapperHeader";
 import { AccordionGroup } from "../../../AccordionGroup";
-import { MOCK_USER_DATA } from "../../../../../../constants";
+import { useSelector } from "react-redux";
+import { ReduxStore } from "../../../../../../redux/types";
 
 export const Wrapper = () => {
-  const { fullName, position } = MOCK_USER_DATA.generic;
+  const userData =
+    useSelector((state: ReduxStore) => state.user?.user) ?? undefined;
+  const namePosition: { fullName: string; position: string } = {
+    fullName: `${userData?.firstName ?? ""}` + ` ${userData?.lastName ?? ""}`,
+    position: "gestione posizione?",
+  };
   return (
     <Box display="flex" flexDirection="column" alignItems="center">
-      <WrapperHeader title={position} fullName={fullName} alt="User Name" />
+      <WrapperHeader
+        title={namePosition.position}
+        fullName={namePosition.fullName}
+        alt="User Name"
+      />
       <AccordionGroup />
     </Box>
   );

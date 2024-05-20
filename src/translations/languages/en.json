@@ -40,12 +40,17 @@
           "certificates": "Certificates"
         },
         "informationDetails": {
-          "fullName": "Full Name",
-          "email": "E-Mail",
-          "firstEmploymentStartDate": "First Employment Start Date",
-          "actualEmploymentStartDate": "Actual Employment Start Date",
-          "privateNumber": "Private Number",
-          "workNumber": "Work Number",
+          "id": "Id",
+          "gender": "Gender",
+          "firstName": "Name",
+          "lastName": "Surname",
+          "email_login": "E-Mail",
+          "personalPhoneNumber": "Phone Number",
+          "driver_license": "Driver License",
+          "birthDate": "Birthday",
+          "workPhoneNumber": "Work Phone Number",
+          "actualEmploymentDate": "Actual Employement Date",
+          "firstEmploymentDate": "First Employement Date",
           "address": "Address"
         }
       },

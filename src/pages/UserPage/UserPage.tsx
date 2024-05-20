@@ -31,11 +31,8 @@ export const UserPage = () => {
   }, [dispatch, navigate, notFoundPage, userDataByUserId]);
 
   if (userDataByUserId.data === undefined || userDataByUserId.data === "") {
-    console.log(userDataByUserId.data);
     navigate(notFoundPage);
   }
-
-  console.log({ userDataByUserId });
 
   return (
     <Box>

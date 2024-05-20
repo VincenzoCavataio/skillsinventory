@@ -5,7 +5,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { NEXTRE_ENG, commonColors } from "../../common/commonColors";
+import { commonColors } from "../../common/commonColors";
 import useApi from "../../utilities/useApi";
 import { allTabledata } from "./SkillsTable.controller";
 import { useSelector } from "react-redux";
@@ -30,9 +30,7 @@ export const SkillsTable = () => {
   function createData(
     lastName: string,
     firstName: string,
-    // skillsList: string[],
-    // skillsRanking: string,
-    // anniEsperienza: string,
+
     education: string,
     addressInfo: string,
     certifications: string,
@@ -41,9 +39,7 @@ export const SkillsTable = () => {
     return {
       lastName,
       firstName,
-      // skillsList,
-      // skillsRanking,
-      // anniEsperienza,
+
       education,
       addressInfo,
       certifications,
@@ -53,7 +49,6 @@ export const SkillsTable = () => {
 
   const filterStore = useSelector((state: ReduxStore) => state.search);
   const skillsFilterStore = useSelector((state: ReduxStore) => state.skills);
-  console.log(filterStore?.filters);
 
   const allCertificationsID =
     filterStore?.filters?.certification?.map(
@@ -75,7 +70,7 @@ export const SkillsTable = () => {
       allCertificationsID && allCertificationsID.length > 0
         ? `|${allCertificationsID.join("|")}|`
         : ""
-    }`, //per filtrare capire cosa chiede dal backend (al momento è rotto il backend)
+    }`,
     "user-filter": `USERS:${
       filterStore?.filters.fullName ? `|${filterStore?.filters.fullName}|` : ""
     }`,
@@ -96,8 +91,6 @@ export const SkillsTable = () => {
 
   //! TOFIX: Fixa cagata Backend
   const tableData = useApi(allTabledata(FAKE_PAYLOAD))?.data;
-  // console.log({ tableData });
-  console.log({ tableData });
 
   if (
     tableData &&
@@ -110,16 +103,14 @@ export const SkillsTable = () => {
     createData(
       data.lastName,
       data.firstName,
-      // data.skillsList,
-      // data.skillRanking,
-      // data.anniEsperienza,
+
       data.educationList,
       data.residenceInfo,
       data.certificationList,
       data.userId
     )
   );
-  // console.log(rows);
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -186,11 +177,7 @@ export const SkillsTable = () => {
                   />
                 </TableCell>
                 <TableCell align="center">{row.firstName}</TableCell>
-                {/* <TableCell align="center">
-                  {row.skillsList?.join(" ")}
-                </TableCell>
-                <TableCell align="center">{row.skillsRanking}</TableCell>
-                <TableCell align="center">{row.anniEsperienza}</TableCell> */}
+
                 <TableCell align="center">{row.education}</TableCell>
                 <TableCell align="center">{row.addressInfo}</TableCell>
                 <TableCell align="center">{row.certifications}</TableCell>

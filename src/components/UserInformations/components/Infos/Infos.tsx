@@ -43,3 +43,15 @@ export const Infos = ({
     </Box>
   );
 };
+
+// "fullName": "Full Name",
+// "email": "E-Mail",
+// "firstEmploymentStartDate": "First Employment Start Date",
+// "actualEmploymentStartDate": "Actual Employment Start Date",
+// "privateNumber": "Private Number",
+// "workNumber": "Work Number",
+// "workPhoneNumber": "N. Telefono Lavoro",
+// "actualEmployementDate":"Data di impiego attuale",
+// "firstEmployementDate":"Data di primo impiego",
+// "address": "Address",
+//old json

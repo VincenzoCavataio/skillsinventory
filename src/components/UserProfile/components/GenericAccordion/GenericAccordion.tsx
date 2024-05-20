@@ -11,7 +11,7 @@ import { AccordionLabel, Props } from "./Types";
 import { t } from "i18next";
 import { commonColors } from "../../../../common/commonColors";
 
-export const GenericAccordion = ({ action, label, state }: Props) => {
+export const GenericAccordion = ({ action, label, state, data }: Props) => {
   const PROP = state[label];
 
   const toggleEdit = (accordion: AccordionLabel) => {
@@ -38,7 +38,7 @@ export const GenericAccordion = ({ action, label, state }: Props) => {
         >
           Edit
         </Button>
-        <CheckboxList showCheckbox={PROP} />
+        <CheckboxList showCheckbox={PROP} data={data} />
       </AccordionDetails>
     </Accordion>
   );

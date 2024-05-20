@@ -10,6 +10,7 @@ export type Props = {
   action: Dispatch<SetStateAction<State>>;
   label: "hardSkills" | "education" | "certificates";
   state: State;
+  data?: string[];
 };
 
 export type AccordionLabel = "hardSkills" | "education" | "certificates";

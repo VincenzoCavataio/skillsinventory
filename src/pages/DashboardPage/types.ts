@@ -7,8 +7,8 @@ export type ResponseElementObjectData = {
 export type CompiledFields = {
   fullName?: string;
   skill?: string;
-  certification?: string;
-  city?: string;
+  certification?: string | string[];
+  city?: string | string[];
   educationalLevel?: string;
   institute?: string;
   course?: string;

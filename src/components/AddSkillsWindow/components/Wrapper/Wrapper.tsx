@@ -38,6 +38,7 @@ export const Wrapper = ({ data }: Props) => {
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
+        gap: 2,
       }}
     >
       <Box

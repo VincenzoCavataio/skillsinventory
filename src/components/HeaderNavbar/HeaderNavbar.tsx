@@ -6,9 +6,9 @@ import logo from "./../../assets/pict.svg";
 import { style } from "./style";
 import commonStyle from "../../common/commonStyle";
 import { t } from "i18next";
-import { Searchbar } from "./Searchbar";
 
 export const HeaderNavbar = () => {
+  const LOGO_SIZE = 30;
   return (
     <AppBar position="relative" sx={{ boxShadow: "none" }}>
       <Toolbar sx={commonStyle.spaceBetween}>
@@ -19,15 +19,12 @@ export const HeaderNavbar = () => {
             href="/"
             sx={style.headerTitle}
           >
-            <img src={logo} width={30} height={30} />
+            <img src={logo} width={LOGO_SIZE} height={LOGO_SIZE} />
             <Typography variant="inherit" ml={1}>
               {t("common.title")}
             </Typography>
           </Typography>
         </Box>
-        {/* <Box display={"flex"} flexDirection={"column"}>
-          <Searchbar />
-        </Box> */}
       </Toolbar>
     </AppBar>
   );

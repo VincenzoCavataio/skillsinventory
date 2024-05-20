@@ -54,7 +54,6 @@ export const SkillsTable = () => {
   const filterStore = useSelector((state: ReduxStore) => state.search);
   const skillsFilterStore = useSelector((state: ReduxStore) => state.skills);
   console.log(filterStore?.filters);
-  // console.log(skillsFilterStore?.skills);
 
   const allCertificationsID =
     filterStore?.filters?.certification?.map(
@@ -90,28 +89,15 @@ export const SkillsTable = () => {
         : ""
     }`,
     "ranking-order": "DEFAULT",
-    "course-filter": `COURSES:${filterStore?.filters.course?.id}`, //qui dovrò dare= `COURSES:${filterStore?.filters.course.id ? : 0}` informatica id:1
-    "levels-filter": `EDU_LEVELS:${filterStore?.filters.educationalLevel?.id}`, //filters.educationalLevel.id ? : 0}, //qui dovrò dare= `EDU_LEVELS:${filterStore?.filters.educationalLevel.id ? : 0}` bachelor id:2, master id:3
-    "institute-filter": `INSTITUTES:${filterStore?.filters.institute?.id}`, //qui dovrò dare= `INSTITUTES:${filterStore?.filters.institute.id ? : 0}` bicocca id:258, Università degli studi del Piemonte Orientale id:259, Università degli studi dell'Insubria id:256
-    // "starting-from": "P_FETCH_FIRST:0", |1421;=1
-    // "number-of-items": "P_OFFSET:20",   {cities: []} si userebbe così
-    // "skill-name": "SKILLS:",
-    // "certificate-name": "CERTIFICATES:",
-    // "user-filter": "USERS:",
-    // isAnd: "OR",
-    // "name-ascending": "",
-    // "edu-ascending": "",
-    // "city-ascending": "",
-    // "city-filter": "CITIES:",
-    // "ranking-order": "DEFAULT",
-    // "course-filter": "COURSES:0",
-    // "levels-filter": "EDU_LEVELS:0",
-    // "institute-filter": "INSTITUTES:0",
+    "course-filter": `COURSES:${filterStore?.filters.course?.id}`,
+    "levels-filter": `EDU_LEVELS:${filterStore?.filters.educationalLevel?.id}`,
+    "institute-filter": `INSTITUTES:${filterStore?.filters.institute?.id}`,
   };
 
   //! TOFIX: Fixa cagata Backend
   const tableData = useApi(allTabledata(FAKE_PAYLOAD))?.data;
   // console.log({ tableData });
+  console.log({ tableData });
 
   if (
     tableData &&
@@ -137,31 +123,45 @@ export const SkillsTable = () => {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead sx={{ background: NEXTRE_ENG }}>
+        <TableHead sx={{ background: commonColors.accentColor }}>
           <TableRow>
-            <TableCell sx={[tableHeaderStyle, { width: 10 }]}>N.</TableCell>
-            <TableCell sx={[tableHeaderStyle, { width: 40 }]} align="right">
+            <TableCell
+              sx={[tableHeaderStyle, { width: 10, color: commonColors.white }]}
+            >
+              N.
+            </TableCell>
+            <TableCell
+              sx={[tableHeaderStyle, { width: 40, color: commonColors.title }]}
+              align="right"
+            >
               Last Name
             </TableCell>
-            <TableCell sx={[tableHeaderStyle, { width: 40 }]} align="right">
+            <TableCell
+              sx={[tableHeaderStyle, { width: 40, color: commonColors.title }]}
+              align="right"
+            >
               First Name
             </TableCell>
-            {/* <TableCell sx={[tableHeaderStyle, { width: 150 }]} align="right">
-              Skill List
-            </TableCell>
-            <TableCell sx={[tableHeaderStyle, { width: 150 }]} align="right">
-              Ranking
-            </TableCell>
-            <TableCell sx={[tableHeaderStyle, { width: 150 }]} align="right">
-              Experience Years
-            </TableCell> */}
-            <TableCell sx={[tableHeaderStyle, { width: 150 }]} align="right">
+
+            <TableCell
+              sx={[tableHeaderStyle, { width: 150, color: commonColors.title }]}
+              align="right"
+            >
               Education
             </TableCell>
-            <TableCell sx={[tableHeaderStyle, { width: 150 }]} align="right">
+            <TableCell
+              sx={[tableHeaderStyle, { width: 150, color: commonColors.title }]}
+              align="right"
+            >
               Address
             </TableCell>
-            <TableCell sx={[tableHeaderStyle, { width: 150 }]} align="right">
+            <TableCell
+              sx={[
+                tableHeaderStyle,
+                { width: 150, color: commonColors.title, fontWeight: "bold" },
+              ]}
+              align="right"
+            >
               Certification
             </TableCell>
           </TableRow>

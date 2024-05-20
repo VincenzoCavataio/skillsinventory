@@ -8,7 +8,7 @@ export const Infos = ({
   type,
 }: {
   title: string;
-  data: string | string[];
+  data: string | string[] | number;
   type: string;
 }) => {
   return type === "list" && typeof data === "object" ? (
@@ -38,7 +38,7 @@ export const Infos = ({
         </Typography>
       </Box>
       <Box flex={2} alignContent="center">
-        <Typography variant="body2">{data}</Typography>
+        <Typography variant="body2">{data ?? "-"}</Typography>
       </Box>
     </Box>
   );

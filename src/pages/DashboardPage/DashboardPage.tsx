@@ -59,7 +59,6 @@ export const DashboardPage = () => {
   const allCoursessData = useApi(allCoursesMetadata);
 
   const [isOpen, setIsOpen] = useState(false);
-  console.log(allSkillslData);
   return (
     <>
       <HeaderNavbar />
@@ -71,28 +70,23 @@ export const DashboardPage = () => {
           height: 210,
         }}
       >
-        <Box
-          style={{
-            position: "relative",
-            width: "100%",
-            height: "100%",
-          }}
-        >
+        <Box position="relative" width="100%" height="100%">
           <AddSkillsWindows data={allSkillslData?.data} />
         </Box>
         <Box
-          display={"flex"}
-          flexWrap={"wrap"}
-          justifyContent={"center"}
-          width={"100%"}
+          display="flex"
+          flexWrap="wrap"
+          justifyContent="center"
+          width="100%"
           mb={2}
         >
           <Box
-            display={"flex"}
-            flexDirection={"row"}
-            justifyContent={"space-between"}
-            flexWrap={"nowrap"}
-            width={600}
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            flexWrap="nowrap"
+            maxWidth={600}
+            gap={2}
           >
             <Box sx={{ m: 0, mt: 0 }}>
               <TextField
@@ -134,8 +128,9 @@ export const DashboardPage = () => {
             flexDirection={"row"}
             justifyContent={"space-between"}
             flexWrap={"nowrap"}
-            width={600}
+            maxWidth={600}
             mb={2}
+            gap={2}
           >
             <Box display={"flex"} flexDirection={"column"} sx={{ mr: 0 }}>
               <InputSelect
@@ -184,56 +179,13 @@ export const DashboardPage = () => {
         </Box>
       </Container>
       {isOpen && (
-        <Container maxWidth="xl" sx={style.container}>
+        <Container
+          maxWidth="xl"
+          sx={{ ...style.container, p: "0 !important", overflow: "hidden" }}
+        >
           <SkillsTable />
         </Container>
       )}
     </>
   );
 };
-
-//{  VERSIONE PRECEDENTE COMPONENTE COURSE
-/* <Box display={"flex"} flexDirection={"column"}>
-              <Autocomplete
-                disablePortal
-                id="combo-box-demo"
-                options={
-                  allCoursessData?.data?.final_object
-                    ? allCoursessData.data.final_object.map(
-                        (educationalLevel: ResponseElementObjectData) =>
-                          educationalLevel?.name
-                      )
-                    : []
-                }
-                onChange={(_, newValue) => {
-                  console.log(newValue);
-                  if (newValue === null) {
-                    setSelectedInput({
-                      ...selectedInput,
-                      course: obj, //soluzione non corretta, funziona solo perchè abbiamo un dato solo
-                      //newValue || ""
-                    });
-                  } else {
-                    setSelectedInput({
-                      ...selectedInput,
-                      course: allCoursessData?.data?.final_object[0], //soluzione non corretta, funziona solo perchè abbiamo un dato solo
-                      //newValue || ""
-                    });
-                  }
-                }}
-
-                noOptionsText={
-                  <Button>{t("pages.dashboard.search.noOptions")}</Button>
-                }
-                sx={{
-                  width: 180,
-                }}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    label={t("pages.dashboard.search.course")}
-                  />
-                )}
-              />
-            </Box> */
-//}

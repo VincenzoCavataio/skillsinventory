@@ -7,6 +7,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import useApi from "../../utilities/useApi";
 import { allUserDataByUserId } from "./UserPage.controller";
 import { PAGES } from "../../constants";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { selectUser } from "../../redux/userSlice";
 
 export type Payload = {
   userId: string;
@@ -15,16 +18,24 @@ export type Payload = {
 
 export const UserPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { id } = useParams();
-  const { notFoundPage } = PAGES;
 
+  const { notFoundPage } = PAGES;
   const payload: Payload = { userId: id || "", dataType: "full" };
 
   const userDataByUserId = useApi(allUserDataByUserId(payload));
 
+  useEffect(() => {
+    dispatch(selectUser(userDataByUserId.data));
+  }, [dispatch, navigate, notFoundPage, userDataByUserId]);
+
   if (userDataByUserId.data === undefined || userDataByUserId.data === "") {
+    console.log(userDataByUserId.data);
     navigate(notFoundPage);
   }
+
+  console.log({ userDataByUserId });
 
   return (
     <Box>

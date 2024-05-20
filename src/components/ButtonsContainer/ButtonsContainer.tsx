@@ -1,5 +1,3 @@
-// import { Box, Container } from "@mui/material";
-// import { style } from "./style";
 import { CustomButton } from "../CustomButton";
 import { t } from "i18next";
 import SearchIcon from "@mui/icons-material/Search";
@@ -20,7 +18,7 @@ export const ButtonsContainer = ({
 }) => {
   const dispatch = useDispatch();
 
-  const init = {
+  const init: CompiledFields = {
     fullName: "",
     skill: "",
     certification: [],

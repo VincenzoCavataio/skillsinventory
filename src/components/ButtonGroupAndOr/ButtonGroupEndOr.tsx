@@ -13,7 +13,6 @@ export const ButtonGroupAndOr = () => {
       value={value}
       aria-label={t(`pages.dashboard.slider.buttonContainerl`)}
       sx={{ background: commonColors.accentColor }}
-      style={{}}
     >
       <ToggleButton
         key={"AND"}

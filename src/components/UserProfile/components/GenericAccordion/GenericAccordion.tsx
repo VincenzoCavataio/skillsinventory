@@ -22,7 +22,7 @@ export const GenericAccordion = ({ action, label, state }: Props) => {
   };
 
   return (
-    <Accordion disableGutters>
+    <Accordion disableGutters sx={{ boxShadow: "none" }}>
       <AccordionSummary
         expandIcon={
           <ArrowDropDownIcon sx={{ color: commonColors.accentColor }} />

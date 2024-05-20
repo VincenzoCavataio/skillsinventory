@@ -41,7 +41,7 @@ export const MOCK_USER_DATA_ADDRESS: string[] = [
 ];
 
 export const PAGES = {
-  dashboardPage: "/dashboard",
+  dashboardPage: "/",
   userPage: "/user",
   notFoundPage: "/notFound",
 };

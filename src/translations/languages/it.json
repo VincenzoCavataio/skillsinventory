@@ -51,13 +51,14 @@
           "certificates": "Certificati"
         },
         "informationDetails": {
-          "fullName": "Nome Completo",
-          "email": "E-Mail",
-          "firstEmploymentStartDate": "Data di primo impiego",
-          "actualEmploymentStartDate": "Data di impiego attuale",
-          "privateNumber": "Numero Privato",
-          "workNumber": "Numero di Lavoro",
-          "address": "Indirizzo"
+          "id": "Id",
+          "gender": "Sesso",
+          "firstName": "Nome",
+          "lastName": "Cognome",
+          "email_login": "E-Mail",
+          "personalPhoneNumber": "Numero di Telefono",
+          "driver_license": "Patente",
+          "birthDate": "Compleanno"
         }
       },
       "notFound": {

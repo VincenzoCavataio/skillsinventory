@@ -22,7 +22,9 @@ export type ReduxStore = {
   filters?: Filters;
   skills?: { skills: Skill[] };
   search?: { filters: Omit<CompiledFieldsWithID, "skill"> };
+  user?: Record<string | number, Record<string, string | number>>;
 };
+
 export type Filtri = {
   skills: Skill[];
   fullName: string;

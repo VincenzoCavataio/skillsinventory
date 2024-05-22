@@ -7,7 +7,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { commonColors } from "../../common/commonColors";
 import useApi from "../../utilities/useApi";
-import { allTabledata } from "./SkillsTable.controller";
+import { allTabledata } from "../SkillsTable/SkillsTable.controller";
 import { useSelector } from "react-redux";
 
 import { ReduxStore } from "../../redux/types";
@@ -17,7 +17,7 @@ import { PAGES } from "../../constants";
 
 // TODO: componente bozza, da fare per bene
 
-export const SkillsTable = () => {
+export const SkillsTable2 = () => {
   const navigate = useNavigate();
   const { userPage } = PAGES;
 
@@ -28,28 +28,31 @@ export const SkillsTable = () => {
   };
 
   function createData(
+    userId: string,
     lastName: string,
     firstName: string,
-
-    education: string,
-    addressInfo: string,
-    certifications: string,
-    userId: string
+    skillsList: string[],
+    skillsRanking: string,
+    anniEsperienza: string,
+    educationList: string,
+    residenceInfo: string,
+    certificationList: string
   ) {
     return {
+      userId,
       lastName,
       firstName,
-
-      education,
-      addressInfo,
-      certifications,
-      userId,
+      skillsList,
+      skillsRanking,
+      anniEsperienza,
+      educationList,
+      residenceInfo,
+      certificationList,
     };
   }
 
   const filterStore = useSelector((state: ReduxStore) => state.search);
   const skillsFilterStore = useSelector((state: ReduxStore) => state.skills);
-
   const allCertificationsID =
     filterStore?.filters?.certification?.map(
       (certification) => certification.id
@@ -57,6 +60,7 @@ export const SkillsTable = () => {
   const allSkillsFilter = skillsFilterStore?.skills.map(
     (skill) => `${skill.id};${skill.operator}${skill.level}`
   );
+  console.log(allSkillsFilter);
 
   const FAKE_PAYLOAD = {
     "starting-from": "P_FETCH_FIRST:0",
@@ -101,13 +105,15 @@ export const SkillsTable = () => {
 
   const rows = tableData?.map((data) =>
     createData(
+      data.userId,
       data.lastName,
       data.firstName,
-
+      data.skillsList,
+      data.skillsRanking,
+      data.anniEsperienza,
       data.educationList,
       data.residenceInfo,
-      data.certificationList,
-      data.userId
+      data.certificationList
     )
   );
 
@@ -122,35 +128,49 @@ export const SkillsTable = () => {
               N.
             </TableCell>
             <TableCell
-              sx={[tableHeaderStyle, { width: 40, color: commonColors.title }]}
+              sx={[tableHeaderStyle, { width: 40, color: commonColors.white }]}
               align="right"
             >
               Last Name
             </TableCell>
             <TableCell
-              sx={[tableHeaderStyle, { width: 40, color: commonColors.title }]}
+              sx={[tableHeaderStyle, { width: 40, color: commonColors.white }]}
               align="right"
             >
               First Name
             </TableCell>
-
             <TableCell
-              sx={[tableHeaderStyle, { width: 150, color: commonColors.title }]}
+              sx={[tableHeaderStyle, { width: 70, color: commonColors.white }]}
+              align="right"
+            >
+              Skills
+            </TableCell>
+            <TableCell
+              sx={[tableHeaderStyle, { width: 40, color: commonColors.white }]}
+              align="right"
+            >
+              Ranking
+            </TableCell>
+            <TableCell
+              sx={[tableHeaderStyle, { width: 40, color: commonColors.white }]}
+              align="right"
+            >
+              Years of Experience
+            </TableCell>
+            <TableCell
+              sx={[tableHeaderStyle, { width: 150, color: commonColors.white }]}
               align="right"
             >
               Education
             </TableCell>
             <TableCell
-              sx={[tableHeaderStyle, { width: 150, color: commonColors.title }]}
+              sx={[tableHeaderStyle, { width: 150, color: commonColors.white }]}
               align="right"
             >
               Address
             </TableCell>
             <TableCell
-              sx={[
-                tableHeaderStyle,
-                { width: 150, color: commonColors.title, fontWeight: "bold" },
-              ]}
+              sx={[tableHeaderStyle, { width: 150, color: commonColors.white }]}
               align="right"
             >
               Certification
@@ -177,10 +197,15 @@ export const SkillsTable = () => {
                   />
                 </TableCell>
                 <TableCell align="center">{row.firstName}</TableCell>
+                <TableCell align="center">
+                  {row?.skillsList?.join(", ")}
+                </TableCell>
 
-                <TableCell align="center">{row.education}</TableCell>
-                <TableCell align="center">{row.addressInfo}</TableCell>
-                <TableCell align="center">{row.certifications}</TableCell>
+                <TableCell align="center">{row.skillsRanking}</TableCell>
+                <TableCell align="center">{row.anniEsperienza}</TableCell>
+                <TableCell align="center">{row.educationList}</TableCell>
+                <TableCell align="center">{row.residenceInfo}</TableCell>
+                <TableCell align="center">{row.certificationList}</TableCell>
               </TableRow>
             ))}
           {rows?.length === 0 && (

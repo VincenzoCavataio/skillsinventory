@@ -20,6 +20,9 @@ import { SkillsTable } from "../../components/SkillsTable/SkillsTable";
 import { AddSkillsWindows } from "../../components/AddSkillsWindow";
 import { updateFilter } from "../../redux/searchSlice";
 import { InputChecks2 } from "../../components/InputCheck2";
+import SkillTableData from "../../components/SkillTableData/SkillTableData";
+import { SkillsTable2 } from "../../components/SkillsTable2";
+import { SkillTableBuild } from "../../components/SkillTableBuild";
 
 type Values = {
   value: string;
@@ -178,14 +181,15 @@ export const DashboardPage = () => {
           </Box>
         </Box>
       </Container>
-      {isOpen && (
-        <Container
-          maxWidth="xl"
-          sx={{ ...style.container, p: "0 !important", overflow: "hidden" }}
-        >
-          <SkillsTable />
-        </Container>
-      )}
+      {/* {isOpen && ( */}
+      <Container
+        maxWidth="xl"
+        sx={{ ...style.container, p: "0 !important", overflow: "hidden" }}
+      >
+        <SkillTableBuild />
+        {/* <SkillsTable2 /> */}
+      </Container>
+      {/* )}*/}
     </>
   );
 };

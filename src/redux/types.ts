@@ -23,6 +23,7 @@ export type ReduxStore = {
   skills?: { skills: Skill[] };
   search?: { filters: Omit<CompiledFieldsWithID, "skill"> };
   user?: ProfilePageType;
+  pagination?: PaginationSettings;
 };
 
 export type Filtri = {
@@ -72,4 +73,8 @@ export type UserSkill = {
   certificationList?: string[];
   educationList?: string[];
   skillList?: string[];
+};
+export type PaginationSettings = {
+  itemNumber?: number;
+  pageStart: number;
 };

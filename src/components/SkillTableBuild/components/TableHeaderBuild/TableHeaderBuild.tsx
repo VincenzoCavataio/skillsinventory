@@ -1,74 +1,92 @@
-import { TableCell, TableHead, TableRow } from "@mui/material";
+import { TableHead, TableRow } from "@mui/material";
 import { commonColors } from "../../../../common/commonColors";
 import { useSelector } from "react-redux";
 import { ReduxStore } from "../../../../redux/types";
-import { tableHeaderStyle } from "../../style";
-
+import { HeaderCustomCell } from "../HeaderCustomCell";
+import { HeadCells } from "../../types";
 export const TableHeaderBuild = () => {
   const skillsFilterStore = useSelector((state: ReduxStore) => state.skills);
   const allSkillsFilter = skillsFilterStore?.skills.map(
     (skill) => `${skill.id};${skill.operator}${skill.level}`
   );
+
+  const headCells: readonly HeadCells[] = [
+    {
+      id: "userId",
+      numeric: false,
+      disablePadding: true,
+      label: "ID",
+      sorted: false,
+    },
+    {
+      id: "lastName",
+      numeric: false,
+      disablePadding: true,
+      label: "Last Name",
+      sorted: true,
+    },
+    {
+      id: "firstName",
+      numeric: false,
+      disablePadding: false,
+      label: "First Name",
+      sorted: true,
+    },
+    {
+      id: "skillsList",
+      numeric: true,
+      disablePadding: false,
+      label: "Skills list",
+      sorted: false,
+    },
+    {
+      id: "skillsRanking",
+      numeric: true,
+      disablePadding: false,
+      label: "Ranking",
+      sorted: true,
+    },
+    {
+      id: "anniEsperienza",
+      numeric: true,
+      disablePadding: false,
+      label: "Experience Years",
+      sorted: true,
+    },
+    {
+      id: "educationList",
+      numeric: false,
+      disablePadding: false,
+      label: "Education",
+      sorted: true,
+    },
+    {
+      id: "residenceInfo",
+      numeric: false,
+      disablePadding: false,
+      label: "Address",
+      sorted: true,
+    },
+    {
+      id: "certificationList",
+      numeric: false,
+      disablePadding: false,
+      label: "Certifications",
+      sorted: true,
+    },
+  ];
+  let visible: number;
+  if (allSkillsFilter) {
+    visible = allSkillsFilter.length;
+  } else {
+    visible = 0;
+  }
   return (
     <TableHead sx={{ background: commonColors.accentColor }}>
       <TableRow>
-        <TableCell
-          sx={[tableHeaderStyle, { width: 10, color: commonColors.white }]}
-        >
-          ID
-        </TableCell>
-        <TableCell
-          sx={[tableHeaderStyle, { width: 40, color: commonColors.white }]}
-          align="right"
-        >
-          Last Name
-        </TableCell>
-        <TableCell
-          sx={[tableHeaderStyle, { width: 40, color: commonColors.white }]}
-          align="right"
-        >
-          First Name
-        </TableCell>
-        {allSkillsFilter.length > 0 && (
-          <>
-            <TableCell
-              sx={[tableHeaderStyle, { width: 70, color: commonColors.white }]}
-              align="right"
-            >
-              Skills
-            </TableCell>
-            <TableCell
-              sx={[tableHeaderStyle, { width: 40, color: commonColors.white }]}
-              align="right"
-            >
-              Ranking
-            </TableCell>
-            <TableCell
-              sx={[tableHeaderStyle, { width: 40, color: commonColors.white }]}
-              align="right"
-            >
-              Years of Experience
-            </TableCell>
-          </>
-        )}
-        <TableCell
-          sx={[tableHeaderStyle, { width: 150, color: commonColors.white }]}
-          align="right"
-        >
-          Education
-        </TableCell>
-        <TableCell
-          sx={[tableHeaderStyle, { width: 150, color: commonColors.white }]}
-          align="right"
-        >
-          Address
-        </TableCell>
-        <TableCell
-          sx={[tableHeaderStyle, { width: 150, color: commonColors.white }]}
-          align="right"
-        >
-          Certification
-        </TableCell>
+        {headCells.map((headCell) => (
+          <HeaderCustomCell headCell={headCell} visible={visible} />
+        ))}
       </TableRow>
     </TableHead>
   );

@@ -24,4 +24,5 @@ export const style: Record<string, CSSProperties> = {
     display: "flex",
     overflowX: "scroll",
   },
+
 };

@@ -307,8 +307,8 @@ export default function SkillTableData() {
     "levels-filter": `EDU_LEVELS:${filterStore?.filters.educationalLevel?.id}`,
     "institute-filter": `INSTITUTES:${filterStore?.filters.institute?.id}`,
   };
-  const tableData = useApi(allTabledata(FAKE_PAYLOAD))?.data;
-  if (
+  const tableData = useApi(allTabledata(generatePayloadForTableFilter( + le variabili)))?.data;
+  if ( //esempio di come passarlo
     tableData &&
     tableData.length &&
     tableData[tableData.length - 1].totalResult

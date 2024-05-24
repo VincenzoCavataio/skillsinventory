@@ -8,6 +8,11 @@ export const TableBodyBuild = ({ rows }) => {
   const navigate = useNavigate();
   const { userPage } = PAGES;
   const skillsFilterStore = useSelector((state: ReduxStore) => state.skills);
+  const paginationFilterStore = useSelector(
+    (state: ReduxStore) => state.pagination
+  );
+  const paginationFilterPage = paginationFilterStore?.pageStart;
+  const paginationFilterNumber = paginationFilterStore?.itemNumber;
   const allSkillsFilter = skillsFilterStore?.skills.map(
     (skill) => `${skill.id};${skill.operator}${skill.level}`
   );
@@ -22,6 +27,9 @@ export const TableBodyBuild = ({ rows }) => {
               "&:last-child td, &:last-child th": { border: 0 },
             }}
           >
+            <TableCell align="center" component="th" scope="row">
+              {index + 1 + (paginationFilterPage - 1) * paginationFilterNumber}
+            </TableCell>
             <TableCell align="center" component="th" scope="row">
               <Chip
                 label={row.userId}

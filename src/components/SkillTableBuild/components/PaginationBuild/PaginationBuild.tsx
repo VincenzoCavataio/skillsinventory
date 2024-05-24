@@ -18,11 +18,11 @@ import { ReduxStore } from "../../../../redux/types";
 
 const SmallTextField = styled(TextField)(({ theme }) => ({
   "& .MuiInputBase-root": {
-    padding: "3px 4px",
+    padding: "3px 3px",
     fontSize: "0.875rem",
   },
   "& .MuiOutlinedInput-input": {
-    padding: "3px 4px",
+    padding: "3px 3px",
     "& .MuiInputLabel-root": {
       fontSize: "0.875rem",
     },
@@ -46,7 +46,7 @@ export const PaginationBuild: React.FC<PaginationBuildProps> = ({
     dispatch(itemPageFilters({ pageStart: Number(value) }));
   };
 
-  const count = Math.round(totalRowsNumber?.totalResult / itemNumber);
+  const count = Math.ceil(totalRowsNumber?.totalResult / itemNumber);
 
   const elementsPerPage: string = `N. elementi per pagina`;
 
@@ -69,7 +69,7 @@ export const PaginationBuild: React.FC<PaginationBuildProps> = ({
           {elementsPerPage}
         </Typography>
         <SmallTextField
-          sx={{ width: 50, height: 32, backgroundColor: "white" }}
+          sx={{ width: 54, height: 32, backgroundColor: "white" }}
           type="number"
           value={itemNumber}
           onChange={handleChange}

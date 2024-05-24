@@ -12,6 +12,13 @@ export const TableHeaderBuild = () => {
 
   const headCells: readonly HeadCells[] = [
     {
+      id: "userN",
+      numeric: false,
+      disablePadding: true,
+      label: "N°",
+      sorted: false,
+    },
+    {
       id: "userId",
       numeric: false,
       disablePadding: true,

@@ -22,7 +22,7 @@ export const generatePayloadForTableFilter = ({
   let fetchPagination: number;
   {
     if (paginationFilterPage > 1) {
-      fetchPagination = paginationFilterNumber * paginationFilterPage;
+      fetchPagination = paginationFilterNumber * (paginationFilterPage - 1);
     } else {
       fetchPagination = 0;
     }

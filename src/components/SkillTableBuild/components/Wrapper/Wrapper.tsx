@@ -73,7 +73,7 @@ export const Wrapper = () => {
       data.certificationList
     )
   );
-
+  console.log(rows, tableData);
   let numberOfProperties: number = 0;
   if (rows) {
     numberOfProperties = Object.keys(rows).length;

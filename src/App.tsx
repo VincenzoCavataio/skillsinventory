@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { DashboardPage } from "./pages/DashboardPage";
 import { UserPage } from "./pages/UserPage/UserPage";
+import { LoginPage } from "./pages/LoginPage";
 
 const App = () => {
   return (
@@ -10,7 +11,7 @@ const App = () => {
         <Route path="home" element={<h1>Home Page</h1>} />
         <Route path="" element={<DashboardPage />} />
         <Route path="user/:id" element={<UserPage />} />
-        <Route path="login" element={<h1>Login Page</h1>} />
+        <Route path="login" element={<LoginPage />} />
         <Route path="signin" element={<h1>Signin Page</h1>} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

@@ -21,5 +21,17 @@ export type TablePaginationActionsProps = {
 };
 export type PaginationBuildProps = {
   rows: number;
-  totalRowsNumber?: Record<string, number>;
+  totalRowsNumber?: Record<"totalResult", number>;
+};
+
+export type TableData = {
+  userId: string;
+  lastName: string;
+  firstName: string;
+  skillsList?: string[];
+  skillsRanking?: string;
+  anniEsperienza?: string;
+  educationList: string;
+  residenceInfo: string;
+  certificationList: string;
 };

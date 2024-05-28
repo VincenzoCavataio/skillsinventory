@@ -7,7 +7,6 @@ import {
   Typography,
 } from "@mui/material";
 import { PaginationBuildProps } from "../../types";
-import { useState } from "react";
 import { styled } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -16,7 +15,8 @@ import {
 } from "../../../../redux/paginationSlice";
 import { ReduxStore } from "../../../../redux/types";
 
-const SmallTextField = styled(TextField)(({ theme }) => ({
+//TODO: tenere solo se necessario, in ogni caso va spostato dentro un file style.tsx nella stessa cartella
+const SmallTextField = styled(TextField)(() => ({
   "& .MuiInputBase-root": {
     padding: "3px 3px",
     fontSize: "0.875rem",
@@ -29,12 +29,10 @@ const SmallTextField = styled(TextField)(({ theme }) => ({
   },
 }));
 
+//TODO: sistemare gli errori
 export const PaginationBuild: React.FC<PaginationBuildProps> = ({
-  rows,
   totalRowsNumber,
 }) => {
-  const [value, setValue] = useState(20);
-  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
   const { itemNumber, pageStart } = useSelector(
     (state: ReduxStore) => state.pagination
@@ -42,7 +40,7 @@ export const PaginationBuild: React.FC<PaginationBuildProps> = ({
   const handleChange = (event) => {
     dispatch(itemNumberFilter({ itemNumber: Number(event.target.value) }));
   };
-  const handlePageChange = (event, value) => {
+  const handlePageChange = (_, value) => {
     dispatch(itemPageFilters({ pageStart: Number(value) }));
   };
 

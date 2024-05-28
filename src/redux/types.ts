@@ -2,7 +2,8 @@ import { CompiledFieldsWithID } from "../pages/DashboardPage/types";
 
 export type Skill = {
   name: string;
-  operator: string;
+  /** QUANDO BE FIXA CAMBIAMO IN SOLO STRING */
+  operator: Record<string, string> | string;
   level: number;
   id?: number;
   selected?: boolean;

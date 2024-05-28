@@ -16,13 +16,12 @@ import useApi from "../../utilities/useApi";
 import { InputChecks } from "../../components/InputCheck/InputCheck";
 import { InputSelect } from "../../components/InputSelect/InputSelect";
 import { ButtonsContainer } from "../../components/ButtonsContainer";
-import { SkillsTable } from "../../components/SkillsTable/SkillsTable";
 import { AddSkillsWindows } from "../../components/AddSkillsWindow";
 import { updateFilter } from "../../redux/searchSlice";
 import { InputChecks2 } from "../../components/InputCheck2";
-import SkillTableData from "../../components/SkillTableData/SkillTableData";
-import { SkillsTable2 } from "../../components/SkillsTable2";
 import { SkillTableBuild } from "../../components/SkillTableBuild";
+import { useNavigate } from "react-router-dom";
+import { PAGES } from "../../constants";
 
 type Values = {
   value: string;
@@ -48,10 +47,24 @@ export const DashboardPage = () => {
   const [selectedInput, setSelectedInput] = useState<CompiledFieldsWithID>({});
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(updateFilter({ filters: selectedInput }));
   }, [dispatch, selectedInput]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("authToken");
+    //TODO: magari aggiungere un controllo con una chiamata di healthcheck (da parlare con BE)
+    if (!token) {
+      //TODO: si attiva la modale
+      /** QUI LA MODALE */
+
+      //TODO: spostare il navigate dentro il tasto conferma della modal
+      navigate(PAGES.loginPage);
+    }
+    //TODO: al posto di spararti verso login, magari appare una modalina che dice 'utente non loggato, clicca qui per effettuare login', al click del bottone, navigate verso loginPage
+  }, [navigate]);
 
   // TODO: aggiungere fallback, forse meglio dentro UseApi
   const allEducationalData = useApi(allEducationalMetadata);
@@ -61,7 +74,9 @@ export const DashboardPage = () => {
   const allInstitutesData = useApi(allInstitutesMetadata);
   const allCoursessData = useApi(allCoursesMetadata);
 
+  //TODO: forse non serve più, assicurarsene ed eventualmente eliminarlo.
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <HeaderNavbar />
@@ -110,6 +125,7 @@ export const DashboardPage = () => {
                 data={allEducationalData?.data}
                 label={t("pages.dashboard.search.certification")}
                 width={180}
+                //TODO: capire perché danno errori (forse tipi sbagliati?)
                 setSelectedInput={setSelectedInput}
                 selectedInput={selectedInput}
                 objKey="certification"
@@ -181,15 +197,12 @@ export const DashboardPage = () => {
           </Box>
         </Box>
       </Container>
-      {/* {isOpen && ( */}
       <Container
         maxWidth="xl"
         sx={{ ...style.container, p: "0 !important", overflow: "hidden" }}
       >
         <SkillTableBuild />
-        {/* <SkillsTable2 /> */}
       </Container>
-      {/* )}*/}
     </>
   );
 };

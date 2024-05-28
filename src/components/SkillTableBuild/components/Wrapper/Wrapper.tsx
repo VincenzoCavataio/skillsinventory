@@ -7,6 +7,7 @@ import { ReduxStore } from "../../../../redux/types";
 import { TableBodyBuild } from "../TableBodyBuild";
 import { PaginationBuild } from "../PaginationBuild";
 import { generatePayloadForTableFilter } from "../../../../utilities/generatePayloadForTableFilter";
+import { TableData } from "../../types";
 
 export const Wrapper = () => {
   const filterStore = useSelector((state: ReduxStore) => state.search);
@@ -28,9 +29,9 @@ export const Wrapper = () => {
     userId: string,
     lastName: string,
     firstName: string,
-    skillsList: string[],
-    skillsRanking: string,
-    anniEsperienza: string,
+    skillsList: string[] | undefined,
+    skillsRanking: string | undefined,
+    anniEsperienza: string | undefined,
     educationList: string,
     residenceInfo: string,
     certificationList: string
@@ -47,32 +48,39 @@ export const Wrapper = () => {
       certificationList,
     };
   }
-  const tableData = useApi(
-    allTabledata(
-      generatePayloadForTableFilter({
-        filterStore,
-        allCertificationsID,
-        allSkillsFilter,
-        paginationFilterNumber,
-        paginationFilterPage,
-      })
-    )
-  )?.data;
-  const totalCount = tableData && tableData[tableData?.length - 1];
+  const tableData: TableData[] =
+    useApi(
+      allTabledata(
+        generatePayloadForTableFilter({
+          filterStore,
+          allCertificationsID,
+          allSkillsFilter,
+          paginationFilterNumber,
+          paginationFilterPage,
+        })
+      )
+    ).data ?? [];
 
-  const rows = tableData?.map((data) =>
-    createData(
-      data.userId,
-      data.lastName,
-      data.firstName,
-      data.skillsList,
-      data.skillsRanking,
-      data.anniEsperienza,
-      data.educationList,
-      data.residenceInfo,
-      data.certificationList
-    )
-  );
+  const totalCount = tableData && tableData[tableData.length - 1];
+
+  console.log(tableData);
+
+  const rows = tableData
+    ? tableData?.map((data: TableData) =>
+        createData(
+          data.userId,
+          data.lastName,
+          data.firstName,
+          data.skillsList,
+          data.skillsRanking,
+          data.anniEsperienza,
+          data.educationList,
+          data.residenceInfo,
+          data.certificationList
+        )
+      )
+    : [];
+
   console.log(rows, tableData);
   let numberOfProperties: number = 0;
   if (rows) {
@@ -81,17 +89,14 @@ export const Wrapper = () => {
     numberOfProperties = 0;
   }
   return (
-    <>
-      <TableContainer component={Paper}>
-        <PaginationBuild
-          rows={numberOfProperties}
-          totalRowsNumber={totalCount}
-        />
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHeaderBuild />
-          <TableBodyBuild rows={rows} />
-        </Table>
-      </TableContainer>
-    </>
+    //TODO: capire perché si spacca quando []/undefined/null come risultato
+    //TODO: cambiare nome componente in : TableHeader & TableBody
+    <TableContainer component={Paper}>
+      <PaginationBuild totalRowsNumber={totalCount} />
+      <Table sx={{ minWidth: 650 }} aria-label="skills table">
+        <TableHeaderBuild />
+        <TableBodyBuild rows={rows} />
+      </Table>
+    </TableContainer>
   );
 };

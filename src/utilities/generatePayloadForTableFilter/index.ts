@@ -53,9 +53,13 @@ export const generatePayloadForTableFilter = ({
         : ""
     }`,
     "ranking-order": "DEFAULT",
-    "course-filter": `COURSES:${filterStore?.filters.course?.id}`,
-    "levels-filter": `EDU_LEVELS:${filterStore?.filters.educationalLevel?.id}`,
-    "institute-filter": `INSTITUTES:${filterStore?.filters.institute?.id}`,
+    "course-filter": `COURSES:${filterStore?.filters.course?.id || ""}`,
+    "levels-filter": `EDU_LEVELS:${
+      filterStore?.filters.educationalLevel?.id || ""
+    }`,
+    "institute-filter": `INSTITUTES:${
+      filterStore?.filters.institute?.id || ""
+    }`,
   };
 
   return generatedPayload;

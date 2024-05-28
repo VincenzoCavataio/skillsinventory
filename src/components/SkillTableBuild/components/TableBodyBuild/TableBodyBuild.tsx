@@ -3,24 +3,31 @@ import { useNavigate } from "react-router-dom";
 import { PAGES } from "../../../../constants";
 import { useSelector } from "react-redux";
 import { ReduxStore } from "../../../../redux/types";
+import { TableData } from "../../types";
 
-export const TableBodyBuild = ({ rows }) => {
+type Props = {
+  rows: TableData[];
+};
+
+export const TableBodyBuild = ({ rows }: Props) => {
   const navigate = useNavigate();
   const { userPage } = PAGES;
   const skillsFilterStore = useSelector((state: ReduxStore) => state.skills);
   const paginationFilterStore = useSelector(
     (state: ReduxStore) => state.pagination
   );
-  const paginationFilterPage = paginationFilterStore?.pageStart;
-  const paginationFilterNumber = paginationFilterStore?.itemNumber;
-  const allSkillsFilter = skillsFilterStore?.skills.map(
-    (skill) => `${skill.id};${skill.operator}${skill.level}`
-  );
+  const paginationFilterPage = paginationFilterStore?.pageStart ?? 0;
+  const paginationFilterNumber = paginationFilterStore?.itemNumber ?? 0;
+  const allSkillsFilter =
+    skillsFilterStore?.skills.map(
+      (skill) => `${skill.id};${skill.operator}${skill.level}`
+    ) ?? [];
+
   return (
     <TableBody>
       {rows &&
         rows.length > 0 &&
-        rows?.map((row, index) => (
+        rows?.map((row: TableData, index: number) => (
           <TableRow
             key={index}
             sx={{

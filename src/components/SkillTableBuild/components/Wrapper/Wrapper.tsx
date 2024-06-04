@@ -1,7 +1,7 @@
 import { Paper, Table, TableContainer } from "@mui/material";
 import { TableHeaderBuild } from "../TableHeaderBuild";
 import useApi from "../../../../utilities/useApi";
-import { allTabledata } from "../../../SkillsTable/SkillsTable.controller";
+import { allTabledata } from "../../SkillsTable.controller";
 import { useSelector } from "react-redux";
 import { ReduxStore } from "../../../../redux/types";
 import { TableBodyBuild } from "../TableBodyBuild";

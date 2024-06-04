@@ -25,6 +25,7 @@ export type ReduxStore = {
   search?: { filters: Omit<CompiledFieldsWithID, "skill"> };
   user?: ProfilePageType;
   pagination?: PaginationSettings;
+  sorting: { sort: Sorting[] };
 };
 
 export type Filtri = {
@@ -78,4 +79,8 @@ export type UserSkill = {
 export type PaginationSettings = {
   itemNumber?: number;
   pageStart: number;
+};
+export type Sorting = {
+  order: string;
+  label: string;
 };

@@ -8,6 +8,7 @@ export const generatePayloadForTableFilter = ({
   filterStore,
   paginationFilterNumber,
   paginationFilterPage,
+  sortingManagementFilter,
 }: {
   allSkillsFilter: string[] | undefined;
   allCertificationsID: number[];
@@ -18,6 +19,7 @@ export const generatePayloadForTableFilter = ({
     | undefined;
   paginationFilterNumber: number | undefined;
   paginationFilterPage: number | undefined;
+  sortingManagementFilter: string[];
 }) => {
   let fetchPagination: number;
   {
@@ -27,6 +29,7 @@ export const generatePayloadForTableFilter = ({
       fetchPagination = 0;
     }
   }
+
   const generatedPayload = {
     "starting-from": `P_FETCH_FIRST:${fetchPagination}`,
     "number-of-items": `P_OFFSET:${paginationFilterNumber}`,
@@ -44,15 +47,15 @@ export const generatePayloadForTableFilter = ({
       filterStore?.filters.fullName ? `|${filterStore?.filters.fullName}|` : ""
     }`,
     isAnd: "OR",
-    "name-ascending": "",
-    "edu-ascending": "",
-    "city-ascending": "",
+    "name-ascending": `${sortingManagementFilter[0]}`,
+    "edu-ascending": `${sortingManagementFilter[1]}`,
+    "city-ascending": `${sortingManagementFilter[2]}`,
     "city-filter": `CITIES:${
       filterStore?.filters.city && filterStore.filters.city.length > 0
         ? `|${filterStore.filters.city.join("|")}|`
         : ""
     }`,
-    "ranking-order": "DEFAULT",
+    "ranking-order": `${sortingManagementFilter[3]}`,
     "course-filter": `COURSES:${filterStore?.filters.course?.id || ""}`,
     "levels-filter": `EDU_LEVELS:${
       filterStore?.filters.educationalLevel?.id || ""

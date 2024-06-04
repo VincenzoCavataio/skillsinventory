@@ -1,4 +1,4 @@
-import { TableHead, TableRow } from "@mui/material";
+import { Checkbox, TableCell, TableHead, TableRow } from "@mui/material";
 import { commonColors } from "../../../../common/commonColors";
 import { useSelector } from "react-redux";
 import { ReduxStore } from "../../../../redux/types";
@@ -17,6 +17,7 @@ export const TableHeaderBuild = () => {
       disablePadding: true,
       label: "N°",
       sorted: false,
+      color: false,
     },
     {
       id: "userId",
@@ -24,6 +25,7 @@ export const TableHeaderBuild = () => {
       disablePadding: true,
       label: "ID",
       sorted: false,
+      color: false,
     },
     {
       id: "lastName",
@@ -31,13 +33,15 @@ export const TableHeaderBuild = () => {
       disablePadding: true,
       label: "Last Name",
       sorted: true,
+      color: false,
     },
     {
       id: "firstName",
       numeric: false,
       disablePadding: false,
       label: "First Name",
-      sorted: true,
+      sorted: false,
+      color: false,
     },
     {
       id: "skillsList",
@@ -45,6 +49,7 @@ export const TableHeaderBuild = () => {
       disablePadding: false,
       label: "Skills list",
       sorted: false,
+      color: false,
     },
     {
       id: "skillsRanking",
@@ -52,6 +57,8 @@ export const TableHeaderBuild = () => {
       disablePadding: false,
       label: "Ranking",
       sorted: true,
+      sortingBE: "RANKING_",
+      color: false,
     },
     {
       id: "anniEsperienza",
@@ -59,6 +66,8 @@ export const TableHeaderBuild = () => {
       disablePadding: false,
       label: "Experience Years",
       sorted: true,
+      sortingBE: "EXP_",
+      color: false,
     },
     {
       id: "educationList",
@@ -66,6 +75,8 @@ export const TableHeaderBuild = () => {
       disablePadding: false,
       label: "Education",
       sorted: true,
+      sortingBE: "EDU_",
+      color: false,
     },
     {
       id: "residenceInfo",
@@ -73,13 +84,16 @@ export const TableHeaderBuild = () => {
       disablePadding: false,
       label: "Address",
       sorted: true,
+      sortingBE: "CITY_",
+      color: false,
     },
     {
       id: "certificationList",
       numeric: false,
       disablePadding: false,
       label: "Certifications",
-      sorted: true,
+      sorted: false,
+      color: false,
     },
   ];
   let visible: number;
@@ -94,6 +108,17 @@ export const TableHeaderBuild = () => {
         {headCells.map((headCell) => (
           <HeaderCustomCell headCell={headCell} visible={visible} />
         ))}
+        <TableCell padding="checkbox">
+          <Checkbox
+            color="secondary"
+            // indeterminate={numSelected > 0 && numSelected < rowCount}
+            // checked={rowCount > 0 && numSelected === rowCount}
+            // onChange={onSelectAllClick}
+            // inputProps={{
+            //   "aria-label": "select all CVs",
+            // }}
+          />
+        </TableCell>
       </TableRow>
     </TableHead>
   );

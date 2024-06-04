@@ -15,6 +15,7 @@ export const Wrapper = () => {
   const paginationFilterStore = useSelector(
     (state: ReduxStore) => state.pagination
   );
+  const sortingFilterStore = useSelector((state: ReduxStore) => state.sorting);
   const allCertificationsID =
     filterStore?.filters?.certification?.map(
       (certification) => certification.id
@@ -24,7 +25,9 @@ export const Wrapper = () => {
   );
   const paginationFilterNumber = paginationFilterStore?.itemNumber;
   const paginationFilterPage = paginationFilterStore?.pageStart;
-
+  const sortingManagementFilter = sortingFilterStore.sort.map(
+    (sort) => `${sort.order}`
+  );
   function createData(
     userId: string,
     lastName: string,
@@ -57,13 +60,12 @@ export const Wrapper = () => {
           allSkillsFilter,
           paginationFilterNumber,
           paginationFilterPage,
+          sortingManagementFilter,
         })
       )
     ).data ?? [];
 
   const totalCount = tableData && tableData[tableData.length - 1];
-
-  console.log(tableData);
 
   const rows = tableData
     ? tableData?.map((data: TableData) =>
@@ -81,13 +83,13 @@ export const Wrapper = () => {
       )
     : [];
 
-  console.log(rows, tableData);
   let numberOfProperties: number = 0;
   if (rows) {
     numberOfProperties = Object.keys(rows).length;
   } else {
     numberOfProperties = 0;
   }
+  // const [checked, setChecked] = useState<TableData[]>([]);
   return (
     //TODO: capire perché si spacca quando []/undefined/null come risultato
     //TODO: cambiare nome componente in : TableHeader & TableBody
@@ -95,6 +97,7 @@ export const Wrapper = () => {
       <PaginationBuild totalRowsNumber={totalCount} />
       <Table sx={{ minWidth: 650 }} aria-label="skills table">
         <TableHeaderBuild />
+        {/* <TableBodyBuild rows={rows} checked={checked} setChecked={setChecked} /> */}
         <TableBodyBuild rows={rows} />
       </Table>
     </TableContainer>

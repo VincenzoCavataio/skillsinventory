@@ -4,64 +4,66 @@ import { tableHeaderStyle } from "../../style";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { HeaderCustomCellProps } from "../../types";
-import { useDispatch } from "react-redux";
-import { updateSort } from "../../../../redux/sortingSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { updateSortDown, updateSortUp } from "../../../../redux/sortingSlice";
+import { ReduxStore } from "../../../../redux/types";
 
 export const HeaderCustomCell: React.FC<HeaderCustomCellProps> = ({
   headCell,
   visible,
 }) => {
-  // const [sortColor, setSortColor] = useState<ColorButtonSettings[]>([
-  //   { label: "Last Name", color: false },
-  //   { label: "Ranking", color: false },
-  //   { label: "Experience Years", color: false },
-  //   { label: "Education", color: false },
-  //   { label: "Address", color: false },
-  // ]);
-  // const [sortUp, setSortUp] = useState<boolean>(false);
-  // const [sortDown, setSortDown] = useState<boolean>(false);
+  const arrowColors = useSelector((state: ReduxStore) => state.sorting.sort);
+  const currentSortState = arrowColors.find(
+    (item) => item.label === headCell.label
+  );
   const dispatch = useDispatch();
   const handleArrowDropUpClick = () => {
-    // if (sortUp === true) {
-    //   setSortDown(false);
-    //   setSortUp(false);
-    // } else {
-    //   setSortUp(true);
-    //   setSortDown(false);
-    // }
     if (headCell.label === "Last Name") {
-      dispatch(updateSort({ label: headCell.label, order: `A-Z` }));
+      dispatch(
+        updateSortUp({
+          label: headCell.label,
+          order: `A-Z`,
+          color: headCell.color,
+        })
+      );
     } else if (headCell.label === "Experience Years") {
       dispatch(
-        updateSort({ label: "Ranking", order: `${headCell.sortingBE}ASC` })
+        updateSortUp({
+          label: "Ranking",
+          order: `${headCell.sortingBE}ASC`,
+          color: headCell.color,
+        })
       );
     } else {
       dispatch(
-        updateSort({ label: headCell.label, order: `${headCell.sortingBE}ASC` })
+        updateSortUp({
+          label: headCell.label,
+          order: `${headCell.sortingBE}ASC`,
+          color: headCell.color,
+        })
       );
     }
   };
 
   const handleArrowDropDownClick = () => {
-    // if (sortDown === true) {
-    //   setSortUp(false);
-    //   setSortDown(false);
-    // } else {
-    //   setSortDown(true);
-    //   setSortUp(false);
-    // }
-
     if (headCell.label === "Last Name") {
-      dispatch(updateSort({ label: headCell.label, order: `Z-A` }));
+      dispatch(
+        updateSortDown({ label: headCell.label, order: `Z-A`, color: true })
+      );
     } else if (headCell.label === "Experience Years") {
       dispatch(
-        updateSort({ label: "Ranking", order: `${headCell.sortingBE}DESC` })
+        updateSortDown({
+          label: "Ranking",
+          order: `${headCell.sortingBE}DESC`,
+          color: true,
+        })
       );
     } else {
       dispatch(
-        updateSort({
+        updateSortDown({
           label: headCell.label,
           order: `${headCell.sortingBE}DESC`,
+          color: true,
         })
       );
     }
@@ -94,14 +96,16 @@ export const HeaderCustomCell: React.FC<HeaderCustomCellProps> = ({
                   >
                     <ArrowDropUpIcon
                       sx={{
-                        color: "white",
+                        color: currentSortState?.colorUp ? "#006fb9" : "white",
                       }}
                     />
                   </IconButton>
                   <IconButton size="small" onClick={handleArrowDropDownClick}>
                     <ArrowDropDownIcon
                       sx={{
-                        color: "white",
+                        color: currentSortState?.colorDown
+                          ? "#006fb9"
+                          : "white",
                       }}
                     />
                   </IconButton>
@@ -135,14 +139,14 @@ export const HeaderCustomCell: React.FC<HeaderCustomCellProps> = ({
                 >
                   <ArrowDropUpIcon
                     sx={{
-                      color: "white",
+                      color: currentSortState?.colorUp ? "#006fb9" : "white",
                     }}
                   />
                 </IconButton>
                 <IconButton size="small" onClick={handleArrowDropDownClick}>
                   <ArrowDropDownIcon
                     sx={{
-                      color: "white",
+                      color: currentSortState?.colorDown ? "#006fb9" : "white",
                     }}
                   />
                 </IconButton>

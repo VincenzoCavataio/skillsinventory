@@ -83,4 +83,6 @@ export type PaginationSettings = {
 export type Sorting = {
   order: string;
   label: string;
+  colorUp: boolean;
+  colorDown: boolean;
 };

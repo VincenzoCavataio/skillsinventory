@@ -83,12 +83,12 @@ export const Wrapper = () => {
       )
     : [];
 
-  let numberOfProperties: number = 0;
-  if (rows) {
-    numberOfProperties = Object.keys(rows).length;
-  } else {
-    numberOfProperties = 0;
-  }
+  // let numberOfProperties: number = 0;
+  // if (rows) {
+  //   numberOfProperties = Object.keys(rows).length;
+  // } else {
+  //   numberOfProperties = 0;
+  // }
   // const [checked, setChecked] = useState<TableData[]>([]);
   return (
     //TODO: capire perché si spacca quando []/undefined/null come risultato

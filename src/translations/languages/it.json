@@ -10,7 +10,9 @@
       "back_home": "Torna alla Home",
       "and": "e",
       "search": "Cerca",
-      "clear": "Reset"
+      "clear": "Reset",
+      "login": "Login effettuato con successo",
+      "loginFail": "Errore durante il login. Riprova."
     },
     "pages": {
       "dashboard": {
@@ -65,6 +67,7 @@
         }
       },
       "notFound": {
+        "credentials": "Credenziali non valide",
         "title": "Pagina non trovata",
         "description": "Mi dispiace ma la pagina che stai cercando non esiste"
       }

@@ -3,31 +3,17 @@ import {
   Pagination,
   Paper,
   TableContainer,
-  TextField,
   Typography,
 } from "@mui/material";
 import { PaginationBuildProps } from "../../types";
-import { styled } from "@mui/material/styles";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
   itemNumberFilter,
   itemPageFilters,
 } from "../../../../redux/paginationSlice";
 import { ReduxStore } from "../../../../redux/types";
-
-//TODO: tenere solo se necessario, in ogni caso va spostato dentro un file style.tsx nella stessa cartella
-const SmallTextField = styled(TextField)(() => ({
-  "& .MuiInputBase-root": {
-    padding: "3px 3px",
-    fontSize: "0.875rem",
-  },
-  "& .MuiOutlinedInput-input": {
-    padding: "3px 3px",
-    "& .MuiInputLabel-root": {
-      fontSize: "0.875rem",
-    },
-  },
-}));
+import { SmallTextField } from "./style";
 
 //TODO: sistemare gli errori
 export const PaginationBuild: React.FC<PaginationBuildProps> = ({
@@ -40,11 +26,14 @@ export const PaginationBuild: React.FC<PaginationBuildProps> = ({
   const handleChange = (event) => {
     dispatch(itemNumberFilter({ itemNumber: Number(event.target.value) }));
   };
-  const handlePageChange = (_, value) => {
+  const handlePageChange = (_, value: number) => {
     dispatch(itemPageFilters({ pageStart: Number(value) }));
   };
+  let count: number = 0;
 
-  const count = Math.ceil(totalRowsNumber?.totalResult / itemNumber);
+  if (totalRowsNumber) {
+    count = Math.ceil(totalRowsNumber?.totalResult / itemNumber);
+  }
 
   const elementsPerPage: string = `N. elementi per pagina`;
 

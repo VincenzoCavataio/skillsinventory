@@ -1,6 +1,7 @@
 import { Dispatch } from "react";
 import { URL } from "../../constants";
 import { AxiosResponse } from "axios";
+import { t } from "i18next";
 
 const ENDPOINT = `${URL}/api/v1/user/login`;
 const ENDPOINT_REFRESHTOKEN = `${URL}/api/v1/user/refreshToken`;
@@ -21,8 +22,7 @@ export async function login(
       body: JSON.stringify(loginData),
     });
 
-    //TODO: utilizzare locales
-    if (!response.ok) throw new Error("Credenziali non valide");
+    if (!response.ok) throw new Error(t("pages.notFound.credentials"));
 
     const { token, refreshToken, role, id } = await response.json();
     //TODO: probabilmente è più corretto metterli nel session, fabrizio aveva detto che le voleva cross tabs ma bisogna vedere. Prima di fare la modifica assicurarsene
@@ -32,11 +32,10 @@ export async function login(
     localStorage.setItem("id", id);
     setToken(token);
 
-    //TODO: utilizzare locales
-    console.log("Login effettuato con successo.");
+    console.log(t("common.login"));
     setLoading(false);
   } catch (error) {
-    alert("Errore durante il login. Riprova.");
+    alert(t("common.loginFail"));
     setLoading(false);
   }
 }

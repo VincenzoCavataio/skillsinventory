@@ -1,1 +1,1 @@
-export { Wrapper as SkillTableBuild } from "./components/Wrapper";
+export { Wrapper as SkillTable } from "./components/Wrapper";

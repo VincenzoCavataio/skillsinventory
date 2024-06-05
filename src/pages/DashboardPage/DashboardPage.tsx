@@ -19,7 +19,7 @@ import { ButtonsContainer } from "../../components/ButtonsContainer";
 import { AddSkillsWindows } from "../../components/AddSkillsWindow";
 import { updateFilter } from "../../redux/searchSlice";
 import { InputChecks2 } from "../../components/InputCheck2";
-import { SkillTableBuild } from "../../components/SkillTableBuild";
+import { SkillTable } from "../../components/SkillTableBuild";
 import { useNavigate } from "react-router-dom";
 import { PAGES } from "../../constants";
 
@@ -76,6 +76,7 @@ export const DashboardPage = () => {
 
   //TODO: forse non serve più, assicurarsene ed eventualmente eliminarlo.
   const [isOpen, setIsOpen] = useState(false);
+  console.log(selectedInput);
 
   return (
     <>
@@ -201,7 +202,7 @@ export const DashboardPage = () => {
         maxWidth="xl"
         sx={{ ...style.container, p: "0 !important", overflow: "hidden" }}
       >
-        <SkillTableBuild />
+        <SkillTable />
       </Container>
     </>
   );

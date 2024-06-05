@@ -9,14 +9,14 @@ import Checkbox from "@mui/material/Checkbox";
 import { t } from "i18next";
 import { InputSelectType } from "../InputSelect/types";
 
-export function InputChecks({
+export const InputChecks = ({
   data,
   label,
   width = 300,
   setSelectedInput,
   selectedInput,
   objKey,
-}: InputSelectType) {
+}: InputSelectType) => {
   const [elements, setElements] = React.useState<string[]>([]);
   const final_object = data?.final_object;
 
@@ -67,4 +67,4 @@ export function InputChecks({
       </Select>
     </FormControl>
   );
-}
+};

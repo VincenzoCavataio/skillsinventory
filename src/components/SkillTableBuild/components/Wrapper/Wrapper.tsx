@@ -92,7 +92,7 @@ export const Wrapper = () => {
   // const [checked, setChecked] = useState<TableData[]>([]);
   return (
     //TODO: capire perché si spacca quando []/undefined/null come risultato
-    //TODO: cambiare nome componente in : TableHeader & TableBody
+    //TODO: cambiare nome componente in : TableHeader & TableBody ----- non me lo fa fare perchè "tableheader e tablebody" sono componenti di mui
     <TableContainer component={Paper}>
       <PaginationBuild totalRowsNumber={totalCount} />
       <Table sx={{ minWidth: 650 }} aria-label="skills table">

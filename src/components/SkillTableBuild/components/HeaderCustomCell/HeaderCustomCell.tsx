@@ -4,7 +4,6 @@ import { tableHeaderStyle } from "../../style";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { HeaderCustomCellProps } from "../../types";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateSort } from "../../../../redux/sortingSlice";
 

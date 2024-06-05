@@ -4,6 +4,8 @@ export type HeadCells = {
   label: string;
   numeric: boolean;
   sorted: boolean;
+  sortingBE?: string;
+  color?: boolean;
 };
 export type HeaderCustomCellProps = {
   headCell: HeadCells;

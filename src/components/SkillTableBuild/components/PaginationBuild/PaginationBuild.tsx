@@ -15,7 +15,7 @@ import {
 import { ReduxStore } from "../../../../redux/types";
 import { SmallTextField } from "./style";
 
-//TODO: sistemare gli errori
+//TODO: sistemare gli errori tentativi commentati (event non usato ma senza quello non funziona)
 export const PaginationBuild: React.FC<PaginationBuildProps> = ({
   totalRowsNumber,
 }) => {
@@ -23,10 +23,15 @@ export const PaginationBuild: React.FC<PaginationBuildProps> = ({
   const { itemNumber, pageStart } = useSelector(
     (state: ReduxStore) => state.pagination
   );
-  const handleChange = (event) => {
+  // const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(itemNumberFilter({ itemNumber: Number(event.target.value) }));
   };
-  const handlePageChange = (_, value: number) => {
+  // const handlePageChange = (_, value: number) => {
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
     dispatch(itemPageFilters({ pageStart: Number(value) }));
   };
   let count: number = 0;

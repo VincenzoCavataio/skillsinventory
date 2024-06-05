@@ -74,9 +74,8 @@ export const DashboardPage = () => {
   const allInstitutesData = useApi(allInstitutesMetadata);
   const allCoursessData = useApi(allCoursesMetadata);
 
-  //TODO: forse non serve più, assicurarsene ed eventualmente eliminarlo.
-  const [isOpen, setIsOpen] = useState(false);
-  console.log(selectedInput);
+  //TODO: forse non serve più, assicurarsene ed eventualmente eliminarlo.  --- dovrebbe funzionare tutto commentandolo, chiedere se effettivamente non serve quindi
+  // const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
@@ -90,7 +89,8 @@ export const DashboardPage = () => {
         }}
       >
         <Box position="relative" width="100%" height="100%">
-          <AddSkillsWindows data={allSkillslData?.data} />
+          <AddSkillsWindows data={allSkillslData?.data} />{" "}
+          {/** HO TENTATO DI SISTEMARE L'ERRORE MA è DENTRO */}
         </Box>
         <Box
           display="flex"
@@ -193,7 +193,7 @@ export const DashboardPage = () => {
           >
             <ButtonsContainer
               setSelectedInput={setSelectedInput}
-              submit={setIsOpen}
+              // submit={setIsOpen}
             />
           </Box>
         </Box>

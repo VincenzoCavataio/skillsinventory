@@ -4,7 +4,14 @@ import { Metadata } from "./types";
 import { t } from "i18next";
 import { refreshAccessToken } from "../generateLogin";
 
+// type Props = {
+//   data: {
+//     final_object?: ResponseElementObjectData[];
+//   };
+// };
+
 const useApi = ({ URL, requestOption }: Metadata) => {
+  // const [data, setData] = useState<Promise<Props | void>>();  TENTATIVO PER FIXARE L'ERRORE
   const [data, setData] = useState<Promise<void>>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<unknown>();

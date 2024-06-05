@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import { SkillSearch } from "../SkillSearch";
 
-type Props = {
+export type Props = {
   data?: {
     final_object?: ResponseElementObjectData[];
   };

@@ -11,10 +11,10 @@ import { Box } from "@mui/material";
 
 export const ButtonsContainer = ({
   setSelectedInput,
-  submit,
-}: {
+}: // submit,
+{
   setSelectedInput: Dispatch<SetStateAction<CompiledFields>>;
-  submit: (value: boolean) => void;
+  // submit: (value: boolean) => void;
 }) => {
   const dispatch = useDispatch();
 
@@ -38,7 +38,7 @@ export const ButtonsContainer = ({
           callback={() => {
             dispatch(resetFilters());
             setSelectedInput(init);
-            submit(false);
+            // submit(false);
           }}
           icon={<CancelButton />}
         />
@@ -52,7 +52,7 @@ export const ButtonsContainer = ({
           color={"primary"}
           variant="outlined"
           callback={() => {
-            submit(true);
+            // submit(true);
           }}
           icon={<SearchIcon />}
         />

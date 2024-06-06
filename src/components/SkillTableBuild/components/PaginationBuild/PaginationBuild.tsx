@@ -71,6 +71,9 @@ export const PaginationBuild: React.FC<PaginationBuildProps> = ({
           InputLabelProps={{
             shrink: true,
           }}
+          inputProps={{
+            min: 0,
+          }}
           variant="outlined"
         />
         <Pagination

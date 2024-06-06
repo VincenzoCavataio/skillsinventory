@@ -42,7 +42,8 @@
           "experienceTable": "Experience Years",
           "educationTable": "Education",
           "addressTable": "Address",
-          "certificationTable": "Certifications"
+          "certificationTable": "Certifications",
+          "paginationOverTable": "N. of elements per page"
         }
       },
       "userPage": {

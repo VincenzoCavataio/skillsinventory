@@ -53,7 +53,8 @@
           "experienceTable": "Anni d'Esperienza",
           "educationTable": "Istruzione",
           "addressTable": "Indirizzo",
-          "certificationTable": "Certificati"
+          "certificationTable": "Certificati",
+          "paginationOverTable": "N. elementi per pagina"
         }
       },
       "userPage": {

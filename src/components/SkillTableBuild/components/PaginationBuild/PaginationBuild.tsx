@@ -14,6 +14,7 @@ import {
 } from "../../../../redux/paginationSlice";
 import { ReduxStore } from "../../../../redux/types";
 import { SmallTextField } from "./style";
+import { t } from "i18next";
 
 //TODO: sistemare gli errori tentativi commentati (event non usato ma senza quello non funziona)
 export const PaginationBuild: React.FC<PaginationBuildProps> = ({
@@ -40,7 +41,9 @@ export const PaginationBuild: React.FC<PaginationBuildProps> = ({
     count = Math.ceil(totalRowsNumber?.totalResult / itemNumber);
   }
 
-  const elementsPerPage: string = `N. elementi per pagina`;
+  const elementsPerPage: string = t(
+    "pages.dashboard.headerTable.paginationOverTable"
+  );
 
   return (
     <TableContainer component={Paper}>

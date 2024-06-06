@@ -10,6 +10,7 @@ const initialState: Props = {
     { label: "Education", order: "", colorUp: false, colorDown: false },
     { label: "Address", order: "", colorUp: false, colorDown: false },
     { label: "Ranking", order: "", colorUp: false, colorDown: false },
+    { label: "Experience Years", order: "", colorUp: false, colorDown: false },
   ],
 };
 
@@ -19,6 +20,7 @@ const sortingSlice = createSlice({
   reducers: {
     updateSortUp: (state, action) => {
       const { label, order } = action.payload;
+
       state.sort = state.sort.map((item) => {
         if (item.label === label) {
           return {
@@ -31,7 +33,6 @@ const sortingSlice = createSlice({
           return { ...item, order: "", colorUp: false, colorDown: false };
         }
       });
-      // console.log(state.sort);
     },
     updateSortDown: (state, action) => {
       const { label, order } = action.payload;
@@ -47,7 +48,6 @@ const sortingSlice = createSlice({
           return { ...item, order: "", colorUp: false, colorDown: false };
         }
       });
-      // console.log(state.sort);
     },
   },
 });

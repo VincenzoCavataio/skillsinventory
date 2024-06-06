@@ -29,7 +29,7 @@ export const HeaderCustomCell: React.FC<HeaderCustomCellProps> = ({
     } else if (headCell.label === "Experience Years") {
       dispatch(
         updateSortUp({
-          label: "Ranking",
+          label: "Experience Years",
           order: `${headCell.sortingBE}ASC`,
           color: headCell.color,
         })
@@ -53,7 +53,7 @@ export const HeaderCustomCell: React.FC<HeaderCustomCellProps> = ({
     } else if (headCell.label === "Experience Years") {
       dispatch(
         updateSortDown({
-          label: "Ranking",
+          label: "Experience Years",
           order: `${headCell.sortingBE}DESC`,
           color: true,
         })

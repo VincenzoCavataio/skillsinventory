@@ -29,6 +29,12 @@ export const generatePayloadForTableFilter = ({
       fetchPagination = 0;
     }
   }
+  let sortingProblem: string = "";
+  if (sortingManagementFilter[3] === "") {
+    sortingProblem = sortingManagementFilter[4];
+  } else {
+    sortingProblem = sortingManagementFilter[3];
+  }
 
   const generatedPayload = {
     "starting-from": `P_FETCH_FIRST:${fetchPagination}`,
@@ -55,7 +61,8 @@ export const generatePayloadForTableFilter = ({
         ? `|${filterStore.filters.city.join("|")}|`
         : ""
     }`,
-    "ranking-order": `${sortingManagementFilter[3]}`,
+    // "ranking-order": `${sortingManagementFilter[3]}`,
+    "ranking-order": `${sortingProblem}`,
     "course-filter": `COURSES:${filterStore?.filters.course?.id || ""}`,
     "levels-filter": `EDU_LEVELS:${
       filterStore?.filters.educationalLevel?.id || ""

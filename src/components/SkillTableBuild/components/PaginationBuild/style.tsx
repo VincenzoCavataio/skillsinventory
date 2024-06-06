@@ -4,6 +4,7 @@ export const SmallTextField = styled(TextField)(() => ({
   "& .MuiInputBase-root": {
     padding: "3px 3px",
     fontSize: "0.875rem",
+    borderRadius: 0,
   },
   "& .MuiOutlinedInput-input": {
     padding: "3px 3px",

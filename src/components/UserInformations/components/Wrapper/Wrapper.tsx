@@ -5,6 +5,7 @@ import {
   ReduxStore,
   ResponseProfileElementObjectData,
 } from "../../../../redux/types";
+import { t } from "i18next";
 
 const KEYS: string[] = [
   "id",
@@ -50,7 +51,11 @@ export const Wrapper = () => {
       {KEYS.map((key: string) => (
         <Infos title={key} data={personalData[key]} key={key} type="row" />
       ))}
-      <Infos title="Address" data={MOCK_ADDRESS} type="list" />
+      <Infos
+        title={t(`pages.userPage.informationDetails.address`)}
+        data={MOCK_ADDRESS}
+        type="list"
+      />
     </Box>
   );
 };

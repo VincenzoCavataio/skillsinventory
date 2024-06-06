@@ -55,7 +55,11 @@
         "info": {
           "hardSkills": "Hard Skills",
           "education": "Education",
-          "certificates": "Certificates"
+          "certificates": "Certificates",
+          "userBreadcrumb": "User",
+          "edit": "EDIT",
+          "removeAll": "Remove All",
+          "selectAll": "Select All"
         },
         "informationDetails": {
           "id": "Id",

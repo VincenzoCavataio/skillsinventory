@@ -36,7 +36,7 @@ export const GenericAccordion = ({ action, label, state, data }: Props) => {
           variant="outlined"
           color={PROP ? "info" : "primary"}
         >
-          Edit
+          {t(`pages.userPage.info.edit`)}
         </Button>
         <CheckboxList showCheckbox={PROP} data={data} />
       </AccordionDetails>

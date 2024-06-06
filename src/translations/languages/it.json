@@ -66,7 +66,11 @@
         "info": {
           "hardSkills": "Lista Skill",
           "education": "Istruzione",
-          "certificates": "Certificati"
+          "certificates": "Certificati",
+          "userBreadcrumb": "Utente",
+          "edit": "MODIFICA",
+          "removeAll": "Deseleziona tutto",
+          "selectAll": "Seleziona tutto"
         },
         "informationDetails": {
           "id": "Id",
@@ -79,7 +83,8 @@
           "birthDate": "Compleanno",
           "workPhoneNumber": "N. Telefono Lavoro",
           "actualEmploymentDate": "Data di impiego attuale",
-          "firstEmploymentDate": "Data di primo impiego"
+          "firstEmploymentDate": "Data di primo impiego",
+          "address": "Indirizzo"
         }
       },
       "notFound": {

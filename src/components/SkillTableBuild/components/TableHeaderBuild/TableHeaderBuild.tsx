@@ -12,7 +12,6 @@ export const TableHeaderBuild = () => {
   );
 
   const headCells: readonly HeadCells[] = [
-    //{t("pages.dashboard.search.name")}
     {
       t: "N°",
       id: "userN",

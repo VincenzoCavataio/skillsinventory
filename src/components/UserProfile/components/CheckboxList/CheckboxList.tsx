@@ -7,6 +7,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import { useState } from "react";
+import { t } from "i18next";
 
 // const MOCK_DATA = [
 //   "placeholder_1",
@@ -59,7 +60,13 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
             onClick={allChecked ? handleRemoveAll : handleSelectAll}
             dense
           >
-            <ListItemText primary={allChecked ? "Remove All" : "Select All"} />
+            <ListItemText
+              primary={
+                allChecked
+                  ? t(`pages.userPage.info.removeAll`)
+                  : t(`pages.userPage.info.selectAll`)
+              }
+            />
           </ListItemButton>
         </ListItem>
       )}

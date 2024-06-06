@@ -3,6 +3,7 @@ import { StyledBreadcrumb } from "./styleBreadcrumb";
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
 import { PAGES } from "../../../../constants";
+import { t } from "i18next";
 
 export const CustomizedBreadcrumb = () => {
   const navigate = useNavigate();
@@ -15,7 +16,12 @@ export const CustomizedBreadcrumb = () => {
           label="Home"
           icon={<HomeIcon fontSize="small" />}
         />
-        <StyledBreadcrumb component="a" href="" label="User" disabled />
+        <StyledBreadcrumb
+          component="a"
+          href=""
+          label={t("pages.userPage.info.userBreadcrumb")}
+          disabled
+        />
       </Breadcrumbs>
     </Box>
   );

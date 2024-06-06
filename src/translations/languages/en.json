@@ -11,6 +11,11 @@
       "loginFail": "Unexpected error during login. Retry."
     },
     "pages": {
+      "loginPage": {
+        "emailAddress": "Email Address",
+        "register": "SIGN IN",
+        "loginButton": "LOGIN"
+      },
       "dashboard": {
         "buttonGroup": {
           "and": "AND",

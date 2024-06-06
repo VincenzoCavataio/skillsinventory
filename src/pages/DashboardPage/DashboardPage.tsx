@@ -22,26 +22,7 @@ import { InputChecks2 } from "../../components/InputCheck2";
 import { SkillTable } from "../../components/SkillTableBuild";
 import { useNavigate } from "react-router-dom";
 import { PAGES } from "../../constants";
-
-type Values = {
-  value: string;
-  id: number;
-};
-
-type CompiledFieldsWithID = {
-  //try
-  id?: number;
-  name?: string;
-  selected?: boolean;
-  selectedToBeDeleted?: boolean;
-  //try
-  fullName?: string;
-  certification?: Values;
-  city?: string[];
-  educationalLevel?: Values;
-  institute?: Values;
-  course?: Values;
-};
+import { CompiledFieldsWithID } from "./types";
 
 export const DashboardPage = () => {
   const [selectedInput, setSelectedInput] = useState<CompiledFieldsWithID>({});

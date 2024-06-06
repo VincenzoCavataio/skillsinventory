@@ -65,7 +65,6 @@ export const generatePayloadForTableFilter = ({
         ? `|${filterStore.filters.city.join("|")}|`
         : ""
     }`,
-    // "ranking-order": `${sortingManagementFilter[3]}`,
     "ranking-order": `${sortingProblem}`,
     "course-filter": `COURSES:${filterStore?.filters.course?.id || ""}`,
     "levels-filter": `EDU_LEVELS:${

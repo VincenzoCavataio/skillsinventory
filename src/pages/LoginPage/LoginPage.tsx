@@ -12,6 +12,7 @@ import { commonColors } from "../../common/commonColors";
 import { useNavigate } from "react-router-dom";
 import { PAGES } from "../../constants";
 import { login } from "../../utilities/generateLogin";
+import { t } from "i18next";
 
 export const LoginPage = () => {
   //TODO: se fabrizio conferma il formato 'email' nella sezione username possiamo abilitare anche il controllo sulla forma
@@ -76,7 +77,7 @@ export const LoginPage = () => {
           required
           fullWidth
           id="email"
-          label="Email Address"
+          label={t("pages.loginPage.emailAddress")}
           name="email"
           autoComplete="email"
           autoFocus
@@ -110,7 +111,7 @@ export const LoginPage = () => {
             mx={0.5}
             sx={{ cursor: "pointer", textDecoration: "underline" }}
           >
-            Registrati
+            {t("pages.loginPage.register")}
           </Typography>
         </Typography>
         <Box display="flex" justifyContent="center" width="100%">
@@ -127,7 +128,7 @@ export const LoginPage = () => {
             {isLoading ? (
               <CircularProgress size={20} color="secondary" />
             ) : (
-              "Entra"
+              t("pages.loginPage.loginButton")
             )}
           </Button>
         </Box>

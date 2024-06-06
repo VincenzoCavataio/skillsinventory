@@ -44,6 +44,16 @@
           "equals": "",
           "between": "Tra",
           "buttonContainer": "Seleziona Tipo"
+        },
+        "headerTable": {
+          "surnameTable": "Cognome",
+          "firstNameTable": "Nome",
+          "skillsListTable": "Abilità",
+          "rankingTable": "Punteggio Abilità",
+          "experienceTable": "Anni d'Esperienza",
+          "educationTable": "Istruzione",
+          "addressTable": "Indirizzo",
+          "certificationTable": "Certificati"
         }
       },
       "userPage": {

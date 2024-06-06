@@ -33,6 +33,16 @@
           "course": "Course",
           "cities": "City of Residence",
           "educationalLevels": "Level of Education"
+        },
+        "headerTable": {
+          "surnameTable": "Last Name",
+          "firstNameTable": "Name",
+          "skillsListTable": "Skills List",
+          "rankingTable": "Ranking",
+          "experienceTable": "Experience Years",
+          "educationTable": "Education",
+          "addressTable": "Address",
+          "certificationTable": "Certifications"
         }
       },
       "userPage": {

@@ -1,4 +1,5 @@
 export type HeadCells = {
+  t: string;
   disablePadding: boolean;
   id: string;
   label: string;

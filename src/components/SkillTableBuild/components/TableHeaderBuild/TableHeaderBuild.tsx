@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { ReduxStore } from "../../../../redux/types";
 import { HeaderCustomCell } from "../HeaderCustomCell";
 import { HeadCells } from "../../types";
+import { t } from "i18next";
 export const TableHeaderBuild = () => {
   const skillsFilterStore = useSelector((state: ReduxStore) => state.skills);
   const allSkillsFilter = skillsFilterStore?.skills.map(
@@ -11,7 +12,9 @@ export const TableHeaderBuild = () => {
   );
 
   const headCells: readonly HeadCells[] = [
+    //{t("pages.dashboard.search.name")}
     {
+      t: "N°",
       id: "userN",
       numeric: false,
       disablePadding: true,
@@ -20,6 +23,7 @@ export const TableHeaderBuild = () => {
       color: false,
     },
     {
+      t: "ID",
       id: "userId",
       numeric: false,
       disablePadding: true,
@@ -28,6 +32,7 @@ export const TableHeaderBuild = () => {
       color: false,
     },
     {
+      t: t("pages.dashboard.headerTable.surnameTable"),
       id: "lastName",
       numeric: false,
       disablePadding: true,
@@ -36,6 +41,7 @@ export const TableHeaderBuild = () => {
       color: false,
     },
     {
+      t: t("pages.dashboard.headerTable.firstNameTable"),
       id: "firstName",
       numeric: false,
       disablePadding: false,
@@ -44,6 +50,7 @@ export const TableHeaderBuild = () => {
       color: false,
     },
     {
+      t: t("pages.dashboard.headerTable.skillsListTable"),
       id: "skillsList",
       numeric: true,
       disablePadding: false,
@@ -52,6 +59,7 @@ export const TableHeaderBuild = () => {
       color: false,
     },
     {
+      t: t("pages.dashboard.headerTable.rankingTable"),
       id: "skillsRanking",
       numeric: true,
       disablePadding: false,
@@ -61,6 +69,7 @@ export const TableHeaderBuild = () => {
       color: false,
     },
     {
+      t: t("pages.dashboard.headerTable.experienceTable"),
       id: "anniEsperienza",
       numeric: true,
       disablePadding: false,
@@ -70,6 +79,7 @@ export const TableHeaderBuild = () => {
       color: false,
     },
     {
+      t: t("pages.dashboard.headerTable.educationTable"),
       id: "educationList",
       numeric: false,
       disablePadding: false,
@@ -79,6 +89,7 @@ export const TableHeaderBuild = () => {
       color: false,
     },
     {
+      t: t("pages.dashboard.headerTable.addressTable"),
       id: "residenceInfo",
       numeric: false,
       disablePadding: false,
@@ -88,6 +99,7 @@ export const TableHeaderBuild = () => {
       color: false,
     },
     {
+      t: t("pages.dashboard.headerTable.certificationTable"),
       id: "certificationList",
       numeric: false,
       disablePadding: false,

@@ -87,7 +87,7 @@ export const HeaderCustomCell: React.FC<HeaderCustomCellProps> = ({
                   alignItems: "center",
                 }}
               >
-                <Box>{headCell.label}</Box>
+                <Box>{headCell.t}</Box>
                 <Box sx={{ display: "flex", flexDirection: "row" }}>
                   <IconButton
                     //bgColor="white"
@@ -112,7 +112,7 @@ export const HeaderCustomCell: React.FC<HeaderCustomCellProps> = ({
                 </Box>
               </Box>
             ) : (
-              <Box>{headCell.label}</Box>
+              <Box>{headCell.t}</Box>
             )}
           </TableCell>
         )}
@@ -130,7 +130,7 @@ export const HeaderCustomCell: React.FC<HeaderCustomCellProps> = ({
                 alignItems: "center",
               }}
             >
-              <Box>{headCell.label}</Box>
+              <Box>{headCell.t}</Box>
               <Box sx={{ display: "flex", flexDirection: "row" }}>
                 <IconButton
                   //bgColor="white"
@@ -153,7 +153,7 @@ export const HeaderCustomCell: React.FC<HeaderCustomCellProps> = ({
               </Box>
             </Box>
           ) : (
-            <Box>{headCell.label}</Box>
+            <Box>{headCell.t}</Box>
           )}
         </TableCell>
       )}

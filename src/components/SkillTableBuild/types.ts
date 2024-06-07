@@ -37,4 +37,5 @@ export type TableData = {
   educationList: string;
   residenceInfo: string;
   certificationList: string;
+  isAnd: string;
 };

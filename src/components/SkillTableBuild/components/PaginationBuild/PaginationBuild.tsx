@@ -49,6 +49,7 @@ export const PaginationBuild: React.FC<PaginationBuildProps> = ({
     <TableContainer component={Paper}>
       <Box
         height="40px"
+        pb={2}
         display="flex"
         flexDirection={"row"}
         justifyContent={"flex-end"}

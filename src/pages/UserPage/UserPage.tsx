@@ -1,4 +1,4 @@
-import { Box, Container } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
 import { HeaderNavbar } from "../../components/HeaderNavbar";
 import { ProfilePage } from "../../components/UserProfile";
 import { CustomizedBreadcrumb } from "../../components/UserProfile/components/CustomizedBreadcrumb";
@@ -50,8 +50,9 @@ export const UserPage = () => {
           <Box flex={1} bgcolor="white" height="100%">
             <ProfilePage />
           </Box>
-          <Box flex={2} bgcolor="white" height="100%">
+          <Box flex={2} bgcolor="transparent" height="100%">
             <ProfileInfo />
+            <Box bgcolor="white" height="300px" width="100%" mt={2}></Box>
           </Box>
         </Box>
       </Container>

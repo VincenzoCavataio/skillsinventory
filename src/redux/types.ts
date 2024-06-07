@@ -1,8 +1,8 @@
 import { CompiledFieldsWithID } from "../pages/DashboardPage/types";
 
+/** QUANDO BE FIXA CAMBIAMO IN SOLO STRING */
 export type Skill = {
   name: string;
-  /** QUANDO BE FIXA CAMBIAMO IN SOLO STRING */
   operator: Record<string, string> | string;
   level: number;
   id?: number;
@@ -26,6 +26,10 @@ export type ReduxStore = {
   user?: ProfilePageType;
   pagination: PaginationSettings;
   sorting: { sort: Sorting[] };
+  andOrStore: SelectorAndOr;
+};
+export type SelectorAndOr = {
+  andOr: string;
 };
 
 export type Filtri = {

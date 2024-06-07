@@ -47,7 +47,7 @@ export const Wrapper = () => {
   ];
   //TODO: CAPIRE ERRORE PERSONALDATA
   return (
-    <Box>
+    <Box bgcolor="white">
       {KEYS.map((key: string) => (
         <Infos title={key} data={personalData[key]} key={key} type="row" />
       ))}

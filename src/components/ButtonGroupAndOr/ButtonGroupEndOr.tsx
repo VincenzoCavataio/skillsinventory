@@ -2,14 +2,21 @@ import { ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
 import { t } from "i18next";
 import { commonColors } from "../../common/commonColors";
 import { useState } from "react";
+import { updateAndOr } from "../../redux/andOrSlice";
+import { useDispatch } from "react-redux";
 
 export const ButtonGroupAndOr = () => {
-  const [value, setValue] = useState("AND");
+  const [value, setValue] = useState("OR");
+
+  const dispatch = useDispatch();
 
   return (
     <ToggleButtonGroup
       exclusive
-      onChange={(_, value) => value && setValue(value)}
+      onChange={(_, value) => {
+        value && setValue(value);
+        dispatch(updateAndOr(value));
+      }}
       value={value}
       aria-label={t(`pages.dashboard.slider.buttonContainerl`)}
       sx={{ background: commonColors.accentColor }}

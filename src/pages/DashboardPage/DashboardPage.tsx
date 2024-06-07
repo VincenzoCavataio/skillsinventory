@@ -26,10 +26,8 @@ import { CompiledFieldsWithID } from "./types";
 
 export const DashboardPage = () => {
   const [selectedInput, setSelectedInput] = useState<CompiledFieldsWithID>({});
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   useEffect(() => {
     dispatch(updateFilter({ filters: selectedInput }));
   }, [dispatch, selectedInput]);
@@ -57,7 +55,7 @@ export const DashboardPage = () => {
 
   //TODO: forse non serve più, assicurarsene ed eventualmente eliminarlo.  --- dovrebbe funzionare tutto commentandolo, chiedere se effettivamente non serve quindi
   // const [isOpen, setIsOpen] = useState(false);
-
+  console.log(selectedInput);
   return (
     <>
       <HeaderNavbar />
@@ -174,6 +172,7 @@ export const DashboardPage = () => {
           >
             <ButtonsContainer
               setSelectedInput={setSelectedInput}
+
               // submit={setIsOpen}
             />
           </Box>

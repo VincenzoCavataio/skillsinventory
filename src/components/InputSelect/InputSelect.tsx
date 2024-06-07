@@ -2,6 +2,8 @@ import { Autocomplete, Button, TextField } from "@mui/material";
 import { ResponseElementObjectData } from "../../pages/DashboardPage/types";
 import { t } from "i18next";
 import { InputSelectType } from "./types";
+import { useSelector } from "react-redux";
+import { ReduxStore } from "../../redux/types";
 
 type Item = { id: number; value: string | null };
 
@@ -13,6 +15,7 @@ export const InputSelect = ({
   objKey,
   width = 300,
 }: InputSelectType) => {
+  const inputSelectValue = useSelector((state: ReduxStore) => state.search);
   return (
     <Autocomplete
       disablePortal
@@ -36,6 +39,8 @@ export const InputSelect = ({
 
         setSelectedInput({ ...selectedInput, [objKey]: object });
       }}
+      value={inputSelectValue?.filters[objKey]?.value ?? ""}
+      clearIcon
       noOptionsText={<Button>{t("pages.dashboard.search.noOptions")}</Button>}
       sx={{
         width: width,

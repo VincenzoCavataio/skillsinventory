@@ -9,6 +9,7 @@ export const generatePayloadForTableFilter = ({
   paginationFilterNumber,
   paginationFilterPage,
   sortingManagementFilter,
+  andOrSelectorFilter,
 }: {
   allSkillsFilter: string[] | undefined;
   allCertificationsID: number[];
@@ -20,6 +21,7 @@ export const generatePayloadForTableFilter = ({
   paginationFilterNumber: number | undefined;
   paginationFilterPage: number | undefined;
   sortingManagementFilter: string[];
+  andOrSelectorFilter: string;
 }) => {
   let fetchPagination: number;
   {
@@ -39,7 +41,6 @@ export const generatePayloadForTableFilter = ({
   } else {
     sortingProblem = sortingManagementFilter[3];
   }
-
   const generatedPayload = {
     "starting-from": `P_FETCH_FIRST:${fetchPagination}`,
     "number-of-items": `P_OFFSET:${paginationFilterNumber}`,
@@ -56,7 +57,7 @@ export const generatePayloadForTableFilter = ({
     "user-filter": `USERS:${
       filterStore?.filters.fullName ? `|${filterStore?.filters.fullName}|` : ""
     }`,
-    isAnd: "OR",
+    isAnd: `${andOrSelectorFilter}`,
     "name-ascending": `${sortingManagementFilter[0]}`,
     "edu-ascending": `${sortingManagementFilter[1]}`,
     "city-ascending": `${sortingManagementFilter[2]}`,

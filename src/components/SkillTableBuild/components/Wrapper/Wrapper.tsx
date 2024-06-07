@@ -16,6 +16,7 @@ export const Wrapper = () => {
     (state: ReduxStore) => state.pagination
   );
   const sortingFilterStore = useSelector((state: ReduxStore) => state.sorting);
+  const andOrFilter = useSelector((state: ReduxStore) => state.andOrStore);
   const allCertificationsID =
     filterStore?.filters?.certification?.map(
       (certification) => certification.id
@@ -28,6 +29,8 @@ export const Wrapper = () => {
   const sortingManagementFilter = sortingFilterStore.sort.map(
     (sort) => `${sort.order}`
   );
+  const andOrSelectorFilter = andOrFilter.andOr;
+
   function createData(
     userId: string,
     lastName: string,
@@ -61,10 +64,12 @@ export const Wrapper = () => {
           paginationFilterNumber,
           paginationFilterPage,
           sortingManagementFilter,
+          andOrSelectorFilter,
         })
       )
     ).data ?? [];
-
+  // console.log("x");
+  //vedere dove parte la chiamata per la tabella, far ripartire le chiamate che riempiono le varie select ma con i parametri nuovi che esistono già
   const totalCount = tableData && tableData[tableData.length - 1];
 
   const rows = tableData

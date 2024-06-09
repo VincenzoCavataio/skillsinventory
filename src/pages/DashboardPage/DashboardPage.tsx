@@ -55,7 +55,6 @@ export const DashboardPage = () => {
 
   //TODO: forse non serve più, assicurarsene ed eventualmente eliminarlo.  --- dovrebbe funzionare tutto commentandolo, chiedere se effettivamente non serve quindi
   // const [isOpen, setIsOpen] = useState(false);
-  console.log(selectedInput);
   return (
     <>
       <HeaderNavbar />

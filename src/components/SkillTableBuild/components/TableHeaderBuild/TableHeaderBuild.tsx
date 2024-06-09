@@ -117,7 +117,11 @@ export const TableHeaderBuild = () => {
     <TableHead sx={{ background: commonColors.accentColor }}>
       <TableRow>
         {headCells.map((headCell) => (
-          <HeaderCustomCell headCell={headCell} visible={visible} />
+          <HeaderCustomCell
+            key={headCell.id}
+            headCell={headCell}
+            visible={visible}
+          />
         ))}
         <TableCell padding="checkbox">
           <Checkbox

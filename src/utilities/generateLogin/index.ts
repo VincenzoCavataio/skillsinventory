@@ -32,7 +32,6 @@ export async function login(
     localStorage.setItem("id", id);
     setToken(token);
 
-    console.log(t("common.login"));
     setLoading(false);
   } catch (error) {
     alert(t("common.loginFail"));
@@ -65,7 +64,6 @@ export const refreshAccessToken: (
     localStorage.setItem("role", role);
     localStorage.setItem("id", id);
 
-    console.log("Access token aggiornato con successo.");
     // @ts-expect-error: Unreachable code error
     callback && callback();
   } catch (error) {

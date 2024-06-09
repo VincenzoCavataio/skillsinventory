@@ -16,6 +16,8 @@ export const InputSelect = ({
   width = 300,
 }: InputSelectType) => {
   const inputSelectValue = useSelector((state: ReduxStore) => state.search);
+  const autocompleteValue = inputSelectValue?.filters[objKey]?.value ?? null;
+
   return (
     <Autocomplete
       disablePortal
@@ -39,8 +41,8 @@ export const InputSelect = ({
 
         setSelectedInput({ ...selectedInput, [objKey]: object });
       }}
-      value={inputSelectValue?.filters[objKey]?.value ?? ""}
-      clearIcon
+      value={autocompleteValue}
+      clearIcon={false}
       noOptionsText={<Button>{t("pages.dashboard.search.noOptions")}</Button>}
       sx={{
         width: width,

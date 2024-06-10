@@ -10,6 +10,7 @@ import { PAGES } from "../../constants";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { selectUser } from "../../redux/userSlice";
+import { UserAddPanel } from "../../components/UserAddPanel";
 
 export type Payload = {
   userId: string;
@@ -52,7 +53,9 @@ export const UserPage = () => {
           </Box>
           <Box flex={2} bgcolor="transparent" height="100%">
             <ProfileInfo />
-            <Box bgcolor="white" height="300px" width="100%" mt={2}></Box>
+            <Box bgcolor="white" height="300px" width="100%" mt={2}>
+              <UserAddPanel></UserAddPanel>
+            </Box>
           </Box>
         </Box>
       </Container>

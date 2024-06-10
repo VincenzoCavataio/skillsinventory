@@ -3,6 +3,8 @@ import axios from "axios";
 import { Metadata } from "./types";
 import { t } from "i18next";
 import { refreshAccessToken } from "../generateLogin";
+import { useSelector } from "react-redux";
+import { ReduxStore } from "../../redux/types";
 
 // type Props = {
 //   data: {
@@ -17,6 +19,7 @@ const useApi = ({ URL, requestOption }: Metadata) => {
   const [error, setError] = useState<unknown>();
   const countRef = useRef(false);
   const token = localStorage.getItem("authToken");
+  // const filterStore = useSelector((state: ReduxStore) => state.search);
 
   //TODO: Duplicated code. To be fixed later
   useEffect(() => {
@@ -58,7 +61,14 @@ const useApi = ({ URL, requestOption }: Metadata) => {
     };
 
     fetchData();
-  }, [URL, countRef, requestOption.body, requestOption.method, token]);
+  }, [
+    URL,
+    countRef,
+    requestOption.body,
+    requestOption.method,
+    token,
+    // filterStore,
+  ]);
 
   return { data, loading, error };
 };

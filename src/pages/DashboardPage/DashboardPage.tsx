@@ -2,7 +2,7 @@ import { Box, Container, TextField } from "@mui/material";
 import { HeaderNavbar } from "../../components/HeaderNavbar";
 import { t } from "i18next";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   allCitiesMetadata,
   allCoursesMetadata,
@@ -23,6 +23,7 @@ import { SkillTable } from "../../components/SkillTableBuild";
 import { useNavigate } from "react-router-dom";
 import { PAGES } from "../../constants";
 import { CompiledFieldsWithID } from "./types";
+import { ReduxStore } from "../../redux/types";
 
 export const DashboardPage = () => {
   const [selectedInput, setSelectedInput] = useState<CompiledFieldsWithID>({});
@@ -31,7 +32,7 @@ export const DashboardPage = () => {
   useEffect(() => {
     dispatch(updateFilter({ filters: selectedInput }));
   }, [dispatch, selectedInput]);
-
+  const filterStore = useSelector((state: ReduxStore) => state.search);
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     //TODO: magari aggiungere un controllo con una chiamata di healthcheck (da parlare con BE)
@@ -46,13 +47,13 @@ export const DashboardPage = () => {
   }, [navigate]);
 
   // TODO: aggiungere fallback, forse meglio dentro UseApi
-  const allEducationalData = useApi(allEducationalMetadata);
+  const allEducationalData = useApi(allEducationalMetadata(filterStore));
   const allEducationalLevelsData = useApi(allEducationalLevelslMetadata);
   const allSkillslData = useApi(allSkillslMetadata);
   const allCitiesData = useApi(allCitiesMetadata);
   const allInstitutesData = useApi(allInstitutesMetadata);
   const allCoursessData = useApi(allCoursesMetadata);
-
+  //passare ad ognuno di questi inviare i filtri già selezionati,
   //TODO: forse non serve più, assicurarsene ed eventualmente eliminarlo.  --- dovrebbe funzionare tutto commentandolo, chiedere se effettivamente non serve quindi
   // const [isOpen, setIsOpen] = useState(false);
   return (

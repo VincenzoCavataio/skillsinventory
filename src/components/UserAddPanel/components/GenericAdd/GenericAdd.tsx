@@ -1,10 +1,17 @@
 import { Box, Button } from "@mui/material";
-type Props = {
+
+type GenericAddProps = {
   label: string;
+  onClick: () => void;
 };
-export const GenericAdd = ({ label }: Props) => {
+
+export const GenericAdd: React.FC<GenericAddProps> = ({ label, onClick }) => {
   return (
-    <Button variant="contained" sx={{ backgroundColor: "#8cbe2d", margin: 2 }}>
+    <Button
+      variant="contained"
+      sx={{ backgroundColor: "#8cbe2d" }}
+      onClick={onClick}
+    >
       {label}
       <Box component="span" sx={{ ml: 1, height: "16px" }}>
         <svg

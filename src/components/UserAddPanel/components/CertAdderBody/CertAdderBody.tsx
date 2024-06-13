@@ -1,8 +1,17 @@
-import { Button, Checkbox, TableBody, TableCell, TableRow } from "@mui/material";
+import {
+  Button,
+  Checkbox,
+  TableBody,
+  TableCell,
+  TableRow,
+} from "@mui/material";
 import { CertRowType } from "../../types";
 import { Dispatch, SetStateAction } from "react";
 import { ShortTextField } from "../../style";
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+
 type CertTableBodyBuildProps = {
   rows: CertRowType[];
   setRowsCertTable: Dispatch<SetStateAction<CertRowType[]>>;
@@ -29,15 +38,14 @@ export const CertAdderBody: React.FC<CertTableBodyBuildProps> = ({
               <ShortTextField />
             </TableCell>
             <TableCell align="center">
-                <DatePicker
-              {/* <ShortTextField
-                type="number"
-                inputProps={{ min: 1 }}
-                defaultValue={1}
-              /> */}
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker />
+              </LocalizationProvider>
             </TableCell>
             <TableCell align="center">
-              {/* <ShortTextField /> */}
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker />
+              </LocalizationProvider>
             </TableCell>
             <TableCell align="center">
               <ShortTextField />

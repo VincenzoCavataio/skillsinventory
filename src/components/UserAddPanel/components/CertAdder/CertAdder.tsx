@@ -11,7 +11,7 @@ import { Dispatch, SetStateAction } from "react";
 import { CertAdderBody } from "../CertAdderBody";
 type CertTableBodyBuildProps = {
   rows: CertRowType[];
-  setRowsSkillTable: Dispatch<SetStateAction<CertRowType[]>>;
+  setRowsCertTable: Dispatch<SetStateAction<CertRowType[]>>;
 };
 export const CertAdder: React.FC<CertTableBodyBuildProps> = ({
   rows,
@@ -64,7 +64,12 @@ export const CertAdder: React.FC<CertTableBodyBuildProps> = ({
   return (
     <TableContainer
       component={Paper}
-      sx={{ marginTop: 2, width: "auto", border: "solid 0.5px #8cbe2d" }}
+      sx={{
+        marginTop: 2,
+        width: "100%",
+        overflowX: "auto",
+        border: "solid 0.5px #8cbe2d",
+      }}
       elevation={0}
     >
       <Table sx={{ minWidth: 650 }} aria-label="skills table">
@@ -77,17 +82,19 @@ export const CertAdder: React.FC<CertTableBodyBuildProps> = ({
                   color: "#8cbe2d",
                   fontWeight: "550",
                   fontSize: 14,
-                  width: headCell.checkbox ? "50px" : undefined,
+                  width: headCell.checkbox ? "20px" : undefined,
+                  textAlign: headCell.checkbox ? "center" : undefined,
                 }}
                 key={headCell.id}
               >
                 {headCell.label}
               </TableCell>
             ))}
+            <TableCell></TableCell>
           </TableRow>
         </TableHead>
 
-        <CertAdderBody rows={rows} setRowsSkillTable={setRowsSkillTable} />
+        <CertAdderBody rows={rows} setRowsCertTable={setRowsCertTable} />
       </Table>
     </TableContainer>
   );

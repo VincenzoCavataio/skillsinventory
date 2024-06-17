@@ -31,7 +31,7 @@ export const WindowAllSkills = ({ data, setMappedData }: Props) => {
       style={{
         background: "white",
         width: 250,
-        overflowY: "scroll",
+        overflowY: "auto",
         display: "flex",
         flexDirection: "column",
         justifyContent: "normal",

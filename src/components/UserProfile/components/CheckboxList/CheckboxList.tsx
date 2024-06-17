@@ -5,6 +5,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  styled,
 } from "@mui/material";
 import { useState } from "react";
 import { t } from "i18next";
@@ -20,6 +21,13 @@ type CheckboxListProps = {
   showCheckbox: boolean;
   data?: string[]; // Aggiungi questa riga
 };
+const CustomListItemButton = styled(ListItemButton)(() => ({
+  "&.Mui-disabled": {
+    opacity: 1,
+    color: "black",
+  },
+}));
+
 // export const CheckboxList = ({ showCheckbox }: { showCheckbox: boolean }) => {
 export const CheckboxList: React.FC<CheckboxListProps> = ({
   showCheckbox,
@@ -73,7 +81,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
       {data?.map((value) => {
         return (
           <ListItem key={value} disablePadding>
-            <ListItemButton
+            <CustomListItemButton
               onClick={handleToggle(value)}
               dense
               disabled={!showCheckbox}
@@ -89,7 +97,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
                 </ListItemIcon>
               )}
               <ListItemText primary={value} />
-            </ListItemButton>
+            </CustomListItemButton>
           </ListItem>
         );
       })}

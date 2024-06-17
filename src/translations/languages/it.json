@@ -85,6 +85,24 @@
           "actualEmploymentDate": "Data di impiego attuale",
           "firstEmploymentDate": "Data di primo impiego",
           "address": "Indirizzo"
+        },
+        "tables": {
+          "uploadCV": "CARICA IL TUO CV",
+          "addSkills": "AGGIUNGI SKILL",
+          "addEdu": "AGGIUNGI ISTRUZIONE",
+          "addCert": "AGGIUNGI CERTIFICATI",
+          "updateProfile": "AGGIORNA PROFILO",
+          "nameInTables": "Nome",
+          "levelInTables": "Livello",
+          "levelsInTables": "Livelli",
+          "courseInTables": "Corso",
+          "experienceInTables": "Esperienza",
+          "codeInTables": "Codice",
+          "instituteInTables": "Istituto",
+          "cityInTables": "Città",
+          "issuerInTables": "Emittente",
+          "releaseInTables": "Rilascio",
+          "expirationInTables": "Scadenza"
         }
       },
       "notFound": {

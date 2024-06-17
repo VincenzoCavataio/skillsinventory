@@ -9,6 +9,8 @@ import {
 import { EduHeadCells, EduRowType } from "../../types";
 import { Dispatch, SetStateAction } from "react";
 import { EduAdderBody } from "../EduAdderBody";
+import { t } from "i18next";
+
 type EduTableBodyBuildProps = {
   rows: EduRowType[];
   setRowsEduTable: Dispatch<SetStateAction<EduRowType[]>>;
@@ -22,14 +24,14 @@ export const EduAdder: React.FC<EduTableBodyBuildProps> = ({
       t: "",
       id: "level",
       menu: true,
-      label: "Level",
+      label: t("pages.userPage.tables.levelInTables"),
       checkbox: false,
     },
     {
       t: "",
       id: "course",
       menu: false,
-      label: "Course",
+      label: t("pages.userPage.tables.courseInTables"),
       checkbox: false,
     },
     {
@@ -43,14 +45,14 @@ export const EduAdder: React.FC<EduTableBodyBuildProps> = ({
       t: "",
       id: "institute",
       menu: false,
-      label: "Institute",
+      label: t("pages.userPage.tables.instituteInTables"),
       checkbox: true,
     },
     {
       t: "",
       id: "city",
       menu: false,
-      label: "City",
+      label: t("pages.userPage.tables.cityInTables"),
       checkbox: false,
     },
   ];

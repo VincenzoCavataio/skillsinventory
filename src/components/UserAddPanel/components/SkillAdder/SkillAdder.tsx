@@ -9,6 +9,8 @@ import {
 import { SkillHeadCells, SkillRowType } from "../../types";
 import { SkillAdderBody } from "../SkillAdderBody";
 import { Dispatch, SetStateAction } from "react";
+import { t } from "i18next";
+
 type SkillTableBodyBuildProps = {
   rows: SkillRowType[];
   setRowsSkillTable: Dispatch<SetStateAction<SkillRowType[]>>;
@@ -23,19 +25,19 @@ export const SkillAdder: React.FC<SkillTableBodyBuildProps> = ({
     {
       t: "",
       id: "name",
-      label: "Name",
+      label: t("pages.userPage.tables.nameInTables"),
       numeric: false,
     },
     {
       t: "",
       id: "levels",
-      label: "Levels",
+      label: t("pages.userPage.tables.levelsInTables"),
       numeric: true,
     },
     {
       t: "",
       id: "experience",
-      label: "Experience",
+      label: t("pages.userPage.tables.experienceInTables"),
       numeric: true,
     },
     {

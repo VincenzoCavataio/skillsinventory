@@ -3,6 +3,7 @@
 //   }
 import { Autocomplete, TextField } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { DatePicker } from "@mui/x-date-pickers";
 export const ShortTextField = styled(TextField)(() => ({
   "& .MuiInputBase-root": {
     height: "40px",
@@ -40,6 +41,17 @@ export const ShortAutocomplete = styled(Autocomplete)(() => ({
         display: "flex",
         alignItems: "center",
       },
+    },
+  },
+}));
+export const ShortDatePicker = styled(DatePicker)(() => ({
+  "& .MuiInputBase-root": {
+    height: "40px",
+  },
+  "& .MuiOutlinedInput-input": {
+    height: "40px",
+    "& .MuiInputLabel-root": {
+      height: "40px",
     },
   },
 }));

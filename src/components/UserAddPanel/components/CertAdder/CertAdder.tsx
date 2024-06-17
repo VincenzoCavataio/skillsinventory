@@ -9,6 +9,8 @@ import {
 import { CertHeadCells, CertRowType } from "../../types";
 import { Dispatch, SetStateAction } from "react";
 import { CertAdderBody } from "../CertAdderBody";
+import { t } from "i18next";
+
 type CertTableBodyBuildProps = {
   rows: CertRowType[];
   setRowsCertTable: Dispatch<SetStateAction<CertRowType[]>>;
@@ -22,35 +24,35 @@ export const CertAdder: React.FC<CertTableBodyBuildProps> = ({
       t: "",
       id: "name",
       date: false,
-      label: "Name",
+      label: t("pages.userPage.tables.nameInTables"),
       checkbox: false,
     },
     {
       t: "",
       id: "issuer",
       date: false,
-      label: "Issuer",
+      label: t("pages.userPage.tables.issuerInTables"),
       checkbox: false,
     },
     {
       t: "",
       id: "release date",
       date: true,
-      label: "Release Date",
+      label: t("pages.userPage.tables.releaseInTables"),
       checkbox: false,
     },
     {
       t: "",
       id: "expiration date",
       date: true,
-      label: "Expiration date",
+      label: t("pages.userPage.tables.expirationInTables"),
       checkbox: false,
     },
     {
       t: "",
       id: "code",
       date: false,
-      label: "Code",
+      label: t("pages.userPage.tables.codeInTables"),
       checkbox: false,
     },
     {

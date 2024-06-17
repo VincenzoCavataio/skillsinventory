@@ -7,8 +7,8 @@ import {
 } from "@mui/material";
 import { CertRowType } from "../../types";
 import { Dispatch, SetStateAction } from "react";
-import { ShortTextField } from "../../style";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { ShortDatePicker, ShortTextField } from "../../style";
+// import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
@@ -39,12 +39,12 @@ export const CertAdderBody: React.FC<CertTableBodyBuildProps> = ({
             </TableCell>
             <TableCell align="center">
               <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker />
+                <ShortDatePicker />
               </LocalizationProvider>
             </TableCell>
             <TableCell align="center">
               <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker />
+                <ShortDatePicker />
               </LocalizationProvider>
             </TableCell>
             <TableCell align="center">

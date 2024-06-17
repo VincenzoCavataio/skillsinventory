@@ -74,6 +74,24 @@
           "actualEmploymentDate": "Actual Employement Date",
           "firstEmploymentDate": "First Employement Date",
           "address": "Address"
+        },
+        "tables": {
+          "uploadCV": "UPLOAD YOUR CV",
+          "addSkills": "ADD SKILL",
+          "addEdu": "ADD EDUCATION",
+          "addCert": "ADD CERTIFICATIONS",
+          "updateProfile": "UPDATE PROFILE",
+          "nameInTables": "Name",
+          "levelInTables": "Level",
+          "levelsInTables": "Levels",
+          "courseInTables": "Course",
+          "experienceInTables": "Experience",
+          "codeInTables": "Code",
+          "instituteInTables": "Institute",
+          "cityInTables": "City",
+          "issuerInTables": "Issuer",
+          "releaseInTables": "Release Date",
+          "expirationInTables": "Expiration Date"
         }
       },
       "notFound": {

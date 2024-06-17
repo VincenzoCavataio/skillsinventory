@@ -46,8 +46,8 @@ export const WindowSelectedSkills = ({
         style={{
           background: "white",
           width: 250,
-          height: "calc('100%' + 20px) !important",
-          overflowY: "scroll",
+          height: "calc(100% - 20px) ",
+          overflowY: "auto",
           display: "flex",
           flexDirection: "column",
           justifyContent: "normal",

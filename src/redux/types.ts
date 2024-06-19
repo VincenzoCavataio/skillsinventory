@@ -27,6 +27,7 @@ export type ReduxStore = {
   pagination: PaginationSettings;
   sorting: { sort: Sorting[] };
   andOrStore: SelectorAndOr;
+  lang: string;
 };
 export type SelectorAndOr = {
   andOr: string;

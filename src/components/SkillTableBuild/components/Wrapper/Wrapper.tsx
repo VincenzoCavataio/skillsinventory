@@ -8,6 +8,7 @@ import { TableBodyBuild } from "../TableBodyBuild";
 import { PaginationBuild } from "../PaginationBuild";
 import { generatePayloadForTableFilter } from "../../../../utilities/generatePayloadForTableFilter";
 import { TableData } from "../../types";
+// import { useState } from "react";
 
 export const Wrapper = () => {
   const filterStore = useSelector((state: ReduxStore) => state.search);
@@ -41,6 +42,7 @@ export const Wrapper = () => {
     educationList: string,
     residenceInfo: string,
     certificationList: string
+    // checked: boolean = false
   ) {
     return {
       userId,
@@ -52,6 +54,7 @@ export const Wrapper = () => {
       educationList,
       residenceInfo,
       certificationList,
+      // checked,
     };
   }
   const tableData: TableData[] =
@@ -84,6 +87,7 @@ export const Wrapper = () => {
           data.educationList,
           data.residenceInfo,
           data.certificationList
+          // false
         )
       )
     : [];
@@ -94,7 +98,9 @@ export const Wrapper = () => {
   // } else {
   //   numberOfProperties = 0;
   // }
-  // const [checked, setChecked] = useState<TableData[]>([]);
+
+  // const [check, setCheck] = useState<TableData[]>([]);
+
   return (
     //TODO: capire perché si spacca quando []/undefined/null come risultato
     //TODO: cambiare nome componente in : TableHeader & TableBody ----- non me lo fa fare perchè "tableheader e tablebody" sono componenti di mui
@@ -102,7 +108,7 @@ export const Wrapper = () => {
       <PaginationBuild totalRowsNumber={totalCount} />
       <Table sx={{ minWidth: 650 }} aria-label="skills table">
         <TableHeaderBuild />
-        {/* <TableBodyBuild rows={rows} checked={checked} setChecked={setChecked} /> */}
+        {/* <TableBodyBuild rows={rows} check={check} setCheck={setCheck} /> */}
         <TableBodyBuild rows={rows} />
       </Table>
     </TableContainer>

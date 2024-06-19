@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store.ts";
 import "./styles/index.scss";
 import "./translations/i18n.ts";
+// import "./translations/InitializeI18n.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>

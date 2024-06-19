@@ -4,7 +4,6 @@ import { generateRequestOpt } from "../../utilities/generateRequestOpt/";
 const URL = `${BASEURL}/api/v1/cv-record/getAllEducational`;
 
 export const allEducationalMetadata = (filters) => {
-  console.log(filters);
   return {
     URL,
     requestOption: generateRequestOpt({

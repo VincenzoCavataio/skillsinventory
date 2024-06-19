@@ -6,6 +6,7 @@ import logo from "./../../assets/pict.svg";
 import { style } from "./style";
 import commonStyle from "../../common/commonStyle";
 import { t } from "i18next";
+import { LanguageSelect } from "../LanguageSelect";
 
 export const HeaderNavbar = () => {
   const LOGO_SIZE = 30;
@@ -24,6 +25,9 @@ export const HeaderNavbar = () => {
               {t("common.title")}
             </Typography>
           </Typography>
+        </Box>
+        <Box justifyContent={"flex-end"}>
+          <LanguageSelect />
         </Box>
       </Toolbar>
     </AppBar>

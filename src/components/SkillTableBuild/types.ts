@@ -38,4 +38,5 @@ export type TableData = {
   residenceInfo: string;
   certificationList: string;
   isAnd: string;
+  // checked: boolean;
 };

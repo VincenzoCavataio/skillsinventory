@@ -1,4 +1,10 @@
-import { Checkbox, TableCell, TableHead, TableRow } from "@mui/material";
+import {
+  Button,
+  Checkbox,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import { commonColors } from "../../../../common/commonColors";
 import { useSelector } from "react-redux";
 import { ReduxStore } from "../../../../redux/types";
@@ -123,8 +129,20 @@ export const TableHeaderBuild = () => {
             visible={visible}
           />
         ))}
-        <TableCell padding="checkbox">
-          <Checkbox
+        <TableCell sx={{ padding: "10px", width: "10px" }} align="center">
+          <Button
+            sx={{
+              backgroundColor: "white",
+              color: " #8cbe2d",
+              width: "90px",
+              boxShadow: "none",
+            }}
+            variant="contained"
+          >
+            Download
+          </Button>
+          {/* <TableCell padding="checkbox"> */}
+          {/* <Checkbox
             color="secondary"
             // indeterminate={numSelected > 0 && numSelected < rowCount}
             // checked={rowCount > 0 && numSelected === rowCount}
@@ -132,7 +150,7 @@ export const TableHeaderBuild = () => {
             // inputProps={{
             //   "aria-label": "select all CVs",
             // }}
-          />
+          /> */}
         </TableCell>
       </TableRow>
     </TableHead>

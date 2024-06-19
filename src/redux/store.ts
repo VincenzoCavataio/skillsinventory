@@ -5,6 +5,7 @@ import userSlice from "./userSlice";
 import paginationSlice from "./paginationSlice";
 import sortingSlice from "./sortingSlice";
 import andOrSlice from "./andOrSlice";
+import langSlices from "./langSlices";
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     pagination: paginationSlice,
     sorting: sortingSlice,
     andOrStore: andOrSlice,
+    langManager: langSlices,
   },
 });

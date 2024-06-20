@@ -43,7 +43,12 @@ export const ButtonsContainer = ({
           icon={<CancelButton />}
         />
       </Box>
-      <Box display={"flex"} flexDirection={"column"}>
+      <Box
+        display={"flex"}
+        position="absolute"
+        left="39%"
+        flexDirection={"column"}
+      >
         <ButtonGroupAndOr />
       </Box>
       <Box display={"flex"} flexDirection={"column"}>

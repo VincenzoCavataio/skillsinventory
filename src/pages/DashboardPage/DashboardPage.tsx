@@ -170,6 +170,7 @@ export const DashboardPage = () => {
             flexWrap={"nowrap"}
             width={520}
             mb={2}
+            position="relative"
           >
             <ButtonsContainer
               setSelectedInput={setSelectedInput}

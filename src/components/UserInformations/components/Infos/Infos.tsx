@@ -11,6 +11,16 @@ export const Infos = ({
   data: string | string[] | number;
   type: string;
 }) => {
+  let allEmpty = true;
+
+  if (Array.isArray(data)) {
+    for (let i = 0; i < data.length; i++) {
+      if (data[i] !== "") {
+        allEmpty = false;
+        break;
+      }
+    }
+  }
   return type === "list" && typeof data === "object" ? (
     <Box
       textAlign={"left"}
@@ -22,7 +32,11 @@ export const Infos = ({
         <Typography variant="body1">{title}:</Typography>
       </Box>
       <Box flex={2} alignContent="center">
-        <Typography variant="body2">{data.join(", ")}</Typography>
+        {allEmpty === true ? (
+          <Typography variant="body2">{"-"}</Typography>
+        ) : (
+          <Typography variant="body2">{data.join(", ")}</Typography>
+        )}
       </Box>
     </Box>
   ) : (

@@ -5,10 +5,11 @@ import { Typography } from "@mui/material";
 import logo from "./../../assets/pict.svg";
 import { style } from "./style";
 import commonStyle from "../../common/commonStyle";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { LanguageSelect } from "../LanguageSelect";
 
 export const HeaderNavbar = () => {
+  const { t } = useTranslation();
   const LOGO_SIZE = 30;
   return (
     <AppBar position="relative" sx={{ boxShadow: "none" }}>

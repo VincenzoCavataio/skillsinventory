@@ -2,10 +2,8 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
-import { useEffect, useState } from "react";
-import i18n from "../../translations/i18n";
-import { useDispatch } from "react-redux";
-import { selectLang } from "../../redux/langSlices";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Img = styled("img")({
   marginRight: 8,
@@ -19,35 +17,31 @@ const languages = [
 ];
 
 export const LanguageSelect = () => {
-  const dispatch = useDispatch();
-  const defaultLanguage = languages.find((language) => language.value === "gb");
-  const [lang, setLang] = useState(
-    languages.find((language) => language.value === "gb")
-  );
+  const { i18n } = useTranslation();
+
+  console.log(i18n);
+  const defaultLanguage =
+    languages.find(
+      (language) =>
+        language.label === localStorage.getItem("language")?.toUpperCase()
+    ) ?? languages[1];
+  const [lang, setLang] = useState(defaultLanguage);
+
   const handleLanguageChange = (
-    event: React.SyntheticEvent,
+    _event: React.SyntheticEvent,
     newValue: (typeof languages)[number] | null
   ) => {
     if (newValue) {
       setLang(newValue);
-      // localStorage.setItem("language", newValue.label.toLowerCase());
-      // i18n.changeLanguage(newValue.label.toLowerCase());
-      // location.reload();
+      localStorage.setItem("language", newValue.label.toLowerCase());
+      i18n.changeLanguage(newValue.label.toLowerCase());
     }
   };
-  useEffect(() => {
-    if (lang) {
-      dispatch(selectLang(lang.label.toLowerCase()));
-      // localStorage.setItem("language", lang.label.toLowerCase());
-      // i18n.changeLanguage(lang.label.toLowerCase());
-    }
-    // location.reload();
-    // }, [lang]);
-  }, [dispatch, lang]);
+
   return (
     <Autocomplete
       disablePortal
-      defaultValue={defaultLanguage}
+      value={lang}
       id="combo-box-demo"
       options={languages}
       sx={{ width: 150 }}

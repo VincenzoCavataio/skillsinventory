@@ -1,5 +1,5 @@
 import { ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { commonColors } from "../../common/commonColors";
 import { useState } from "react";
 import { updateAndOr } from "../../redux/andOrSlice";
@@ -9,7 +9,7 @@ export const ButtonGroupAndOr = () => {
   const [value, setValue] = useState("OR");
 
   const dispatch = useDispatch();
-
+  const { t } = useTranslation();
   return (
     <ToggleButtonGroup
       exclusive

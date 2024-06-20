@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { commonColors } from "../../../common/commonColors";
 import { SliderToggles } from "../SliderToggles";
 import { SWITCH_TYPE } from "../../../constants";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { editSkillLevel } from "../../../redux/filtersSlice";
 import { ReduxStore, Skill } from "../../../redux/types";
@@ -17,7 +17,7 @@ export const SliderComponent = ({ name }: { name: string }) => {
       state?.filters?.skills?.find((e: Skill) => e?.label === name)
         ?.levelType as string
   );
-
+  const { t } = useTranslation();
   const IS_BETWEEN = sliderLevelType === "between";
 
   useEffect(() => {

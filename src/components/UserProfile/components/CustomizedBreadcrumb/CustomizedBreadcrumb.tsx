@@ -3,10 +3,11 @@ import { StyledBreadcrumb } from "./styleBreadcrumb";
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
 import { PAGES } from "../../../../constants";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 export const CustomizedBreadcrumb = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   return (
     <Box pt={2} pb={2}>
       <Breadcrumbs separator="›">

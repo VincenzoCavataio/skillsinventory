@@ -5,7 +5,7 @@ import {
   ReduxStore,
   ResponseProfileElementObjectData,
 } from "../../../../redux/types";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const KEYS: string[] = [
   "id",
@@ -24,6 +24,7 @@ const KEYS: string[] = [
 export const Wrapper = () => {
   const userData =
     useSelector((state: ReduxStore) => state.user?.user) ?? undefined;
+  const { t } = useTranslation();
   if (!userData) return;
   const personalData: ResponseProfileElementObjectData = {
     id: userData?.id,

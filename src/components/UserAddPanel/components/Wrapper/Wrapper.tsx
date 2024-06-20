@@ -6,7 +6,7 @@ import { EduAdder } from "../EduAdder";
 import { CertAdder } from "../CertAdder";
 import { CertRowType, EduRowType, SkillRowType } from "../../types";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -21,6 +21,7 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 export const Wrapper = () => {
+  const { t } = useTranslation();
   const skillAdd: string = t("pages.userPage.tables.addSkills");
   const certAdd: string = t("pages.userPage.tables.addCert");
   const eduAdd: string = t("pages.userPage.tables.addEdu");

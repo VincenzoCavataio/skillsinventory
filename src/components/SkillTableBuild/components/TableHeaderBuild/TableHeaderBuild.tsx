@@ -1,17 +1,12 @@
-import {
-  Button,
-  Checkbox,
-  TableCell,
-  TableHead,
-  TableRow,
-} from "@mui/material";
+import { Button, TableCell, TableHead, TableRow } from "@mui/material";
 import { commonColors } from "../../../../common/commonColors";
 import { useSelector } from "react-redux";
 import { ReduxStore } from "../../../../redux/types";
 import { HeaderCustomCell } from "../HeaderCustomCell";
 import { HeadCells } from "../../types";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 export const TableHeaderBuild = () => {
+  const { t } = useTranslation();
   const skillsFilterStore = useSelector((state: ReduxStore) => state.skills);
   const allSkillsFilter = skillsFilterStore?.skills.map(
     (skill) => `${skill.id};${skill.operator}${skill.level}`

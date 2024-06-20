@@ -9,7 +9,7 @@ import {
 import { SkillHeadCells, SkillRowType } from "../../types";
 import { SkillAdderBody } from "../SkillAdderBody";
 import { Dispatch, SetStateAction } from "react";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 type SkillTableBodyBuildProps = {
   rows: SkillRowType[];
@@ -21,6 +21,7 @@ export const SkillAdder: React.FC<SkillTableBodyBuildProps> = ({
   rows,
   setRowsSkillTable,
 }) => {
+  const { t } = useTranslation();
   const skillHeadCells: readonly SkillHeadCells[] = [
     {
       t: "",

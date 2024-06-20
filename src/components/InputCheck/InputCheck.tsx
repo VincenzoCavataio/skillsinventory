@@ -6,7 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { InputSelectType } from "../InputSelect/types";
 
 export const InputChecks = ({
@@ -17,6 +17,7 @@ export const InputChecks = ({
   selectedInput,
   objKey,
 }: InputSelectType) => {
+  const { t } = useTranslation();
   const [elements, setElements] = React.useState<string[]>([]);
   const final_object = data?.final_object;
 

@@ -8,7 +8,7 @@ import {
   styled,
 } from "@mui/material";
 import { useState } from "react";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 // const MOCK_DATA = [
 //   "placeholder_1",
@@ -33,6 +33,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
   showCheckbox,
   data,
 }) => {
+  const { t } = useTranslation();
   const [checked, setChecked] = useState<string[]>([]);
 
   const handleToggle = (value: string) => () => {

@@ -2,7 +2,6 @@ import { Dispatch } from "react";
 import { URL } from "../../constants";
 import { AxiosResponse } from "axios";
 import { t } from "i18next";
-
 const ENDPOINT = `${URL}/api/v1/user/login`;
 const ENDPOINT_REFRESHTOKEN = `${URL}/api/v1/user/refreshToken`;
 

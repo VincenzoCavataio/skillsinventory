@@ -2,7 +2,7 @@ import { Slider, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { commonColors } from "../../../common/commonColors";
 import { SliderToggles } from "../SliderToggles";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { editSkillLevel } from "../../../redux/filtersSlice";
 
@@ -13,7 +13,7 @@ export const SliderComponentBetween = ({ name }: { name: string }) => {
   useEffect(() => {
     dispatch(editSkillLevel({ name, values }));
   }, [dispatch, name, values]);
-
+  const { t } = useTranslation();
   return (
     <>
       <SliderToggles name={name} />

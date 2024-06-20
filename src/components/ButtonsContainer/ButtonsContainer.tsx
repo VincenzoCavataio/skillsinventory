@@ -1,5 +1,5 @@
 import { CustomButton } from "../CustomButton";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import SearchIcon from "@mui/icons-material/Search";
 import CancelButton from "@mui/icons-material/Cancel";
 import { useDispatch } from "react-redux";
@@ -27,7 +27,7 @@ export const ButtonsContainer = ({
     institute: "",
     course: "",
   };
-
+  const { t } = useTranslation();
   return (
     <>
       <Box display={"flex"} flexDirection={"column"}>

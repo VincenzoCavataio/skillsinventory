@@ -1,7 +1,7 @@
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 //TODO: Probabilmente da cancellare
 const Search = styled("div")(({ theme }) => ({
@@ -39,6 +39,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export const Searchbar = () => {
+  const { t } = useTranslation();
   return (
     <Search
       sx={{

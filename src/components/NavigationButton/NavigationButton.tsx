@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import HomeIcon from "@mui/icons-material/Home";
 import commonStyle from "../../common/commonStyle";
 
@@ -12,7 +12,7 @@ export const NavigationButton = ({ to }: Props) => {
   const handleClick = (path: string) => {
     navigate(`/${path ?? ""}`);
   };
-
+  const { t } = useTranslation();
   return (
     <Button
       sx={commonStyle.colorWhite}

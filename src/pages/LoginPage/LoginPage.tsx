@@ -12,9 +12,10 @@ import { commonColors } from "../../common/commonColors";
 import { useNavigate } from "react-router-dom";
 import { PAGES } from "../../constants";
 import { login } from "../../utilities/generateLogin";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 export const LoginPage = () => {
+  const { t } = useTranslation();
   //TODO: se fabrizio conferma il formato 'email' nella sezione username possiamo abilitare anche il controllo sulla forma
   const [credentials, setCredentials] = useState({
     email: { value: "", error: false },

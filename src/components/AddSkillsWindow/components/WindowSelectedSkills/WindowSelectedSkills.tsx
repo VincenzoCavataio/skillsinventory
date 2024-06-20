@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { commonColors } from "../../../../common/commonColors";
 import { useSelector } from "react-redux";
 import { ReduxStore, Skill } from "../../../../redux/types";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { ResponseElementObjectData } from "../../../../pages/DashboardPage/types";
 type Props = {
   data?: ResponseElementObjectData[];
@@ -17,6 +17,7 @@ export const WindowSelectedSkills = ({
   selectedElements,
   setSelectedElements,
 }: Props) => {
+  const { t } = useTranslation();
   const skillsInStore = useSelector((state: ReduxStore) => state.skills);
 
   const highlightSelectedSkills = (skill: Skill) => {

@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteSkills, insertSkills } from "../../../../redux/skillsSlice";
 import { ReduxStore, Skill } from "../../../../redux/types";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { Triangle } from "../Triangle/Triangle";
 
 type Props = {
@@ -30,6 +30,7 @@ export const OperationsButtons = ({
   selectedElements,
   setSelectedElements,
 }: Props) => {
+  const { t } = useTranslation();
   const LEVELS = [1, 2, 3, 4, 5];
   const OPERATORS = ["=", ">", "<", ">=", "<="];
 

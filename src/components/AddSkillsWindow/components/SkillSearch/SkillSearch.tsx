@@ -1,6 +1,6 @@
 import { Input } from "@mui/material";
 import { ResponseElementObjectData } from "../../../../pages/DashboardPage/types";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 type Props = {
   data: {
     final_object?: ResponseElementObjectData[];
@@ -9,6 +9,7 @@ type Props = {
 };
 
 export const SkillSearch = ({ data, setData }: Props) => {
+  const { t } = useTranslation();
   const onChange = (event: { target: { value: string } }) => {
     const filteredData = data?.final_object?.filter((element) =>
       element.name.toUpperCase().includes(event.target.value.toUpperCase())

@@ -9,7 +9,7 @@ import {
 import { CertHeadCells, CertRowType } from "../../types";
 import { Dispatch, SetStateAction } from "react";
 import { CertAdderBody } from "../CertAdderBody";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 type CertTableBodyBuildProps = {
   rows: CertRowType[];
@@ -19,6 +19,7 @@ export const CertAdder: React.FC<CertTableBodyBuildProps> = ({
   rows,
   setRowsCertTable,
 }) => {
+  const { t } = useTranslation();
   const certHeadCells: readonly CertHeadCells[] = [
     {
       t: "",

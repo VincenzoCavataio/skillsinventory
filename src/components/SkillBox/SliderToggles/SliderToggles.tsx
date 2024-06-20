@@ -6,13 +6,13 @@ import UnfoldLessIcon from "@mui/icons-material/UnfoldLess";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Tooltip } from "@mui/material";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { editSkillLevelType } from "../../../redux/filtersSlice";
 
 export const SliderToggles = ({ name }: { name: string }) => {
   const [sliderType, setSliderType] = useState("from");
-
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   useEffect(() => {

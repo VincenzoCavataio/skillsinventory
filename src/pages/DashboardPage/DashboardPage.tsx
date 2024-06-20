@@ -1,6 +1,6 @@
 import { Box, Container, TextField } from "@mui/material";
 import { HeaderNavbar } from "../../components/HeaderNavbar";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -26,6 +26,7 @@ import { CompiledFieldsWithID } from "./types";
 import { ReduxStore } from "../../redux/types";
 
 export const DashboardPage = () => {
+  const { t } = useTranslation();
   const [selectedInput, setSelectedInput] = useState<CompiledFieldsWithID>({});
   const dispatch = useDispatch();
   const navigate = useNavigate();

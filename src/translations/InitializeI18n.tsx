@@ -23,5 +23,3 @@ export const InitializeI18n = () => {
 
   return i18n;
 };
-
-// export default InitializeI18n();

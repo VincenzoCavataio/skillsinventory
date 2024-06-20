@@ -6,7 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { CompiledFieldsWithID } from "../../pages/DashboardPage/types";
 import { InputSelectType } from "../InputSelect/types";
 
@@ -74,7 +74,7 @@ export const InputChecks2 = ({
     [key: number]: boolean;
   }>({});
   const final_object = data?.final_object;
-
+  const { t } = useTranslation();
   const handleChange = (event: SelectChangeEvent<CompiledFieldsWithID[]>) => {
     const selectedValues = event.target.value as CompiledFieldsWithID[];
     setElements(selectedValues);

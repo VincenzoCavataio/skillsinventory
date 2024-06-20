@@ -1,6 +1,6 @@
 import { Autocomplete, Button, TextField } from "@mui/material";
 import { ResponseElementObjectData } from "../../pages/DashboardPage/types";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { InputSelectType } from "./types";
 import { useSelector } from "react-redux";
 import { ReduxStore } from "../../redux/types";
@@ -17,7 +17,7 @@ export const InputSelect = ({
 }: InputSelectType) => {
   const inputSelectValue = useSelector((state: ReduxStore) => state.search);
   const autocompleteValue = inputSelectValue?.filters[objKey]?.value ?? null;
-
+  const { t } = useTranslation();
   return (
     <Autocomplete
       disablePortal

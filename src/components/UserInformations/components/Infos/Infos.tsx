@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { commonColors } from "../../../../common/commonColors";
 
 export const Infos = ({
@@ -21,6 +21,7 @@ export const Infos = ({
       }
     }
   }
+  const { t } = useTranslation();
   return type === "list" && typeof data === "object" ? (
     <Box
       textAlign={"left"}

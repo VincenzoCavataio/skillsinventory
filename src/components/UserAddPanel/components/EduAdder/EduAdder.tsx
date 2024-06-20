@@ -9,7 +9,7 @@ import {
 import { EduHeadCells, EduRowType } from "../../types";
 import { Dispatch, SetStateAction } from "react";
 import { EduAdderBody } from "../EduAdderBody";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 type EduTableBodyBuildProps = {
   rows: EduRowType[];
@@ -19,6 +19,7 @@ export const EduAdder: React.FC<EduTableBodyBuildProps> = ({
   rows,
   setRowsEduTable,
 }) => {
+  const { t } = useTranslation();
   const eduHeadCells: readonly EduHeadCells[] = [
     {
       t: "",

@@ -8,7 +8,7 @@ import {
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { CheckboxList } from "../CheckboxList";
 import { AccordionLabel, Props } from "./Types";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { commonColors } from "../../../../common/commonColors";
 
 export const GenericAccordion = ({ action, label, state, data }: Props) => {
@@ -20,7 +20,7 @@ export const GenericAccordion = ({ action, label, state, data }: Props) => {
       [accordion]: !prevState[accordion],
     }));
   };
-
+  const { t } = useTranslation();
   return (
     <Accordion disableGutters sx={{ boxShadow: "none" }}>
       <AccordionSummary

@@ -66,14 +66,14 @@ export type ResponseProfileElementObjectData = {
 };
 
 export type Residenza = {
-  address: string;
-  address_number: number;
-  city: string;
-  latitude: number;
-  longitude: number;
-  nation: string;
-  province: string;
-  zip_code: string;
+  address?: string;
+  address_number?: number;
+  city?: string;
+  latitude?: number;
+  longitude?: number;
+  nation?: string;
+  province?: string;
+  zip_code?: string;
 };
 
 export type UserSkill = {

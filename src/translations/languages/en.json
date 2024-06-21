@@ -73,7 +73,8 @@
           "workPhoneNumber": "Work Phone Number",
           "actualEmploymentDate": "Actual Employement Date",
           "firstEmploymentDate": "First Employement Date",
-          "address": "Address"
+          "address": "Address",
+          "map": "Map"
         },
         "tables": {
           "uploadCV": "UPLOAD YOUR CV",
@@ -97,7 +98,8 @@
       "notFound": {
         "credentials": "Invalid credentials",
         "title": "Page not found",
-        "description": "Sorry but the page you are looking for does not exists"
+        "description": "Sorry but the page you are looking for does not exists",
+        "addressNotFound": "Address not found"
       }
     }
   }

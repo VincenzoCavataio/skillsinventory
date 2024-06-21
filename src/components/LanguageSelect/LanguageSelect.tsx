@@ -14,6 +14,7 @@ const Img = styled("img")({
 const languages = [
   { label: "IT", value: "it" },
   { label: "EN", value: "gb" },
+  { label: "ES", value: "es" },
 ];
 
 export const LanguageSelect = () => {

@@ -1,0 +1,106 @@
+{
+  "translation": {
+    "common": {
+      "title": "Skills Inventory",
+      "error": "Error",
+      "share": "Compartir",
+      "back_home": "Volver a Inicio",
+      "search": "Buscar",
+      "clear": "Reset",
+      "login": "Inicio de sesión exitoso",
+      "loginFail": "Error inesperado durante el inicio de sesión. Inténtelo de nuevo."
+    },
+    "pages": {
+      "loginPage": {
+        "emailAddress": "Dirección de correo electrónico",
+        "register": "REGISTRARSE",
+        "loginButton": "ACCEDER"
+      },
+      "dashboard": {
+        "buttonGroup": {
+          "and": "AND",
+          "or": "OR"
+        },
+        "search": {
+          "name": "Nombre y Apellido",
+          "selectSkills": "Seleccionar habilidades",
+          "certification": "Certificaciones",
+          "noOptions": "Sin opciones",
+          "advancedSearch": "Búsqueda avanzada",
+          "operator": "Operador",
+          "level": "Nivel",
+          "ricerca": "Buscar habilidad por nombre...",
+          "risultato": "Criterios de Búsqueda de Habilidades",
+          "noskillfound": "Ninguna habilidad seleccionada",
+          "add": "AÑADIR",
+          "remove": "ELIMINAR",
+          "institute": "Instituto",
+          "course": "Curso",
+          "cities": "Ciudad de Residencia",
+          "educationalLevels": "Nivel Educativo"
+        },
+        "headerTable": {
+          "surnameTable": "Apellido",
+          "firstNameTable": "Nombre",
+          "skillsListTable": "Lista de Habilidades",
+          "rankingTable": "Clasificación",
+          "experienceTable": "Años de Experiencia",
+          "educationTable": "Educación",
+          "addressTable": "Dirección",
+          "certificationTable": "Certificaciones",
+          "paginationOverTable": "N.º de elementos por página"
+        }
+      },
+      "userPage": {
+        "info": {
+          "hardSkills": "Habilidades Técnicas",
+          "education": "Educación",
+          "certificates": "Certificados",
+          "userBreadcrumb": "Usuario",
+          "edit": "EDITAR",
+          "removeAll": "Eliminar Todo",
+          "selectAll": "Seleccionar Todo"
+        },
+        "informationDetails": {
+          "id": "Id",
+          "gender": "Género",
+          "firstName": "Nombre",
+          "lastName": "Apellido",
+          "email_login": "Correo Electrónico",
+          "personalPhoneNumber": "Número de Teléfono",
+          "driver_license": "Licencia de Conducir",
+          "birthDate": "Fecha de Nacimiento",
+          "workPhoneNumber": "Número de Teléfono del Trabajo",
+          "actualEmploymentDate": "Fecha de Empleo Actual",
+          "firstEmploymentDate": "Fecha de Primer Empleo",
+          "address": "Dirección",
+          "map": "Mapa"
+        },
+        "tables": {
+          "uploadCV": "SUBIR SU CV",
+          "addSkills": "AÑADIR HABILIDAD",
+          "addEdu": "AÑADIR EDUCACIÓN",
+          "addCert": "AÑADIR CERTIFICACIONES",
+          "updateProfile": "ACTUALIZAR PERFIL",
+          "nameInTables": "Nombre",
+          "levelInTables": "Nivel",
+          "levelsInTables": "Niveles",
+          "courseInTables": "Curso",
+          "experienceInTables": "Experiencia",
+          "codeInTables": "Código",
+          "instituteInTables": "Instituto",
+          "cityInTables": "Ciudad",
+          "issuerInTables": "Emisor",
+          "releaseInTables": "Fecha de Emisión",
+          "expirationInTables": "Fecha de Expiración"
+        }
+      },
+      "notFound": {
+        "credentials": "Credenciales inválidas",
+        "title": "Página no encontrada",
+        "description": "Lo siento, pero la página que está buscando no existe",
+        "addressNotFound": "Dirección no encontrada"
+      }
+    }
+  }
+}

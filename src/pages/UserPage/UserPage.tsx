@@ -1,4 +1,4 @@
-import { Box, Container, Stack } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { HeaderNavbar } from "../../components/HeaderNavbar";
 import { ProfilePage } from "../../components/UserProfile";
 import { CustomizedBreadcrumb } from "../../components/UserProfile/components/CustomizedBreadcrumb";
@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { selectUser } from "../../redux/userSlice";
 import { UserAddPanel } from "../../components/UserAddPanel";
+import { UserInfoMap } from "../../components/UserInfoMap";
 
 export type Payload = {
   userId: string;
@@ -53,13 +54,8 @@ export const UserPage = () => {
           </Box>
           <Box flex={2} bgcolor="transparent" height="100%">
             <ProfileInfo />
-            <Box width="100%" mt={2} bgcolor="red" height="100%">
-              <iframe
-                width="600"
-                height="450"
-                loading="lazy"
-                src="https://www.google.com/maps/embed/v1/place?q=gorgonzola%20via%20bellini%2014&key=..."
-              ></iframe>
+            <Box width="100%" mt={2} bgcolor="white" height="100%">
+              <UserInfoMap></UserInfoMap>
             </Box>
             <Box bgcolor="white" height="100%" width="100%" mt={2}>
               <UserAddPanel></UserAddPanel>

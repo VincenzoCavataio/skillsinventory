@@ -84,7 +84,8 @@
           "workPhoneNumber": "N. Telefono Lavoro",
           "actualEmploymentDate": "Data di impiego attuale",
           "firstEmploymentDate": "Data di primo impiego",
-          "address": "Indirizzo"
+          "address": "Indirizzo",
+          "map": "Mappa"
         },
         "tables": {
           "uploadCV": "CARICA IL TUO CV",
@@ -108,7 +109,8 @@
       "notFound": {
         "credentials": "Credenziali non valide",
         "title": "Pagina non trovata",
-        "description": "Mi dispiace ma la pagina che stai cercando non esiste"
+        "description": "Mi dispiace ma la pagina che stai cercando non esiste",
+        "addressNotFound": "Indirizzo non trovato"
       }
     }
   }

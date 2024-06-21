@@ -53,6 +53,14 @@ export const UserPage = () => {
           </Box>
           <Box flex={2} bgcolor="transparent" height="100%">
             <ProfileInfo />
+            <Box width="100%" mt={2} bgcolor="red" height="100%">
+              <iframe
+                width="600"
+                height="450"
+                loading="lazy"
+                src="https://www.google.com/maps/embed/v1/place?q=gorgonzola%20via%20bellini%2014&key=..."
+              ></iframe>
+            </Box>
             <Box bgcolor="white" height="100%" width="100%" mt={2}>
               <UserAddPanel></UserAddPanel>
             </Box>

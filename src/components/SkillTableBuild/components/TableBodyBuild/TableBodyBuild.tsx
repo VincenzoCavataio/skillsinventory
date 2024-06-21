@@ -13,7 +13,6 @@ type Props = {
 };
 // export const TableBodyBuild: React.FC<Props> = ({ rows, check, setCheck }) => {
 export const TableBodyBuild: React.FC<Props> = ({ rows }) => {
-  console.log(rows);
   const navigate = useNavigate();
   const { userPage } = PAGES;
   const skillsFilterStore = useSelector((state: ReduxStore) => state.skills);

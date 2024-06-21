@@ -46,6 +46,7 @@ export const Wrapper = () => {
     `${userData?.residence?.city ?? ""}`,
     `${userData?.residence?.nation ?? ""}`,
   ];
+  console.log(userData.residence);
   //TODO: CAPIRE ERRORE PERSONALDATA
   return (
     <Box bgcolor="white">

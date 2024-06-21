@@ -19,7 +19,6 @@ const languages = [
 export const LanguageSelect = () => {
   const { i18n } = useTranslation();
 
-  console.log(i18n);
   const defaultLanguage =
     languages.find(
       (language) =>

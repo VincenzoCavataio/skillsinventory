@@ -1,4 +1,5 @@
 import { Box, Button } from "@mui/material";
+import { NEXTRE_ENG } from "../../../../common/commonColors";
 
 type GenericAddProps = {
   label: string;
@@ -9,7 +10,7 @@ export const GenericAdd: React.FC<GenericAddProps> = ({ label, onClick }) => {
   return (
     <Button
       variant="contained"
-      sx={{ backgroundColor: "#8cbe2d" }}
+      sx={{ backgroundColor: NEXTRE_ENG }}
       onClick={onClick}
     >
       {label}

@@ -10,7 +10,7 @@ import { LanguageSelect } from "../LanguageSelect";
 
 export const HeaderNavbar = () => {
   const { t } = useTranslation();
-  const LOGO_SIZE = 30;
+  const LOGO_SIZE = 32;
   return (
     <AppBar position="relative" sx={{ boxShadow: "none" }}>
       <Toolbar sx={commonStyle.spaceBetween}>
@@ -23,7 +23,7 @@ export const HeaderNavbar = () => {
           >
             <img src={logo} width={LOGO_SIZE} height={LOGO_SIZE} />
             <Typography variant="inherit" ml={1}>
-              {t("common.title")}
+              {t("common.title").toUpperCase()}
             </Typography>
           </Typography>
         </Box>

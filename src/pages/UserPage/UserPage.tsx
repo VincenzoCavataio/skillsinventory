@@ -32,10 +32,12 @@ export const UserPage = () => {
     dispatch(selectUser(userDataByUserId.data));
   }, [dispatch, navigate, notFoundPage, userDataByUserId]);
 
-  if (userDataByUserId.data === undefined || userDataByUserId.data === "") {
-    navigate(notFoundPage);
-  }
-
+  useEffect(() => {
+    console.log(userDataByUserId.data);
+    if (userDataByUserId.data === "") {
+      navigate(notFoundPage);
+    }
+  }, [navigate, notFoundPage, userDataByUserId.data]);
   return (
     <Box>
       <HeaderNavbar />

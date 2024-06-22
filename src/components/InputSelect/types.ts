@@ -12,7 +12,12 @@ export type InputSelectType = {
   setSelectedInput: (value: React.SetStateAction<CompiledFieldsWithID>) => void;
   data?: { final_object?: ResponseElementObjectData[] };
   label: Label;
-  objKey: "educationalLevel" | "institute" | "course";
+  objKey:
+    | "educationalLevel"
+    | "institute"
+    | "course"
+    | "certification"
+    | "city";
   width: number;
 };
 //Dispatch<SetStateAction<Record<string, string>>>; setSelectedInput

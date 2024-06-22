@@ -10,16 +10,9 @@ import {
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-// const MOCK_DATA = [
-//   "placeholder_1",
-//   "placeholder_2",
-//   "placeholder_3",
-//   "placeholder_4",
-//   "placeholder_5",
-// ];
 type CheckboxListProps = {
   showCheckbox: boolean;
-  data?: string[]; // Aggiungi questa riga
+  data?: string[];
 };
 const CustomListItemButton = styled(ListItemButton)(() => ({
   "&.Mui-disabled": {
@@ -28,7 +21,6 @@ const CustomListItemButton = styled(ListItemButton)(() => ({
   },
 }));
 
-// export const CheckboxList = ({ showCheckbox }: { showCheckbox: boolean }) => {
 export const CheckboxList: React.FC<CheckboxListProps> = ({
   showCheckbox,
   data,

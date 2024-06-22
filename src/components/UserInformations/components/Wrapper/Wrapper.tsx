@@ -7,7 +7,20 @@ import {
 } from "../../../../redux/types";
 import { useTranslation } from "react-i18next";
 
-const KEYS: string[] = [
+type keysType =
+  | "id"
+  | "gender"
+  | "firstName"
+  | "lastName"
+  | "email_login"
+  | "personalPhoneNumber"
+  | "driver_license"
+  | "birthDate"
+  | "workPhoneNumber"
+  | "actualEmploymentDate"
+  | "firstEmploymentDate";
+
+const KEYS: keysType[] = [
   "id",
   "gender",
   "firstName",
@@ -26,12 +39,14 @@ export const Wrapper = () => {
     useSelector((state: ReduxStore) => state.user?.user) ?? undefined;
   const { t } = useTranslation();
   if (!userData) return;
+
   const personalData: ResponseProfileElementObjectData = {
     id: userData?.id,
     firstName: userData.firstName,
     lastName: userData.lastName,
     email_login: userData.email_login,
     personalPhoneNumber: userData.personalPhoneNumber,
+    //TODO : aggiungere si e no tra le traduzioni
     driver_license: userData?.driver_license ? "Sì" : "No",
     birthDate: userData.birthDate,
     workPhoneNumber: userData.workPhoneNumber,
@@ -46,11 +61,10 @@ export const Wrapper = () => {
     `${userData?.residence?.city ?? ""}`,
     `${userData?.residence?.nation ?? ""}`,
   ];
-  console.log(userData.residence);
-  //TODO: CAPIRE ERRORE PERSONALDATA
+
   return (
     <Box bgcolor="white">
-      {KEYS.map((key: string) => (
+      {KEYS.map((key: keysType) => (
         <Infos title={key} data={personalData[key]} key={key} type="row" />
       ))}
       <Infos

@@ -30,10 +30,13 @@ export const DashboardPage = () => {
   const [selectedInput, setSelectedInput] = useState<CompiledFieldsWithID>({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const filterStore = useSelector((state: ReduxStore) => state.search);
+
   useEffect(() => {
     dispatch(updateFilter({ filters: selectedInput }));
   }, [dispatch, selectedInput]);
-  const filterStore = useSelector((state: ReduxStore) => state.search);
+
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     //TODO: magari aggiungere un controllo con una chiamata di healthcheck (da parlare con BE)

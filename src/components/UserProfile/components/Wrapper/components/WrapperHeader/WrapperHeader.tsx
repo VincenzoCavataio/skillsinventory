@@ -1,15 +1,17 @@
 import { Avatar, Box, Typography } from "@mui/material";
+import { FEMALE_AVATAR, MALE_AVATAR } from "../../../../../../constants";
 
 type Props = {
   title: string;
   fullName: string;
   src?: string;
   alt?: string;
+  gender?: string;
 };
 
-export const WrapperHeader = ({ title, fullName, src, alt }: Props) => {
+export const WrapperHeader = ({ title, fullName, src, alt, gender }: Props) => {
   const AVATAR_SIZE: number = 100;
-  const FALLBACK_ICON = "/broken-image.jpg";
+  const FALLBACK_ICON = gender === "f" ? FEMALE_AVATAR : MALE_AVATAR;
 
   if (!src) {
     src = FALLBACK_ICON;

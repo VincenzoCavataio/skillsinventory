@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 const Img = styled("img")({
   marginRight: 8,
@@ -38,13 +39,47 @@ export const LanguageSelect = () => {
     }
   };
 
+  /*
+  
+  <FormControl fullWidth>
+  <InputLabel id="demo-simple-select-label">Age</InputLabel>
+  <Select
+    labelId="demo-simple-select-label"
+    id="demo-simple-select"
+    value={age}
+    label="Age"
+    onChange={handleChange}
+  >
+    <MenuItem value={10}>Ten</MenuItem>
+    <MenuItem value={20}>Twenty</MenuItem>
+    <MenuItem value={30}>Thirty</MenuItem>
+  </Select>
+</FormControl>
+
+  */
+
   return (
+    // <FormControl fullWidth>
+    //   <InputLabel id="demo-simple-select-label">Age</InputLabel>
+    //   <Select
+    //     labelId="demo-simple-select-label"
+    //     id="demo-simple-select"
+    //     value={lang}
+    //     label="Language"
+    //     onChange={handleLanguageChange}
+    //   >
+    //     <MenuItem value={10}>Ten</MenuItem>
+    //     <MenuItem value={20}>Twenty</MenuItem>
+    //     <MenuItem value={30}>Thirty</MenuItem>
+    //   </Select>
+    // </FormControl>
+
     <Autocomplete
       disablePortal
       value={lang}
       id="combo-box-demo"
       options={languages}
-      sx={{ width: 150 }}
+      sx={{ width: 160 }}
       getOptionLabel={(option) => option.label}
       onChange={handleLanguageChange}
       renderOption={(props, option) => (

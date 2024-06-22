@@ -10,6 +10,7 @@ import { SkillHeadCells, SkillRowType } from "../../types";
 import { SkillAdderBody } from "../SkillAdderBody";
 import { Dispatch, SetStateAction } from "react";
 import { useTranslation } from "react-i18next";
+import { NEXTRE_ENG } from "../../../../common/commonColors";
 
 type SkillTableBodyBuildProps = {
   rows: SkillRowType[];
@@ -51,7 +52,7 @@ export const SkillAdder: React.FC<SkillTableBodyBuildProps> = ({
   return (
     <TableContainer
       component={Paper}
-      sx={{ marginTop: 2, width: "auto", border: "solid 0.5px #8cbe2d" }}
+      sx={{ marginTop: 2, width: "auto", border: `solid 0.5px ${NEXTRE_ENG}` }}
       elevation={0}
     >
       <Table sx={{ minWidth: 650 }} aria-label="skills table">
@@ -61,7 +62,7 @@ export const SkillAdder: React.FC<SkillTableBodyBuildProps> = ({
               <TableCell
                 // sx={{ color: "white", fontWeight: "550", fontSize: 14 }}
                 sx={{
-                  color: "#8cbe2d",
+                  color: NEXTRE_ENG,
                   fontWeight: "550",
                   fontSize: 14,
                   width: headCell.numeric ? "50px" : undefined,

@@ -10,6 +10,7 @@ import { CertHeadCells, CertRowType } from "../../types";
 import { Dispatch, SetStateAction } from "react";
 import { CertAdderBody } from "../CertAdderBody";
 import { useTranslation } from "react-i18next";
+import { NEXTRE_ENG } from "../../../../common/commonColors";
 
 type CertTableBodyBuildProps = {
   rows: CertRowType[];
@@ -71,7 +72,7 @@ export const CertAdder: React.FC<CertTableBodyBuildProps> = ({
         marginTop: 2,
         width: "100%",
         overflowX: "auto",
-        border: "solid 0.5px #8cbe2d",
+        border: `solid 0.5px ${NEXTRE_ENG}`,
       }}
       elevation={0}
     >
@@ -82,7 +83,7 @@ export const CertAdder: React.FC<CertTableBodyBuildProps> = ({
               <TableCell
                 // sx={{ color: "white", fontWeight: "550", fontSize: 14 }}
                 sx={{
-                  color: "#8cbe2d",
+                  color: NEXTRE_ENG,
                   fontWeight: "550",
                   fontSize: 14,
                   width: headCell.checkbox ? "20px" : undefined,
@@ -93,10 +94,8 @@ export const CertAdder: React.FC<CertTableBodyBuildProps> = ({
                 {headCell.label}
               </TableCell>
             ))}
-            <TableCell></TableCell>
           </TableRow>
         </TableHead>
-
         <CertAdderBody rows={rows} setRowsCertTable={setRowsCertTable} />
       </Table>
     </TableContainer>

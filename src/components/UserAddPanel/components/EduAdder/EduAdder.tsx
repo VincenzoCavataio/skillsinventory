@@ -10,6 +10,7 @@ import { EduHeadCells, EduRowType } from "../../types";
 import { Dispatch, SetStateAction } from "react";
 import { EduAdderBody } from "../EduAdderBody";
 import { useTranslation } from "react-i18next";
+import { NEXTRE_ENG } from "../../../../common/commonColors";
 
 type EduTableBodyBuildProps = {
   rows: EduRowType[];
@@ -61,18 +62,15 @@ export const EduAdder: React.FC<EduTableBodyBuildProps> = ({
     <TableContainer
       component={Paper}
       elevation={0}
-      // sx={{ marginTop: 2, backgroundColor: "#8cbe2d", width: "auto" }}
-      sx={{ marginTop: 2, width: "auto", border: "solid 0.5px #8cbe2d" }}
-      // variant="outlined"
+      sx={{ marginTop: 2, width: "auto", border: `solid 0.5px ${NEXTRE_ENG} ` }}
     >
       <Table sx={{ minWidth: 650 }} aria-label="edu table">
         <TableHead>
           <TableRow>
             {eduHeadCells.map((headCell) => (
               <TableCell
-                // sx={{ color: "white", fontWeight: "550", fontSize: 14 }}
                 sx={{
-                  color: "#8cbe2d",
+                  color: NEXTRE_ENG,
                   fontWeight: "550",
                   fontSize: 14,
                   width:

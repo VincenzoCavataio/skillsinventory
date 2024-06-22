@@ -1,6 +1,6 @@
 import { ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { commonColors } from "../../common/commonColors";
+import { NEXTRE_ENG, commonColors } from "../../common/commonColors";
 import { useState } from "react";
 import { updateAndOr } from "../../redux/andOrSlice";
 import { useDispatch } from "react-redux";
@@ -19,7 +19,7 @@ export const ButtonGroupAndOr = () => {
       }}
       value={value}
       aria-label={t(`pages.dashboard.slider.buttonContainerl`)}
-      sx={{ background: commonColors.accentColor }}
+      sx={{ background: NEXTRE_ENG }}
     >
       <ToggleButton
         key={"AND"}

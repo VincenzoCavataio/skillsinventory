@@ -46,3 +46,6 @@ export const PAGES = {
   loginPage: "/login",
   notFoundPage: "/notFound",
 };
+
+export const MALE_AVATAR = "/not-found-male-avatar.png";
+export const FEMALE_AVATAR = "/not-found-female-avatar.png";

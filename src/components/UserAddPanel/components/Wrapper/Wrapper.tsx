@@ -7,6 +7,7 @@ import { CertAdder } from "../CertAdder";
 import { CertRowType, EduRowType, SkillRowType } from "../../types";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useTranslation } from "react-i18next";
+import { NEXTRE_ENG } from "../../../../common/commonColors";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -129,7 +130,7 @@ export const Wrapper = () => {
           sx={{
             width: "100%",
             marginBottom: 3,
-            backgroundColor: "#8cbe2d",
+            backgroundColor: NEXTRE_ENG,
             color: "white",
           }}
         >

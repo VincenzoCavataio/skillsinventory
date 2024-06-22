@@ -16,6 +16,7 @@ export const Wrapper = () => {
       <WrapperHeader
         title={namePosition.position}
         fullName={namePosition.fullName}
+        gender={userData?.gender}
         alt="User Name"
       />
       <AccordionGroup />

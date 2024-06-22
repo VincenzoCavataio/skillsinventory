@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { commonColors } from "../../../../common/commonColors";
+import { ResponseProfileElementObjectData } from "../../../../redux/types";
 
 export const Infos = ({
   title,
@@ -8,7 +9,9 @@ export const Infos = ({
   type,
 }: {
   title: string;
-  data: string | string[] | number;
+  data:
+    | ResponseProfileElementObjectData[keyof ResponseProfileElementObjectData]
+    | string[];
   type: string;
 }) => {
   let allEmpty = true;
@@ -22,6 +25,7 @@ export const Infos = ({
     }
   }
   const { t } = useTranslation();
+
   return type === "list" && typeof data === "object" ? (
     <Box
       textAlign={"left"}
@@ -34,9 +38,11 @@ export const Infos = ({
       </Box>
       <Box flex={2} alignContent="center">
         {allEmpty === true ? (
-          <Typography variant="body2">{"-"}</Typography>
+          <Typography variant="body2">-</Typography>
         ) : (
-          <Typography variant="body2">{data.join(", ")}</Typography>
+          <Typography variant="body2">
+            {(data as string[]).join(", ")}
+          </Typography>
         )}
       </Box>
     </Box>
@@ -53,20 +59,8 @@ export const Infos = ({
         </Typography>
       </Box>
       <Box flex={2} alignContent="center">
-        <Typography variant="body2">{data ?? "-"}</Typography>
+        <Typography variant="body2">{(data as string[]) ?? "-"}</Typography>
       </Box>
     </Box>
   );
 };
-
-// "fullName": "Full Name",
-// "email": "E-Mail",
-// "firstEmploymentStartDate": "First Employment Start Date",
-// "actualEmploymentStartDate": "Actual Employment Start Date",
-// "privateNumber": "Private Number",
-// "workNumber": "Work Number",
-// "workPhoneNumber": "N. Telefono Lavoro",
-// "actualEmployementDate":"Data di impiego attuale",
-// "firstEmployementDate":"Data di primo impiego",
-// "address": "Address",
-//old json

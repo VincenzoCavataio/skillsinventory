@@ -1,6 +1,6 @@
 import { Delete } from "@mui/icons-material";
 import { Button } from "@mui/material";
-import React, { FC } from "react";
+import { FC } from "react";
 
 type Props = {
   row: { id: number };

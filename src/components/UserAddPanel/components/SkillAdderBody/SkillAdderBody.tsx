@@ -1,4 +1,4 @@
-import { Button, TableBody, TableCell, TableRow } from "@mui/material";
+import { TableBody, TableCell, TableRow } from "@mui/material";
 import { SkillRowType } from "../../types";
 import { Dispatch, SetStateAction } from "react";
 import { ShortTextField } from "../../style";

@@ -1,0 +1,1 @@
+export { RecenterAutomatically } from "./RecenterAutomatically";

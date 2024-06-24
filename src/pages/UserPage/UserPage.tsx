@@ -31,13 +31,13 @@ export const UserPage = () => {
   useEffect(() => {
     dispatch(selectUser(userDataByUserId.data));
   }, [dispatch, navigate, notFoundPage, userDataByUserId]);
+  console.log(userDataByUserId);
 
-  useEffect(() => {
-    console.log(userDataByUserId.data);
-    if (userDataByUserId.data === "") {
-      navigate(notFoundPage);
-    }
-  }, [navigate, notFoundPage, userDataByUserId.data]);
+  // TODO: [PER BACKEND] 'Se non trova un valore response.data = '' ' e questo non va bene perché non è coerente con i tipo. [Per questo da errore sotto]
+  if (userDataByUserId.error || userDataByUserId.data === "") {
+    navigate(notFoundPage);
+  }
+
   return (
     <Box>
       <HeaderNavbar />

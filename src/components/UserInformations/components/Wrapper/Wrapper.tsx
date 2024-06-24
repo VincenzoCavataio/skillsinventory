@@ -52,9 +52,10 @@ export const Wrapper = () => {
     workPhoneNumber: userData.workPhoneNumber,
     actualEmploymentDate: userData.actualEmploymentDate,
     firstEmploymentDate: userData.firstEmploymentDate,
+    gender: userData.gender,
   };
 
-  const MOCK_ADDRESS: string[] = [
+  const ADDRESS: string[] = [
     `${userData?.residence?.address ?? ""}`,
     `${userData?.residence?.address_number ?? ""}`,
     `${userData?.residence?.zip_code ?? ""}`,
@@ -69,7 +70,7 @@ export const Wrapper = () => {
       ))}
       <Infos
         title={t(`pages.userPage.informationDetails.address`)}
-        data={MOCK_ADDRESS}
+        data={ADDRESS}
         type="list"
       />
     </Box>

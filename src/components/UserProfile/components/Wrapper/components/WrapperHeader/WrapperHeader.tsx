@@ -11,7 +11,7 @@ type Props = {
 
 export const WrapperHeader = ({ title, fullName, src, alt, gender }: Props) => {
   const AVATAR_SIZE: number = 100;
-  const FALLBACK_ICON = gender === "f" ? FEMALE_AVATAR : MALE_AVATAR;
+  const FALLBACK_ICON = gender === "female" ? FEMALE_AVATAR : MALE_AVATAR;
 
   if (!src) {
     src = FALLBACK_ICON;

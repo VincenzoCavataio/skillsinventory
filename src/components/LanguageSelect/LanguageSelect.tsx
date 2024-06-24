@@ -5,6 +5,7 @@ import { styled } from "@mui/material/styles";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import flagUrls from "./constants";
 
 const Img = styled("img")({
   marginRight: 8,
@@ -85,8 +86,9 @@ export const LanguageSelect = () => {
       renderOption={(props, option) => (
         <Box component="li" {...props}>
           <Img
-            src={`https://flagsapi.com/${option.value.toUpperCase()}/flat/64.png`}
+            // src={`https://flagsapi.com/${option.value.toUpperCase()}/flat/64.png`}
             alt=""
+            src={flagUrls[option.value]}
           />
           {option.label}
         </Box>
@@ -95,10 +97,10 @@ export const LanguageSelect = () => {
         const selectedOption = languages.find(
           (option) => option.label === params.inputProps.value
         );
-        const flagUrl = selectedOption
-          ? `https://flagsapi.com/${selectedOption.value.toUpperCase()}/flat/64.png`
-          : "";
-
+        // const flagUrl = selectedOption
+        //   ? `https://flagsapi.com/${selectedOption.value.toUpperCase()}/flat/64.png`
+        //   : "";
+        const flagUrl = selectedOption ? flagUrls[selectedOption.value] : "";
         return (
           <TextField
             {...params}

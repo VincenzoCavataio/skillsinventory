@@ -10,6 +10,7 @@ import { CheckboxList } from "../CheckboxList";
 import { AccordionLabel, Props } from "./Types";
 import { useTranslation } from "react-i18next";
 import { commonColors } from "../../../../common/commonColors";
+import StyledAccordionDetails from "../../StyledAccordionDetails";
 
 export const GenericAccordion = ({ action, label, state, data }: Props) => {
   const PROP = state[label];
@@ -30,7 +31,7 @@ export const GenericAccordion = ({ action, label, state, data }: Props) => {
       >
         <Typography>{t(`pages.userPage.info.${label}`)}</Typography>
       </AccordionSummary>
-      <AccordionDetails>
+      <StyledAccordionDetails>
         <Button
           onClick={() => toggleEdit(label)}
           variant="outlined"
@@ -39,7 +40,7 @@ export const GenericAccordion = ({ action, label, state, data }: Props) => {
           {t(`pages.userPage.info.edit`)}
         </Button>
         <CheckboxList showCheckbox={PROP} data={data} />
-      </AccordionDetails>
+      </StyledAccordionDetails>
     </Accordion>
   );
 };

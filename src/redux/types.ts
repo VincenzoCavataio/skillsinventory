@@ -28,6 +28,7 @@ export type ReduxStore = {
   sorting: { sort: Sorting[] };
   andOrStore: SelectorAndOr;
   lang: string;
+  checkboxManager: number[];
 };
 export type SelectorAndOr = {
   andOr: string;

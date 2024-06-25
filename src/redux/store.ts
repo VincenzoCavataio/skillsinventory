@@ -6,6 +6,7 @@ import paginationSlice from "./paginationSlice";
 import sortingSlice from "./sortingSlice";
 import andOrSlice from "./andOrSlice";
 import langSlices from "./langSlices";
+import checkboxSlice from "./checkboxSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
     sorting: sortingSlice,
     andOrStore: andOrSlice,
     langManager: langSlices,
+    checkboxManager: checkboxSlice,
   },
 });

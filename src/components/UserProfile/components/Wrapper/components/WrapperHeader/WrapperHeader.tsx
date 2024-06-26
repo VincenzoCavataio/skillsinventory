@@ -23,6 +23,7 @@ export const WrapperHeader = ({ title, fullName, src, alt, gender }: Props) => {
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const { t } = useTranslation();
+
   if (!src) {
     src = FALLBACK_ICON;
   }

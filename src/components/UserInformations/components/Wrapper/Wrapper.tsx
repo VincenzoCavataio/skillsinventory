@@ -36,9 +36,10 @@ const KEYS: keysType[] = [
 ];
 
 export const Wrapper = () => {
+  const { t } = useTranslation();
   const userData =
     useSelector((state: ReduxStore) => state.user?.user) ?? undefined;
-  const { t } = useTranslation();
+
   if (!userData) return;
 
   const personalData: ResponseProfileElementObjectData = {
@@ -47,8 +48,9 @@ export const Wrapper = () => {
     lastName: userData.lastName,
     email_login: userData.email_login,
     personalPhoneNumber: userData.personalPhoneNumber,
-    //TODO : aggiungere si e no tra le traduzioni
-    driver_license: userData?.driver_license ? "Sì" : "No",
+    driver_license: userData?.driver_license
+      ? t("pages.userPage.informationDetails.yes")
+      : t("pages.userPage.informationDetails.no"),
     birthDate: userData.birthDate,
     workPhoneNumber: userData.workPhoneNumber,
     actualEmploymentDate: userData.actualEmploymentDate,
@@ -67,7 +69,7 @@ export const Wrapper = () => {
 
   return (
     <Box bgcolor="white">
-      <IdInfo data={personalData.id}></IdInfo>
+      <IdInfo data={personalData.id} />
       {KEYS.filter((key) => key !== "id").map((key: keysType) => (
         <Infos
           title={key}

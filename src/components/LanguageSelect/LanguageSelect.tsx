@@ -1,37 +1,24 @@
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
-import { styled } from "@mui/material/styles";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import flagUrls from "./constants";
-
-const Img = styled("img")({
-  marginRight: 8,
-  height: "auto",
-  width: 40,
-});
-
-const languages = [
-  { label: "IT", value: "it" },
-  { label: "EN", value: "gb" },
-  { label: "ES", value: "es" },
-];
+import { FLAG_URLS, LANGUAGES } from "../../constants";
+import { Img, TextFieldStyle } from "./styles";
 
 export const LanguageSelect = () => {
   const { i18n } = useTranslation();
 
   const defaultLanguage =
-    languages.find(
+    LANGUAGES.find(
       (language) =>
         language.label === localStorage.getItem("language")?.toUpperCase()
-    ) ?? languages[1];
+    ) ?? LANGUAGES[1];
   const [lang, setLang] = useState(defaultLanguage);
 
   const handleLanguageChange = (
     _event: React.SyntheticEvent,
-    newValue: (typeof languages)[number] | null
+    newValue: (typeof LANGUAGES)[number] | null
   ) => {
     if (newValue) {
       setLang(newValue);
@@ -40,67 +27,26 @@ export const LanguageSelect = () => {
     }
   };
 
-  /*
-  
-  <FormControl fullWidth>
-  <InputLabel id="demo-simple-select-label">Age</InputLabel>
-  <Select
-    labelId="demo-simple-select-label"
-    id="demo-simple-select"
-    value={age}
-    label="Age"
-    onChange={handleChange}
-  >
-    <MenuItem value={10}>Ten</MenuItem>
-    <MenuItem value={20}>Twenty</MenuItem>
-    <MenuItem value={30}>Thirty</MenuItem>
-  </Select>
-</FormControl>
-
-  */
-
   return (
-    // <FormControl fullWidth>
-    //   <InputLabel id="demo-simple-select-label">Age</InputLabel>
-    //   <Select
-    //     labelId="demo-simple-select-label"
-    //     id="demo-simple-select"
-    //     value={lang}
-    //     label="Language"
-    //     onChange={handleLanguageChange}
-    //   >
-    //     <MenuItem value={10}>Ten</MenuItem>
-    //     <MenuItem value={20}>Twenty</MenuItem>
-    //     <MenuItem value={30}>Thirty</MenuItem>
-    //   </Select>
-    // </FormControl>
-
     <Autocomplete
       disablePortal
       value={lang}
-      id="combo-box-demo"
-      options={languages}
+      options={LANGUAGES}
       sx={{ width: 160 }}
       getOptionLabel={(option) => option.label}
       onChange={handleLanguageChange}
       renderOption={(props, option) => (
-        <Box component="li" {...props}>
-          <Img
-            // src={`https://flagsapi.com/${option.value.toUpperCase()}/flat/64.png`}
-            alt=""
-            src={flagUrls[option.value]}
-          />
+        <Box component="li" {...props} key={option.value}>
+          <Img alt="" src={FLAG_URLS[option.value]} />
           {option.label}
         </Box>
       )}
       renderInput={(params) => {
-        const selectedOption = languages.find(
+        const selectedOption = LANGUAGES.find(
           (option) => option.label === params.inputProps.value
         );
-        // const flagUrl = selectedOption
-        //   ? `https://flagsapi.com/${selectedOption.value.toUpperCase()}/flat/64.png`
-        //   : "";
-        const flagUrl = selectedOption ? flagUrls[selectedOption.value] : "";
+
+        const flagUrl = selectedOption ? FLAG_URLS[selectedOption.value] : "";
         return (
           <TextField
             {...params}
@@ -113,20 +59,7 @@ export const LanguageSelect = () => {
               startAdornment: selectedOption ? (
                 <Img src={flagUrl} alt="" />
               ) : null,
-              sx: {
-                cursor: "pointer",
-                color: "white",
-                "&.MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    border: "none",
-                  },
-                },
-                "& .MuiAutocomplete-endAdornment": {
-                  "& .MuiButtonBase-root": {
-                    color: "white",
-                  },
-                },
-              },
+              sx: TextFieldStyle,
             }}
           />
         );

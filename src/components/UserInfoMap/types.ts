@@ -1,4 +1,6 @@
+import { HIDDEN_PROP } from "../../constants";
+
 export type GeoCenter = {
-  latitude?: number;
-  longitude?: number;
+  latitude?: number | HIDDEN_PROP;
+  longitude?: number | HIDDEN_PROP;
 };

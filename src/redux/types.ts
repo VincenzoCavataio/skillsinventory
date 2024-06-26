@@ -92,3 +92,7 @@ export type Sorting = {
   colorUp: boolean;
   colorDown: boolean;
 };
+export type EditMode = {
+  isActive: boolean;
+  editPayload?: ResponseProfileElementObjectData;
+};

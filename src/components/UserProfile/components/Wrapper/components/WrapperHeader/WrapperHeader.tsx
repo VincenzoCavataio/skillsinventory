@@ -8,6 +8,7 @@ import {
   setEditMode,
 } from "../../../../../../redux/editProfileSlice";
 import { useTranslation } from "react-i18next";
+import { Delete, Download, Edit, Save } from "@mui/icons-material";
 
 type Props = {
   title: string;
@@ -69,13 +70,19 @@ export const WrapperHeader = ({ title, fullName, src, alt, gender }: Props) => {
               onClick={handleEditClick}
               sx={{ mr: 1, fontSize: 11, boxShadow: "none" }}
             >
-              {t(`pages.userPage.info.editInfo`)}
+              <Typography variant="body2" fontSize={10} color="white" mr={1}>
+                {t(`pages.userPage.info.editInfo`)}
+              </Typography>
+              <Edit fontSize="small" sx={{ width: 14, height: 14 }} />
             </Button>
             <Button
               variant="contained"
               sx={{ fontSize: 11, boxShadow: "none" }}
             >
-              {t(`pages.userPage.info.downloadCV`)}
+              <Typography variant="body2" fontSize={10} color="white" mr={1}>
+                {t(`pages.userPage.info.downloadCV`)}
+              </Typography>
+              <Download fontSize="small" sx={{ width: 14, height: 14 }} />
             </Button>
           </>
         ) : (
@@ -85,14 +92,21 @@ export const WrapperHeader = ({ title, fullName, src, alt, gender }: Props) => {
               onClick={handleSaveClick}
               sx={{ mr: 1, fontSize: 11, boxShadow: "none" }}
             >
-              {t(`pages.userPage.info.saveInfo`)}
+              <Typography variant="body2" fontSize={10} color="white" mr={1}>
+                {t(`pages.userPage.info.saveInfo`)}
+              </Typography>
+              <Save fontSize="small" sx={{ width: 14, height: 14 }} />
             </Button>
             <Button
               variant="contained"
+              color="error"
               onClick={handleSaveCancelClick}
               sx={{ fontSize: 11, boxShadow: "none" }}
             >
-              {t(`pages.userPage.info.discardInfo`)}
+              <Typography variant="body2" fontSize={10} color="white" mr={1}>
+                {t(`pages.userPage.info.discardInfo`)}
+              </Typography>
+              <Delete fontSize="small" sx={{ width: 14, height: 14 }} />
             </Button>
           </>
         )}

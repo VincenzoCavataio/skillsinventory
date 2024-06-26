@@ -68,7 +68,11 @@ export const WrapperHeader = ({ title, fullName, src, alt, gender }: Props) => {
             <Button
               variant="contained"
               onClick={handleEditClick}
-              sx={{ mr: 1, fontSize: 11, boxShadow: "none" }}
+              sx={{
+                mr: 1,
+                height: 30,
+                boxShadow: "none",
+              }}
             >
               <Typography variant="body2" fontSize={10} color="white" mr={1}>
                 {t(`pages.userPage.info.editInfo`)}
@@ -90,7 +94,11 @@ export const WrapperHeader = ({ title, fullName, src, alt, gender }: Props) => {
             <Button
               variant="contained"
               onClick={handleSaveClick}
-              sx={{ mr: 1, fontSize: 11, boxShadow: "none" }}
+              sx={{
+                mr: 1,
+                height: 30,
+                boxShadow: "none",
+              }}
             >
               <Typography variant="body2" fontSize={10} color="white" mr={1}>
                 {t(`pages.userPage.info.saveInfo`)}

@@ -34,6 +34,7 @@ export const GenericAccordion = ({ action, label, state, data }: Props) => {
       <StyledAccordionDetails>
         <Button
           onClick={() => toggleEdit(label)}
+          size="small"
           variant="outlined"
           color={PROP ? "info" : "primary"}
         >

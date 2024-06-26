@@ -59,7 +59,9 @@
           "educationTable": "Istruzione",
           "addressTable": "Indirizzo",
           "certificationTable": "Certificati",
-          "paginationOverTable": "N. elementi per pagina"
+          "paginationOverTable": "N. elementi per pagina",
+          "selectedElement": "Elemento Selezionato",
+          "selectedElements": "Elementi Selezionati"
         }
       },
       "userPage": {

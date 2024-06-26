@@ -48,7 +48,9 @@
           "educationTable": "Education",
           "addressTable": "Address",
           "certificationTable": "Certifications",
-          "paginationOverTable": "N. of elements per page"
+          "paginationOverTable": "N. of elements per page",
+          "selectedElement": "Selected Element",
+          "selectedElements": "Selected Elements"
         }
       },
       "userPage": {

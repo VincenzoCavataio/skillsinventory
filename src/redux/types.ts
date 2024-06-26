@@ -29,6 +29,7 @@ export type ReduxStore = {
   andOrStore: SelectorAndOr;
   lang: string;
   checkboxManager: number[];
+  editManager: EditMode;
 };
 export type SelectorAndOr = {
   andOr: string;

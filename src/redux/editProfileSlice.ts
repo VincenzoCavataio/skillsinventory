@@ -12,7 +12,7 @@ const editProfileSlice = createSlice({
   reducers: {
     setEditMode(state, action) {
       state.isActive = action.payload;
-      console.log(state.isActive);
+
       //   state.editMode.editPayload = action.payload.editPayload;
     },
   },

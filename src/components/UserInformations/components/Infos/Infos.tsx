@@ -1,7 +1,14 @@
 import { Box, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { commonColors } from "../../../../common/commonColors";
-import { ResponseProfileElementObjectData } from "../../../../redux/types";
+import {
+  ReduxStore,
+  ResponseProfileElementObjectData,
+} from "../../../../redux/types";
+import { useSelector } from "react-redux";
+import { EditDatePicker, EditTextField } from "../../style";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 export const Infos = ({
   title,
@@ -25,7 +32,15 @@ export const Infos = ({
     }
   }
   const { t } = useTranslation();
+  const isActive = useSelector(
+    (state: ReduxStore) => state.editManager.isActive
+  );
 
+  const isDateField = [
+    "birthDate",
+    "actualEmploymentDate",
+    "firstEmploymentDate",
+  ].includes(title);
   return type === "list" && typeof data === "object" ? (
     <Box
       textAlign={"left"}
@@ -39,6 +54,12 @@ export const Infos = ({
       <Box flex={2} alignContent="center">
         {allEmpty === true ? (
           <Typography variant="body2">-</Typography>
+        ) : isActive ? (
+          <EditTextField
+            variant="outlined"
+            fullWidth
+            defaultValue={(data as string[]).join(", ")}
+          />
         ) : (
           <Typography variant="body2">
             {(data as string[]).join(", ")}
@@ -59,7 +80,21 @@ export const Infos = ({
         </Typography>
       </Box>
       <Box flex={2} alignContent="center">
-        <Typography variant="body2">{(data as string[]) ?? "-"}</Typography>
+        {isActive ? (
+          isDateField ? (
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <EditDatePicker />
+            </LocalizationProvider>
+          ) : (
+            <EditTextField
+              variant="outlined"
+              fullWidth
+              defaultValue={Array.isArray(data) ? data.join(", ") : data}
+            />
+          )
+        ) : (
+          <Typography variant="body2">{(data as string[]) ?? "-"}</Typography>
+        )}
       </Box>
     </Box>
   );

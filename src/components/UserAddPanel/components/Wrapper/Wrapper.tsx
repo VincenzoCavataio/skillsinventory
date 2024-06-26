@@ -96,6 +96,7 @@ export const Wrapper = () => {
         sx={{
           width: "100%",
           marginTop: 3,
+          boxShadow: "none",
         }}
       >
         {t("pages.userPage.tables.uploadCV")}
@@ -132,6 +133,7 @@ export const Wrapper = () => {
             marginBottom: 3,
             backgroundColor: NEXTRE_ENG,
             color: "white",
+            boxShadow: "none",
           }}
         >
           {t("pages.userPage.tables.updateProfile")}

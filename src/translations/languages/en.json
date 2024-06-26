@@ -53,6 +53,10 @@
       },
       "userPage": {
         "info": {
+          "editInfo": "Edit registry",
+          "downloadCV": "Download CV",
+          "saveInfo": "Save changes",
+          "discardInfo": "Discard changes",
           "hardSkills": "Hard Skills",
           "education": "Education",
           "certificates": "Certificates",
@@ -62,6 +66,11 @@
           "selectAll": "Select All"
         },
         "informationDetails": {
+          "yes": "Yes",
+          "no": "No",
+          "male": "Male",
+          "female": "Female",
+          "other": "Other",
           "id": "Id",
           "gender": "Gender",
           "firstName": "Name",

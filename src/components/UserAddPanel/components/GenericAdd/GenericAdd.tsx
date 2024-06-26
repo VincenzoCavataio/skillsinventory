@@ -10,7 +10,7 @@ export const GenericAdd: React.FC<GenericAddProps> = ({ label, onClick }) => {
   return (
     <Button
       variant="contained"
-      sx={{ backgroundColor: NEXTRE_ENG }}
+      sx={{ backgroundColor: NEXTRE_ENG, boxShadow: "none" }}
       onClick={onClick}
     >
       {label}

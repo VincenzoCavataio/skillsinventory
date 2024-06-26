@@ -6,6 +6,7 @@ import {
   ResponseProfileElementObjectData,
 } from "../../../../redux/types";
 import { useTranslation } from "react-i18next";
+import { IdInfo } from "../IdInfo";
 
 type keysType =
   | "id"
@@ -60,18 +61,27 @@ export const Wrapper = () => {
     `${userData?.residence?.address_number ?? ""}`,
     `${userData?.residence?.zip_code ?? ""}`,
     `${userData?.residence?.city ?? ""}`,
+    `${userData?.residence?.province ?? ""}`,
     `${userData?.residence?.nation ?? ""}`,
   ];
 
   return (
     <Box bgcolor="white">
-      {KEYS.map((key: keysType) => (
-        <Infos title={key} data={personalData[key]} key={key} type="row" />
+      <IdInfo data={personalData.id}></IdInfo>
+      {KEYS.filter((key) => key !== "id").map((key: keysType) => (
+        <Infos
+          title={key}
+          data={personalData[key]}
+          key={key}
+          id={personalData.id}
+          type="row"
+        />
       ))}
       <Infos
         title={t(`pages.userPage.informationDetails.address`)}
         data={ADDRESS}
         type="list"
+        id={undefined}
       />
     </Box>
   );

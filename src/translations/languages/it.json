@@ -64,6 +64,10 @@
       },
       "userPage": {
         "info": {
+          "editInfo": "Modifica Anagrafica",
+          "downloadCV": "Download CV",
+          "saveInfo": "Salva modifiche",
+          "discardInfo": "Annulla modifiche",
           "hardSkills": "Lista Skill",
           "education": "Istruzione",
           "certificates": "Certificati",
@@ -73,6 +77,11 @@
           "selectAll": "Seleziona tutto"
         },
         "informationDetails": {
+          "yes": "Si",
+          "no": "No",
+          "male": "Maschio",
+          "female": "Femmina",
+          "other": "Altro",
           "id": "Id",
           "gender": "Sesso",
           "firstName": "Nome",

@@ -4,6 +4,7 @@ import { EditMode } from "./types";
 const initialState: EditMode = {
   isActive: false,
   editPayload: undefined,
+  userData: undefined,
 };
 
 const editProfileSlice = createSlice({
@@ -12,11 +13,22 @@ const editProfileSlice = createSlice({
   reducers: {
     setEditMode(state, action) {
       state.isActive = action.payload;
-
-      //   state.editMode.editPayload = action.payload.editPayload;
+    },
+    updateEditPayload(state, action) {
+      state.editPayload = { ...state.editPayload, ...action.payload };
+    },
+    saveChanges(state) {
+      state.userData = state.editPayload;
+      state.editPayload = undefined;
+      state.isActive = false;
+    },
+    discardChanges(state) {
+      state.editPayload = undefined;
+      state.isActive = false;
     },
   },
 });
 
-export const { setEditMode } = editProfileSlice.actions;
+export const { setEditMode, updateEditPayload, saveChanges, discardChanges } =
+  editProfileSlice.actions;
 export default editProfileSlice.reducer;

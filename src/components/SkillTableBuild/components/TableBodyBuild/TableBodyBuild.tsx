@@ -31,7 +31,6 @@ export const TableBodyBuild: React.FC<Props> = ({ rows }) => {
     dispatch(checkboxMarker(id));
   };
 
-  console.log(rows);
   return (
     <TableBody>
       {rows &&

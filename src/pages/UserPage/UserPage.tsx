@@ -31,7 +31,6 @@ export const UserPage = () => {
   useEffect(() => {
     dispatch(selectUser(userDataByUserId.data));
   }, [dispatch, navigate, notFoundPage, userDataByUserId]);
-  console.log(userDataByUserId);
 
   // TODO: [PER BACKEND] 'Se non trova un valore response.data = '' ' e questo non va bene perché non è coerente con i tipo. [Per questo da errore sotto]
   if (userDataByUserId.error || userDataByUserId.data === "") {

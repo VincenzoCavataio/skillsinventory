@@ -53,6 +53,10 @@
       },
       "userPage": {
         "info": {
+          "editInfo": "Editar información",
+          "downloadCV": "Descargar CV",
+          "saveInfo": "Guardar cambios",
+          "discardInfo": "Descartar cambios",
           "hardSkills": "Habilidades Técnicas",
           "education": "Educación",
           "certificates": "Certificados",
@@ -62,6 +66,11 @@
           "selectAll": "Seleccionar Todo"
         },
         "informationDetails": {
+          "yes": "Si",
+          "no": "No",
+          "male": "Masculino",
+          "female": "Feminino",
+          "other": "Otro",
           "id": "Id",
           "gender": "Género",
           "firstName": "Nombre",

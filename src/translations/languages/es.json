@@ -50,7 +50,9 @@
           "certificationTable": "Certificaciones",
           "paginationOverTable": "N.º de elementos por página",
           "selectedElement": "Artículo seleccionado",
-          "selectedElements": "Artículos seleccionados"
+          "selectedElements": "Artículos seleccionados",
+          "totalResult": "Artículo encontrado",
+          "totalResults": "Artículos encontrados"
         }
       },
       "userPage": {

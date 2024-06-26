@@ -50,7 +50,9 @@
           "certificationTable": "Certifications",
           "paginationOverTable": "N. of elements per page",
           "selectedElement": "Selected Element",
-          "selectedElements": "Selected Elements"
+          "selectedElements": "Selected Elements",
+          "totalResult": "Element Found",
+          "totalResults": "Elements Found"
         }
       },
       "userPage": {

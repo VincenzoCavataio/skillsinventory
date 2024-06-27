@@ -33,7 +33,7 @@ export const ButtonsContainer = ({
       <Box display={"flex"} flexDirection={"column"}>
         <CustomButton
           label={t("common.clear")}
-          color={"error"}
+          color="error"
           variant="outlined"
           callback={() => {
             dispatch(resetFilters());

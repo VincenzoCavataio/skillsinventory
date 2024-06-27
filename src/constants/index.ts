@@ -49,3 +49,18 @@ export const PAGES = {
 
 export const MALE_AVATAR = "/not-found-male-avatar.png";
 export const FEMALE_AVATAR = "/not-found-female-avatar.png";
+
+export const HIDDEN = "HIDDEN";
+export type HIDDEN_PROP = "HIDDEN";
+
+export const LANGUAGES = [
+  { label: "IT", value: "it" },
+  { label: "EN", value: "gb" },
+  { label: "ES", value: "es" },
+];
+
+export const FLAG_URLS: { [key: string]: string } = {
+  it: "https://flagsapi.com/IT/flat/64.png",
+  gb: "https://flagsapi.com/GB/flat/64.png",
+  es: "https://flagsapi.com/ES/flat/64.png",
+};

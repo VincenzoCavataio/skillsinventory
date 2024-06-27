@@ -48,6 +48,8 @@ export const TableBodyBuild: React.FC<Props> = ({ rows }) => {
             <TableCell align="center" component="th" scope="row">
               <Chip
                 label={row.userId}
+                // TODO: Da capire se Fabrizio vuole che vada in una scheda nuova oppure nella stessa. Nella versione Angular va in una nuova pagina. Nel caso in cui volesse questa feature scambiare 'navigate' con window.open
+                // onClick={() => window.open(`${userPage}/${row.userId}`)}
                 onClick={() => navigate(`${userPage}/${row.userId}`)}
               />
             </TableCell>

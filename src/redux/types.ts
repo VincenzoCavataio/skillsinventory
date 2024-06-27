@@ -1,3 +1,4 @@
+import { HIDDEN_PROP } from "../constants";
 import { CompiledFieldsWithID } from "../pages/DashboardPage/types";
 
 /** QUANDO BE FIXA CAMBIAMO IN SOLO STRING */
@@ -61,18 +62,18 @@ export type ResponseProfileElementObjectData = {
   id?: number;
   lastName: string;
   personalPhoneNumber: string;
-  residence?: Residenza;
+  residence?: Residence;
   user_skill?: UserSkill;
   workPhoneNumber: string;
   dataType?: "full" | string;
 };
 
-export type Residenza = {
+export type Residence = {
   address?: string;
   address_number?: number;
   city?: string;
-  latitude?: number;
-  longitude?: number;
+  latitude?: number | HIDDEN_PROP;
+  longitude?: number | HIDDEN_PROP;
   nation?: string;
   province?: string;
   zip_code?: string;

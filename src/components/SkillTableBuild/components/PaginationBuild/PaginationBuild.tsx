@@ -6,7 +6,6 @@ import {
   Typography,
 } from "@mui/material";
 import { PaginationBuildProps } from "../../types";
-
 import { useDispatch, useSelector } from "react-redux";
 import {
   itemNumberFilter,
@@ -16,26 +15,27 @@ import { ReduxStore } from "../../../../redux/types";
 import { SmallTextField } from "./style";
 import { useTranslation } from "react-i18next";
 
-//TODO: sistemare gli errori tentativi commentati (event non usato ma senza quello non funziona)
 export const PaginationBuild: React.FC<PaginationBuildProps> = ({
   totalRowsNumber,
 }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+
   const { itemNumber, pageStart } = useSelector(
     (state: ReduxStore) => state.pagination
   );
-  // const handleChange = (event) => {
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(itemNumberFilter({ itemNumber: Number(event.target.value) }));
   };
-  // const handlePageChange = (_, value: number) => {
+
   const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
+    _event: React.ChangeEvent<unknown>,
     value: number
   ) => {
     dispatch(itemPageFilters({ pageStart: Number(value) }));
   };
+
   let count: number = 0;
 
   if (totalRowsNumber) {
@@ -78,6 +78,11 @@ export const PaginationBuild: React.FC<PaginationBuildProps> = ({
           }}
           variant="outlined"
         />
+        <Typography ml={2} mr={1}>{` ${totalRowsNumber?.totalResult} ${
+          totalRowsNumber?.totalResult && totalRowsNumber?.totalResult > 1
+            ? t("pages.dashboard.headerTable.totalResults")
+            : t("pages.dashboard.headerTable.totalResult")
+        } `}</Typography>
         <Pagination
           sx={{ height: 32 }}
           count={count}

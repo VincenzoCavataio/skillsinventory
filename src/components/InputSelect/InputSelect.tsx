@@ -21,7 +21,6 @@ export const InputSelect = ({
   return (
     <Autocomplete
       disablePortal
-      id="combo-box-demo"
       options={
         data?.final_object?.map(
           (tecnologyData: ResponseElementObjectData) => tecnologyData?.name

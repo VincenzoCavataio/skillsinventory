@@ -44,22 +44,26 @@ export const Infos = ({
   const isActive = useSelector(
     (state: ReduxStore) => state.editManager.isActive
   );
+
   const dispatch = useDispatch();
 
   const handleTextChange2 = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(updateEditPayload({ [title]: e.target.value }));
   };
+
   const handleTextChange =
     (index: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
       const newData = [...(data as string[])];
       newData[index] = e.target.value;
       dispatch(updateEditPayload({ [title]: newData }));
     };
+
   const handleDateChange = (
     date: string | number | Date | dayjs.Dayjs | null | undefined
   ) => {
     dispatch(updateEditPayload({ [title]: dayjs(date).format("YYYY-MM-DD") }));
   };
+
   const placeholders = [
     t(`pages.userPage.informationDetails.streetAddress`),
     t(`pages.userPage.informationDetails.streetNumber`),
@@ -68,15 +72,18 @@ export const Infos = ({
     t(`pages.userPage.informationDetails.province`),
     t(`pages.userPage.informationDetails.state`),
   ];
+
   const isDateField = [
     "birthDate",
     "actualEmploymentDate",
     "firstEmploymentDate",
   ].includes(title);
+
   const isAutocompleteField = ["gender", "driver_license"].includes(title);
   const onlyNumberField = ["workPhoneNumber", "personalPhoneNumber"].includes(
     title
   );
+
   const autocompleteOptions = {
     gender: [
       t(`pages.userPage.informationDetails.male`),
@@ -88,9 +95,11 @@ export const Infos = ({
       t(`pages.userPage.informationDetails.no`),
     ],
   };
+
   const handleAutocompleteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(updateEditPayload({ [title]: e.target.value }));
   };
+
   return type === "list" && typeof data === "object" ? (
     <Box
       textAlign={"left"}
@@ -185,32 +194,3 @@ export const Infos = ({
     </Box>
   );
 };
-
-{
-  /* {isActive ? (
-  isDateField ? (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <EditDatePicker
-        value={dayjs(data as string)}
-        onChange={handleDateChange}
-      />
-    </LocalizationProvider>
-  ) : (
-    <EditTextField
-      variant="outlined"
-      fullWidth
-      onChange={handleTextChange2}
-      defaultValue={Array.isArray(data) ? data.join(", ") : data}
-    />
-  )
-) : (
-  <Typography variant="body2">{(data as string[]) ?? "-"}</Typography>
-)} */
-}
-
-{
-  /* </Box>
-</Box>
-);
-}; */
-}

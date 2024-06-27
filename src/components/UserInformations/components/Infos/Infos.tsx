@@ -6,7 +6,11 @@ import {
   ResponseProfileElementObjectData,
 } from "../../../../redux/types";
 import { useDispatch, useSelector } from "react-redux";
-import { EditDatePicker, EditTextField } from "../../style";
+import {
+  EditDatePicker,
+  EditTextField,
+  EditTextFieldNumber,
+} from "../../style";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { updateEditPayload } from "../../../../redux/editProfileSlice";
@@ -57,12 +61,12 @@ export const Infos = ({
     dispatch(updateEditPayload({ [title]: dayjs(date).format("YYYY-MM-DD") }));
   };
   const placeholders = [
-    "Via",
-    "N° Civico",
-    "Zip Code",
-    "Città",
-    "Provincia",
-    "Stato",
+    t(`pages.userPage.informationDetails.streetAddress`),
+    t(`pages.userPage.informationDetails.streetNumber`),
+    t(`pages.userPage.informationDetails.zipCode`),
+    t(`pages.userPage.informationDetails.cityAddress`),
+    t(`pages.userPage.informationDetails.province`),
+    t(`pages.userPage.informationDetails.state`),
   ];
   const isDateField = [
     "birthDate",
@@ -157,10 +161,14 @@ export const Infos = ({
           ) : onlyNumberField ? (
             <EditTextField
               variant="outlined"
+              id="outlined-number"
+              type="number"
               fullWidth
               onChange={handleTextChange2}
               defaultValue={Array.isArray(data) ? data.join(", ") : data}
-              inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
+              InputProps={{
+                inputMode: "none",
+              }}
             />
           ) : (
             <EditTextField

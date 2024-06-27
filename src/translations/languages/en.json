@@ -83,7 +83,13 @@
           "actualEmploymentDate": "Actual Employement Date",
           "firstEmploymentDate": "First Employement Date",
           "address": "Address",
-          "map": "Map"
+          "map": "Map",
+          "streetAddress": "Address",
+          "streetNumber": "Street Number",
+          "zipCode": "Zip Code",
+          "cityAddress": "City",
+          "province": "Province",
+          "state": "State"
         },
         "tables": {
           "uploadCV": "UPLOAD YOUR CV",

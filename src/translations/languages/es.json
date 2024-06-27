@@ -83,7 +83,13 @@
           "actualEmploymentDate": "Fecha de Empleo Actual",
           "firstEmploymentDate": "Fecha de Primer Empleo",
           "address": "Dirección",
-          "map": "Mapa"
+          "map": "Mapa",
+          "streetAddress": "Dirección",
+          "streetNumber": "Número de calle",
+          "zipCode": "Código postal",
+          "cityAddress": "Ciudad",
+          "province": "Provincia",
+          "state": "Estado"
         },
         "tables": {
           "uploadCV": "SUBIR SU CV",

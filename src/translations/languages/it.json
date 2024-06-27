@@ -94,7 +94,13 @@
           "actualEmploymentDate": "Data di impiego attuale",
           "firstEmploymentDate": "Data di primo impiego",
           "address": "Indirizzo",
-          "map": "Mappa"
+          "map": "Mappa",
+          "streetAddress": "Via",
+          "streetNumber": "n° civico",
+          "zipCode": "Codice postale",
+          "cityAddress": "Città",
+          "province": "Provincia",
+          "state": "Stato"
         },
         "tables": {
           "uploadCV": "CARICA IL TUO CV",

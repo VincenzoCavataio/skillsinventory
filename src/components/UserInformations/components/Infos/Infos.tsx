@@ -47,13 +47,13 @@ export const Infos = ({
   const dispatch = useDispatch();
 
   const handleTextChange2 = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(updateEditPayload({ id, [title]: e.target.value }));
+    dispatch(updateEditPayload({ [title]: e.target.value }));
   };
   const handleTextChange =
     (index: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
       const newData = [...(data as string[])];
       newData[index] = e.target.value;
-      dispatch(updateEditPayload({ id, [title]: newData }));
+      dispatch(updateEditPayload({ [title]: newData }));
     };
   const handleDateChange = (
     date: string | number | Date | dayjs.Dayjs | null | undefined

@@ -66,24 +66,17 @@ export const Wrapper = () => {
     `${userData?.residence?.province ?? ""}`,
     `${userData?.residence?.nation ?? ""}`,
   ];
-
+  //per la questione degli hidden, controllo ruolo orgadmin perchè se manualmente cambio un mio campo in hidden poi non è modificabile
   return (
     <Box bgcolor="white">
       <IdInfo data={personalData.id} />
       {KEYS.filter((key) => key !== "id").map((key: keysType) => (
-        <Infos
-          title={key}
-          data={personalData[key]}
-          key={key}
-          id={personalData.id}
-          type="row"
-        />
+        <Infos title={key} data={personalData[key]} key={key} type="row" />
       ))}
       <Infos
         title={t(`pages.userPage.informationDetails.address`)}
         data={ADDRESS}
         type="list"
-        id={undefined}
       />
     </Box>
   );

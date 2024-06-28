@@ -6,11 +6,7 @@ import {
   ResponseProfileElementObjectData,
 } from "../../../../redux/types";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  EditDatePicker,
-  EditTextField,
-  EditTextFieldNumber,
-} from "../../style";
+import { EditDatePicker, EditTextField } from "../../style";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { updateEditPayload } from "../../../../redux/editProfileSlice";
@@ -20,14 +16,12 @@ export const Infos = ({
   title,
   data,
   type,
-  id,
 }: {
   title: string;
   data:
     | ResponseProfileElementObjectData[keyof ResponseProfileElementObjectData]
     | string[];
   type: string;
-  id: number | undefined;
 }) => {
   let allEmpty = true;
 
@@ -53,6 +47,11 @@ export const Infos = ({
 
   const handleTextChange =
     (index: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      // const obj = data?.reduce((acc, curr, index) => {
+      //   acc[index] = curr;
+      //   return acc;
+      // }, {});
+      // console.log(obj);
       const newData = [...(data as string[])];
       newData[index] = e.target.value;
       dispatch(updateEditPayload({ [title]: newData }));
@@ -162,7 +161,14 @@ export const Infos = ({
               onChange={handleAutocompleteChange}
             >
               {autocompleteOptions[title].map((option) => (
-                <MenuItem key={option} value={option}>
+                <MenuItem
+                  key={option}
+                  value={option}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
                   {option}
                 </MenuItem>
               ))}

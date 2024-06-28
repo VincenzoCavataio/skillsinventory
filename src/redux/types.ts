@@ -98,7 +98,4 @@ export type EditMode = {
   isActive: boolean;
   editPayload?: ResponseProfileElementObjectData;
   userData?: ResponseProfileElementObjectData;
-  // editPayload: Partial<ResponseProfileElementObjectData>;
-  // userData: Partial<ResponseProfileElementObjectData>;
-  // editPayload?: ResponseProfileElementObjectData;
 };

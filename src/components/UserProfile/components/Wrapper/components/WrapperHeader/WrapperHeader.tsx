@@ -6,6 +6,7 @@ import {
   saveChanges,
   discardChanges,
   setEditMode,
+  updateEditPayload,
 } from "../../../../../../redux/editProfileSlice";
 import { useTranslation } from "react-i18next";
 import { Delete, Download, Edit, Save } from "@mui/icons-material";
@@ -16,9 +17,17 @@ type Props = {
   src?: string;
   alt?: string;
   gender?: string;
+  id?: number;
 };
 
-export const WrapperHeader = ({ title, fullName, src, alt, gender }: Props) => {
+export const WrapperHeader = ({
+  id,
+  title,
+  fullName,
+  src,
+  alt,
+  gender,
+}: Props) => {
   const AVATAR_SIZE: number = 100;
   const FALLBACK_ICON = gender === "female" ? FEMALE_AVATAR : MALE_AVATAR;
   const dispatch = useDispatch();
@@ -31,6 +40,7 @@ export const WrapperHeader = ({ title, fullName, src, alt, gender }: Props) => {
 
   const handleEditClick = () => {
     setIsEditing(true);
+    dispatch(updateEditPayload({ id: id })); // Assicurati di passare l'ID qui
   };
 
   const handleSaveCancelClick = () => {

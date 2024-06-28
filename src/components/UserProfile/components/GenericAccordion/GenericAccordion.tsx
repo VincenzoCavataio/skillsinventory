@@ -1,10 +1,4 @@
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Button,
-  Typography,
-} from "@mui/material";
+import { Accordion, AccordionSummary, Button, Typography } from "@mui/material";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { CheckboxList } from "../CheckboxList";
 import { AccordionLabel, Props } from "./Types";

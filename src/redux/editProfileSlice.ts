@@ -15,7 +15,13 @@ const editProfileSlice = createSlice({
       state.isActive = action.payload;
     },
     updateEditPayload(state, action) {
-      state.editPayload = { ...state.editPayload, ...action.payload };
+      //   state.editPayload = { ...state.editPayload, ...action.payload };
+      // },
+      if (state.editPayload) {
+        state.editPayload = { ...state.editPayload, ...action.payload };
+      } else {
+        state.editPayload = action.payload;
+      }
     },
     saveChanges(state) {
       state.userData = state.editPayload;

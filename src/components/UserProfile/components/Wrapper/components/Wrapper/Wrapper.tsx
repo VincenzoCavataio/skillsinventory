@@ -37,6 +37,7 @@ export const Wrapper = () => {
   return (
     <Box display="flex" flexDirection="column" alignItems="center">
       <WrapperHeader
+        id={userData?.id}
         title={position}
         fullName={fullName}
         gender={gender}

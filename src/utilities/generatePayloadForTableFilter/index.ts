@@ -36,10 +36,10 @@ export const generatePayloadForTableFilter = ({
     }
   }
   let sortingProblem: string = "";
-  if (sortingManagementFilter[3] === "") {
-    sortingProblem = sortingManagementFilter[4];
+  if (sortingManagementFilter[4] === "") {
+    sortingProblem = sortingManagementFilter[5];
   } else {
-    sortingProblem = sortingManagementFilter[3];
+    sortingProblem = sortingManagementFilter[4];
   }
   const generatedPayload = {
     "starting-from": `P_FETCH_FIRST:${fetchPagination}`,
@@ -58,9 +58,10 @@ export const generatePayloadForTableFilter = ({
       filterStore?.filters.fullName ? `|${filterStore?.filters.fullName}|` : ""
     }`,
     isAnd: `${andOrSelectorFilter}`,
-    "name-ascending": `${sortingManagementFilter[0]}`,
-    "edu-ascending": `${sortingManagementFilter[1]}`,
-    "city-ascending": `${sortingManagementFilter[2]}`,
+    "name-ascending": `${sortingManagementFilter[1]}`,
+    "edu-ascending": `${sortingManagementFilter[2]}`,
+    "id-ascending": `${sortingManagementFilter[0]}`,
+    "city-ascending": `${sortingManagementFilter[3]}`,
     "city-filter": `CITIES:${
       filterStore?.filters.city && filterStore.filters.city.length > 0
         ? `|${filterStore.filters.city.join("|")}|`

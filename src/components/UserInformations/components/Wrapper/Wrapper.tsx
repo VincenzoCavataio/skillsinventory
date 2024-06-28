@@ -66,7 +66,7 @@ export const Wrapper = () => {
     `${userData?.residence?.province ?? ""}`,
     `${userData?.residence?.nation ?? ""}`,
   ];
-  //per la questione degli hidden, controllo ruolo orgadmin perchè se manualmente cambio un mio campo in hidden poi non è modificabile
+  //TODO:per la questione degli hidden, controllo ruolo orgadmin perchè se manualmente cambio un mio campo in hidden poi non è modificabile
   return (
     <Box bgcolor="white">
       <IdInfo data={personalData.id} />

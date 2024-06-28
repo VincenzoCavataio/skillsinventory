@@ -18,7 +18,15 @@ export const HeaderCustomCell: React.FC<HeaderCustomCellProps> = ({
   );
   const dispatch = useDispatch();
   const handleArrowDropUpClick = () => {
-    if (headCell.label === "Last Name") {
+    if (headCell.label === "ID") {
+      dispatch(
+        updateSortUp({
+          label: headCell.label,
+          order: `id_asc`,
+          color: headCell.color,
+        })
+      );
+    } else if (headCell.label === "Last Name") {
       dispatch(
         updateSortUp({
           label: headCell.label,
@@ -46,7 +54,15 @@ export const HeaderCustomCell: React.FC<HeaderCustomCellProps> = ({
   };
 
   const handleArrowDropDownClick = () => {
-    if (headCell.label === "Last Name") {
+    if (headCell.label === "ID") {
+      dispatch(
+        updateSortDown({
+          label: headCell.label,
+          order: `id_desc`,
+          color: headCell.color,
+        })
+      );
+    } else if (headCell.label === "Last Name") {
       dispatch(
         updateSortDown({ label: headCell.label, order: `Z-A`, color: true })
       );

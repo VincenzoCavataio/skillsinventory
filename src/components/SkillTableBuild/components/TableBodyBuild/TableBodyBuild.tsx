@@ -1,5 +1,4 @@
 import { Checkbox, Chip, TableBody, TableCell, TableRow } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import { PAGES } from "../../../../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { ReduxStore } from "../../../../redux/types";
@@ -11,7 +10,7 @@ type Props = {
 };
 
 export const TableBodyBuild: React.FC<Props> = ({ rows }) => {
-  const navigate = useNavigate();
+  //TODO:capire che vuole fare fabrizio const navigate = useNavigate();
   const dispatch = useDispatch();
   const { userPage } = PAGES;
   const skillsFilterStore = useSelector((state: ReduxStore) => state.skills);
@@ -49,8 +48,8 @@ export const TableBodyBuild: React.FC<Props> = ({ rows }) => {
               <Chip
                 label={row.userId}
                 // TODO: Da capire se Fabrizio vuole che vada in una scheda nuova oppure nella stessa. Nella versione Angular va in una nuova pagina. Nel caso in cui volesse questa feature scambiare 'navigate' con window.open
-                // onClick={() => window.open(`${userPage}/${row.userId}`)}
-                onClick={() => navigate(`${userPage}/${row.userId}`)}
+                // TODO: capire quale dei due comportamenti onClick={() => navigate(`${userPage}/${row.userId}`)}
+                onClick={() => window.open(`${userPage}/${row.userId}`)}
               />
             </TableCell>
             <TableCell align="center">{row.lastName}</TableCell>

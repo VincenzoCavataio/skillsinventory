@@ -11,6 +11,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { updateEditPayload } from "../../../../redux/editProfileSlice";
 import dayjs from "dayjs";
+import { useState } from "react";
 
 export const Infos = ({
   title,
@@ -45,16 +46,13 @@ export const Infos = ({
     dispatch(updateEditPayload({ [title]: e.target.value }));
   };
 
+  const [array, setArray] = useState<string[]>(data as string[]);
   const handleTextChange =
     (index: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
-      // const obj = data?.reduce((acc, curr, index) => {
-      //   acc[index] = curr;
-      //   return acc;
-      // }, {});
-      // console.log(obj);
-      const newData = [...(data as string[])];
-      newData[index] = e.target.value;
-      dispatch(updateEditPayload({ [title]: newData }));
+      const newArray = [...array];
+      newArray[index] = e.target.value;
+      setArray(newArray);
+      dispatch(updateEditPayload({ [title]: newArray }));
     };
 
   const handleDateChange = (

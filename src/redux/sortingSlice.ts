@@ -6,6 +6,7 @@ type Props = {
 
 const initialState: Props = {
   sort: [
+    { label: "ID", order: "", colorUp: false, colorDown: false },
     { label: "Last Name", order: "", colorUp: false, colorDown: false },
     { label: "Education", order: "", colorUp: false, colorDown: false },
     { label: "Address", order: "", colorUp: false, colorDown: false },
@@ -33,6 +34,7 @@ const sortingSlice = createSlice({
           return { ...item, order: "", colorUp: false, colorDown: false };
         }
       });
+      console.log(state.sort);
     },
     updateSortDown: (state, action) => {
       const { label, order } = action.payload;
@@ -48,6 +50,7 @@ const sortingSlice = createSlice({
           return { ...item, order: "", colorUp: false, colorDown: false };
         }
       });
+      console.log(state.sort);
     },
   },
 });

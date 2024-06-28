@@ -40,7 +40,7 @@ export const WrapperHeader = ({
 
   const handleEditClick = () => {
     setIsEditing(true);
-    dispatch(updateEditPayload({ id: id })); // Assicurati di passare l'ID qui
+    dispatch(updateEditPayload({ id: id }));
   };
 
   const handleSaveCancelClick = () => {

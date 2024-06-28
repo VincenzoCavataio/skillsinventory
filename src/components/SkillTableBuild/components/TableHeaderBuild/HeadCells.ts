@@ -19,7 +19,7 @@ export const HeadCellsData = () => {
       numeric: false,
       disablePadding: true,
       label: "ID",
-      sorted: false,
+      sorted: true,
       color: false,
     },
     {

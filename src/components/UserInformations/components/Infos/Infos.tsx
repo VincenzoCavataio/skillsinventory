@@ -6,7 +6,7 @@ import {
   ResponseProfileElementObjectData,
 } from "../../../../redux/types";
 import { useDispatch, useSelector } from "react-redux";
-import { EditDatePicker, EditTextField } from "../../style";
+import { EditAutocomplete, EditDatePicker, EditTextField } from "../../style";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { updateEditPayload } from "../../../../redux/editProfileSlice";
@@ -93,8 +93,14 @@ export const Infos = ({
     ],
   };
 
-  const handleAutocompleteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(updateEditPayload({ [title]: e.target.value }));
+  // const handleAutocompleteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   dispatch(updateEditPayload({ [title]: e.target.value }));
+  // };
+  const handleAutocompleteChange = (
+    event: React.SyntheticEvent,
+    value: string | null
+  ) => {
+    dispatch(updateEditPayload({ [title]: value || "" }));
   };
 
   return type === "list" && typeof data === "object" ? (
@@ -151,26 +157,15 @@ export const Infos = ({
               />
             </LocalizationProvider>
           ) : isAutocompleteField ? (
-            <EditTextField
-              select
-              variant="outlined"
+            <EditAutocomplete
+              disablePortal
+              options={autocompleteOptions[title]}
+              sx={{ width: 250 }}
               fullWidth
               defaultValue={data as string}
-              onChange={handleAutocompleteChange}
-            >
-              {autocompleteOptions[title].map((option) => (
-                <MenuItem
-                  key={option}
-                  value={option}
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  {option}
-                </MenuItem>
-              ))}
-            </EditTextField>
+              onInputChange={handleAutocompleteChange}
+              renderInput={(params) => <EditTextField {...params} />}
+            />
           ) : onlyNumberField ? (
             <EditTextField
               variant="outlined"

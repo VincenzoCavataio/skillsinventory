@@ -66,6 +66,7 @@
           "certificates": "Certificates",
           "userBreadcrumb": "User",
           "edit": "EDIT",
+          "delete": "DELETE",
           "removeAll": "Remove All",
           "selectAll": "Select All"
         },

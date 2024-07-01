@@ -66,6 +66,7 @@
           "certificates": "Certificados",
           "userBreadcrumb": "Usuario",
           "edit": "EDITAR",
+          "delete": "CANCELAR",
           "removeAll": "Eliminar Todo",
           "selectAll": "Seleccionar Todo"
         },

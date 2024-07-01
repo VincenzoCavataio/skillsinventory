@@ -85,6 +85,7 @@ export const Wrapper = () => {
       display="flex"
       flexDirection="column"
       alignItems="flex-start"
+      // sx={{ overflowX: "auto" }}
       gap={2}
       margin={2}
     >
@@ -102,7 +103,13 @@ export const Wrapper = () => {
         {t("pages.userPage.tables.uploadCV")}
         <VisuallyHiddenInput type="file" />
       </Button>
-      <Box sx={{ width: "100%", marginTop: 2, paddingBottom: 3 }}>
+      <Box
+        sx={{
+          width: "100%",
+          marginTop: 2,
+          paddingBottom: 3,
+        }}
+      >
         <GenericAdd label={skillAdd} onClick={handleSkillAddClick} />
         {rowsSkillTable.length > 0 && (
           <SkillAdder
@@ -111,13 +118,13 @@ export const Wrapper = () => {
           />
         )}
       </Box>
-      <Box sx={{ width: "100%", paddingBottom: 3 }}>
+      <Box sx={{ width: "100%", paddingBottom: 3, maxWidth: "725.33px" }}>
         <GenericAdd label={eduAdd} onClick={handleEduAddClick} />
         {rowsEduTable.length > 0 && (
           <EduAdder rows={rowsEduTable} setRowsEduTable={setRowsEduTable} />
         )}
       </Box>
-      <Box sx={{ width: "100%", paddingBottom: 3 }}>
+      <Box sx={{ width: "100%", paddingBottom: 3, maxWidth: "725.33px" }}>
         <GenericAdd label={certAdd} onClick={handleCertAddClick} />
         {rowsCertTable.length > 0 && (
           <CertAdder rows={rowsCertTable} setRowsCertTable={setRowsCertTable} />

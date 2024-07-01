@@ -34,7 +34,7 @@ export const EduAdderBody: React.FC<EduTableBodyBuildProps> = ({
               <ShortAutocomplete
                 disablePortal
                 options={options}
-                sx={{ width: 150 }}
+                sx={{ width: 187 }}
                 renderInput={(params) => <ShortTextField {...params} />}
               />
             </TableCell>
@@ -45,10 +45,10 @@ export const EduAdderBody: React.FC<EduTableBodyBuildProps> = ({
               <ShortTextField />
             </TableCell>
             <TableCell align="center">
-              <Checkbox />
+              <ShortTextField />
             </TableCell>
             <TableCell align="center">
-              <ShortTextField />
+              <Checkbox sx={{ padding: 0 }} />
             </TableCell>
             <TableCell align="center">
               <GenericDelete handleRemove={handleRemoveRow} row={row} />

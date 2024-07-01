@@ -76,17 +76,20 @@ export const CertAdder: React.FC<CertTableBodyBuildProps> = ({
       }}
       elevation={0}
     >
-      <Table sx={{ minWidth: 650 }} aria-label="skills table">
+      <Table
+        sx={{ minWidth: 650, tableLayout: "fixed" }}
+        aria-label="skills table"
+      >
         <TableHead>
           <TableRow>
             {certHeadCells.map((headCell) => (
               <TableCell
-                // sx={{ color: "white", fontWeight: "550", fontSize: 14 }}
                 sx={{
                   color: NEXTRE_ENG,
                   fontWeight: "550",
                   fontSize: 14,
-                  width: headCell.checkbox ? "20px" : undefined,
+                  width: headCell.checkbox ? "20px" : "187px",
+
                   textAlign: headCell.checkbox ? "center" : undefined,
                 }}
                 key={headCell.id}
@@ -94,6 +97,7 @@ export const CertAdder: React.FC<CertTableBodyBuildProps> = ({
                 {headCell.label}
               </TableCell>
             ))}
+            <TableCell width="49px"></TableCell>
           </TableRow>
         </TableHead>
         <CertAdderBody rows={rows} setRowsCertTable={setRowsCertTable} />

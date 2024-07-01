@@ -52,7 +52,11 @@ export const SkillAdder: React.FC<SkillTableBodyBuildProps> = ({
   return (
     <TableContainer
       component={Paper}
-      sx={{ marginTop: 2, width: "auto", border: `solid 0.5px ${NEXTRE_ENG}` }}
+      sx={{
+        marginTop: 2,
+        maxWidth: "100%",
+        border: `solid 0.5px ${NEXTRE_ENG}`,
+      }}
       elevation={0}
     >
       <Table sx={{ minWidth: 650 }} aria-label="skills table">

@@ -45,26 +45,34 @@ export const EduAdder: React.FC<EduTableBodyBuildProps> = ({
     },
     {
       t: "",
-      id: "institute",
-      menu: false,
-      label: t("pages.userPage.tables.instituteInTables"),
-      checkbox: true,
-    },
-    {
-      t: "",
       id: "city",
       menu: false,
       label: t("pages.userPage.tables.cityInTables"),
       checkbox: false,
+    },
+    {
+      t: "",
+      id: "institute",
+      menu: false,
+      label: t("pages.userPage.tables.instituteInTables"),
+      checkbox: true,
     },
   ];
   return (
     <TableContainer
       component={Paper}
       elevation={0}
-      sx={{ marginTop: 2, width: "auto", border: `solid 0.5px ${NEXTRE_ENG} ` }}
+      sx={{
+        marginTop: 2,
+        maxWidth: "100%",
+        overflowX: "auto",
+        border: `solid 0.5px ${NEXTRE_ENG} `,
+      }}
     >
-      <Table sx={{ minWidth: 650 }} aria-label="edu table">
+      <Table
+        sx={{ minWidth: 650, tableLayout: "fixed" }}
+        aria-label="edu table"
+      >
         <TableHead>
           <TableRow>
             {eduHeadCells.map((headCell) => (
@@ -73,15 +81,14 @@ export const EduAdder: React.FC<EduTableBodyBuildProps> = ({
                   color: NEXTRE_ENG,
                   fontWeight: "550",
                   fontSize: 14,
-                  width:
-                    headCell.checkbox || headCell.menu ? "50px" : undefined,
+                  width: headCell.checkbox ? "20px" : "187px",
                 }}
                 key={headCell.id}
               >
                 {headCell.label}
               </TableCell>
             ))}
-            <TableCell></TableCell>
+            <TableCell width="49px"></TableCell>
           </TableRow>
         </TableHead>
 

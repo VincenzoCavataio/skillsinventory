@@ -56,10 +56,10 @@ export const UserPage = () => {
           <Box flex={2} bgcolor="transparent" height="100%">
             <ProfileInfo />
             <Box width="100%" mt={2} bgcolor="white" height="100%">
-              <UserInfoMap></UserInfoMap>
+              <UserInfoMap />
             </Box>
             <Box bgcolor="white" height="100%" width="100%" mt={2}>
-              <UserAddPanel></UserAddPanel>
+              <UserAddPanel />
             </Box>
           </Box>
         </Box>

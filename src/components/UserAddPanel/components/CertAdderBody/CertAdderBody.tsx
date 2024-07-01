@@ -45,7 +45,7 @@ export const CertAdderBody: React.FC<CertTableBodyBuildProps> = ({
               <ShortTextField />
             </TableCell>
             <TableCell align="center">
-              <Checkbox />
+              <Checkbox sx={{ padding: 0 }} />
             </TableCell>
             <TableCell align="center">
               <GenericDelete handleRemove={handleRemoveRow} row={row} />

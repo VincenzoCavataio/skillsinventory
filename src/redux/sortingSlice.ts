@@ -34,7 +34,6 @@ const sortingSlice = createSlice({
           return { ...item, order: "", colorUp: false, colorDown: false };
         }
       });
-      console.log(state.sort);
     },
     updateSortDown: (state, action) => {
       const { label, order } = action.payload;
@@ -50,7 +49,6 @@ const sortingSlice = createSlice({
           return { ...item, order: "", colorUp: false, colorDown: false };
         }
       });
-      console.log(state.sort);
     },
   },
 });

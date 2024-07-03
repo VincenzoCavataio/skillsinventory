@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Avatar, Box, Button, Typography } from "@mui/material";
 import { FEMALE_AVATAR, MALE_AVATAR } from "../../../../../../constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   saveChanges,
   discardChanges,
@@ -10,6 +10,7 @@ import {
 } from "../../../../../../redux/editProfileSlice";
 import { useTranslation } from "react-i18next";
 import { Delete, Download, Edit, Save } from "@mui/icons-material";
+import { callToAPI } from "../../../../../../utilities/callToAPI";
 
 type Props = {
   title: string;
@@ -34,6 +35,20 @@ export const WrapperHeader = ({
   const [isEditing, setIsEditing] = useState(false);
   const { t } = useTranslation();
 
+  // TODO: TUTTA LA GESTIONE DELLA CHIAMATA NON VA BENE. QUESTO E' SOLO UN MODO PER PROVARE CHE TUTTO PUO' FUNZIONARE COME DEVE.
+  // TODO: CERCARE DI MANTENERE GLI STANDARD
+
+  const editPersonalData = useSelector((state) => state.editManager.userData);
+  const personalData = useSelector((state) => state.user)?.user;
+
+  const payload = personalData !== undefined && {
+    firstName: editPersonalData?.firstName ?? personalData?.firstName ?? "",
+    lastName: editPersonalData?.lastName ?? personalData?.lastName ?? "",
+    email: editPersonalData?.email_login ?? personalData?.email ?? "",
+    birthDate: editPersonalData?.birthDate ?? personalData?.birthDate ?? "",
+    id: id,
+  };
+
   if (!src) {
     src = FALLBACK_ICON;
   }
@@ -52,9 +67,26 @@ export const WrapperHeader = ({
     setIsEditing(false);
   };
 
+  //TODO: QUESTA E' UNA PORCHERIA. DA NON REPLICARE. SERVE SOLO PER PROVA
+  useEffect(() => {
+    if (
+      !isEditing &&
+      editPersonalData &&
+      Object.keys(editPersonalData).length > 2
+    ) {
+      callToAPI({
+        endpoint: "/api/v1/user/updateUserData/",
+        payload: payload,
+        method: "PUT",
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isEditing]);
+
   useEffect(() => {
     dispatch(setEditMode(isEditing));
   }, [isEditing, dispatch]);
+
   return (
     <Box
       display="flex"

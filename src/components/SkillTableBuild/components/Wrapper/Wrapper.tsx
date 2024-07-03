@@ -8,7 +8,6 @@ import { TableBodyBuild } from "../TableBodyBuild";
 import { PaginationBuild } from "../PaginationBuild";
 import { generatePayloadForTableFilter } from "../../../../utilities/generatePayloadForTableFilter";
 import { TableData } from "../../types";
-// import { useState } from "react";
 
 export const Wrapper = () => {
   const filterStore = useSelector((state: ReduxStore) => state.search);
@@ -71,7 +70,6 @@ export const Wrapper = () => {
         })
       )
     ).data ?? [];
-  // console.log("x");
   //vedere dove parte la chiamata per la tabella, far ripartire le chiamate che riempiono le varie select ma con i parametri nuovi che esistono già
   const totalCount = tableData && tableData[tableData.length - 1];
 

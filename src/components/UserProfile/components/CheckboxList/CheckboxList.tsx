@@ -52,7 +52,6 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
   };
 
   const allChecked = checked.length === data?.length;
-  console.log(checked);
   return (
     <List>
       {showCheckbox && (

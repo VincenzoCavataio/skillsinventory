@@ -54,7 +54,7 @@ export const Wrapper = () => {
   }
 
   const centerDue: number[] = [latitudeNumber, longitudeNumber];
-  // console.log(centerDue as LatLngExpression);
+
   return (
     <Accordion sx={{ boxShadow: "none" }} disabled={!isEnabled}>
       <AccordionSummary

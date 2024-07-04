@@ -1,4 +1,4 @@
-import { Box, MenuItem, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { commonColors } from "../../../../common/commonColors";
 import {
@@ -25,6 +25,7 @@ export const Infos = ({
   type: string;
 }) => {
   let allEmpty = true;
+  const { t } = useTranslation();
 
   if (Array.isArray(data)) {
     for (let i = 0; i < data.length; i++) {
@@ -35,7 +36,6 @@ export const Infos = ({
     }
   }
 
-  const { t } = useTranslation();
   const isActive = useSelector(
     (state: ReduxStore) => state.editManager.isActive
   );
@@ -93,14 +93,17 @@ export const Infos = ({
     ],
   };
 
-  // const handleAutocompleteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   dispatch(updateEditPayload({ [title]: e.target.value }));
-  // };
   const handleAutocompleteChange = (
     event: React.SyntheticEvent,
     value: string | null
   ) => {
-    dispatch(updateEditPayload({ [title]: value || "" }));
+    if (value === t(`pages.userPage.informationDetails.yes`)) {
+      dispatch(updateEditPayload({ [title]: true }));
+    } else if (value === t(`pages.userPage.informationDetails.no`)) {
+      dispatch(updateEditPayload({ [title]: false }));
+    } else {
+      dispatch(updateEditPayload({ [title]: value || "" }));
+    }
   };
 
   return type === "list" && typeof data === "object" ? (

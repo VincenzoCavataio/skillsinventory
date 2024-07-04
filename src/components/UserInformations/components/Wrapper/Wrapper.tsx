@@ -41,16 +41,19 @@ export const Wrapper = () => {
     useSelector((state: ReduxStore) => state.user?.user) ?? undefined;
 
   if (!userData) return;
-
+  let drivLicTXT: string = "";
+  if (userData.driver_license === 1) {
+    drivLicTXT = t("pages.userPage.informationDetails.yes");
+  } else {
+    drivLicTXT = t("pages.userPage.informationDetails.no");
+  }
   const personalData: ResponseProfileElementObjectData = {
     id: userData?.id,
     firstName: userData.firstName,
     lastName: userData.lastName,
     email_login: userData.email_login,
     personalPhoneNumber: userData.personalPhoneNumber,
-    driver_license: userData?.driver_license
-      ? t("pages.userPage.informationDetails.yes")
-      : t("pages.userPage.informationDetails.no"),
+    driver_license: drivLicTXT,
     birthDate: userData.birthDate,
     workPhoneNumber: userData.workPhoneNumber,
     actualEmploymentDate: userData.actualEmploymentDate,

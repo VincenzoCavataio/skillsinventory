@@ -54,7 +54,7 @@ export type ProfilePageType = {
 export type ResponseProfileElementObjectData = {
   actualEmploymentDate: string;
   birthDate?: string;
-  driver_license?: 0 | 1 | string;
+  driver_license?: 0 | 1 | string | boolean;
   email_login: string;
   firstEmploymentDate: string;
   firstName: string;

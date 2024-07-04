@@ -11,6 +11,7 @@ import {
 import { useTranslation } from "react-i18next";
 import { Delete, Download, Edit, Save } from "@mui/icons-material";
 import { callToAPI } from "../../../../../../utilities/callToAPI";
+import { ReduxStore } from "../../../../../../redux/types";
 
 type Props = {
   title: string;
@@ -38,17 +39,43 @@ export const WrapperHeader = ({
   // TODO: TUTTA LA GESTIONE DELLA CHIAMATA NON VA BENE. QUESTO E' SOLO UN MODO PER PROVARE CHE TUTTO PUO' FUNZIONARE COME DEVE.
   // TODO: CERCARE DI MANTENERE GLI STANDARD
 
-  const editPersonalData = useSelector((state) => state.editManager.userData);
-  const personalData = useSelector((state) => state.user)?.user;
+  const editPersonalData = useSelector(
+    (state: ReduxStore) => state.editManager.userData
+  );
+  const editPersonalData2 = useSelector(
+    (state: ReduxStore) => state.editManager.userData
+  );
+
+  const personalData = useSelector((state: ReduxStore) => state.user?.user);
 
   const payload = personalData !== undefined && {
     firstName: editPersonalData?.firstName ?? personalData?.firstName ?? "",
     lastName: editPersonalData?.lastName ?? personalData?.lastName ?? "",
-    email: editPersonalData?.email_login ?? personalData?.email ?? "",
+    email: editPersonalData?.email_login ?? personalData?.email_login ?? "",
     birthDate: editPersonalData?.birthDate ?? personalData?.birthDate ?? "",
     id: id,
   };
 
+  const payload2 = personalData !== undefined && {
+    actualEmployementDate:
+      editPersonalData2?.actualEmploymentDate ??
+      personalData.actualEmploymentDate ??
+      null,
+    driverLicense: true,
+
+    firstEmployementDate:
+      editPersonalData2?.firstEmploymentDate ??
+      personalData?.firstEmploymentDate ??
+      null,
+    gender: editPersonalData2?.gender ?? personalData.gender ?? null,
+    personalPhoneNumber:
+      editPersonalData2?.personalPhoneNumber ??
+      personalData.personalPhoneNumber ??
+      "",
+    workPhoneNumber:
+      editPersonalData2?.workPhoneNumber ?? personalData.workPhoneNumber ?? "",
+    id: id,
+  };
   if (!src) {
     src = FALLBACK_ICON;
   }
@@ -71,6 +98,20 @@ export const WrapperHeader = ({
   useEffect(() => {
     if (
       !isEditing &&
+      editPersonalData2 &&
+      Object.keys(editPersonalData2).length > 2
+    ) {
+      callToAPI({
+        endpoint: "/api/v1/user/updateUserPrivateData/",
+        payload: payload2,
+        method: "PUT",
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isEditing]);
+  useEffect(() => {
+    if (
+      !isEditing &&
       editPersonalData &&
       Object.keys(editPersonalData).length > 2
     ) {
@@ -82,7 +123,6 @@ export const WrapperHeader = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEditing]);
-
   useEffect(() => {
     dispatch(setEditMode(isEditing));
   }, [isEditing, dispatch]);

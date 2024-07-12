@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { commonColors } from "../../../../common/commonColors";
 import {
   ReduxStore,
+  Residence,
   ResponseProfileElementObjectData,
 } from "../../../../redux/types";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +13,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { updateEditPayload } from "../../../../redux/editProfileSlice";
 import dayjs from "dayjs";
 import { useState } from "react";
+import { validateEmail } from "../../../../utilities/validEmailChecker";
 
 export const Infos = ({
   title,
@@ -24,26 +26,35 @@ export const Infos = ({
     | string[];
   type: string;
 }) => {
-  let allEmpty = true;
+  let allEmpty = false;
   const { t } = useTranslation();
 
-  if (Array.isArray(data)) {
-    for (let i = 0; i < data.length; i++) {
-      if (data[i] !== "") {
-        allEmpty = false;
-        break;
-      }
-    }
-  }
+  // if (Array.isArray(data)) {
+  //   for (let i = 0; i < data.length; i++) {
+  //     if (data[i] !== "") {
+  //       allEmpty = false;
+  //       break;
+  //     }
+  //   }
+  // }
 
   const isActive = useSelector(
     (state: ReduxStore) => state.editManager.isActive
   );
 
   const dispatch = useDispatch();
-
+  const [isValid, setIsValid] = useState(true);
   const handleTextChange2 = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(updateEditPayload({ [title]: e.target.value }));
+    if (emailField) {
+      if (validateEmail(e.target.value)) {
+        setIsValid(true);
+        dispatch(updateEditPayload({ [title]: e.target.value }));
+      } else {
+        setIsValid(false);
+      }
+    } else {
+      dispatch(updateEditPayload({ [title]: e.target.value }));
+    }
   };
 
   const [array, setArray] = useState<string[]>(data as string[]);
@@ -69,7 +80,7 @@ export const Infos = ({
     t(`pages.userPage.informationDetails.province`),
     t(`pages.userPage.informationDetails.state`),
   ];
-
+  const emailField = "email_login".includes(title);
   const isDateField = [
     "birthDate",
     "actualEmploymentDate",
@@ -105,7 +116,13 @@ export const Infos = ({
       dispatch(updateEditPayload({ [title]: value || "" }));
     }
   };
-
+  const handleObjectChange =
+    (key: keyof Residence) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      const newData = { ...(data as Residence) };
+      newData[key] = e.target.value;
+      dispatch(updateEditPayload({ [title]: newData }));
+    };
+  // console.log(data);
   return type === "list" && typeof data === "object" ? (
     <Box
       textAlign={"left"}
@@ -118,13 +135,13 @@ export const Infos = ({
       </Box>
       <Box flex={2} alignContent="center">
         {isActive ? (
-          (data as string[]).map((item, index) => (
+          Object.entries(data as Residence).map(([key, value], index) => (
             <EditTextField
               key={index}
               variant="outlined"
               fullWidth
-              defaultValue={item}
-              onChange={handleTextChange(index)}
+              defaultValue={value}
+              onChange={handleObjectChange(key as keyof Residence)}
               sx={{ mb: 1 }}
               placeholder={placeholders[index] || ""}
             />
@@ -133,12 +150,44 @@ export const Infos = ({
           <Typography variant="body2">-</Typography>
         ) : (
           <Typography variant="body2">
-            {(data as string[]).join(", ")}
+            {Object.values(data as Residence).join(", ")}
           </Typography>
         )}
       </Box>
     </Box>
   ) : (
+    // <Box
+    //   textAlign={"left"}
+    //   display={"flex"}
+    //   p={2}
+    //   borderBottom={`1px solid ${commonColors.lightGray}`}
+    // >
+    //   <Box flex={1} alignContent="center">
+    //     <Typography variant="body1">{title}:</Typography>
+    //   </Box>
+    //   <Box flex={2} alignContent="center">
+    //     {isActive ? (
+    //       (data as string[]).map((item, index) => (
+
+    //         <EditTextField
+    //           key={index}
+    //           variant="outlined"
+    //           fullWidth
+    //           defaultValue={item}
+    //           onChange={handleTextChange(index)}
+    //           sx={{ mb: 1 }}
+    //           placeholder={placeholders[index] || ""}
+    //         />
+    //       ))
+    //     ) : allEmpty === true ? (
+    //       <Typography variant="body2">-</Typography>
+    //     ) : (
+    //       <Typography variant="body2">
+    //         {(data as string[]).join(", ")}
+    //       </Typography>
+    //     )}
+    //   </Box>
+    // </Box>
     <Box
       textAlign="left"
       display="flex"
@@ -155,7 +204,7 @@ export const Infos = ({
           isDateField ? (
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <EditDatePicker
-                value={dayjs(data as string)}
+                value={data ? dayjs(data as string) : undefined}
                 onChange={handleDateChange}
               />
             </LocalizationProvider>
@@ -165,7 +214,15 @@ export const Infos = ({
               options={autocompleteOptions[title]}
               sx={{ width: 250 }}
               fullWidth
-              defaultValue={data as string}
+              defaultValue={
+                (data as string) === "male"
+                  ? t(`pages.userPage.informationDetails.male`)
+                  : (data as string) === "female"
+                  ? t(`pages.userPage.informationDetails.female`)
+                  : (data as string) === "other"
+                  ? t(`pages.userPage.informationDetails.other`)
+                  : null
+              }
               onInputChange={handleAutocompleteChange}
               renderInput={(params) => <EditTextField {...params} />}
             />
@@ -181,6 +238,15 @@ export const Infos = ({
                 inputMode: "none",
               }}
             />
+          ) : emailField ? (
+            <EditTextField
+              variant="outlined"
+              fullWidth
+              onChange={handleTextChange2}
+              defaultValue={Array.isArray(data) ? data.join(", ") : data}
+              error={!isValid}
+              helperText={!isValid ? "Email non valida" : ""}
+            />
           ) : (
             <EditTextField
               variant="outlined"
@@ -190,7 +256,15 @@ export const Infos = ({
             />
           )
         ) : (
-          <Typography variant="body2">{(data as string[]) ?? "-"}</Typography>
+          <Typography variant="body2">
+            {(data as string) === "male"
+              ? t(`pages.userPage.informationDetails.male`)
+              : (data as string) === "female"
+              ? t(`pages.userPage.informationDetails.female`)
+              : (data as string) === "other"
+              ? t(`pages.userPage.informationDetails.other`)
+              : (data as string[]) ?? "-"}
+          </Typography>
         )}
       </Box>
     </Box>

@@ -27,7 +27,24 @@ export type PaginationBuildProps = {
   totalRowsNumber?: Record<"totalResult", number>;
 };
 
+// export type TableData = {
+//   userId: string;
+//   lastName: string;
+//   firstName: string;
+//   skillsList?: string[];
+//   skillsRanking?: string;
+//   anniEsperienza?: string;
+//   educationList: string;
+//   residenceInfo: string;
+//   certificationList: string;
+//   isAnd: string;
+//   // checked: boolean;
+// };
 export type TableData = {
+  data: { data: TableDataData[] };
+  pagination?: TableDataPagination;
+};
+export type TableDataData = {
   userId: string;
   lastName: string;
   firstName: string;
@@ -38,5 +55,9 @@ export type TableData = {
   residenceInfo: string;
   certificationList: string;
   isAnd: string;
-  // checked: boolean;
+};
+export type TableDataPagination = {
+  count: number;
+  pageNum: number;
+  pageSize: number;
 };

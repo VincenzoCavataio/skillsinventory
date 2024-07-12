@@ -9,10 +9,18 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { ReduxStore } from "../../../../redux/types";
+import {
+  updateCertRowsNumber,
+  updateEduRowsNumber,
+  updateSkillRowsNumber,
+} from "../../../../redux/adderSlice";
 
 type CheckboxListProps = {
   showCheckbox: boolean;
   data?: string[];
+  label: string;
 };
 const CustomListItemButton = styled(ListItemButton)(() => ({
   "&.Mui-disabled": {
@@ -24,6 +32,7 @@ const CustomListItemButton = styled(ListItemButton)(() => ({
 export const CheckboxList: React.FC<CheckboxListProps> = ({
   showCheckbox,
   data,
+  label,
 }) => {
   const { t } = useTranslation();
   const [checked, setChecked] = useState<string[]>([]);
@@ -39,6 +48,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
     }
 
     setChecked(newChecked);
+    console.log(newChecked);
   };
 
   const handleSelectAll = () => {
@@ -50,7 +60,26 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
   const handleRemoveAll = () => {
     setChecked([]);
   };
-
+  const rowsStore = useSelector((state: ReduxStore) => state.rowsManager);
+  const dispatch = useDispatch();
+  const [oldRows, setOldRows] = useState<number>(rowsStore.skillRows);
+  // const oldRows = rowsStore.skillRows;
+  const handleRow = () => {
+    if (label === "hardSkills") {
+      const newRows = oldRows + 1;
+      setOldRows(newRows);
+      dispatch(updateSkillRowsNumber(newRows));
+      console.log(rowsStore.skillRows);
+    } else if (label === "education") {
+      const oldRows2 = rowsStore.eduRows;
+      const newRows2 = oldRows2 + 1;
+      dispatch(updateEduRowsNumber(newRows2));
+    } else if (label === "certificates") {
+      const oldRows3 = rowsStore.certRows;
+      const newRows3 = oldRows3 + 1;
+      dispatch(updateCertRowsNumber(newRows3));
+    }
+  };
   const allChecked = checked.length === data?.length;
   return (
     <List>
@@ -85,6 +114,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
                     checked={checked.indexOf(value) !== -1}
                     tabIndex={-1}
                     disableRipple
+                    onClick={handleRow}
                   />
                 </ListItemIcon>
               )}

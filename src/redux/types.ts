@@ -31,6 +31,12 @@ export type ReduxStore = {
   lang: string;
   checkboxManager: number[];
   editManager: EditMode;
+  rowsManager: RowsManagement;
+};
+export type RowsManagement = {
+  skillRows: number;
+  eduRows: number;
+  certRows: number;
 };
 export type SelectorAndOr = {
   andOr: string;

@@ -8,6 +8,7 @@ import andOrSlice from "./andOrSlice";
 import langSlices from "./langSlices";
 import checkboxSlice from "./checkboxSlice";
 import editProfileSlice from "./editProfileSlice";
+import adderSlice from "./adderSlice";
 
 export const store = configureStore({
   reducer: {
@@ -20,5 +21,6 @@ export const store = configureStore({
     langManager: langSlices,
     checkboxManager: checkboxSlice,
     editManager: editProfileSlice,
+    rowsManager: adderSlice,
   },
 });

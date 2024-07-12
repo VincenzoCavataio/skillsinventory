@@ -19,7 +19,8 @@ export const InputChecks = ({
 }: InputSelectType) => {
   const { t } = useTranslation();
   const [elements, setElements] = React.useState<string[]>([]);
-  const final_object = data?.final_object;
+  // const final_object = data?.final_object;
+  const final_object = data;
 
   const handleChange = (event: SelectChangeEvent<typeof elements>) => {
     const {

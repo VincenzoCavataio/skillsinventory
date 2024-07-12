@@ -63,9 +63,15 @@ export const GenericAccordion = ({
             {t(`pages.userPage.info.delete`)}
           </Button>
         </Box>
-        {PROP && !DEL && <CheckboxList showCheckbox={true} data={data} />}
-        {DEL && !PROP && <CheckboxList showCheckbox={true} data={data} />}
-        {!PROP && !DEL && <CheckboxList showCheckbox={false} data={data} />}
+        {PROP && !DEL && (
+          <CheckboxList showCheckbox={true} data={data} label={label} />
+        )}
+        {DEL && !PROP && (
+          <CheckboxList showCheckbox={true} data={data} label={label} />
+        )}
+        {!PROP && !DEL && (
+          <CheckboxList showCheckbox={false} data={data} label={label} />
+        )}
         {/* <CheckboxList showCheckbox={PROP || DEL} data={data} /> */}
       </StyledAccordionDetails>
     </Accordion>

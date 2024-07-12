@@ -8,6 +8,13 @@ import { CertRowType, EduRowType, SkillRowType } from "../../types";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useTranslation } from "react-i18next";
 import { NEXTRE_ENG } from "../../../../common/commonColors";
+import { useDispatch, useSelector } from "react-redux";
+import { ReduxStore } from "../../../../redux/types";
+import {
+  updateCertRowsNumber,
+  updateEduRowsNumber,
+  updateSkillRowsNumber,
+} from "../../../../redux/adderSlice";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -26,16 +33,20 @@ export const Wrapper = () => {
   const skillAdd: string = t("pages.userPage.tables.addSkills");
   const certAdd: string = t("pages.userPage.tables.addCert");
   const eduAdd: string = t("pages.userPage.tables.addEdu");
-
+  const rowsStore = useSelector((state: ReduxStore) => state.rowsManager);
+  const dispatch = useDispatch();
+  console.log(rowsStore);
   const [rowsSkillTable, setRowsSkillTable] = useState<SkillRowType[]>([]);
   const [rowsEduTable, setRowsEduTable] = useState<EduRowType[]>([]);
   const [rowsCertTable, setRowsCertTable] = useState<CertRowType[]>([]);
-  const [lastId, setLastId] = useState<number>(0);
-  const [lastId2, setLastId2] = useState<number>(0);
-  const [lastId3, setLastId3] = useState<number>(0);
+  const [lastId, setLastId] = useState<number>(rowsStore.skillRows);
+  // const lastId = rowsStore.skillRows;
+  const [lastId2, setLastId2] = useState<number>(rowsStore.eduRows);
+  const [lastId3, setLastId3] = useState<number>(rowsStore.certRows);
   const handleSkillAddClick = () => {
     const newId = lastId + 1;
     setLastId(newId);
+    dispatch(updateSkillRowsNumber(newId));
     setRowsSkillTable((prevRows) => [
       ...prevRows,
       {
@@ -43,7 +54,8 @@ export const Wrapper = () => {
         levelInput: 1,
         expInput: 1,
         noteTxtField: "",
-        id: newId,
+        // id: newId,
+        id: rowsStore.skillRows,
       },
     ]);
   };
@@ -51,6 +63,7 @@ export const Wrapper = () => {
   const handleEduAddClick = () => {
     const newId2 = lastId2 + 1;
     setLastId2(newId2);
+    dispatch(updateEduRowsNumber(newId2));
     setRowsEduTable((prevRows) => [
       ...prevRows,
       {
@@ -59,13 +72,15 @@ export const Wrapper = () => {
         instChckbx: false,
         itTxtField: "",
         cityTxtField: "",
-        id: newId2,
+        // id: newId2,
+        id: rowsStore.eduRows,
       },
     ]);
   };
   const handleCertAddClick = () => {
     const newId3 = lastId3 + 1;
     setLastId3(newId3);
+    dispatch(updateCertRowsNumber(newId3));
     setRowsCertTable((prevRows) => [
       ...prevRows,
       {
@@ -73,7 +88,8 @@ export const Wrapper = () => {
         nameTxtField: "",
         itChckbx: true,
         codeTxtField: "",
-        id: newId3,
+        // id: newId3,
+        id: rowsStore.certRows,
         releaseDate: "",
         expDate: "",
       },

@@ -7,7 +7,7 @@ import { ReduxStore } from "../../../../redux/types";
 import { TableBodyBuild } from "../TableBodyBuild";
 import { PaginationBuild } from "../PaginationBuild";
 import { generatePayloadForTableFilter } from "../../../../utilities/generatePayloadForTableFilter";
-import { TableData } from "../../types";
+import { TableData, TableDataData } from "../../types";
 
 export const Wrapper = () => {
   const filterStore = useSelector((state: ReduxStore) => state.search);
@@ -56,7 +56,8 @@ export const Wrapper = () => {
       // checked,
     };
   }
-  const tableData: TableData[] =
+
+  const tableData: TableDataData[] =
     useApi(
       allTabledata(
         generatePayloadForTableFilter({
@@ -70,11 +71,17 @@ export const Wrapper = () => {
         })
       )
     ).data ?? [];
+  const tableData2: TableData = {
+    data: tableData,
+    pagination: undefined,
+  };
   //vedere dove parte la chiamata per la tabella, far ripartire le chiamate che riempiono le varie select ma con i parametri nuovi che esistono già
-  const totalCount = tableData && tableData[tableData.length - 1];
-
-  const rows = tableData
-    ? tableData?.map((data: TableData) =>
+  const totalCount =
+    tableData2.data.data &&
+    tableData2.data.data[tableData2.data.data.length - 1];
+  console.log(tableData2.data.data);
+  const rows = tableData2.data.data
+    ? tableData2?.data.data.map((data: TableDataData) =>
         createData(
           data.userId,
           data.lastName,

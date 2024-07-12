@@ -22,7 +22,8 @@ export const InputSelect = ({
     <Autocomplete
       disablePortal
       options={
-        data?.final_object?.map(
+        // data?.final_object?.map(
+        data?.map(
           (tecnologyData: ResponseElementObjectData) => tecnologyData?.name
         ) || []
       }
@@ -31,8 +32,10 @@ export const InputSelect = ({
           id: 0,
           value: newValue,
         };
-        if (data?.final_object)
-          for (const obj of data.final_object) {
+        // if (data?.final_object)
+        if (data)
+          // for (const obj of data.final_object) {
+          for (const obj of data) {
             if (object.value === obj.name) {
               object.id = obj.id;
             }

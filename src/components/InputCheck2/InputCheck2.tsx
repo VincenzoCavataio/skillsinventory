@@ -73,7 +73,9 @@ export const InputChecks2 = ({
   const [selectedMap, setSelectedMap] = React.useState<{
     [key: number]: boolean;
   }>({});
-  const final_object = data?.final_object;
+  // const final_object = data?.final_object;
+  const final_object = data;
+
   const { t } = useTranslation();
   const handleChange = (event: SelectChangeEvent<CompiledFieldsWithID[]>) => {
     const selectedValues = event.target.value as CompiledFieldsWithID[];

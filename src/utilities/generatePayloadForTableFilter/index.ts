@@ -43,6 +43,7 @@ export const generatePayloadForTableFilter = ({
   }
   const generatedPayload = {
     "starting-from": `P_FETCH_FIRST:${fetchPagination}`,
+
     "number-of-items": `P_OFFSET:${paginationFilterNumber}`,
     "skill-name": `SKILLS:${
       allSkillsFilter && allSkillsFilter.length > 0

@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import { Delete, Download, Edit, Save } from "@mui/icons-material";
 import { callToAPI } from "../../../../../../utilities/callToAPI";
 import { ReduxStore } from "../../../../../../redux/types";
+import { callToLATLONG } from "../../../../../../utilities/callToLATLONG";
 
 type Props = {
   title: string;
@@ -45,7 +46,9 @@ export const WrapperHeader = ({
   const editPersonalData2 = useSelector(
     (state: ReduxStore) => state.editManager.userData
   );
-
+  const editPersonalData3 = useSelector(
+    (state: ReduxStore) => state.editManager.userData
+  );
   const personalData = useSelector((state: ReduxStore) => state.user?.user);
 
   const payload = personalData !== undefined && {
@@ -61,7 +64,7 @@ export const WrapperHeader = ({
       editPersonalData2?.actualEmploymentDate ??
       personalData.actualEmploymentDate ??
       null,
-    driverLicense: true,
+    driverLicense: false,
 
     firstEmployementDate:
       editPersonalData2?.firstEmploymentDate ??
@@ -76,6 +79,85 @@ export const WrapperHeader = ({
       editPersonalData2?.workPhoneNumber ?? personalData.workPhoneNumber ?? "",
     id: id,
   };
+  const payload3 = personalData !== undefined && {
+    address:
+      editPersonalData3?.residence?.address ??
+      personalData.residence?.address ??
+      "",
+    addressNumber:
+      editPersonalData3?.residence?.address_number ??
+      personalData.residence?.address_number ??
+      "",
+    city:
+      editPersonalData3?.residence?.city ?? personalData.residence?.city ?? "",
+    nation:
+      editPersonalData3?.residence?.nation ??
+      personalData.residence?.nation ??
+      "",
+    province:
+      editPersonalData3?.residence?.province ??
+      personalData.residence?.province ??
+      "",
+    zipCode:
+      editPersonalData3?.residence?.zip_code ??
+      personalData.residence?.zip_code ??
+      "",
+    latidude: personalData.residence?.latitude,
+    longitude: personalData.residence?.longitude,
+    id: id,
+  };
+  let payload4 = {
+    q: "",
+    key: "",
+  };
+  if (payload3) {
+    payload4 = {
+      q: encodeURI(
+        `${payload3.addressNumber},${payload3.address},${payload3.zipCode},${payload3.city},${payload3.province},${payload3.nation}`
+      ),
+      key: "ef08b2920b9543b196b96a91587b1e61",
+    };
+    console.log(
+      `${payload3.addressNumber},${payload3.address},${payload3.zipCode},${payload3.city},${payload3.province},${payload3.nation}`
+    );
+  }
+  const handlePayload3 = () => {
+    if (payload3) {
+      payload3.address =
+        editPersonalData3?.residence?.address ??
+        personalData.residence?.address ??
+        "";
+      payload3.addressNumber =
+        editPersonalData3?.residence?.address_number ??
+        personalData.residence?.address_number ??
+        "";
+      payload3.city =
+        editPersonalData3?.residence?.city ??
+        personalData.residence?.city ??
+        "";
+      payload3.nation =
+        editPersonalData3?.residence?.nation ??
+        personalData.residence?.nation ??
+        "";
+      payload3.province =
+        editPersonalData3?.residence?.province ??
+        personalData.residence?.province ??
+        "";
+      payload3.zipCode =
+        editPersonalData3?.residence?.zip_code ??
+        personalData.residence?.zip_code ??
+        "";
+      payload3.latidude = personalData.residence?.latitude;
+      payload3.longitude = personalData.residence?.longitude;
+      payload3.id = id;
+    }
+  };
+  // const x = callToLATLONG({
+  //   endpoint: "https://api.opencagedata.com/geocode/v1/json?",
+  //   payload: payload4,
+  //   method: "GET",
+  // });
+  // console.log(x);
   if (!src) {
     src = FALLBACK_ICON;
   }
@@ -95,11 +177,42 @@ export const WrapperHeader = ({
   };
 
   //TODO: QUESTA E' UNA PORCHERIA. DA NON REPLICARE. SERVE SOLO PER PROVA
+  // useEffect(() => {
+  // if (
+  //   !isEditing &&
+  //   editPersonalData2 &&
+  //   Object.keys(editPersonalData2).length > 2
+  // ) {
+  //   callToAPI({
+  //     endpoint: "/api/v1/user/updateUserPrivateData/",
+  //     payload: payload2,
+  //     method: "PUT",
+  //   });
+  // }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [isEditing]);
   useEffect(() => {
     if (
       !isEditing &&
+      editPersonalData3 &&
+      Object.keys(editPersonalData3).length > 1 &&
+      payload3
+    ) {
+      callToLATLONG({
+        endpoint: "https://api.opencagedata.com/geocode/v1/json?",
+        payload: payload4,
+        method: "GET",
+      });
+      callToAPI({
+        endpoint: "/api/v1/user/updateUserResidence/",
+        payload: payload3,
+        method: "PUT",
+      });
+    }
+    if (
+      !isEditing &&
       editPersonalData2 &&
-      Object.keys(editPersonalData2).length > 2
+      Object.keys(editPersonalData2).length > 1
     ) {
       callToAPI({
         endpoint: "/api/v1/user/updateUserPrivateData/",
@@ -107,13 +220,10 @@ export const WrapperHeader = ({
         method: "PUT",
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isEditing]);
-  useEffect(() => {
     if (
       !isEditing &&
       editPersonalData &&
-      Object.keys(editPersonalData).length > 2
+      Object.keys(editPersonalData).length > 1
     ) {
       callToAPI({
         endpoint: "/api/v1/user/updateUserData/",
@@ -126,7 +236,8 @@ export const WrapperHeader = ({
   useEffect(() => {
     dispatch(setEditMode(isEditing));
   }, [isEditing, dispatch]);
-
+  console.log(payload3);
+  console.log(payload, payload2);
   return (
     <Box
       display="flex"

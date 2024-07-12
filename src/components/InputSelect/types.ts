@@ -10,7 +10,9 @@ type Label = keyof CompiledFields;
 export type InputSelectType = {
   selectedInput: CompiledFieldsWithID;
   setSelectedInput: (value: React.SetStateAction<CompiledFieldsWithID>) => void;
-  data?: { final_object?: ResponseElementObjectData[] };
+  // data?: { final_object?: ResponseElementObjectData[] };
+  data?: ResponseElementObjectData[];
+
   label: Label;
   objKey:
     | "educationalLevel"

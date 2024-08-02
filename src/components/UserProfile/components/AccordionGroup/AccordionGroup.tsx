@@ -35,7 +35,7 @@ export const AccordionGroup = () => {
         stateDelete={accordionDeleteStates}
         data={dataAccordions.skillList}
       />
-      <GenericAccordion
+      {/* <GenericAccordion
         action={setAccordionStates}
         actionDelete={setAccordionDeleteStates}
         label="education"
@@ -50,7 +50,7 @@ export const AccordionGroup = () => {
         state={accordionStates}
         stateDelete={accordionDeleteStates}
         data={dataAccordions.certificationList}
-      />
+      /> */}
     </Box>
   );
 };

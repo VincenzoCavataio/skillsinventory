@@ -21,6 +21,15 @@ export type Filters = {
   course: string;
 };
 
+export type CheckedSkill = {
+  name: string;
+  id: string;
+  level: string;
+  note: string;
+  exp: string;
+};
+export type CheckedSkills = { checkedSkills: CheckedSkill[] };
+
 export type ReduxStore = {
   filters?: Filters;
   skills?: { skills: Skill[] };
@@ -33,6 +42,7 @@ export type ReduxStore = {
   checkboxManager: number[];
   editManager: EditMode;
   rowsManager: RowsManagement;
+  checkedSkills: CheckedSkills;
 };
 
 export type RowsManagement = {

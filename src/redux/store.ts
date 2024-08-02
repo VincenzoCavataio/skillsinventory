@@ -9,6 +9,7 @@ import langSlices from "./langSlices";
 import checkboxSlice from "./checkboxSlice";
 import editProfileSlice from "./editProfileSlice";
 import adderSlice from "./adderSlice";
+import checkboxSkillsSelection from "./checkboxSkillsSelection";
 
 export const store = configureStore({
   reducer: {
@@ -22,5 +23,6 @@ export const store = configureStore({
     checkboxManager: checkboxSlice,
     editManager: editProfileSlice,
     rowsManager: adderSlice,
+    checkedSkills: checkboxSkillsSelection,
   },
 });

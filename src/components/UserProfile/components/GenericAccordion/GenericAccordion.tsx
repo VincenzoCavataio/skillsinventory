@@ -1,40 +1,22 @@
-import {
-  Accordion,
-  AccordionSummary,
-  Box,
-  Button,
-  Typography,
-} from "@mui/material";
+import { Accordion, AccordionSummary, Box, Typography } from "@mui/material";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { CheckboxList } from "../CheckboxList";
+import { CheckboxListFixed } from "../CheckboxList";
 import { AccordionLabel, Props } from "./Types";
 import { useTranslation } from "react-i18next";
 import { commonColors } from "../../../../common/commonColors";
 import StyledAccordionDetails from "../../StyledAccordionDetails";
 
-export const GenericAccordion = ({
-  action,
-  actionDelete,
-  label,
-  state,
-  stateDelete,
-  data,
-}: Props) => {
-  const PROP = state[label];
-  const DEL = stateDelete[label];
+export const GenericAccordion = ({ action, label, state, data }: Props) => {
+  const isEdit = state[label];
   const toggleEdit = (accordion: AccordionLabel) => {
     action((prevState) => ({
       ...prevState,
       [accordion]: !prevState[accordion],
     }));
   };
-  const toggleCancel = (accordion: AccordionLabel) => {
-    actionDelete((prevState) => ({
-      ...prevState,
-      [accordion]: !prevState[accordion],
-    }));
-  };
+
   const { t } = useTranslation();
+  console.log({ data, isEdit });
   return (
     <Accordion disableGutters sx={{ boxShadow: "none" }}>
       <AccordionSummary
@@ -45,34 +27,14 @@ export const GenericAccordion = ({
         <Typography>{t(`pages.userPage.info.${label}`)}</Typography>
       </AccordionSummary>
       <StyledAccordionDetails>
-        <Box display="flex" flexDirection="row" gap={2}>
-          <Button
-            onClick={() => toggleEdit(label)}
-            size="small"
-            variant="outlined"
-            color={PROP ? "info" : "primary"}
-          >
-            {t(`pages.userPage.info.edit`)}
-          </Button>
-          <Button
-            onClick={() => toggleCancel(label)}
-            size="small"
-            variant="outlined"
-            color={DEL ? "warning" : "error"}
-          >
-            {t(`pages.userPage.info.delete`)}
-          </Button>
+        <Box width="100%" mb={2} position="relative">
+          <CheckboxListFixed
+            data={data}
+            label={label}
+            isEdit={isEdit}
+            toggleEdit={toggleEdit}
+          />
         </Box>
-        {PROP && !DEL && (
-          <CheckboxList showCheckbox={true} data={data} label={label} />
-        )}
-        {DEL && !PROP && (
-          <CheckboxList showCheckbox={true} data={data} label={label} />
-        )}
-        {!PROP && !DEL && (
-          <CheckboxList showCheckbox={false} data={data} label={label} />
-        )}
-        {/* <CheckboxList showCheckbox={PROP || DEL} data={data} /> */}
       </StyledAccordionDetails>
     </Accordion>
   );

@@ -17,6 +17,7 @@ import {
   updateSkillRowsData,
   updateSkillRowsNumber,
 } from "../../../../redux/adderSlice";
+import { checkboxSkillsSelector } from "../../../../redux/checkboxSkillsSelection";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -36,6 +37,8 @@ export const Wrapper = () => {
   const certAdd: string = t("pages.userPage.tables.addCert");
   const eduAdd: string = t("pages.userPage.tables.addEdu");
   const rowsStore = useSelector((state: ReduxStore) => state.rowsManager);
+  const checkedSkillsFromStore = useSelector(checkboxSkillsSelector);
+
   const dispatch = useDispatch();
 
   const getMaxSkillId = () => {
@@ -58,7 +61,6 @@ export const Wrapper = () => {
   };
   const handleSkillAddClick = () => {
     const oldRows = getMaxSkillId();
-    // const newId = rowsStore.skillRows + 1;
     const newId = oldRows + 1;
 
     dispatch(updateSkillRowsNumber(newId));
@@ -70,13 +72,9 @@ export const Wrapper = () => {
       noteTxtField: "",
     };
     dispatch(updateSkillRowsData(skillBlankData));
-    // console.log(newId);
-    // const newId = rowsStore.skillRows + 1;
-    // dispatch(updateSkillRowsNumber(newId));
   };
 
   const handleEduAddClick = () => {
-    // const newId = rowsStore.eduRows + 1;
     const oldRows = getMaxEduId();
     const newId = oldRows + 1;
     dispatch(updateEduRowsNumber(newId));
@@ -88,12 +86,10 @@ export const Wrapper = () => {
       instTxtField: "",
       cityTxtField: "",
     };
-    // const newId = rowsStore.eduRows + 1;
     dispatch(updateEduRowsData(eduBlankData));
   };
 
   const handleCertAddClick = () => {
-    // const newId = rowsStore.certRows + 1;
     const oldRows = getMaxCertId();
     const newId = oldRows + 1;
     dispatch(updateCertRowsNumber(newId));
@@ -106,7 +102,6 @@ export const Wrapper = () => {
       releaseDate: "",
       codeTxtField: "",
     };
-    // const newId = rowsStore.eduRows + 1;
     dispatch(updateCertRowsData(certBlankData));
   };
 
@@ -115,7 +110,6 @@ export const Wrapper = () => {
       display="flex"
       flexDirection="column"
       alignItems="flex-start"
-      // sx={{ overflowX: "auto" }}
       gap={2}
       margin={2}
     >
@@ -128,11 +122,14 @@ export const Wrapper = () => {
           width: "100%",
           marginTop: 3,
           boxShadow: "none",
+          padding: 2,
+          borderRadius: 2,
         }}
       >
         {t("pages.userPage.tables.uploadCV")}
         <VisuallyHiddenInput type="file" />
       </Button>
+
       <Box
         sx={{
           width: "100%",
@@ -141,23 +138,18 @@ export const Wrapper = () => {
         }}
       >
         <GenericAdd label={skillAdd} onClick={handleSkillAddClick} />
-        {rowsStore.skillRows > 0 && <SkillAdder />}
+        <SkillAdder />
       </Box>
+
       <Box sx={{ width: "100%", paddingBottom: 3, maxWidth: "725.33px" }}>
         <GenericAdd label={eduAdd} onClick={handleEduAddClick} />
         {rowsStore.eduRows > 0 && <EduAdder />}
       </Box>
       <Box sx={{ width: "100%", paddingBottom: 3, maxWidth: "725.33px" }}>
         <GenericAdd label={certAdd} onClick={handleCertAddClick} />
-        {/* {rowsCertTable.length > 0 && ( */}
         {rowsStore.certRows > 0 && <CertAdder />}
       </Box>
-      {/* {rowsCertTable.length > 0 ||
-      rowsEduTable.length > 0 ||
-      rowsSkillTable.length > 0 ? ( */}
-      {rowsStore.skillRows > 0 ||
-      rowsStore.eduRows > 0 ||
-      rowsStore.certRows > 0 ? (
+      {checkedSkillsFromStore.length > 0 ? (
         <Button
           variant="contained"
           sx={{

@@ -10,35 +10,39 @@ import { SkillHeadCells } from "../../types";
 import { SkillAdderBody } from "../SkillAdderBody";
 import { useTranslation } from "react-i18next";
 import { NEXTRE_ENG } from "../../../../common/commonColors";
+import { useSelector } from "react-redux";
+import { checkboxSkillsSelector } from "../../../../redux/checkboxSkillsSelection";
 
 export const SkillAdder = () => {
   const { t } = useTranslation();
+  const checkedSkillsFromStore = useSelector(checkboxSkillsSelector);
+
   const skillHeadCells: readonly SkillHeadCells[] = [
     {
-      t: "",
       id: "name",
       label: t("pages.userPage.tables.nameInTables"),
       numeric: false,
     },
     {
-      t: "",
       id: "levels",
       label: t("pages.userPage.tables.levelsInTables"),
       numeric: true,
     },
     {
-      t: "",
       id: "experience",
       label: t("pages.userPage.tables.experienceInTables"),
       numeric: true,
     },
     {
-      t: "",
       id: "note",
       label: "Note",
       numeric: false,
     },
   ];
+
+  if (checkedSkillsFromStore.length === 0) {
+    return;
+  }
 
   return (
     <TableContainer
@@ -66,10 +70,9 @@ export const SkillAdder = () => {
                 {headCell.label}
               </TableCell>
             ))}
-            <TableCell></TableCell>
+            <TableCell />
           </TableRow>
         </TableHead>
-
         <SkillAdderBody />
       </Table>
     </TableContainer>

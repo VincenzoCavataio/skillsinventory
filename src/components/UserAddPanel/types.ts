@@ -15,7 +15,6 @@ export type CertHeadCells = {
 };
 
 export type SkillHeadCells = {
-  t: string;
   id: string;
   label: string;
   numeric: boolean;

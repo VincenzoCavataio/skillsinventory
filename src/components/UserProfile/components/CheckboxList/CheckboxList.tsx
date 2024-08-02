@@ -42,6 +42,7 @@ const CustomListItemButton = styled(ListItemButton)(() => ({
   },
 }));
 
+// TODO: File da cancellare ma assicurarsi che sia inutile.
 export const CheckboxList: React.FC<CheckboxListProps> = ({
   showCheckbox,
   data,

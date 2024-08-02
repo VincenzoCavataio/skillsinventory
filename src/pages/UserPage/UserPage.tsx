@@ -23,7 +23,7 @@ export const UserPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  const { notFoundPage } = PAGES;
+  const { notFoundPage, loginPage } = PAGES;
   const payload: Payload = { userId: id || "", dataType: "full" };
 
   const userDataByUserId = useApi(allUserDataByUserId(payload));
@@ -34,7 +34,7 @@ export const UserPage = () => {
 
   // TODO: [PER BACKEND] 'Se non trova un valore response.data = '' ' e questo non va bene perché non è coerente con i tipo. [Per questo da errore sotto]
   if (userDataByUserId.error || userDataByUserId.data === "") {
-    navigate(notFoundPage);
+    navigate(loginPage);
   }
 
   return (
@@ -50,7 +50,7 @@ export const UserPage = () => {
           gap={2}
           className="userPageWrapper"
         >
-          <Box flex={1} bgcolor="white" height="100%">
+          <Box flex={1} bgcolor="white" height="100%" overflow="hidden">
             <ProfilePage />
           </Box>
           <Box flex={2} bgcolor="transparent" height="100%">

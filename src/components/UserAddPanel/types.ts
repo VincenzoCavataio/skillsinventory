@@ -31,8 +31,8 @@ export type SkillRowType = {
 export type EduRowType = {
   courseTxtField: string;
   levelMenu: string;
-  instChckbx: boolean;
-  itTxtField: string;
+  itChckbx: boolean;
+  instTxtField: string;
   cityTxtField: string;
   id: number;
 };

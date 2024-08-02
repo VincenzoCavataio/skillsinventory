@@ -6,22 +6,12 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { SkillHeadCells, SkillRowType } from "../../types";
+import { SkillHeadCells } from "../../types";
 import { SkillAdderBody } from "../SkillAdderBody";
-import { Dispatch, SetStateAction } from "react";
 import { useTranslation } from "react-i18next";
 import { NEXTRE_ENG } from "../../../../common/commonColors";
 
-type SkillTableBodyBuildProps = {
-  rows: SkillRowType[];
-  setRowsSkillTable: Dispatch<SetStateAction<SkillRowType[]>>;
-};
-
-// export const SkillAdder = (rows: SkillRowType[]) => {
-export const SkillAdder: React.FC<SkillTableBodyBuildProps> = ({
-  rows,
-  setRowsSkillTable,
-}) => {
+export const SkillAdder = () => {
   const { t } = useTranslation();
   const skillHeadCells: readonly SkillHeadCells[] = [
     {
@@ -49,6 +39,7 @@ export const SkillAdder: React.FC<SkillTableBodyBuildProps> = ({
       numeric: false,
     },
   ];
+
   return (
     <TableContainer
       component={Paper}
@@ -64,7 +55,6 @@ export const SkillAdder: React.FC<SkillTableBodyBuildProps> = ({
           <TableRow>
             {skillHeadCells.map((headCell) => (
               <TableCell
-                // sx={{ color: "white", fontWeight: "550", fontSize: 14 }}
                 sx={{
                   color: NEXTRE_ENG,
                   fontWeight: "550",
@@ -80,7 +70,7 @@ export const SkillAdder: React.FC<SkillTableBodyBuildProps> = ({
           </TableRow>
         </TableHead>
 
-        <SkillAdderBody rows={rows} setRowsSkillTable={setRowsSkillTable} />
+        <SkillAdderBody />
       </Table>
     </TableContainer>
   );

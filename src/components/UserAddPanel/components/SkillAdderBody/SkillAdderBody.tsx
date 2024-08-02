@@ -1,50 +1,53 @@
 import { TableBody, TableCell, TableRow } from "@mui/material";
-import { SkillRowType } from "../../types";
-import { Dispatch, SetStateAction } from "react";
+
 import { ShortTextField } from "../../style";
 import { GenericDelete } from "../GenericDelete";
+import { useDispatch, useSelector } from "react-redux";
+import { ReduxStore } from "../../../../redux/types";
+import {
+  removeSkillRowData,
+  updateSkillRowsNumber,
+} from "../../../../redux/adderSlice";
 
-type SkillTableBodyBuildProps = {
-  rows: SkillRowType[];
-  setRowsSkillTable: Dispatch<SetStateAction<SkillRowType[]>>;
-};
-export const SkillAdderBody: React.FC<SkillTableBodyBuildProps> = ({
-  rows,
-  setRowsSkillTable,
-}) => {
+export const SkillAdderBody = () => {
+  const skillStore = useSelector((state: ReduxStore) => state.rowsManager);
+  const dispatch = useDispatch();
   const handleRemoveRow = (id: number) => {
-    const newRows = rows.filter((row) => row.id !== id);
-    setRowsSkillTable(newRows);
+    dispatch(removeSkillRowData(id));
+    dispatch(updateSkillRowsNumber(skillStore.skillRows - 1));
   };
 
   return (
     <TableBody>
-      {rows &&
-        rows.length > 0 &&
-        rows.map((row) => (
+      {skillStore.skillRowsData &&
+        skillStore.skillRowsData.length > 0 &&
+        skillStore.skillRowsData.map((row) => (
           <TableRow key={row.id}>
             <TableCell align="center">
-              <ShortTextField />
+              <ShortTextField defaultValue={row.nameTxtField} />
             </TableCell>
             <TableCell align="center">
               <ShortTextField
                 type="number"
                 inputProps={{ min: 1, max: 5 }}
-                defaultValue={1}
+                defaultValue={row.levelInput}
               />
             </TableCell>
             <TableCell align="center">
               <ShortTextField
                 type="number"
                 inputProps={{ min: 1 }}
-                defaultValue={1}
+                defaultValue={row.expInput}
               />
             </TableCell>
             <TableCell align="center">
-              <ShortTextField />
+              <ShortTextField defaultValue={row.noteTxtField} />
             </TableCell>
             <TableCell align="center">
-              <GenericDelete handleRemove={handleRemoveRow} row={row} />
+              <GenericDelete
+                handleRemove={() => handleRemoveRow(row.id)}
+                row={row}
+              />
             </TableCell>
           </TableRow>
         ))}

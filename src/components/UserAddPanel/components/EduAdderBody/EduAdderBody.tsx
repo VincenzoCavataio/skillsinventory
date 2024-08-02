@@ -1,23 +1,20 @@
-import { Dispatch, SetStateAction } from "react";
-import { EduRowType } from "../../types";
 import { Checkbox, TableBody, TableCell, TableRow } from "@mui/material";
 import { ShortAutocomplete, ShortTextField } from "../../style";
 import { GenericDelete } from "../GenericDelete";
+import { useDispatch, useSelector } from "react-redux";
+import { ReduxStore } from "../../../../redux/types";
+import {
+  removeEduRowData,
+  updateEduRowsNumber,
+} from "../../../../redux/adderSlice";
 
-type EduTableBodyBuildProps = {
-  rows: EduRowType[];
-  setRowsEduTable: Dispatch<SetStateAction<EduRowType[]>>;
-};
-
-export const EduAdderBody: React.FC<EduTableBodyBuildProps> = ({
-  rows,
-  setRowsEduTable,
-}) => {
+export const EduAdderBody = () => {
+  const dispatch = useDispatch();
+  const eduStore = useSelector((state: ReduxStore) => state.rowsManager);
   const handleRemoveRow = (id: number) => {
-    const newRows = rows.filter((row) => row.id !== id);
-    setRowsEduTable(newRows);
+    dispatch(removeEduRowData(id));
+    dispatch(updateEduRowsNumber(eduStore.eduRows - 1));
   };
-
   const options = [
     { label: "Diploma superiore" },
     { label: "Bachelor" },
@@ -26,29 +23,34 @@ export const EduAdderBody: React.FC<EduTableBodyBuildProps> = ({
 
   return (
     <TableBody>
-      {rows &&
-        rows.length > 0 &&
-        rows.map((row) => (
+      {eduStore.eduRowsData &&
+        eduStore.eduRowsData.length > 0 &&
+        eduStore.eduRowsData.map((row) => (
           <TableRow key={row.id}>
             <TableCell align="center">
               <ShortAutocomplete
                 disablePortal
                 options={options}
+                defaultValue={row.levelMenu}
                 sx={{ width: 187 }}
                 renderInput={(params) => <ShortTextField {...params} />}
               />
             </TableCell>
             <TableCell align="center">
-              <ShortTextField />
+              <ShortTextField defaultValue={row.courseTxtField} />
             </TableCell>
             <TableCell align="center">
-              <ShortTextField />
+              <ShortTextField defaultValue={row.instTxtField} />
             </TableCell>
             <TableCell align="center">
-              <ShortTextField />
+              <ShortTextField defaultValue={row.cityTxtField} />
             </TableCell>
             <TableCell align="center">
-              <Checkbox sx={{ padding: 0 }} />
+              {row.itChckbx === true ? (
+                <Checkbox sx={{ padding: 0 }} checked={true} />
+              ) : (
+                <Checkbox sx={{ padding: 0 }} checked={false} />
+              )}
             </TableCell>
             <TableCell align="center">
               <GenericDelete handleRemove={handleRemoveRow} row={row} />

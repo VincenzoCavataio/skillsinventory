@@ -6,20 +6,13 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { EduHeadCells, EduRowType } from "../../types";
-import { Dispatch, SetStateAction } from "react";
+import { EduHeadCells } from "../../types";
+
 import { EduAdderBody } from "../EduAdderBody";
 import { useTranslation } from "react-i18next";
 import { NEXTRE_ENG } from "../../../../common/commonColors";
 
-type EduTableBodyBuildProps = {
-  rows: EduRowType[];
-  setRowsEduTable: Dispatch<SetStateAction<EduRowType[]>>;
-};
-export const EduAdder: React.FC<EduTableBodyBuildProps> = ({
-  rows,
-  setRowsEduTable,
-}) => {
+export const EduAdder = () => {
   const { t } = useTranslation();
   const eduHeadCells: readonly EduHeadCells[] = [
     {
@@ -38,9 +31,9 @@ export const EduAdder: React.FC<EduTableBodyBuildProps> = ({
     },
     {
       t: "",
-      id: "it",
+      id: "institute",
       menu: false,
-      label: "IT",
+      label: t("pages.userPage.tables.instituteInTables"),
       checkbox: false,
     },
     {
@@ -52,9 +45,9 @@ export const EduAdder: React.FC<EduTableBodyBuildProps> = ({
     },
     {
       t: "",
-      id: "institute",
+      id: "it",
       menu: false,
-      label: t("pages.userPage.tables.instituteInTables"),
+      label: "IT",
       checkbox: true,
     },
   ];
@@ -92,7 +85,7 @@ export const EduAdder: React.FC<EduTableBodyBuildProps> = ({
           </TableRow>
         </TableHead>
 
-        <EduAdderBody rows={rows} setRowsEduTable={setRowsEduTable} />
+        <EduAdderBody />
       </Table>
     </TableContainer>
   );

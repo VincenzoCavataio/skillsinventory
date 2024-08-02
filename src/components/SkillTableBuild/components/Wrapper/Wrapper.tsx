@@ -79,7 +79,7 @@ export const Wrapper = () => {
   const totalCount =
     tableData2.data.data &&
     tableData2.data.data[tableData2.data.data.length - 1];
-  console.log(tableData2.data.data);
+  // console.log(tableData2.data.data);
   const rows = tableData2.data.data
     ? tableData2?.data.data.map((data: TableDataData) =>
         createData(

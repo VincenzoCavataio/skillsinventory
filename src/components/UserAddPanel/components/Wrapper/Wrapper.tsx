@@ -1,6 +1,5 @@
 import { Box, Button, styled } from "@mui/material";
 import { GenericAdd } from "../GenericAdd";
-import { useState } from "react";
 import { SkillAdder } from "../SkillAdder";
 import { EduAdder } from "../EduAdder";
 import { CertAdder } from "../CertAdder";
@@ -11,8 +10,11 @@ import { NEXTRE_ENG } from "../../../../common/commonColors";
 import { useDispatch, useSelector } from "react-redux";
 import { ReduxStore } from "../../../../redux/types";
 import {
+  updateCertRowsData,
   updateCertRowsNumber,
+  updateEduRowsData,
   updateEduRowsNumber,
+  updateSkillRowsData,
   updateSkillRowsNumber,
 } from "../../../../redux/adderSlice";
 
@@ -35,65 +37,77 @@ export const Wrapper = () => {
   const eduAdd: string = t("pages.userPage.tables.addEdu");
   const rowsStore = useSelector((state: ReduxStore) => state.rowsManager);
   const dispatch = useDispatch();
-  console.log(rowsStore);
-  const [rowsSkillTable, setRowsSkillTable] = useState<SkillRowType[]>([]);
-  const [rowsEduTable, setRowsEduTable] = useState<EduRowType[]>([]);
-  const [rowsCertTable, setRowsCertTable] = useState<CertRowType[]>([]);
-  const [lastId, setLastId] = useState<number>(rowsStore.skillRows);
-  // const lastId = rowsStore.skillRows;
-  const [lastId2, setLastId2] = useState<number>(rowsStore.eduRows);
-  const [lastId3, setLastId3] = useState<number>(rowsStore.certRows);
+
+  const getMaxSkillId = () => {
+    if (rowsStore.skillRowsData.length === 0) {
+      return 0;
+    }
+    return Math.max(...rowsStore.skillRowsData.map((row) => row.id));
+  };
+  const getMaxEduId = () => {
+    if (rowsStore.eduRowsData.length === 0) {
+      return 0;
+    }
+    return Math.max(...rowsStore.eduRowsData.map((row) => row.id));
+  };
+  const getMaxCertId = () => {
+    if (rowsStore.certRowsData.length === 0) {
+      return 0;
+    }
+    return Math.max(...rowsStore.certRowsData.map((row) => row.id));
+  };
   const handleSkillAddClick = () => {
-    const newId = lastId + 1;
-    setLastId(newId);
+    const oldRows = getMaxSkillId();
+    // const newId = rowsStore.skillRows + 1;
+    const newId = oldRows + 1;
+
     dispatch(updateSkillRowsNumber(newId));
-    setRowsSkillTable((prevRows) => [
-      ...prevRows,
-      {
-        nameTxtField: "",
-        levelInput: 1,
-        expInput: 1,
-        noteTxtField: "",
-        // id: newId,
-        id: rowsStore.skillRows,
-      },
-    ]);
+    const skillBlankData: SkillRowType = {
+      id: newId,
+      nameTxtField: "",
+      levelInput: 1,
+      expInput: 1,
+      noteTxtField: "",
+    };
+    dispatch(updateSkillRowsData(skillBlankData));
+    // console.log(newId);
+    // const newId = rowsStore.skillRows + 1;
+    // dispatch(updateSkillRowsNumber(newId));
   };
 
   const handleEduAddClick = () => {
-    const newId2 = lastId2 + 1;
-    setLastId2(newId2);
-    dispatch(updateEduRowsNumber(newId2));
-    setRowsEduTable((prevRows) => [
-      ...prevRows,
-      {
-        courseTxtField: "",
-        levelMenu: "",
-        instChckbx: false,
-        itTxtField: "",
-        cityTxtField: "",
-        // id: newId2,
-        id: rowsStore.eduRows,
-      },
-    ]);
+    // const newId = rowsStore.eduRows + 1;
+    const oldRows = getMaxEduId();
+    const newId = oldRows + 1;
+    dispatch(updateEduRowsNumber(newId));
+    const eduBlankData: EduRowType = {
+      id: newId,
+      courseTxtField: "",
+      levelMenu: "",
+      itChckbx: false,
+      instTxtField: "",
+      cityTxtField: "",
+    };
+    // const newId = rowsStore.eduRows + 1;
+    dispatch(updateEduRowsData(eduBlankData));
   };
+
   const handleCertAddClick = () => {
-    const newId3 = lastId3 + 1;
-    setLastId3(newId3);
-    dispatch(updateCertRowsNumber(newId3));
-    setRowsCertTable((prevRows) => [
-      ...prevRows,
-      {
-        issuerTxtField: "",
-        nameTxtField: "",
-        itChckbx: true,
-        codeTxtField: "",
-        // id: newId3,
-        id: rowsStore.certRows,
-        releaseDate: "",
-        expDate: "",
-      },
-    ]);
+    // const newId = rowsStore.certRows + 1;
+    const oldRows = getMaxCertId();
+    const newId = oldRows + 1;
+    dispatch(updateCertRowsNumber(newId));
+    const certBlankData: CertRowType = {
+      id: newId,
+      nameTxtField: "",
+      issuerTxtField: "",
+      itChckbx: false,
+      expDate: "",
+      releaseDate: "",
+      codeTxtField: "",
+    };
+    // const newId = rowsStore.eduRows + 1;
+    dispatch(updateCertRowsData(certBlankData));
   };
 
   return (
@@ -127,28 +141,23 @@ export const Wrapper = () => {
         }}
       >
         <GenericAdd label={skillAdd} onClick={handleSkillAddClick} />
-        {rowsSkillTable.length > 0 && (
-          <SkillAdder
-            rows={rowsSkillTable}
-            setRowsSkillTable={setRowsSkillTable}
-          />
-        )}
+        {rowsStore.skillRows > 0 && <SkillAdder />}
       </Box>
       <Box sx={{ width: "100%", paddingBottom: 3, maxWidth: "725.33px" }}>
         <GenericAdd label={eduAdd} onClick={handleEduAddClick} />
-        {rowsEduTable.length > 0 && (
-          <EduAdder rows={rowsEduTable} setRowsEduTable={setRowsEduTable} />
-        )}
+        {rowsStore.eduRows > 0 && <EduAdder />}
       </Box>
       <Box sx={{ width: "100%", paddingBottom: 3, maxWidth: "725.33px" }}>
         <GenericAdd label={certAdd} onClick={handleCertAddClick} />
-        {rowsCertTable.length > 0 && (
-          <CertAdder rows={rowsCertTable} setRowsCertTable={setRowsCertTable} />
-        )}
+        {/* {rowsCertTable.length > 0 && ( */}
+        {rowsStore.certRows > 0 && <CertAdder />}
       </Box>
-      {rowsCertTable.length > 0 ||
+      {/* {rowsCertTable.length > 0 ||
       rowsEduTable.length > 0 ||
-      rowsSkillTable.length > 0 ? (
+      rowsSkillTable.length > 0 ? ( */}
+      {rowsStore.skillRows > 0 ||
+      rowsStore.eduRows > 0 ||
+      rowsStore.certRows > 0 ? (
         <Button
           variant="contained"
           sx={{

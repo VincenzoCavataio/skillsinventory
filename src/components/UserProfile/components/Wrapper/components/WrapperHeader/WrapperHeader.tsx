@@ -117,9 +117,9 @@ export const WrapperHeader = ({
       ),
       key: "ef08b2920b9543b196b96a91587b1e61",
     };
-    console.log(
-      `${payload3.addressNumber},${payload3.address},${payload3.zipCode},${payload3.city},${payload3.province},${payload3.nation}`
-    );
+    // console.log(
+    //   `${payload3.addressNumber},${payload3.address},${payload3.zipCode},${payload3.city},${payload3.province},${payload3.nation}`
+    // );
   }
   const handlePayload3 = () => {
     if (payload3) {
@@ -236,8 +236,8 @@ export const WrapperHeader = ({
   useEffect(() => {
     dispatch(setEditMode(isEditing));
   }, [isEditing, dispatch]);
-  console.log(payload3);
-  console.log(payload, payload2);
+  // console.log(payload3);
+  // console.log(payload, payload2);
   return (
     <Box
       display="flex"

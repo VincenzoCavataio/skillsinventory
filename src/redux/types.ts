@@ -1,3 +1,4 @@
+import { CertRowType, EduRowType } from "../components/UserAddPanel/types";
 import { HIDDEN_PROP } from "../constants";
 import { CompiledFieldsWithID } from "../pages/DashboardPage/types";
 
@@ -33,11 +34,25 @@ export type ReduxStore = {
   editManager: EditMode;
   rowsManager: RowsManagement;
 };
+
 export type RowsManagement = {
   skillRows: number;
   eduRows: number;
   certRows: number;
+  skillRowsData: SkillRowType[];
+  eduRowsData: EduRowType[];
+  certRowsData: CertRowType[];
+  checked: string[];
 };
+
+export type SkillRowType = {
+  nameTxtField: string;
+  levelInput: number;
+  expInput: number;
+  noteTxtField: string;
+  id: number;
+};
+
 export type SelectorAndOr = {
   andOr: string;
 };

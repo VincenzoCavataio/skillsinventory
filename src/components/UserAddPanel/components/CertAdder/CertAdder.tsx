@@ -6,20 +6,12 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { CertHeadCells, CertRowType } from "../../types";
-import { Dispatch, SetStateAction } from "react";
+import { CertHeadCells } from "../../types";
 import { CertAdderBody } from "../CertAdderBody";
 import { useTranslation } from "react-i18next";
 import { NEXTRE_ENG } from "../../../../common/commonColors";
 
-type CertTableBodyBuildProps = {
-  rows: CertRowType[];
-  setRowsCertTable: Dispatch<SetStateAction<CertRowType[]>>;
-};
-export const CertAdder: React.FC<CertTableBodyBuildProps> = ({
-  rows,
-  setRowsCertTable,
-}) => {
+export const CertAdder = () => {
   const { t } = useTranslation();
   const certHeadCells: readonly CertHeadCells[] = [
     {
@@ -100,7 +92,7 @@ export const CertAdder: React.FC<CertTableBodyBuildProps> = ({
             <TableCell width="49px"></TableCell>
           </TableRow>
         </TableHead>
-        <CertAdderBody rows={rows} setRowsCertTable={setRowsCertTable} />
+        <CertAdderBody />
       </Table>
     </TableContainer>
   );

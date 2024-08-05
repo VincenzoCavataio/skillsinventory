@@ -117,9 +117,6 @@ export const WrapperHeader = ({
       ),
       key: "ef08b2920b9543b196b96a91587b1e61",
     };
-    // console.log(
-    //   `${payload3.addressNumber},${payload3.address},${payload3.zipCode},${payload3.city},${payload3.province},${payload3.nation}`
-    // );
   }
   const handlePayload3 = () => {
     if (payload3) {
@@ -152,12 +149,7 @@ export const WrapperHeader = ({
       payload3.id = id;
     }
   };
-  // const x = callToLATLONG({
-  //   endpoint: "https://api.opencagedata.com/geocode/v1/json?",
-  //   payload: payload4,
-  //   method: "GET",
-  // });
-  // console.log(x);
+
   if (!src) {
     src = FALLBACK_ICON;
   }
@@ -177,20 +169,6 @@ export const WrapperHeader = ({
   };
 
   //TODO: QUESTA E' UNA PORCHERIA. DA NON REPLICARE. SERVE SOLO PER PROVA
-  // useEffect(() => {
-  // if (
-  //   !isEditing &&
-  //   editPersonalData2 &&
-  //   Object.keys(editPersonalData2).length > 2
-  // ) {
-  //   callToAPI({
-  //     endpoint: "/api/v1/user/updateUserPrivateData/",
-  //     payload: payload2,
-  //     method: "PUT",
-  //   });
-  // }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [isEditing]);
   useEffect(() => {
     if (
       !isEditing &&
@@ -236,8 +214,6 @@ export const WrapperHeader = ({
   useEffect(() => {
     dispatch(setEditMode(isEditing));
   }, [isEditing, dispatch]);
-  // console.log(payload3);
-  // console.log(payload, payload2);
   return (
     <Box
       display="flex"

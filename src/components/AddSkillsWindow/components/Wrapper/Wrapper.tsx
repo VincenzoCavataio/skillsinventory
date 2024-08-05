@@ -6,11 +6,8 @@ import { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import { SkillSearch } from "../SkillSearch";
 
-export type Props = {
+type Props = {
   data: ResponseElementObjectData[];
-  // data?: {
-  //   final_object?: ResponseElementObjectData[];
-  // };
 };
 
 export const Wrapper = ({ data }: Props) => {
@@ -18,9 +15,7 @@ export const Wrapper = ({ data }: Props) => {
   const [selectedElements, setSelectedElements] = useState<number[]>([]);
 
   useEffect(() => {
-    // if (data?.final_object) {
     if (data) {
-      // const updatedData = data.final_object.map(
       const updatedData = data.map((el: ResponseElementObjectData) => ({
         name: el.name,
         id: el.id,

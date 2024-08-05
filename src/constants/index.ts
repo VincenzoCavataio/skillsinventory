@@ -77,4 +77,6 @@ export const SPECIFIC_SKILL_NAME_MAPPING: Record<string, string> = {
   "node.js": "nodejs",
   aws: "amazonwebservices",
   web: "chrome",
+  ".net": "dotnet",
+  adobe: "adobecc",
 };

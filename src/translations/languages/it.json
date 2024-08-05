@@ -83,7 +83,8 @@
           "element": "elemento",
           "selectAll": "Seleziona tutto",
           "goToEditMode": "Vai alla Edit Mode",
-          "exitFromEditMode": "Esci dalla Edit Mode"
+          "exitFromEditMode": "Esci dalla Edit Mode",
+          "noSkillsFound": "Nessuna Skill Trovata"
         },
         "informationDetails": {
           "yes": "Si",

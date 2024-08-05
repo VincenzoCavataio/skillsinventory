@@ -28,12 +28,18 @@ export const GenericAccordion = ({ action, label, state, data }: Props) => {
       </AccordionSummary>
       <StyledAccordionDetails>
         <Box width="100%" mb={2} position="relative">
-          <CheckboxListFixed
-            data={data}
-            label={label}
-            isEdit={isEdit}
-            toggleEdit={toggleEdit}
-          />
+          {!data?.length ? (
+            <Typography variant="caption" ml={2}>
+              {t(`pages.userPage.info.noSkillsFound`)}
+            </Typography>
+          ) : (
+            <CheckboxListFixed
+              data={data}
+              label={label}
+              isEdit={isEdit}
+              toggleEdit={toggleEdit}
+            />
+          )}
         </Box>
       </StyledAccordionDetails>
     </Accordion>

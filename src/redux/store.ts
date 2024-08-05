@@ -10,6 +10,8 @@ import checkboxSlice from "./checkboxSlice";
 import editProfileSlice from "./editProfileSlice";
 import adderSlice from "./adderSlice";
 import checkboxSkillsSelection from "./checkboxSkillsSelection";
+import checkboxEdusSelection from "./checkboxEdusSelection";
+import checkboxCertsSelection from "./checkboxCertsSelection";
 
 export const store = configureStore({
   reducer: {
@@ -24,5 +26,7 @@ export const store = configureStore({
     editManager: editProfileSlice,
     rowsManager: adderSlice,
     checkedSkills: checkboxSkillsSelection,
+    checkedEdus: checkboxEdusSelection,
+    checkedCerts: checkboxCertsSelection,
   },
 });

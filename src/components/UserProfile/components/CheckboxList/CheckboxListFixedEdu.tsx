@@ -11,18 +11,16 @@ import {
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  checkboxSkillsSelector,
-  resetCheckedSkills,
-  updateCheckedSkills,
-} from "../../../../redux/checkboxSkillsSelection";
+  checkboxEdusSelector,
+  resetCheckedEdus,
+  updateCheckedEdus,
+} from "../../../../redux/checkboxEdusSelection";
 import { CustomListItemButton } from "./CustomCheckbox";
-import { currentCheckedSkillRow } from "./utils/currentCheckedRow";
-import AssignmentIcon from "@mui/icons-material/Assignment";
-import { CheckedSkill } from "../../../../redux/types";
+import { currentCheckedEduRow } from "./utils/currentCheckedRow";
+import { CheckedEdu } from "../../../../redux/types";
 import { Close, Delete, Edit } from "@mui/icons-material";
 import { AccordionLabel } from "../GenericAccordion/Types";
-import { IconPicker } from "./utils/IconPicker";
-import { SelectDeselectLabel } from "./utils/SelectDeselectLabel";
+import { SelectDeselectLabelEdu } from "./utils/SelectDeselectLabelEdu";
 // import { SelectDeselectLabel } from "./utils/selectDeselectLabel";
 
 type CheckboxListProps = {
@@ -33,7 +31,7 @@ type CheckboxListProps = {
 };
 
 /** Component to render skills Checkboxes */
-export const CheckboxListFixed: React.FC<CheckboxListProps> = ({
+export const CheckboxListFixedEdu: React.FC<CheckboxListProps> = ({
   data,
   label,
   isEdit,
@@ -42,24 +40,24 @@ export const CheckboxListFixed: React.FC<CheckboxListProps> = ({
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const checkedSkillsStore = useSelector(checkboxSkillsSelector);
-  const allChecked = checkedSkillsStore.length > 0;
+  const checkedEduStore = useSelector(checkboxEdusSelector);
+  const allChecked = checkedEduStore.length > 0;
 
   const handleSelectAll = () => {
-    data?.forEach((skill) =>
-      dispatch(updateCheckedSkills(currentCheckedSkillRow(skill)))
+    data?.forEach((edu) =>
+      dispatch(updateCheckedEdus(currentCheckedEduRow(edu)))
     );
   };
 
   const handleRemoveAll = () => {
-    dispatch(resetCheckedSkills());
+    dispatch(resetCheckedEdus());
   };
 
-  const handleSkillRowChange = (skill: CheckedSkill) => {
-    dispatch(updateCheckedSkills(skill));
+  const handleEduRowChange = (edu: CheckedEdu) => {
+    dispatch(updateCheckedEdus(edu));
   };
 
-  const parsedData = data?.map((skill) => currentCheckedSkillRow(skill));
+  const parsedData = data?.map((edu) => currentCheckedEduRow(edu));
 
   return (
     <Box>
@@ -81,9 +79,9 @@ export const CheckboxListFixed: React.FC<CheckboxListProps> = ({
             onClick={allChecked ? handleRemoveAll : handleSelectAll}
             sx={{ pl: 2 }}
           >
-            <SelectDeselectLabel
+            <SelectDeselectLabelEdu
               allChecked={allChecked}
-              checkedSkillsStore={checkedSkillsStore}
+              checkedEdusStore={checkedEduStore}
             />
           </Button>
         )}
@@ -112,47 +110,31 @@ export const CheckboxListFixed: React.FC<CheckboxListProps> = ({
         </Tooltip>
       </Box>
 
-      {parsedData?.map((skill) => {
-        const IDs = [...checkedSkillsStore.map((skill) => skill.id)];
-        const isChecked = IDs.includes(skill.id);
-        const { name, level, exp, note } = skill;
+      {parsedData?.map((edu) => {
+        const IDs = [...checkedEduStore.map((edu) => edu.id)];
+        const isChecked = IDs.includes(edu.id);
+        const { course, level, institute, city } = edu;
         const ROW_TO_BE_SHOWN = (
           <Box display="flex">
-            <Box alignContent="center" px={1}>
-              {IconPicker(skill.name)}
-            </Box>
             <Box display="flex" flexDirection="column">
-              <Typography ml={1}>{name}</Typography>
+              <Typography ml={1}>
+                {level} - {course}
+              </Typography>
               <Box display="flex" justifyContent="flex-start" ml={1}>
-                <Typography variant="caption">Level: {level}</Typography>
-                <Typography sx={{ mx: 1 }} variant="caption">
-                  -
+                <Typography variant="caption">
+                  {institute} - {city}
                 </Typography>
-
-                <Typography variant="caption">Exp: {exp}</Typography>
-                {note && (
-                  <Tooltip
-                    title={<Typography variant="overline">{note}</Typography>}
-                    arrow
-                    placement="top"
-                  >
-                    <AssignmentIcon
-                      sx={{ ml: 1, mt: -0.25 }}
-                      fontSize="small"
-                    />
-                  </Tooltip>
-                )}
               </Box>
             </Box>
           </Box>
         );
 
         return (
-          <ListItem key={skill.id} disablePadding>
+          <ListItem key={edu.id} disablePadding>
             <CustomListItemButton
               dense
               disabled={!isEdit}
-              onClick={() => handleSkillRowChange(skill)}
+              onClick={() => handleEduRowChange(edu)}
             >
               {isEdit && (
                 <ListItemIcon>

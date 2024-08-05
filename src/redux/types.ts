@@ -28,7 +28,26 @@ export type CheckedSkill = {
   note: string;
   exp: string;
 };
+export type CheckedEdu = {
+  course: string;
+  level: string;
+  it: string;
+  id: string;
+  institute: string;
+  city: string;
+};
+export type CheckedCert = {
+  name: string;
+  issuer: string;
+  it: string;
+  id: string;
+  code: string;
+  releaseDate: string;
+  expDate: string;
+};
 export type CheckedSkills = { checkedSkills: CheckedSkill[] };
+export type CheckedEdus = { checkedEdus: CheckedEdu[] };
+export type CheckedCerts = { checkedCerts: CheckedCert[] };
 
 export type ReduxStore = {
   filters?: Filters;
@@ -43,6 +62,8 @@ export type ReduxStore = {
   editManager: EditMode;
   rowsManager: RowsManagement;
   checkedSkills: CheckedSkills;
+  checkedEdus: CheckedEdus;
+  checkedCerts: CheckedCerts;
 };
 
 export type RowsManagement = {

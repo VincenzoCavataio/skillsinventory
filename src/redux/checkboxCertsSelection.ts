@@ -1,0 +1,39 @@
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { CheckedCerts, ReduxStore } from "./types";
+
+const initialState: CheckedCerts = {
+  checkedCerts: [],
+};
+const checkboxCertsSelection = createSlice({
+  name: "checkedCerts",
+  initialState,
+  reducers: {
+    updateCheckedCerts: (state, action) => {
+      const IDs = [...state.checkedCerts.map((cert) => cert.id)];
+      if (IDs.includes(action.payload.id)) {
+        state.checkedCerts = state.checkedCerts.filter(
+          (cert) => cert.id !== action.payload.id
+        );
+      } else {
+        state.checkedCerts = [...state.checkedCerts, action.payload];
+      }
+    },
+    removeCert: (state, action) => {
+      state.checkedCerts = state.checkedCerts.filter(
+        (cert) => cert.id !== action.payload
+      );
+    },
+    resetCheckedCerts: (state) => {
+      state.checkedCerts = initialState.checkedCerts;
+    },
+  },
+});
+
+export const checkboxCertsSelector = createSelector(
+  (state: ReduxStore) => state,
+  (state: ReduxStore) => state.checkedCerts.checkedCerts
+);
+
+export default checkboxCertsSelection.reducer;
+export const { updateCheckedCerts, removeCert, resetCheckedCerts } =
+  checkboxCertsSelection.actions;

@@ -5,6 +5,8 @@ import { AccordionLabel, Props } from "./Types";
 import { useTranslation } from "react-i18next";
 import { commonColors } from "../../../../common/commonColors";
 import StyledAccordionDetails from "../../StyledAccordionDetails";
+import { CheckboxListFixedEdu } from "../CheckboxList/CheckboxListFixedEdu";
+import { CheckboxListFixedCert } from "../CheckboxList/CheckboxListFixedCert";
 
 export const GenericAccordion = ({ action, label, state, data }: Props) => {
   const isEdit = state[label];
@@ -14,7 +16,34 @@ export const GenericAccordion = ({ action, label, state, data }: Props) => {
       [accordion]: !prevState[accordion],
     }));
   };
+  const mappingSection = {
+    hardSkills: (
+      <CheckboxListFixed
+        data={data}
+        label={label}
+        isEdit={isEdit}
+        toggleEdit={toggleEdit}
+      />
+    ),
 
+    education: (
+      <CheckboxListFixedEdu
+        data={data}
+        label={label}
+        isEdit={isEdit}
+        toggleEdit={toggleEdit}
+      />
+    ),
+
+    certificates: (
+      <CheckboxListFixedCert
+        data={data}
+        label={label}
+        isEdit={isEdit}
+        toggleEdit={toggleEdit}
+      />
+    ),
+  };
   const { t } = useTranslation();
   console.log({ data, isEdit });
   return (
@@ -28,12 +57,7 @@ export const GenericAccordion = ({ action, label, state, data }: Props) => {
       </AccordionSummary>
       <StyledAccordionDetails>
         <Box width="100%" mb={2} position="relative">
-          <CheckboxListFixed
-            data={data}
-            label={label}
-            isEdit={isEdit}
-            toggleEdit={toggleEdit}
-          />
+          {mappingSection[label]}
         </Box>
       </StyledAccordionDetails>
     </Accordion>

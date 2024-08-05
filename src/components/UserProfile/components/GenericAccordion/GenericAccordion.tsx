@@ -16,7 +16,7 @@ export const GenericAccordion = ({ action, label, state, data }: Props) => {
   };
 
   const { t } = useTranslation();
-  console.log({ data, isEdit });
+
   return (
     <Accordion disableGutters sx={{ boxShadow: "none" }}>
       <AccordionSummary

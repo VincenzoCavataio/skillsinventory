@@ -138,7 +138,14 @@ export const OperationsButtons = ({
           ))}
         </Select>
       </Box>
-      <Box display="flex" width={100} justifyContent={"space-between"}>
+      <Box
+        display="flex"
+        width={100}
+        justifyContent={"space-between"}
+        sx={{
+          transform: "scale(.7)",
+        }}
+      >
         <Triangle action={removeFromStore} direction="left" />
         <Triangle action={addToStore} direction="right" />
       </Box>

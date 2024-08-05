@@ -17,7 +17,7 @@ export const Wrapper = () => {
   const isHidden =
     userData?.lastName === HIDDEN && userData?.firstName === HIDDEN;
 
-  const POSITION = "gestione posizione?";
+  const POSITION = "_PLACEHOLDER_";
 
   const NAME_AND_POSITION: NAME_AND_POSITION_TYPE = isHidden
     ? {

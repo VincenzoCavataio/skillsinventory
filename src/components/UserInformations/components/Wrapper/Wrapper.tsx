@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Infos } from "../Infos";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import {
   ReduxStore,
   Residence,
@@ -11,33 +11,6 @@ import { IdInfo } from "../IdInfo";
 import { Infos2 } from "../Infos2";
 import { Infos3 } from "../Infos3";
 import { Infos4 } from "../Infos4";
-
-// type keysType =
-//   | "id"
-//   | "gender"
-//   | "firstName"
-//   | "lastName"
-//   | "email_login"
-//   | "personalPhoneNumber"
-//   | "driver_license"
-//   | "birthDate"
-//   | "workPhoneNumber"
-//   | "actualEmploymentDate"
-//   | "firstEmploymentDate";
-
-// const KEYS: keysType[] = [
-//   "id",
-//   "gender",
-//   "firstName",
-//   "lastName",
-//   "email_login",
-//   "personalPhoneNumber",
-//   "driver_license",
-//   "birthDate",
-//   "workPhoneNumber",
-//   "actualEmploymentDate",
-//   "firstEmploymentDate",
-// ];
 
 type KeyObjectType = {
   id: string;
@@ -83,14 +56,6 @@ export const Wrapper = () => {
     gender: userData.gender,
   };
 
-  // const ADDRESS: string[] = [
-  //   `${userData?.residence?.address ?? ""}`,
-  //   `${userData?.residence?.address_number ?? ""}`,
-  //   `${userData?.residence?.zip_code ?? ""}`,
-  //   `${userData?.residence?.city ?? ""}`,
-  //   `${userData?.residence?.province ?? ""}`,
-  //   `${userData?.residence?.nation ?? ""}`,
-  // ];
   const ADDRESS2: Residence = {
     address: userData?.residence?.address,
     address_number: userData?.residence?.address_number,
@@ -99,15 +64,11 @@ export const Wrapper = () => {
     province: userData?.residence?.province,
     zip_code: userData?.residence?.zip_code,
   };
-  // console.log(ADDRESS2);
-  // console.log(KEYS);
+
   //TODO:per la questione degli hidden, controllo ruolo orgadmin perchè se manualmente cambio un mio campo in hidden poi non è modificabile
   return (
     <Box bgcolor="white">
       <IdInfo data={personalData.id} />
-      {/* {KEYS.filter((key) => key !== "id").map((key: keysType) => (
-        <Infos title={key} data={personalData[key]} key={key} type="row" />
-      ))} */}
       {KEYS.filter((key) => key.id !== "id").map((key: KeyObjectType) => {
         switch (key.objType) {
           case "autocompleteField":
@@ -129,20 +90,8 @@ export const Wrapper = () => {
       <Infos
         title={t(`pages.userPage.informationDetails.address`)}
         data={ADDRESS2}
-        // data={ADDRESS}
         type="list"
       />
     </Box>
   );
 };
-
-{
-  /* {KEYS.filter((key) => key.id !== "id").map((key: KeyObjectType) => (
-  <Infos
-    title={key.id}
-    data={personalData[key.id]}
-    key={key.id}
-    type="row"
-  />
-))} */
-}

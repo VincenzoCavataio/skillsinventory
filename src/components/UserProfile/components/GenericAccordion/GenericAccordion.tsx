@@ -45,7 +45,7 @@ export const GenericAccordion = ({ action, label, state, data }: Props) => {
     ),
   };
   const { t } = useTranslation();
-  console.log({ data, isEdit });
+
   return (
     <Accordion disableGutters sx={{ boxShadow: "none" }}>
       <AccordionSummary
@@ -57,7 +57,13 @@ export const GenericAccordion = ({ action, label, state, data }: Props) => {
       </AccordionSummary>
       <StyledAccordionDetails>
         <Box width="100%" mb={2} position="relative">
-          {mappingSection[label]}
+          {!data?.length ? (
+            <Typography variant="caption" ml={2}>
+              {t(`pages.userPage.info.noSkillsFound`)}
+            </Typography>
+          ) : (
+            mappingSection[label]
+          )}
         </Box>
       </StyledAccordionDetails>
     </Accordion>

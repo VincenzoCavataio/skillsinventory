@@ -22,22 +22,13 @@ export const Infos = ({
 }: {
   title: string;
   data:
-    | ResponseProfileElementObjectData[keyof ResponseProfileElementObjectData]
-    | string[];
+    | ResponseProfileElementObjectData[keyof ResponseProfileElementObjectData];
   type: string;
 }) => {
-  let allEmpty = false;
   const { t } = useTranslation();
 
-  // if (Array.isArray(data)) {
-  //   for (let i = 0; i < data.length; i++) {
-  //     if (data[i] !== "") {
-  //       allEmpty = false;
-  //       break;
-  //     }
-  //   }
-  // }
-
+  const allEmpty = false;
+  const isNullAddress = data && Object.values(data).join("") === "";
   const isActive = useSelector(
     (state: ReduxStore) => state.editManager.isActive
   );
@@ -56,15 +47,6 @@ export const Infos = ({
       dispatch(updateEditPayload({ [title]: e.target.value }));
     }
   };
-
-  const [array, setArray] = useState<string[]>(data as string[]);
-  const handleTextChange =
-    (index: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
-      const newArray = [...array];
-      newArray[index] = e.target.value;
-      setArray(newArray);
-      dispatch(updateEditPayload({ [title]: newArray }));
-    };
 
   const handleDateChange = (
     date: string | number | Date | dayjs.Dayjs | null | undefined
@@ -105,7 +87,7 @@ export const Infos = ({
   };
 
   const handleAutocompleteChange = (
-    event: React.SyntheticEvent,
+    _: React.SyntheticEvent,
     value: string | null
   ) => {
     if (value === t(`pages.userPage.informationDetails.yes`)) {
@@ -122,7 +104,7 @@ export const Infos = ({
       newData[key] = e.target.value;
       dispatch(updateEditPayload({ [title]: newData }));
     };
-  // console.log(data);
+
   return type === "list" && typeof data === "object" ? (
     <Box
       textAlign={"left"}
@@ -150,44 +132,12 @@ export const Infos = ({
           <Typography variant="body2">-</Typography>
         ) : (
           <Typography variant="body2">
-            {Object.values(data as Residence).join(", ")}
+            {isNullAddress ? "-" : Object.values(data as Residence).join(", ")}
           </Typography>
         )}
       </Box>
     </Box>
   ) : (
-    // <Box
-    //   textAlign={"left"}
-    //   display={"flex"}
-    //   p={2}
-    //   borderBottom={`1px solid ${commonColors.lightGray}`}
-    // >
-    //   <Box flex={1} alignContent="center">
-    //     <Typography variant="body1">{title}:</Typography>
-    //   </Box>
-    //   <Box flex={2} alignContent="center">
-    //     {isActive ? (
-    //       (data as string[]).map((item, index) => (
-
-    //         <EditTextField
-    //           key={index}
-    //           variant="outlined"
-    //           fullWidth
-    //           defaultValue={item}
-    //           onChange={handleTextChange(index)}
-    //           sx={{ mb: 1 }}
-    //           placeholder={placeholders[index] || ""}
-    //         />
-    //       ))
-    //     ) : allEmpty === true ? (
-    //       <Typography variant="body2">-</Typography>
-    //     ) : (
-    //       <Typography variant="body2">
-    //         {(data as string[]).join(", ")}
-    //       </Typography>
-    //     )}
-    //   </Box>
-    // </Box>
     <Box
       textAlign="left"
       display="flex"

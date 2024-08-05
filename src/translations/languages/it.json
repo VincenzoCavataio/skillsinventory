@@ -78,7 +78,9 @@
           "userBreadcrumb": "Utente",
           "edit": "MODIFICA",
           "delete": "CANCELLA",
-          "removeAll": "Deseleziona tutto",
+          "deselect": "Deseleziona",
+          "elements": "elementi",
+          "element": "elemento",
           "selectAll": "Seleziona tutto",
           "goToEditMode": "Vai alla Edit Mode",
           "exitFromEditMode": "Esci dalla Edit Mode"

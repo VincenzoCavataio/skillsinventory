@@ -7,7 +7,7 @@ import { ReduxStore } from "../../../../redux/types";
 import { TableBodyBuild } from "../TableBodyBuild";
 import { PaginationBuild } from "../PaginationBuild";
 import { generatePayloadForTableFilter } from "../../../../utilities/generatePayloadForTableFilter";
-import { TableData, TableDataData } from "../../types";
+import { TableDataData, TableDataResponse } from "../../types";
 
 export const Wrapper = () => {
   const filterStore = useSelector((state: ReduxStore) => state.search);
@@ -17,6 +17,7 @@ export const Wrapper = () => {
   );
   const sortingFilterStore = useSelector((state: ReduxStore) => state.sorting);
   const andOrFilter = useSelector((state: ReduxStore) => state.andOrStore);
+
   const allCertificationsID =
     filterStore?.filters?.certification?.map(
       (certification) => certification.id
@@ -29,6 +30,7 @@ export const Wrapper = () => {
   const sortingManagementFilter = sortingFilterStore.sort.map(
     (sort) => `${sort.order}`
   );
+
   const andOrSelectorFilter = andOrFilter.andOr;
 
   function createData(
@@ -41,7 +43,6 @@ export const Wrapper = () => {
     educationList: string,
     residenceInfo: string,
     certificationList: string
-    // checked: boolean = false
   ) {
     return {
       userId,
@@ -53,11 +54,10 @@ export const Wrapper = () => {
       educationList,
       residenceInfo,
       certificationList,
-      // checked,
     };
   }
 
-  const tableData: TableDataData[] =
+  const tableDataResponse: TableDataResponse =
     useApi(
       allTabledata(
         generatePayloadForTableFilter({
@@ -70,18 +70,10 @@ export const Wrapper = () => {
           andOrSelectorFilter,
         })
       )
-    ).data ?? [];
-  const tableData2: TableData = {
-    data: tableData,
-    pagination: undefined,
-  };
-  //vedere dove parte la chiamata per la tabella, far ripartire le chiamate che riempiono le varie select ma con i parametri nuovi che esistono già
-  const totalCount =
-    tableData2.data.data &&
-    tableData2.data.data[tableData2.data.data.length - 1];
-  // console.log(tableData2.data.data);
-  const rows = tableData2.data.data
-    ? tableData2?.data.data.map((data: TableDataData) =>
+    ).data ?? {};
+
+  const rows = tableDataResponse
+    ? tableDataResponse?.data?.map((data: TableDataData) =>
         createData(
           data.userId,
           data.lastName,
@@ -92,28 +84,18 @@ export const Wrapper = () => {
           data.educationList,
           data.residenceInfo,
           data.certificationList
-          // false
         )
       )
     : [];
 
-  // let numberOfProperties: number = 0;
-  // if (rows) {
-  //   numberOfProperties = Object.keys(rows).length;
-  // } else {
-  //   numberOfProperties = 0;
-  // }
-
-  // const [check, setCheck] = useState<TableData[]>([]);
+  const TOTAL_ROW_COUNT = tableDataResponse?.pagination?.count ?? 0;
+  if (!rows) return;
 
   return (
-    //TODO: capire perché si spacca quando []/undefined/null come risultato
-    //TODO: cambiare nome componente in : TableHeader & TableBody ----- non me lo fa fare perchè "tableheader e tablebody" sono componenti di mui
     <TableContainer component={Paper}>
-      <PaginationBuild totalRowsNumber={totalCount} />
+      <PaginationBuild totalRowsNumber={TOTAL_ROW_COUNT} />
       <Table sx={{ minWidth: 650 }} aria-label="skills table">
         <TableHeaderBuild />
-        {/* <TableBodyBuild rows={rows} check={check} setCheck={setCheck} /> */}
         <TableBodyBuild rows={rows} />
       </Table>
     </TableContainer>

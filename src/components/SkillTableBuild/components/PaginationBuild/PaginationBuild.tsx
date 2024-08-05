@@ -39,7 +39,7 @@ export const PaginationBuild: React.FC<PaginationBuildProps> = ({
   let count: number = 0;
 
   if (totalRowsNumber) {
-    count = Math.ceil(totalRowsNumber?.totalResult / itemNumber);
+    count = Math.ceil(totalRowsNumber / itemNumber);
   }
 
   const elementsPerPage: string = t(
@@ -78,8 +78,8 @@ export const PaginationBuild: React.FC<PaginationBuildProps> = ({
           }}
           variant="outlined"
         />
-        <Typography ml={2} mr={1}>{` ${totalRowsNumber?.totalResult} ${
-          totalRowsNumber?.totalResult && totalRowsNumber?.totalResult > 1
+        <Typography ml={2} mr={1}>{` ${totalRowsNumber} ${
+          totalRowsNumber > 1
             ? t("pages.dashboard.headerTable.totalResults")
             : t("pages.dashboard.headerTable.totalResult")
         } `}</Typography>

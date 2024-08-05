@@ -64,3 +64,17 @@ export const FLAG_URLS: { [key: string]: string } = {
   gb: "https://flagsapi.com/GB/flat/64.png",
   es: "https://flagsapi.com/ES/flat/64.png",
 };
+
+/** Mapping for wrong name icons. To be fixed when data will be cleaned up */
+export const SPECIFIC_SKILL_NAME_MAPPING: Record<string, string> = {
+  "c++": "cplusplus",
+  sql: "database",
+  "ms-sql": "database",
+  "pl-sql": "database",
+  "no-sql": "database",
+  dbms: "database",
+  "react.js": "react",
+  "node.js": "nodejs",
+  aws: "amazonwebservices",
+  web: "chrome",
+};

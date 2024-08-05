@@ -22,6 +22,7 @@ import { CheckedSkill } from "../../../../redux/types";
 import { Close, Delete, Edit } from "@mui/icons-material";
 import { AccordionLabel } from "../GenericAccordion/Types";
 import { IconPicker } from "./utils/IconPicker";
+import { SelectDeselectLabel } from "./utils/selectDeselectLabel";
 
 type CheckboxListProps = {
   data?: string[];
@@ -79,9 +80,10 @@ export const CheckboxListFixed: React.FC<CheckboxListProps> = ({
             onClick={allChecked ? handleRemoveAll : handleSelectAll}
             sx={{ pl: 2 }}
           >
-            {allChecked
-              ? t(`pages.userPage.info.removeAll`)
-              : t(`pages.userPage.info.selectAll`)}
+            <SelectDeselectLabel
+              allChecked={allChecked}
+              checkedSkillsStore={checkedSkillsStore}
+            />
           </Button>
         )}
         <Tooltip

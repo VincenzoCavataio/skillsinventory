@@ -23,25 +23,12 @@ export type TablePaginationActionsProps = {
   ) => void;
 };
 export type PaginationBuildProps = {
-  rows: number;
-  totalRowsNumber?: Record<"totalResult", number>;
+  rows?: number;
+  totalRowsNumber: number;
 };
 
-// export type TableData = {
-//   userId: string;
-//   lastName: string;
-//   firstName: string;
-//   skillsList?: string[];
-//   skillsRanking?: string;
-//   anniEsperienza?: string;
-//   educationList: string;
-//   residenceInfo: string;
-//   certificationList: string;
-//   isAnd: string;
-//   // checked: boolean;
-// };
-export type TableData = {
-  data: { data: TableDataData[] };
+export type TableDataResponse = {
+  data?: TableDataData[];
   pagination?: TableDataPagination;
 };
 export type TableDataData = {

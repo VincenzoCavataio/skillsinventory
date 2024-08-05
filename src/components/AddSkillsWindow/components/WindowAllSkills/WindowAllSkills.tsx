@@ -1,6 +1,8 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { ResponseElementObjectData } from "../../../../pages/DashboardPage/types";
-import { commonColors } from "../../../../common/commonColors";
+import { NEXTRE_ENG } from "../../../../common/commonColors";
+import { IconPicker } from "../../../UserProfile/components/CheckboxList/utils/IconPicker";
+import { t } from "i18next";
 
 type Props = { data: ResponseElementObjectData[] } & {
   setMappedData: React.Dispatch<
@@ -41,19 +43,27 @@ export const WindowAllSkills = ({ data, setMappedData }: Props) => {
         height: "calc( 100% - 30px) ",
       }}
     >
+      {!data?.length && (
+        <Typography variant="caption" my={2}>
+          {t("pages.userPage.info.noSkillsFound")}
+        </Typography>
+      )}
       {data?.map((e) => (
         <li
           key={e.id}
           style={{
-            background: e.selected ? commonColors.accentColor : "transparent",
+            background: e.selected ? NEXTRE_ENG : "transparent",
             color: e.selected ? "white" : "black",
             cursor: "pointer",
-            padding: 2,
-            marginBottom: 2,
+            display: "flex",
+            marginTop: 4,
           }}
           onClick={() => onClick(e)}
         >
-          <Typography variant="caption">{e.name}</Typography>
+          <Box sx={{ transform: "scale(.9)", mt: 0.75, ml: 1 }}>
+            {IconPicker(e.name)}
+          </Box>
+          <Typography variant="button">{e.name}</Typography>
         </li>
       ))}
     </ul>

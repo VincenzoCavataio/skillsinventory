@@ -21,6 +21,7 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 import { CheckedSkill } from "../../../../redux/types";
 import { Close, Delete, Edit } from "@mui/icons-material";
 import { AccordionLabel } from "../GenericAccordion/Types";
+import { IconPicker } from "./utils/IconPicker";
 
 type CheckboxListProps = {
   data?: string[];
@@ -36,7 +37,6 @@ export const CheckboxListFixed: React.FC<CheckboxListProps> = ({
   isEdit,
   toggleEdit,
 }) => {
-  console.log({ data, isEdit });
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
@@ -84,21 +84,29 @@ export const CheckboxListFixed: React.FC<CheckboxListProps> = ({
               : t(`pages.userPage.info.selectAll`)}
           </Button>
         )}
-        {!isEdit ? (
-          <Tooltip title="Entra in Edit Mode" placement="top" arrow>
-            <Edit
-              onClick={() => toggleEdit && toggleEdit(label)}
-              sx={{ cursor: "pointer" }}
-            />
-          </Tooltip>
-        ) : (
-          <Tooltip title="Esci da Edit Mode" placement="top" arrow>
-            <Close
-              onClick={() => toggleEdit && toggleEdit(label)}
-              sx={{ cursor: "pointer" }}
-            />
-          </Tooltip>
-        )}
+        <Tooltip
+          title={
+            isEdit
+              ? t("pages.userPage.info.exitFromEditMode")
+              : t("pages.userPage.info.goToEditMode")
+          }
+          placement="top"
+          arrow
+        >
+          <Box>
+            {!isEdit ? (
+              <Edit
+                onClick={() => toggleEdit && toggleEdit(label)}
+                sx={{ cursor: "pointer" }}
+              />
+            ) : (
+              <Close
+                onClick={() => toggleEdit && toggleEdit(label)}
+                sx={{ cursor: "pointer" }}
+              />
+            )}
+          </Box>
+        </Tooltip>
       </Box>
 
       {parsedData?.map((skill) => {
@@ -106,24 +114,32 @@ export const CheckboxListFixed: React.FC<CheckboxListProps> = ({
         const isChecked = IDs.includes(skill.id);
         const { name, level, exp, note } = skill;
         const ROW_TO_BE_SHOWN = (
-          <Box>
-            <Typography>{name}</Typography>
-            <Box display="flex" justifyContent="flex-start">
-              <Typography variant="caption">Level: {level}</Typography>
-              <Typography sx={{ mx: 1 }} variant="caption">
-                -
-              </Typography>
+          <Box display="flex">
+            <Box alignContent="center" px={1}>
+              {IconPicker(skill.name)}
+            </Box>
+            <Box display="flex" flexDirection="column">
+              <Typography ml={1}>{name}</Typography>
+              <Box display="flex" justifyContent="flex-start" ml={1}>
+                <Typography variant="caption">Level: {level}</Typography>
+                <Typography sx={{ mx: 1 }} variant="caption">
+                  -
+                </Typography>
 
-              <Typography variant="caption">Exp: {exp}</Typography>
-              {note && (
-                <Tooltip
-                  title={<Typography variant="overline">{note}</Typography>}
-                  arrow
-                  placement="top"
-                >
-                  <AssignmentIcon sx={{ ml: 1, mt: -0.25 }} fontSize="small" />
-                </Tooltip>
-              )}
+                <Typography variant="caption">Exp: {exp}</Typography>
+                {note && (
+                  <Tooltip
+                    title={<Typography variant="overline">{note}</Typography>}
+                    arrow
+                    placement="top"
+                  >
+                    <AssignmentIcon
+                      sx={{ ml: 1, mt: -0.25 }}
+                      fontSize="small"
+                    />
+                  </Tooltip>
+                )}
+              </Box>
             </Box>
           </Box>
         );

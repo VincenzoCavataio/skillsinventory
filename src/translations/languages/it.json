@@ -79,7 +79,9 @@
           "edit": "MODIFICA",
           "delete": "CANCELLA",
           "removeAll": "Deseleziona tutto",
-          "selectAll": "Seleziona tutto"
+          "selectAll": "Seleziona tutto",
+          "goToEditMode": "Vai alla Edit Mode",
+          "exitFromEditMode": "Esci dalla Edit Mode"
         },
         "informationDetails": {
           "yes": "Si",

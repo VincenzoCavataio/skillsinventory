@@ -1,0 +1,1 @@
+export { GenericAccordion } from "./GenericAccordion";

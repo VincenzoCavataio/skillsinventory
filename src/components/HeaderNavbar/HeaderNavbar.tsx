@@ -3,14 +3,16 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import { Typography } from "@mui/material";
 import logo from "./../../assets/pict.svg";
-import style from "./style";
+import { style } from "./style";
 import commonStyle from "../../common/commonStyle";
-import { t } from "i18next";
-import Searchbar from "./Searchbar";
+import { useTranslation } from "react-i18next";
+import { LanguageSelect } from "../LanguageSelect";
 
-const HeaderNavbar = () => {
+export const HeaderNavbar = () => {
+  const { t } = useTranslation();
+  const LOGO_SIZE = 32;
   return (
-    <AppBar position="relative">
+    <AppBar position="relative" sx={{ boxShadow: "none" }}>
       <Toolbar sx={commonStyle.spaceBetween}>
         <Box>
           <Typography
@@ -19,18 +21,16 @@ const HeaderNavbar = () => {
             href="/"
             sx={style.headerTitle}
           >
-            <img src={logo} width={30} height={30} />
+            <img src={logo} width={LOGO_SIZE} height={LOGO_SIZE} />
             <Typography variant="inherit" ml={1}>
-              {t("common.title")}
+              {t("common.title").toUpperCase()}
             </Typography>
           </Typography>
         </Box>
-        <Box display={"flex"} flexDirection={"column"}>
-          <Searchbar />
+        <Box justifyContent={"flex-end"}>
+          <LanguageSelect />
         </Box>
       </Toolbar>
     </AppBar>
   );
 };
-
-export default HeaderNavbar;

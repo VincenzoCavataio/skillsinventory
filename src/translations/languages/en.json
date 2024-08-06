@@ -4,21 +4,123 @@
       "title": "Skills Inventory",
       "error": "Error",
       "share": "Share",
-      "back_home": "Back Home"
+      "back_home": "Back Home",
+      "search": "Search",
+      "clear": "Reset",
+      "login": "Login successful",
+      "loginFail": "Unexpected error during login. Retry."
     },
     "pages": {
+      "loginPage": {
+        "emailAddress": "Email Address",
+        "register": "SIGN IN",
+        "loginButton": "LOGIN"
+      },
       "dashboard": {
+        "buttonGroup": {
+          "and": "AND",
+          "or": "OR"
+        },
         "search": {
           "name": "First and Last Name",
           "selectSkills": "Select skills",
           "certification": "Certifications",
           "noOptions": "No Options",
-          "advancedSearch": "Advanced Search"
+          "advancedSearch": "Advanced Search",
+          "operator": "Operator",
+          "level": "Level",
+          "ricerca": "Search skill by name...",
+          "risultato": "Skill Search Criteria",
+          "noskillfound": "No skill selected",
+          "add": "ADD",
+          "remove": "REMOVE",
+          "institute": "Institute",
+          "course": "Course",
+          "cities": "City of Residence",
+          "educationalLevels": "Level of Education"
+        },
+        "headerTable": {
+          "surnameTable": "Last Name",
+          "firstNameTable": "Name",
+          "skillsListTable": "Skills List",
+          "rankingTable": "Ranking",
+          "experienceTable": "Experience Years",
+          "educationTable": "Education",
+          "addressTable": "Address",
+          "certificationTable": "Certifications",
+          "paginationOverTable": "N. of elements per page",
+          "selectedElement": "Selected Element",
+          "selectedElements": "Selected Elements",
+          "totalResult": "Element Found",
+          "totalResults": "Elements Found"
+        }
+      },
+      "userPage": {
+        "info": {
+          "editInfo": "Edit registry",
+          "downloadCV": "Download CV",
+          "saveInfo": "Save changes",
+          "discardInfo": "Discard changes",
+          "hardSkills": "Hard Skills",
+          "education": "Education",
+          "certificates": "Certificates",
+          "userBreadcrumb": "User",
+          "edit": "EDIT",
+          "delete": "DELETE",
+          "removeAll": "Remove All",
+          "selectAll": "Select All",
+          "noSkillsFound": "No skills found"
+        },
+        "informationDetails": {
+          "yes": "Yes",
+          "no": "No",
+          "male": "Male",
+          "female": "Female",
+          "other": "Other",
+          "id": "Id",
+          "gender": "Gender",
+          "firstName": "Name",
+          "lastName": "Surname",
+          "email_login": "E-Mail",
+          "personalPhoneNumber": "Phone Number",
+          "driver_license": "Driver License",
+          "birthDate": "Birthday",
+          "workPhoneNumber": "Work Phone Number",
+          "actualEmploymentDate": "Actual Employement Date",
+          "firstEmploymentDate": "First Employement Date",
+          "address": "Address",
+          "map": "Map",
+          "streetAddress": "Address",
+          "streetNumber": "Street Number",
+          "zipCode": "Zip Code",
+          "cityAddress": "City",
+          "province": "Province",
+          "state": "State"
+        },
+        "tables": {
+          "uploadCV": "UPLOAD YOUR CV",
+          "addSkills": "ADD SKILL",
+          "addEdu": "ADD EDUCATION",
+          "addCert": "ADD CERTIFICATIONS",
+          "updateProfile": "UPDATE PROFILE",
+          "nameInTables": "Name",
+          "levelInTables": "Level",
+          "levelsInTables": "Levels",
+          "courseInTables": "Course",
+          "experienceInTables": "Experience",
+          "codeInTables": "Code",
+          "instituteInTables": "Institute",
+          "cityInTables": "City",
+          "issuerInTables": "Issuer",
+          "releaseInTables": "Release Date",
+          "expirationInTables": "Expiration Date"
         }
       },
       "notFound": {
+        "credentials": "Invalid credentials",
         "title": "Page not found",
-        "description": "Sorry but the page you are looking for does not exists"
+        "description": "Sorry but the page you are looking for does not exists",
+        "addressNotFound": "Address not found"
       }
     }
   }

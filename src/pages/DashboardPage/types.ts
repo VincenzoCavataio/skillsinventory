@@ -1,25 +1,34 @@
-export type ResponseElementObjectData = { id: number, name: string }
+export type ResponseElementObjectData = {
+  id: number;
+  name: string;
+  selected?: boolean;
+  selectedToBeDeleted?: boolean;
+};
 export type CompiledFields = {
-    fullName?: string;
-    skill?: string;
-    certification?: string;
-    city?: string
-    educationalLevel?: string,
-    institute?: string,
-    course?: string
+  fullName?: string;
+  skill?: string;
+  certification?: string | string[];
+  city?: string | string[];
+  educationalLevel?: string;
+  institute?: string;
+  course?: string;
+};
+export type Values = {
+  value: string;
+  id: number;
 };
 
-type SkillArr = {
-    label: string,
-    level?: number,
-    levelType: string
-}
-
-export type ReduxFiltersObj = {
-    fullName: string;
-    skills: SkillArr[];
-    certifications: string[];
-    cities: string[],
-    institute: "",
-    course: ""
+export type CompiledFieldsWithID = {
+  //try
+  id?: number;
+  name?: string;
+  selected?: boolean;
+  selectedToBeDeleted?: boolean;
+  //try
+  fullName?: string;
+  certification?: Values[];
+  city?: string[];
+  educationalLevel?: Values;
+  institute?: Values;
+  course?: Values;
 };

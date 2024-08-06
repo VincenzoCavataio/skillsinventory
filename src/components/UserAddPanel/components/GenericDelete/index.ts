@@ -1,0 +1,1 @@
+export { GenericDelete } from "./GenericDelete";

@@ -1,0 +1,139 @@
+:root {
+  --main-primary: #8cbe2d;
+  --main-secondary: #006fb9;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #e8e8e8;
+}
+.App {
+  padding-bottom: 20px;
+}
+.MuiToggleButton-standard {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.MuiToggleButtonGroup-root > .Mui-selected {
+  background-color: var(--main-primary) !important;
+}
+
+.MuiToggleButton-root {
+  padding: 3px !important;
+  height: 30px;
+}
+
+.MuiTableBody-root > tr:nth-child(even) {
+  background: rgb(0, 0, 0, 0.03);
+}
+
+.custom-scrollbars {
+  /* for chromium based and safari*/
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 50px;
+  }
+
+  /* For Firefox and offshoots */
+  scrollbar-color: gray transparent;
+  scrollbar-width: thin;
+}
+
+.triangle-left {
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 0 15px 35px 15px;
+  border-color: transparent transparent #d1473d transparent;
+  transform: rotate(270deg);
+  transition: all 0.2s;
+  filter: opacity(90%);
+}
+
+.triangle-right {
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 0 15px 35px 15px;
+  border-color: transparent transparent #8bd644 transparent;
+  transform: rotate(90deg);
+  transition: all 0.2s;
+  filter: opacity(90%);
+}
+
+.triangle-left:hover,
+.triangle-right:hover {
+  filter: opacity(100%);
+  cursor: pointer;
+}
+
+.triangle-left:active {
+  transform: rotate(270deg) scale(1.1);
+}
+
+.triangle-right:active {
+  transform: rotate(90deg) scale(1.1);
+}
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+  .userPageWrapper {
+    flex-direction: column !important;
+  }
+}
+#root
+  > div
+  > div.MuiContainer-root.MuiContainer-maxWidthXl.css-ipxsu3-MuiContainer-root
+  > div
+  > div
+  > div {
+  background-color: #e8e8e8;
+}
+#root
+  > div
+  > div.MuiContainer-root.MuiContainer-maxWidthXl.css-ipxsu3-MuiContainer-root
+  > div {
+  border-radius: 0;
+}
+#root
+  > div
+  > div.MuiContainer-root.MuiContainer-maxWidthXl.css-ipxsu3-MuiContainer-root
+  > div
+  > div {
+  border-radius: 0;
+}
+.MuiAutocomplete-clearIndicator {
+  display: none !important;
+}
+.leaflet-container {
+  width: 100%;
+  height: 30vh;
+}
+div.leaflet-bottom.leaflet-right {
+  display: none;
+}
+#root
+  > div
+  > div
+  > div
+  > div.userPageWrapper.MuiBox-root.css-1bzgmbh
+  > div.MuiBox-root.css-lhj4tq
+  > div.MuiBox-root.css-v30yzs
+  > div {
+  border-radius: 0 !important;
+}
+
+.blackAndWhiteIcon {
+  transform: scale(1.5);
+  margin-right: 10px;
+}

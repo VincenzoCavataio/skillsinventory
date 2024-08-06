@@ -1,16 +1,14 @@
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
+//TODO: Probabilmente da cancellare
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.85),
+  backgroundColor: alpha(theme.palette.common.white, 0.65),
   transition: "all .2s",
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.95),
-  },
   marginLeft: 0,
   width: "100%",
   [theme.breakpoints.up("sm")]: {
@@ -20,7 +18,7 @@ const Search = styled("div")(({ theme }) => ({
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
+  padding: theme.spacing(0, 0.5),
   height: "100%",
   position: "absolute",
   pointerEvents: "none",
@@ -30,25 +28,27 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
+  color: '"inherit"',
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "20ch",
-      "&:focus": {
-        width: "25ch",
-      },
-    },
   },
 }));
 
-export default function Searchbar() {
+export const Searchbar = () => {
+  const { t } = useTranslation();
   return (
-    <Search>
+    <Search
+      sx={{
+        border: "solid 1px #c4c4c4",
+        padding: 0,
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>
@@ -58,4 +58,4 @@ export default function Searchbar() {
       />
     </Search>
   );
-}
+};

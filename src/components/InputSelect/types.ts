@@ -1,10 +1,25 @@
-import { Dispatch, SetStateAction } from "react"
-import { CompiledFields, ResponseElementObjectData } from "../../pages/DashboardPage/types"
+// import { Dispatch, SetStateAction } from "react";
+import {
+  CompiledFields,
+  CompiledFieldsWithID,
+  ResponseElementObjectData,
+} from "../../pages/DashboardPage/types";
+
+type Label = keyof CompiledFields;
 
 export type InputSelectType = {
-    selectedInput: CompiledFields,
-    setSelectedInput: Dispatch<SetStateAction<Record<string, string>>>,
-    data: { final_object: ResponseElementObjectData[] },
-    label: string,
-    objKey: string,
-}
+  selectedInput: CompiledFieldsWithID;
+  setSelectedInput: (value: React.SetStateAction<CompiledFieldsWithID>) => void;
+  // data?: { final_object?: ResponseElementObjectData[] };
+  data?: ResponseElementObjectData[];
+
+  label: Label;
+  objKey:
+    | "educationalLevel"
+    | "institute"
+    | "course"
+    | "certification"
+    | "city";
+  width: number;
+};
+//Dispatch<SetStateAction<Record<string, string>>>; setSelectedInput

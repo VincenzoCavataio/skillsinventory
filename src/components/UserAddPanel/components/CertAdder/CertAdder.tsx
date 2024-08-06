@@ -10,9 +10,13 @@ import { CertHeadCells } from "../../types";
 import { CertAdderBody } from "../CertAdderBody";
 import { useTranslation } from "react-i18next";
 import { NEXTRE_ENG } from "../../../../common/commonColors";
+import { checkboxCertsSelector } from "../../../../redux/checkboxCertsSelection";
+import { useSelector } from "react-redux";
 
 export const CertAdder = () => {
   const { t } = useTranslation();
+  const checkedCertsFromStore = useSelector(checkboxCertsSelector);
+
   const certHeadCells: readonly CertHeadCells[] = [
     {
       t: "",
@@ -57,6 +61,9 @@ export const CertAdder = () => {
       checkbox: true,
     },
   ];
+  if (checkedCertsFromStore.length === 0) {
+    return;
+  }
   return (
     <TableContainer
       component={Paper}

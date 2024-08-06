@@ -4,57 +4,67 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { GenericDelete } from "../GenericDelete";
 import { useDispatch, useSelector } from "react-redux";
-import { ReduxStore } from "../../../../redux/types";
 import {
-  removeCertRowData,
-  updateCertRowsNumber,
-} from "../../../../redux/adderSlice";
+  checkboxCertsSelector,
+  removeCert,
+} from "../../../../redux/checkboxCertsSelection";
+import dayjs from "dayjs";
+import { dateFormatByLanguage } from "../../../../utilities/dateFormatByLanguage";
 
 export const CertAdderBody = () => {
+  const checkedCertsFromStore = useSelector(checkboxCertsSelector);
   const dispatch = useDispatch();
-  const certStore = useSelector((state: ReduxStore) => state.rowsManager);
-  const handleRemoveRow = (id: number) => {
-    dispatch(removeCertRowData(id));
-    dispatch(updateCertRowsNumber(certStore.certRows - 1));
+
+  ì;
+  const handleRemoveRow = (id: string, idTemp?: number) => {
+    dispatch(removeCert({ id, idTemp }));
   };
 
   return (
     <TableBody>
-      {certStore.certRowsData &&
-        certStore.certRowsData.length > 0 &&
-        certStore.certRowsData.map((row) => (
-          <TableRow key={row.id}>
-            <TableCell align="center">
-              <ShortTextField defaultValue={row.nameTxtField} />
-            </TableCell>
-            <TableCell align="center">
-              <ShortTextField defaultValue={row.issuerTxtField} />
-            </TableCell>
-            <TableCell align="center">
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <ShortDatePicker />
-              </LocalizationProvider>
-            </TableCell>
-            <TableCell align="center">
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <ShortDatePicker />
-              </LocalizationProvider>
-            </TableCell>
-            <TableCell align="center">
-              <ShortTextField defaultValue={row.codeTxtField} />
-            </TableCell>
-            <TableCell align="center">
-              {row.itChckbx === true ? (
-                <Checkbox sx={{ padding: 0 }} checked={true} />
-              ) : (
-                <Checkbox sx={{ padding: 0 }} checked={false} />
-              )}
-            </TableCell>
-            <TableCell align="center">
-              <GenericDelete handleRemove={handleRemoveRow} row={row} />
-            </TableCell>
-          </TableRow>
-        ))}
+      {checkedCertsFromStore.map((row) => (
+        <TableRow key={row.idTemp !== undefined ? row.idTemp : row.id}>
+          <TableCell align="center">
+            <ShortTextField defaultValue={row.name} />
+          </TableCell>
+          <TableCell align="center">
+            <ShortTextField defaultValue={row.issuer} />
+          </TableCell>
+          <TableCell align="center">
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <ShortDatePicker
+                value={dayjs(row.releaseDate)}
+                format={dateFormatByLanguage()}
+              />
+            </LocalizationProvider>
+          </TableCell>
+          <TableCell align="center">
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <ShortDatePicker
+                value={dayjs(row.expDate)}
+                format={dateFormatByLanguage()}
+              />
+            </LocalizationProvider>
+          </TableCell>
+          <TableCell align="center">
+            <ShortTextField defaultValue={row.code} />
+          </TableCell>
+          <TableCell align="center">
+            {row.it === "1" ? (
+              <Checkbox sx={{ padding: 0 }} checked={true} />
+            ) : (
+              <Checkbox sx={{ padding: 0 }} checked={false} />
+            )}
+          </TableCell>
+          <TableCell align="center">
+            <GenericDelete
+              // handleRemove={() => handleRemoveRow(row.id)}
+              handleRemove={() => handleRemoveRow(row.id, row.idTemp)}
+              row={row}
+            />
+          </TableCell>
+        </TableRow>
+      ))}
     </TableBody>
   );
 };

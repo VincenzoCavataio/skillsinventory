@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { ReduxStore } from "./types";
 
 const initialState = { lang: "en" };
 
@@ -11,6 +12,9 @@ const langSlice = createSlice({
     },
   },
 });
-
+export const langSelector = createSelector(
+  (state: ReduxStore) => state,
+  (state: ReduxStore) => state.lang
+);
 export default langSlice.reducer;
 export const { selectLang } = langSlice.actions;

@@ -11,9 +11,12 @@ import { EduHeadCells } from "../../types";
 import { EduAdderBody } from "../EduAdderBody";
 import { useTranslation } from "react-i18next";
 import { NEXTRE_ENG } from "../../../../common/commonColors";
+import { useSelector } from "react-redux";
+import { checkboxEdusSelector } from "../../../../redux/checkboxEdusSelection";
 
 export const EduAdder = () => {
   const { t } = useTranslation();
+  const checkedEdusFromStore = useSelector(checkboxEdusSelector);
   const eduHeadCells: readonly EduHeadCells[] = [
     {
       t: "",
@@ -51,6 +54,9 @@ export const EduAdder = () => {
       checkbox: true,
     },
   ];
+  if (checkedEdusFromStore.length === 0) {
+    return;
+  }
   return (
     <TableContainer
       component={Paper}

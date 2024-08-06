@@ -27,6 +27,7 @@ export type CheckedSkill = {
   level: string;
   note: string;
   exp: string;
+  idTemp?: number;
 };
 export type CheckedEdu = {
   course: string;
@@ -35,6 +36,7 @@ export type CheckedEdu = {
   id: string;
   institute: string;
   city: string;
+  idTemp?: number;
 };
 export type CheckedCert = {
   name: string;
@@ -44,6 +46,7 @@ export type CheckedCert = {
   code: string;
   releaseDate: string;
   expDate: string;
+  idTemp?: number;
 };
 export type CheckedSkills = { checkedSkills: CheckedSkill[] };
 export type CheckedEdus = { checkedEdus: CheckedEdu[] };

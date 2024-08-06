@@ -19,12 +19,19 @@ const checkboxSkillsSelection = createSlice({
       }
     },
     removeSkill: (state, action) => {
-      state.checkedSkills = state.checkedSkills.filter(
-        (skill) => skill.id !== action.payload
-      );
+      state.checkedSkills = state.checkedSkills.filter((skill) => {
+        if (action.payload.idTemp !== undefined) {
+          return skill.idTemp !== action.payload.idTemp;
+        } else {
+          return skill.id !== action.payload.id;
+        }
+      });
     },
     resetCheckedSkills: (state) => {
       state.checkedSkills = initialState.checkedSkills;
+    },
+    addEmptySkill: (state, action) => {
+      state.checkedSkills = [...state.checkedSkills, action.payload];
     },
   },
 });
@@ -35,5 +42,9 @@ export const checkboxSkillsSelector = createSelector(
 );
 
 export default checkboxSkillsSelection.reducer;
-export const { updateCheckedSkills, removeSkill, resetCheckedSkills } =
-  checkboxSkillsSelection.actions;
+export const {
+  updateCheckedSkills,
+  removeSkill,
+  resetCheckedSkills,
+  addEmptySkill,
+} = checkboxSkillsSelection.actions;

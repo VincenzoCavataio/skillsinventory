@@ -19,12 +19,22 @@ const checkboxEdusSelection = createSlice({
       }
     },
     removeEdu: (state, action) => {
-      state.checkedEdus = state.checkedEdus.filter(
-        (edu) => edu.id !== action.payload
-      );
+      // state.checkedEdus = state.checkedEdus.filter(
+      //   (edu) => edu.id !== action.payload
+      // );
+      state.checkedEdus = state.checkedEdus.filter((edu) => {
+        if (action.payload.idTemp !== undefined) {
+          return edu.idTemp !== action.payload.idTemp;
+        } else {
+          return edu.id !== action.payload.id;
+        }
+      });
     },
     resetCheckedEdus: (state) => {
       state.checkedEdus = initialState.checkedEdus;
+    },
+    addEmptyEdu: (state, action) => {
+      state.checkedEdus = [...state.checkedEdus, action.payload];
     },
   },
 });
@@ -35,5 +45,5 @@ export const checkboxEdusSelector = createSelector(
 );
 
 export default checkboxEdusSelection.reducer;
-export const { updateCheckedEdus, removeEdu, resetCheckedEdus } =
+export const { updateCheckedEdus, removeEdu, resetCheckedEdus, addEmptyEdu } =
   checkboxEdusSelection.actions;

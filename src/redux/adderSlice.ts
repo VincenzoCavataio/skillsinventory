@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RowsManagement, SkillRowType } from "./types";
 import { CertRowType, EduRowType } from "../components/UserAddPanel/types";
-
+//TODO:da cancellare
 const initialState: RowsManagement = {
   skillRows: 0,
   eduRows: 0,

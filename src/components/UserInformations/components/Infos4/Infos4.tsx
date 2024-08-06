@@ -32,7 +32,6 @@ export const Infos4 = ({
   const handleDateChange = (
     date: string | number | Date | dayjs.Dayjs | null | undefined
   ) => {
-    console.log(dayjs(date).format("YYYY-MM-DD").toString());
     dispatch(
       updateEditPayload({
         [title]: dayjs(date).format("YYYY-MM-DD").toString(),

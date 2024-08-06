@@ -11,14 +11,15 @@ export const SkillAdderBody = () => {
   const checkedSkillsFromStore = useSelector(checkboxSkillsSelector);
 
   const dispatch = useDispatch();
-  const handleRemoveRow = (id: string) => {
-    dispatch(removeSkill(id));
+
+  const handleRemoveRow = (id: string, idTemp?: number) => {
+    dispatch(removeSkill({ id, idTemp }));
   };
 
   return (
     <TableBody>
       {checkedSkillsFromStore.map((row) => (
-        <TableRow key={row.id}>
+        <TableRow key={row.idTemp !== undefined ? row.idTemp : row.id}>
           <TableCell align="center">
             <Tooltip title={row.name} placement="left" arrow>
               <ShortTextField defaultValue={row.name} disabled />
@@ -43,7 +44,7 @@ export const SkillAdderBody = () => {
           </TableCell>
           <TableCell align="center">
             <GenericDelete
-              handleRemove={() => handleRemoveRow(row.id)}
+              handleRemove={() => handleRemoveRow(row.id, row.idTemp)}
               row={row}
             />
           </TableCell>

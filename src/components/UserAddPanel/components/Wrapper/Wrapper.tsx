@@ -3,21 +3,24 @@ import { GenericAdd } from "../GenericAdd";
 import { SkillAdder } from "../SkillAdder";
 import { EduAdder } from "../EduAdder";
 import { CertAdder } from "../CertAdder";
-import { CertRowType, EduRowType, SkillRowType } from "../../types";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useTranslation } from "react-i18next";
 import { NEXTRE_ENG } from "../../../../common/commonColors";
 import { useDispatch, useSelector } from "react-redux";
-import { ReduxStore } from "../../../../redux/types";
+import { CheckedCert, CheckedEdu, CheckedSkill } from "../../../../redux/types";
+
 import {
-  updateCertRowsData,
-  updateCertRowsNumber,
-  updateEduRowsData,
-  updateEduRowsNumber,
-  updateSkillRowsData,
-  updateSkillRowsNumber,
-} from "../../../../redux/adderSlice";
-import { checkboxSkillsSelector } from "../../../../redux/checkboxSkillsSelection";
+  addEmptySkill,
+  checkboxSkillsSelector,
+} from "../../../../redux/checkboxSkillsSelection";
+import {
+  addEmptyEdu,
+  checkboxEdusSelector,
+} from "../../../../redux/checkboxEdusSelection";
+import {
+  addEmptyCert,
+  checkboxCertsSelector,
+} from "../../../../redux/checkboxCertsSelection";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -30,79 +33,64 @@ const VisuallyHiddenInput = styled("input")({
   whiteSpace: "nowrap",
   width: 1,
 });
+let skillEmptyRows: number = 0;
+let eduEmptyRows: number = 0;
+let certEmptyRows: number = 0;
 
 export const Wrapper = () => {
   const { t } = useTranslation();
   const skillAdd: string = t("pages.userPage.tables.addSkills");
   const certAdd: string = t("pages.userPage.tables.addCert");
   const eduAdd: string = t("pages.userPage.tables.addEdu");
-  const rowsStore = useSelector((state: ReduxStore) => state.rowsManager);
   const checkedSkillsFromStore = useSelector(checkboxSkillsSelector);
+  const checkedEdusFromStore = useSelector(checkboxEdusSelector);
+  const checkedCertsFromStore = useSelector(checkboxCertsSelector);
 
   const dispatch = useDispatch();
 
-  const getMaxSkillId = () => {
-    if (rowsStore.skillRowsData.length === 0) {
-      return 0;
-    }
-    return Math.max(...rowsStore.skillRowsData.map((row) => row.id));
-  };
-  const getMaxEduId = () => {
-    if (rowsStore.eduRowsData.length === 0) {
-      return 0;
-    }
-    return Math.max(...rowsStore.eduRowsData.map((row) => row.id));
-  };
-  const getMaxCertId = () => {
-    if (rowsStore.certRowsData.length === 0) {
-      return 0;
-    }
-    return Math.max(...rowsStore.certRowsData.map((row) => row.id));
-  };
   const handleSkillAddClick = () => {
-    const oldRows = getMaxSkillId();
-    const newId = oldRows + 1;
-
-    dispatch(updateSkillRowsNumber(newId));
-    const skillBlankData: SkillRowType = {
-      id: newId,
-      nameTxtField: "",
-      levelInput: 1,
-      expInput: 1,
-      noteTxtField: "",
+    skillEmptyRows++;
+    const skillBlankData: CheckedSkill = {
+      id: "",
+      name: "",
+      level: "",
+      exp: "",
+      note: "",
+      idTemp: skillEmptyRows,
     };
-    dispatch(updateSkillRowsData(skillBlankData));
+
+    dispatch(addEmptySkill(skillBlankData));
   };
 
   const handleEduAddClick = () => {
-    const oldRows = getMaxEduId();
-    const newId = oldRows + 1;
-    dispatch(updateEduRowsNumber(newId));
-    const eduBlankData: EduRowType = {
-      id: newId,
-      courseTxtField: "",
-      levelMenu: "",
-      itChckbx: false,
-      instTxtField: "",
-      cityTxtField: "",
+    eduEmptyRows++;
+    const eduBlankData: CheckedEdu = {
+      id: "",
+      course: "",
+      level: "",
+      it: "",
+      institute: "",
+      city: "",
+      idTemp: eduEmptyRows,
     };
-    dispatch(updateEduRowsData(eduBlankData));
+
+    dispatch(addEmptyEdu(eduBlankData));
   };
 
   const handleCertAddClick = () => {
-    const oldRows = getMaxCertId();
-    const newId = oldRows + 1;
-    dispatch(updateCertRowsNumber(newId));
-    const certBlankData: CertRowType = {
-      id: newId,
-      nameTxtField: "",
-      issuerTxtField: "",
-      itChckbx: false,
-      expDate: "",
+    certEmptyRows++;
+    const certBlankData: CheckedCert = {
+      id: "",
+      name: "",
+      issuer: "",
+      it: "",
+      code: "",
       releaseDate: "",
-      codeTxtField: "",
+      expDate: "",
+      idTemp: certEmptyRows,
     };
-    dispatch(updateCertRowsData(certBlankData));
+
+    dispatch(addEmptyCert(certBlankData));
   };
 
   return (
@@ -143,13 +131,15 @@ export const Wrapper = () => {
 
       <Box sx={{ width: "100%", paddingBottom: 3, maxWidth: "725.33px" }}>
         <GenericAdd label={eduAdd} onClick={handleEduAddClick} />
-        {rowsStore.eduRows > 0 && <EduAdder />}
+        <EduAdder />
       </Box>
       <Box sx={{ width: "100%", paddingBottom: 3, maxWidth: "725.33px" }}>
         <GenericAdd label={certAdd} onClick={handleCertAddClick} />
-        {rowsStore.certRows > 0 && <CertAdder />}
+        <CertAdder />
       </Box>
-      {checkedSkillsFromStore.length > 0 ? (
+      {checkedSkillsFromStore.length > 0 ||
+      checkedEdusFromStore.length > 0 ||
+      checkedCertsFromStore.length > 0 ? (
         <Button
           variant="contained"
           sx={{

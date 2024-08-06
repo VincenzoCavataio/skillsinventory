@@ -19,12 +19,22 @@ const checkboxCertsSelection = createSlice({
       }
     },
     removeCert: (state, action) => {
-      state.checkedCerts = state.checkedCerts.filter(
-        (cert) => cert.id !== action.payload
-      );
+      // state.checkedCerts = state.checkedCerts.filter(
+      //   (cert) => cert.id !== action.payload
+      // );
+      state.checkedCerts = state.checkedCerts.filter((cert) => {
+        if (action.payload.idTemp !== undefined) {
+          return cert.idTemp !== action.payload.idTemp;
+        } else {
+          return cert.id !== action.payload.id;
+        }
+      });
     },
     resetCheckedCerts: (state) => {
       state.checkedCerts = initialState.checkedCerts;
+    },
+    addEmptyCert: (state, action) => {
+      state.checkedCerts = [...state.checkedCerts, action.payload];
     },
   },
 });
@@ -35,5 +45,9 @@ export const checkboxCertsSelector = createSelector(
 );
 
 export default checkboxCertsSelection.reducer;
-export const { updateCheckedCerts, removeCert, resetCheckedCerts } =
-  checkboxCertsSelection.actions;
+export const {
+  updateCheckedCerts,
+  removeCert,
+  resetCheckedCerts,
+  addEmptyCert,
+} = checkboxCertsSelection.actions;

@@ -90,9 +90,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
     dispatch(uncheckAll()), dispatchNewCheckedData([]);
   };
 
-  const handleRow = () => {
-    console.log("a");
-  };
+  const handleRow = () => {};
   const getMaxSkillId = () => {
     if (rowsStore.skillRowsData.length === 0) {
       return 0;

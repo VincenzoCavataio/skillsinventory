@@ -68,7 +68,8 @@
           "edit": "EDIT",
           "delete": "DELETE",
           "removeAll": "Remove All",
-          "selectAll": "Select All"
+          "selectAll": "Select All",
+          "noSkillsFound": "No skills found"
         },
         "informationDetails": {
           "yes": "Yes",

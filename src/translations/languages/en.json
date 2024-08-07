@@ -1,10 +1,14 @@
 {
   "translation": {
+    "error": {
+      "responseError": "Response error API"
+    },
     "common": {
       "title": "Skills Inventory",
       "error": "Error",
       "share": "Share",
       "back_home": "Back Home",
+      "and": "and",
       "search": "Search",
       "clear": "Reset",
       "login": "Login successful",
@@ -25,19 +29,27 @@
           "name": "First and Last Name",
           "selectSkills": "Select skills",
           "certification": "Certifications",
+          "cities": "City of Residence",
           "noOptions": "No Options",
-          "advancedSearch": "Advanced Search",
           "operator": "Operator",
           "level": "Level",
-          "ricerca": "Search skill by name...",
           "risultato": "Skill Search Criteria",
-          "noskillfound": "No skill selected",
-          "add": "ADD",
-          "remove": "REMOVE",
           "institute": "Institute",
           "course": "Course",
-          "cities": "City of Residence",
-          "educationalLevels": "Level of Education"
+          "noskillfound": "No skill selected",
+          "add": "ADD",
+          "educationalLevels": "Level of Education",
+          "advancedSearch": "Advanced Search",
+          "ricerca": "Search skill by name...",
+          "remove": "REMOVE"
+        },
+        "slider": {
+          "advancedSearch": "Advanced Search",
+          "from": "From ",
+          "to": "To",
+          "equals": "",
+          "between": "Between",
+          "buttonContainer": "Select type"
         },
         "headerTable": {
           "surnameTable": "Last Name",
@@ -69,6 +81,11 @@
           "delete": "DELETE",
           "removeAll": "Remove All",
           "selectAll": "Select All",
+          "deselect": "Deselect",
+          "elements": "elements",
+          "element": "element",
+          "goToEditMode": "Go to Edit Mode",
+          "exitFromEditMode": "Exit from Edit Mode",
           "noSkillsFound": "No skills found"
         },
         "informationDetails": {

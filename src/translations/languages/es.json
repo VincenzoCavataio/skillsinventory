@@ -1,10 +1,14 @@
 {
   "translation": {
+    "error": {
+      "responseError": "Error de respuesta API"
+    },
     "common": {
       "title": "Skills Inventory",
       "error": "Error",
       "share": "Compartir",
       "back_home": "Volver a Inicio",
+      "and": "y",
       "search": "Buscar",
       "clear": "Reset",
       "login": "Inicio de sesión exitoso",
@@ -39,6 +43,14 @@
           "cities": "Ciudad de Residencia",
           "educationalLevels": "Nivel Educativo"
         },
+        "slider": {
+          "advancedSearch": "Búsqueda avanzada",
+          "from": "Desde ",
+          "to": "Hasta ",
+          "equals": "",
+          "between": "Entre",
+          "buttonContainer": "Seleccionar Tipo"
+        },
         "headerTable": {
           "surnameTable": "Apellido",
           "firstNameTable": "Nombre",
@@ -57,19 +69,24 @@
       },
       "userPage": {
         "info": {
-          "editInfo": "Editar información",
+          "editInfo": "Editar registro",
           "downloadCV": "Descargar CV",
           "saveInfo": "Guardar cambios",
           "discardInfo": "Descartar cambios",
-          "hardSkills": "Habilidades Técnicas",
+          "hardSkills": "Habilidades Duras",
           "education": "Educación",
           "certificates": "Certificados",
           "userBreadcrumb": "Usuario",
           "edit": "EDITAR",
-          "delete": "CANCELAR",
+          "delete": "ELIMINAR",
           "removeAll": "Eliminar Todo",
           "selectAll": "Seleccionar Todo",
-          "noSkillsFound": "No se encontraron skills"
+          "deselect": "Deseleccionar",
+          "elements": "elementos",
+          "element": "elemento",
+          "goToEditMode": "Ir al Modo de Edición",
+          "exitFromEditMode": "Salir del Modo de Edición",
+          "noSkillsFound": "No se encontraron habilidades"
         },
         "informationDetails": {
           "yes": "Si",

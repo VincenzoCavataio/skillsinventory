@@ -31,15 +31,16 @@
           "certification": "Certificazioni",
           "cities": "Città di Residenza",
           "noOptions": "Nessuna opzione trovata",
-          "educationalLevels": "Istruzione",
-          "institute": "Istituto",
-          "course": "Corso",
           "operator": "Operatore",
           "level": "Livello",
-          "ricerca": "Ricerca skill per nome...",
           "risultato": "Abilità filtrate",
+          "institute": "Istituto",
+          "course": "Corso",
           "noskillfound": "Nessuna abilità selezionata",
           "add": "AGGIUNGI",
+          "educationalLevels": "Istruzione",
+          "advancedSearch": "Ricerca Avanzata",
+          "ricerca": "Ricerca skill per nome...",
           "remove": "RIMUOVI"
         },
         "slider": {
@@ -84,7 +85,8 @@
           "selectAll": "Seleziona tutto",
           "goToEditMode": "Vai alla Edit Mode",
           "exitFromEditMode": "Esci dalla Edit Mode",
-          "noSkillsFound": "Nessuna Skill Trovata"
+          "noSkillsFound": "Nessuna Skill Trovata",
+          "removeAll": "Rimuovi tutto"
         },
         "informationDetails": {
           "yes": "Si",

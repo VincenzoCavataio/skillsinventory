@@ -1,4 +1,4 @@
-import { Paper, Table, TableContainer } from "@mui/material";
+import { Box, Paper, Table, TableContainer, Typography } from "@mui/material";
 import { TableHeaderBuild } from "../TableHeaderBuild";
 import useApi from "../../../../utilities/useApi";
 import { allTabledata } from "../../SkillsTable.controller";
@@ -8,6 +8,7 @@ import { TableBodyBuild } from "../TableBodyBuild";
 import { PaginationBuild } from "../PaginationBuild";
 import { generatePayloadForTableFilter } from "../../../../utilities/generatePayloadForTableFilter";
 import { TableDataData, TableDataResponse } from "../../types";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 export const Wrapper = () => {
   const filterStore = useSelector((state: ReduxStore) => state.search);
@@ -89,7 +90,6 @@ export const Wrapper = () => {
     : [];
 
   const TOTAL_ROW_COUNT = tableDataResponse?.pagination?.count ?? 0;
-  if (!rows) return;
 
   return (
     <TableContainer component={Paper}>
@@ -98,6 +98,36 @@ export const Wrapper = () => {
         <TableHeaderBuild />
         <TableBodyBuild rows={rows} />
       </Table>
+      {(!rows || rows?.length === 0) && (
+        <Box display="flex" justifyContent="center" flexDirection="column">
+          <Box
+            align="center"
+            component="th"
+            scope="row"
+            display="flex"
+            alignContent="center"
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column"
+            p={6}
+          >
+            <Box
+              display="flex"
+              flexDirection="row"
+              alignContent="center"
+              alignItems="center"
+            >
+              <Typography variant="h5" mr={2}>
+                Nessun risultato trovato
+              </Typography>
+              <ErrorOutlineIcon fontSize="large" sx={{ ml: -1 }} />
+            </Box>
+            <Typography variant="subtitle2" mt={1} mb={2}>
+              Modifica i filtri per fare una nuova ricerca
+            </Typography>
+          </Box>
+        </Box>
+      )}
     </TableContainer>
   );
 };

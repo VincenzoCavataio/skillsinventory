@@ -61,7 +61,7 @@ export const DashboardPage = () => {
   //TODO: forse non serve più, assicurarsene ed eventualmente eliminarlo.  --- dovrebbe funzionare tutto commentandolo, chiedere se effettivamente non serve quindi
   // const [isOpen, setIsOpen] = useState(false);
   return (
-    <>
+    <Box mb={2}>
       <HeaderNavbar />
       <Container
         maxWidth="xl"
@@ -72,7 +72,7 @@ export const DashboardPage = () => {
         }}
       >
         <Box position="relative" width="100%" height="100%">
-          <AddSkillsWindows data={allSkillslData?.data} />{" "}
+          <AddSkillsWindows data={allSkillslData?.data ?? []} />
           {/** HO TENTATO DI SISTEMARE L'ERRORE MA è DENTRO */}
         </Box>
         <Box
@@ -175,20 +175,20 @@ export const DashboardPage = () => {
             mb={2}
             position="relative"
           >
-            <ButtonsContainer
-              setSelectedInput={setSelectedInput}
-
-              // submit={setIsOpen}
-            />
+            <ButtonsContainer setSelectedInput={setSelectedInput} />
           </Box>
         </Box>
       </Container>
       <Container
         maxWidth="xl"
-        sx={{ ...style.container, p: "0 !important", overflow: "hidden" }}
+        sx={{
+          ...style.container,
+          p: "0 !important",
+          overflow: "hidden",
+        }}
       >
         <SkillTable />
       </Container>
-    </>
+    </Box>
   );
 };

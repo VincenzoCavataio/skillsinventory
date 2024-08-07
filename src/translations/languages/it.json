@@ -85,8 +85,12 @@
           "selectAll": "Seleziona tutto",
           "goToEditMode": "Vai alla Edit Mode",
           "exitFromEditMode": "Esci dalla Edit Mode",
-          "noSkillsFound": "Nessuna Skill Trovata",
-          "removeAll": "Rimuovi tutto"
+          "removeAll": "Rimuovi tutto",
+          "notFound": {
+            "hardSkills": "Nessuna Skill Trovata",
+            "education": "Nessuna Istruzione Trovata",
+            "certificates": "Nessun Certificato Trovato"
+          }
         },
         "informationDetails": {
           "yes": "Si",

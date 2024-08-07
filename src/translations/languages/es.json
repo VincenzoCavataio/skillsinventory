@@ -86,7 +86,11 @@
           "element": "elemento",
           "goToEditMode": "Ir al Modo de Edición",
           "exitFromEditMode": "Salir del Modo de Edición",
-          "noSkillsFound": "No se encontraron habilidades"
+          "notFound": {
+            "hardSkills": "LOL",
+            "education": "LOLL",
+            "certificates": "LOL"
+          }
         },
         "informationDetails": {
           "yes": "Si",

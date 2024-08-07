@@ -11,10 +11,9 @@ import { Box } from "@mui/material";
 
 export const ButtonsContainer = ({
   setSelectedInput,
-}: // submit,
-{
+}: {
+  //TODO : Check for correct typing
   setSelectedInput: Dispatch<SetStateAction<CompiledFields>>;
-  // submit: (value: boolean) => void;
 }) => {
   const dispatch = useDispatch();
 
@@ -37,8 +36,8 @@ export const ButtonsContainer = ({
           variant="outlined"
           callback={() => {
             dispatch(resetFilters());
+            //TODO : Check for correct typing
             setSelectedInput(init);
-            // submit(false);
           }}
           icon={<CancelButton />}
         />

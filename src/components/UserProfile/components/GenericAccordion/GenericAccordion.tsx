@@ -59,7 +59,7 @@ export const GenericAccordion = ({ action, label, state, data }: Props) => {
         <Box width="100%" mb={2} position="relative">
           {!data?.length ? (
             <Typography variant="caption" ml={2}>
-              {t(`pages.userPage.info.noSkillsFound`)}
+              {t(`pages.userPage.info.notFound.${label}`)}
             </Typography>
           ) : (
             mappingSection[label]

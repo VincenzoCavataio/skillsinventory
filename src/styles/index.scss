@@ -43,6 +43,8 @@ html {
   &::-webkit-scrollbar-track {
     background: transparent;
     border-radius: 50px;
+  }
+  & {
     scrollbar-color: gray transparent;
     scrollbar-width: thin;
   }

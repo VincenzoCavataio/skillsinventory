@@ -1,10 +1,10 @@
 import { Delete } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import { FC } from "react";
-import { CheckedCert } from "../../../../redux/types";
+import { CheckedCert, CheckedEdu, CheckedSkill } from "../../../../redux/types";
 
 type Props = {
-  row: CheckedCert;
+  row: CheckedCert | CheckedEdu | CheckedSkill;
   handleRemove: (id: number | string) => void;
 };
 

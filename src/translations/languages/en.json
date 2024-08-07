@@ -86,7 +86,11 @@
           "element": "element",
           "goToEditMode": "Go to Edit Mode",
           "exitFromEditMode": "Exit from Edit Mode",
-          "noSkillsFound": "No skills found"
+          "notFound": {
+            "hardSkills": "No Skills Found",
+            "education": "No Educations Found",
+            "certificates": "No Certifications Found"
+          }
         },
         "informationDetails": {
           "yes": "Yes",

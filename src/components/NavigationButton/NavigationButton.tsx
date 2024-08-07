@@ -15,7 +15,7 @@ export const NavigationButton = ({ to }: Props) => {
   const { t } = useTranslation();
   return (
     <Button
-      sx={commonStyle.colorWhite}
+      sx={{ ...commonStyle.colorWhite, width: 300 }}
       color={"primary"}
       variant="contained"
       onClick={() => handleClick(to ?? "")}

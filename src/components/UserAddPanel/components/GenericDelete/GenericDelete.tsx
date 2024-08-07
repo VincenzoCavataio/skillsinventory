@@ -1,10 +1,11 @@
 import { Delete } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import { FC } from "react";
+import { CheckedCert } from "../../../../redux/types";
 
 type Props = {
-  row: { id: number };
-  handleRemove: (id: number) => void;
+  row: CheckedCert;
+  handleRemove: (id: number | string) => void;
 };
 
 export const GenericDelete: FC<Props> = ({ row, handleRemove }) => {

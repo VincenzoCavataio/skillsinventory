@@ -19,9 +19,6 @@ const checkboxCertsSelection = createSlice({
       }
     },
     removeCert: (state, action) => {
-      // state.checkedCerts = state.checkedCerts.filter(
-      //   (cert) => cert.id !== action.payload
-      // );
       state.checkedCerts = state.checkedCerts.filter((cert) => {
         if (action.payload.idTemp !== undefined) {
           return cert.idTemp !== action.payload.idTemp;

@@ -15,7 +15,6 @@ export const CertAdderBody = () => {
   const checkedCertsFromStore = useSelector(checkboxCertsSelector);
   const dispatch = useDispatch();
 
-  ì;
   const handleRemoveRow = (id: string, idTemp?: number) => {
     dispatch(removeCert({ id, idTemp }));
   };
@@ -58,7 +57,6 @@ export const CertAdderBody = () => {
           </TableCell>
           <TableCell align="center">
             <GenericDelete
-              // handleRemove={() => handleRemoveRow(row.id)}
               handleRemove={() => handleRemoveRow(row.id, row.idTemp)}
               row={row}
             />

@@ -14,6 +14,7 @@ import {
 import { ReduxStore } from "../../../../redux/types";
 import { SmallTextField } from "./style";
 import { useTranslation } from "react-i18next";
+import { commonColors } from "../../../../common/commonColors";
 
 export const PaginationBuild: React.FC<PaginationBuildProps> = ({
   totalRowsNumber,
@@ -55,6 +56,7 @@ export const PaginationBuild: React.FC<PaginationBuildProps> = ({
         flexDirection={"row"}
         justifyContent={"flex-end"}
         alignItems={"center"}
+        bgcolor={commonColors.backgroundGray}
       >
         <Typography
           sx={{

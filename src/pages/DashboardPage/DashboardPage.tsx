@@ -46,7 +46,6 @@ export const DashboardPage = () => {
     //TODO: magari aggiungere un controllo con una chiamata di healthcheck (da parlare con BE)
     if (!token) {
       //TODO: si attiva la modale
-      /** QUI LA MODALE */
 
       //TODO: spostare il navigate dentro il tasto conferma della modal
       navigate(PAGES.loginPage);
@@ -61,9 +60,9 @@ export const DashboardPage = () => {
   const allCitiesData = useApi(allCitiesMetadata);
   const allInstitutesData = useApi(allInstitutesMetadata);
   const allCoursessData = useApi(allCoursesMetadata);
-  //passare ad ognuno di questi inviare i filtri già selezionati,
+
   //TODO: forse non serve più, assicurarsene ed eventualmente eliminarlo.  --- dovrebbe funzionare tutto commentandolo, chiedere se effettivamente non serve quindi
-  // const [isOpen, setIsOpen] = useState(false);
+
   return (
     <Box mb={2}>
       <HeaderNavbar />
@@ -77,7 +76,6 @@ export const DashboardPage = () => {
       >
         <Box position="relative" width="100%" height="100%">
           <AddSkillsWindows data={allSkillslData?.data ?? []} />
-          {/** HO TENTATO DI SISTEMARE L'ERRORE MA è DENTRO */}
         </Box>
         <Box
           display="flex"

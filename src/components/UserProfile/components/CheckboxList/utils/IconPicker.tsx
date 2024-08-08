@@ -38,12 +38,12 @@ export const IconPicker = (skillName: string) => {
     );
   });
 
-  const match = (fullMatch ?? startMatch ?? partialMatch) || "BashOriginal";
+  const match = (fullMatch ?? partialMatch ?? startMatch) || "BashOriginal";
 
   return match ? (
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    <Box className="blackAndWhiteIcon">{React.createElement(logos[match])}</Box>
+    <Box className="iconsStyle">{React.createElement(logos[match])}</Box>
   ) : (
     <></>
   );

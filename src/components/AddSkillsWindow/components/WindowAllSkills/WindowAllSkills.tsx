@@ -41,7 +41,7 @@ export const WindowAllSkills = ({ data, setMappedData }: Props) => {
         flexDirection: "column",
         justifyContent: "normal",
         listStyle: "none",
-        paddingLeft: 8,
+        paddingLeft: 0,
         margin: 0,
         height: "calc( 100% - 30px) ",
       }}
@@ -60,6 +60,8 @@ export const WindowAllSkills = ({ data, setMappedData }: Props) => {
             cursor: "pointer",
             display: "flex",
             marginTop: 4,
+            padding: 2,
+            paddingLeft: 8,
           }}
           onClick={() => onClick(e)}
         >

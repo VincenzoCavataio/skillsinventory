@@ -54,7 +54,6 @@ export const WindowSelectedSkills = ({
           justifyContent: "normal",
           listStyle: "none",
           paddingLeft: 6,
-          paddingTop: 6,
           margin: 0,
         }}
       >
@@ -69,12 +68,13 @@ export const WindowSelectedSkills = ({
                   : "transparent",
                 color: isIdIncluded ? "white" : "black",
                 cursor: "pointer",
+                marginTop: 4,
                 padding: 2,
-                marginBottom: 2,
+                paddingLeft: 8,
               }}
               onClick={() => highlightSelectedSkills(skill)}
             >
-              <Typography variant="caption">{`${skill.name} ${skill.operator} ${skill.level}`}</Typography>
+              <Typography variant="button">{`${skill.name} ${skill.operator} ${skill.level}`}</Typography>
             </li>
           );
         })}

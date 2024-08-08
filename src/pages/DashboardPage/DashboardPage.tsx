@@ -1,4 +1,4 @@
-import { Box, Container, TextField } from "@mui/material";
+import { Box, CircularProgress, Container, TextField } from "@mui/material";
 import { HeaderNavbar } from "../../components/HeaderNavbar";
 import { useTranslation } from "react-i18next";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -71,8 +71,18 @@ export const DashboardPage = () => {
         sx={{ ...style.container, overflow: "hidden", height: 210 }}
       >
         <Box position="relative" width="100%" height="100%">
-          {allSkillslData?.data && (
+          {allSkillslData?.data ? (
             <AddSkillsWindows data={allSkillslData.data} />
+          ) : (
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignContent="center"
+              alignItems="center"
+              height="100%"
+            >
+              <CircularProgress />
+            </Box>
           )}
         </Box>
         <Box

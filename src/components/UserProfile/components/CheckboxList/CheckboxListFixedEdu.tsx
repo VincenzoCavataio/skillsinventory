@@ -21,7 +21,6 @@ import { CheckedEdu } from "../../../../redux/types";
 import { Close, Delete, Edit } from "@mui/icons-material";
 import { AccordionLabel } from "../GenericAccordion/Types";
 import { SelectDeselectLabelEdu } from "./utils/SelectDeselectLabelEdu";
-// import { SelectDeselectLabel } from "./utils/selectDeselectLabel";
 
 type CheckboxListProps = {
   data?: string[];

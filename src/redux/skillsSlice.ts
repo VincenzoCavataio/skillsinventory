@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { Skill } from "./types";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { ReduxStore, Skill } from "./types";
 
 type Props = {
   skills: Skill[];
@@ -27,6 +27,11 @@ const skillsSlice = createSlice({
     },
   },
 });
+
+export const skillsSelector = createSelector(
+  (state: ReduxStore) => state,
+  (state: ReduxStore) => state.skills
+);
 
 export default skillsSlice.reducer;
 export const { insertSkills, deleteSkills, resetSkills } = skillsSlice.actions;

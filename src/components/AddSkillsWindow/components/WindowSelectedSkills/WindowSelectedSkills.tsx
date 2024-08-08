@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { ReduxStore, Skill } from "../../../../redux/types";
 import { useTranslation } from "react-i18next";
 import { ResponseElementObjectData } from "../../../../pages/DashboardPage/types";
+import { SkillRow } from "../SkillRow";
+
 type Props = {
   data?: ResponseElementObjectData[];
   setMappedData?: React.Dispatch<
@@ -35,7 +37,7 @@ export const WindowSelectedSkills = ({
   };
 
   return (
-    <Box>
+    <Box mr={2}>
       <Typography
         variant="body1"
         sx={{ borderBottom: "dashed 1px #949494", pb: 0.5 }}
@@ -53,7 +55,7 @@ export const WindowSelectedSkills = ({
           flexDirection: "column",
           justifyContent: "normal",
           listStyle: "none",
-          paddingLeft: 6,
+          paddingLeft: 0,
           margin: 0,
         }}
       >
@@ -79,11 +81,7 @@ export const WindowSelectedSkills = ({
           );
         })}
         {skillsInStore?.skills.length === 0 && (
-          <li>
-            <Typography variant="caption">
-              {t("pages.dashboard.search.noskillfound")}
-            </Typography>
-          </li>
+          <SkillRow label={t("pages.dashboard.search.noskillfound")} />
         )}
       </ul>
     </Box>

@@ -4,6 +4,7 @@ import { CheckedEdus, ReduxStore } from "./types";
 const initialState: CheckedEdus = {
   checkedEdus: [],
 };
+
 const checkboxEdusSelection = createSlice({
   name: "checkedEdus",
   initialState,
@@ -19,9 +20,6 @@ const checkboxEdusSelection = createSlice({
       }
     },
     removeEdu: (state, action) => {
-      // state.checkedEdus = state.checkedEdus.filter(
-      //   (edu) => edu.id !== action.payload
-      // );
       state.checkedEdus = state.checkedEdus.filter((edu) => {
         if (action.payload.idTemp !== undefined) {
           return edu.idTemp !== action.payload.idTemp;

@@ -1,7 +1,6 @@
-import { Typography } from "@mui/material";
 import { ResponseElementObjectData } from "../../../../pages/DashboardPage/types";
-import { NEXTRE_ENG } from "../../../../common/commonColors";
 import { t } from "i18next";
+import { SkillRow } from "../SkillRow";
 
 type Props = { data: ResponseElementObjectData[] } & {
   setMappedData: React.Dispatch<
@@ -47,26 +46,10 @@ export const WindowAllSkills = ({ data, setMappedData }: Props) => {
       }}
     >
       {!data?.length && (
-        <Typography variant="caption" my={2}>
-          {t("pages.userPage.info.noSkillsFound")}
-        </Typography>
+        <SkillRow label={t("pages.userPage.info.noSkillsFound")} />
       )}
       {data?.map((e) => (
-        <li
-          key={e.id}
-          style={{
-            background: e.selected ? NEXTRE_ENG : "transparent",
-            color: e.selected ? "white" : "black",
-            cursor: "pointer",
-            display: "flex",
-            marginTop: 4,
-            padding: 2,
-            paddingLeft: 8,
-          }}
-          onClick={() => onClick(e)}
-        >
-          <Typography variant="button">{e.name}</Typography>
-        </li>
+        <SkillRow row={e} onClick={onClick} label={e.name} />
       ))}
     </ul>
   );

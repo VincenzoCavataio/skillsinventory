@@ -135,3 +135,7 @@ div.leaflet-bottom.leaflet-right {
   transform: scale(1.5);
   margin-right: 10px;
 }
+
+.hoverList:hover {
+  background-color: rgba(187, 187, 187, 0.116) !important;
+}

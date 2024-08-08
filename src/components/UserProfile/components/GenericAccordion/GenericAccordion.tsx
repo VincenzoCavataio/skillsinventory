@@ -7,6 +7,7 @@ import { commonColors } from "../../../../common/commonColors";
 import StyledAccordionDetails from "../../StyledAccordionDetails";
 import { CheckboxListFixedEdu } from "../CheckboxList/CheckboxListFixedEdu";
 import { CheckboxListFixedCert } from "../CheckboxList/CheckboxListFixedCert";
+import SearchOffIcon from "@mui/icons-material/SearchOff";
 
 export const GenericAccordion = ({ action, label, state, data }: Props) => {
   const isEdit = state[label];
@@ -58,9 +59,17 @@ export const GenericAccordion = ({ action, label, state, data }: Props) => {
       <StyledAccordionDetails>
         <Box width="100%" mb={2} position="relative">
           {!data?.length ? (
-            <Typography variant="caption" ml={2}>
-              {t(`pages.userPage.info.notFound.${label}`)}
-            </Typography>
+            <Box
+              display="flex"
+              ml={2}
+              alignContent="center"
+              alignItems="center"
+            >
+              <SearchOffIcon sx={{ mr: 1, color: commonColors.gray }} />
+              <Typography variant="subtitle2" fontSize={13}>
+                {t(`pages.userPage.info.notFound.${label}`)}
+              </Typography>
+            </Box>
           ) : (
             mappingSection[label]
           )}

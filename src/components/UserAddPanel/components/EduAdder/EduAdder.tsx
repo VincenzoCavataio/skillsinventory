@@ -66,11 +66,14 @@ export const EduAdder = () => {
         maxWidth: "100%",
         overflowX: "auto",
         border: `solid 0.5px ${NEXTRE_ENG} `,
+        maxHeight: 400,
+        scroll: "auto",
       }}
     >
       <Table
         sx={{ minWidth: 650, tableLayout: "fixed" }}
-        aria-label="edu table"
+        stickyHeader
+        aria-label="sticky table"
       >
         <TableHead>
           <TableRow>

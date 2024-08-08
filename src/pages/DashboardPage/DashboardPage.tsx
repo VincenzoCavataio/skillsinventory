@@ -17,7 +17,10 @@ import { InputChecks } from "../../components/InputCheck/InputCheck";
 import { InputSelect } from "../../components/InputSelect/InputSelect";
 import { ButtonsContainer } from "../../components/ButtonsContainer";
 import { AddSkillsWindows } from "../../components/AddSkillsWindow";
-import { updateFilter } from "../../redux/searchSlice";
+import {
+  searchFiltersNameSelector,
+  updateFilter,
+} from "../../redux/searchSlice";
 import { InputChecks2 } from "../../components/InputCheck2";
 import { SkillTable } from "../../components/SkillTableBuild";
 import { useNavigate } from "react-router-dom";
@@ -32,6 +35,7 @@ export const DashboardPage = () => {
   const navigate = useNavigate();
 
   const filterStore = useSelector((state: ReduxStore) => state.search);
+  const fullName = useSelector(searchFiltersNameSelector);
 
   useEffect(() => {
     dispatch(updateFilter({ filters: selectedInput }));
@@ -42,7 +46,6 @@ export const DashboardPage = () => {
     //TODO: magari aggiungere un controllo con una chiamata di healthcheck (da parlare con BE)
     if (!token) {
       //TODO: si attiva la modale
-      /** QUI LA MODALE */
 
       //TODO: spostare il navigate dentro il tasto conferma della modal
       navigate(PAGES.loginPage);
@@ -57,9 +60,9 @@ export const DashboardPage = () => {
   const allCitiesData = useApi(allCitiesMetadata);
   const allInstitutesData = useApi(allInstitutesMetadata);
   const allCoursessData = useApi(allCoursesMetadata);
-  //passare ad ognuno di questi inviare i filtri già selezionati,
+
   //TODO: forse non serve più, assicurarsene ed eventualmente eliminarlo.  --- dovrebbe funzionare tutto commentandolo, chiedere se effettivamente non serve quindi
-  // const [isOpen, setIsOpen] = useState(false);
+
   return (
     <Box mb={2}>
       <HeaderNavbar />
@@ -73,7 +76,6 @@ export const DashboardPage = () => {
       >
         <Box position="relative" width="100%" height="100%">
           <AddSkillsWindows data={allSkillslData?.data ?? []} />
-          {/** HO TENTATO DI SISTEMARE L'ERRORE MA è DENTRO */}
         </Box>
         <Box
           display="flex"
@@ -95,6 +97,7 @@ export const DashboardPage = () => {
                 id="outlined-basic"
                 label={t("pages.dashboard.search.name")}
                 variant="outlined"
+                value={fullName}
                 sx={{ width: 180 }}
                 onChange={(e) => {
                   setSelectedInput({

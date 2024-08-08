@@ -8,6 +8,7 @@ import { Dispatch, SetStateAction } from "react";
 import { CompiledFields } from "../../pages/DashboardPage/types";
 import { ButtonGroupAndOr } from "../ButtonGroupAndOr";
 import { Box } from "@mui/material";
+import { resetSkills } from "../../redux/skillsSlice";
 
 export const ButtonsContainer = ({
   setSelectedInput,
@@ -36,6 +37,7 @@ export const ButtonsContainer = ({
           variant="outlined"
           callback={() => {
             dispatch(resetFilters());
+            dispatch(resetSkills());
             //TODO : Check for correct typing
             setSelectedInput(init);
           }}

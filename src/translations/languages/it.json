@@ -86,6 +86,7 @@
           "goToEditMode": "Vai alla Edit Mode",
           "exitFromEditMode": "Esci dalla Edit Mode",
           "removeAll": "Rimuovi tutto",
+          "noSkillsFound": "Nessuna Skill Trovata",
           "notFound": {
             "hardSkills": "Nessuna Skill Trovata",
             "education": "Nessuna Istruzione Trovata",

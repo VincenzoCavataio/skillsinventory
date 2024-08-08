@@ -72,12 +72,15 @@ export const CertAdder = () => {
         width: "100%",
         overflowX: "auto",
         border: `solid 0.5px ${NEXTRE_ENG}`,
+        maxHeight: 400,
+        scroll: "auto",
       }}
       elevation={0}
     >
       <Table
         sx={{ minWidth: 650, tableLayout: "fixed" }}
-        aria-label="skills table"
+        stickyHeader
+        aria-label="sticky table"
       >
         <TableHead>
           <TableRow>

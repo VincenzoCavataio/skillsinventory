@@ -22,8 +22,11 @@ const skillsSlice = createSlice({
     deleteSkills: (state, action) => {
       state.skills = action.payload.skills;
     },
+    resetSkills: (state) => {
+      state.skills = [];
+    },
   },
 });
 
 export default skillsSlice.reducer;
-export const { insertSkills, deleteSkills } = skillsSlice.actions;
+export const { insertSkills, deleteSkills, resetSkills } = skillsSlice.actions;

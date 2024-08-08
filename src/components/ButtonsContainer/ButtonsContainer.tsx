@@ -13,9 +13,9 @@ import { resetSkills } from "../../redux/skillsSlice";
 export const ButtonsContainer = ({
   setSelectedInput,
 }: {
-  //TODO : Check for correct typing
   setSelectedInput: Dispatch<SetStateAction<CompiledFields>>;
 }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const init: CompiledFields = {
@@ -27,7 +27,7 @@ export const ButtonsContainer = ({
     institute: "",
     course: "",
   };
-  const { t } = useTranslation();
+
   return (
     <>
       <Box display={"flex"} flexDirection={"column"}>
@@ -38,7 +38,6 @@ export const ButtonsContainer = ({
           callback={() => {
             dispatch(resetFilters());
             dispatch(resetSkills());
-            //TODO : Check for correct typing
             setSelectedInput(init);
           }}
           icon={<CancelButton />}

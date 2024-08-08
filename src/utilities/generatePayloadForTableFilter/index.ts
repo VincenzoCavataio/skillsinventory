@@ -1,6 +1,4 @@
 import { CompiledFieldsWithID } from "../../pages/DashboardPage/types";
-//passare due parametri nuovi, paginationinfo e sortinginfo, facoltativi, nella parte di UI creare due action (una per sorting e una pagination)
-//poi ogni volta che dovrò utilizzare uno useApi per una chiamata della tabella va passata questa funzione al posto di fake payload
 
 export const generatePayloadForTableFilter = ({
   allSkillsFilter,
@@ -11,15 +9,13 @@ export const generatePayloadForTableFilter = ({
   sortingManagementFilter,
   andOrSelectorFilter,
 }: {
-  allSkillsFilter: string[] | undefined;
+  allSkillsFilter?: string[];
   allCertificationsID: number[];
-  filterStore:
-    | {
-        filters: Omit<CompiledFieldsWithID, "skill">;
-      }
-    | undefined;
-  paginationFilterNumber: number | undefined;
-  paginationFilterPage: number | undefined;
+  filterStore?: {
+    filters: Omit<CompiledFieldsWithID, "skill">;
+  };
+  paginationFilterNumber?: number;
+  paginationFilterPage?: number;
   sortingManagementFilter: string[];
   andOrSelectorFilter: string;
 }) => {

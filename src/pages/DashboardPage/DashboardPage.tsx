@@ -1,7 +1,7 @@
 import { Box, Container, TextField } from "@mui/material";
 import { HeaderNavbar } from "../../components/HeaderNavbar";
 import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   allCitiesMetadata,
@@ -27,33 +27,31 @@ import { useNavigate } from "react-router-dom";
 import { PAGES } from "../../constants";
 import { CompiledFieldsWithID } from "./types";
 import { ReduxStore } from "../../redux/types";
+import { paginationPageStart } from "../../redux/paginationSlice";
 
 export const DashboardPage = () => {
   const { t } = useTranslation();
   const [selectedInput, setSelectedInput] = useState<CompiledFieldsWithID>({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const token = useRef(localStorage.getItem("authToken"));
 
   const filterStore = useSelector((state: ReduxStore) => state.search);
   const fullName = useSelector(searchFiltersNameSelector);
 
   useEffect(() => {
-    dispatch(updateFilter({ filters: selectedInput }));
-  }, [dispatch, selectedInput]);
+    if (Object.keys(selectedInput).length) {
+      dispatch(paginationPageStart(1));
+      dispatch(updateFilter({ filters: selectedInput }));
+    }
+  }, [selectedInput, dispatch]);
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
-    //TODO: magari aggiungere un controllo con una chiamata di healthcheck (da parlare con BE)
     if (!token) {
-      //TODO: si attiva la modale
-
-      //TODO: spostare il navigate dentro il tasto conferma della modal
       navigate(PAGES.loginPage);
     }
-    //TODO: al posto di spararti verso login, magari appare una modalina che dice 'utente non loggato, clicca qui per effettuare login', al click del bottone, navigate verso loginPage
   }, [navigate]);
 
-  // TODO: aggiungere fallback, forse meglio dentro UseApi
   const allEducationalData = useApi(allEducationalMetadata(filterStore));
   const allEducationalLevelsData = useApi(allEducationalLevelslMetadata);
   const allSkillslData = useApi(allSkillslMetadata);
@@ -61,21 +59,21 @@ export const DashboardPage = () => {
   const allInstitutesData = useApi(allInstitutesMetadata);
   const allCoursessData = useApi(allCoursesMetadata);
 
-  //TODO: forse non serve più, assicurarsene ed eventualmente eliminarlo.  --- dovrebbe funzionare tutto commentandolo, chiedere se effettivamente non serve quindi
+  const handleInputChange = useCallback((key: string, value: unknown) => {
+    setSelectedInput((prev) => ({ ...prev, [key]: value }));
+  }, []);
 
   return (
     <Box mb={2}>
       <HeaderNavbar />
       <Container
         maxWidth="xl"
-        sx={{
-          ...style.container,
-          overflow: "hidden",
-          height: 210,
-        }}
+        sx={{ ...style.container, overflow: "hidden", height: 210 }}
       >
         <Box position="relative" width="100%" height="100%">
-          <AddSkillsWindows data={allSkillslData?.data ?? []} />
+          {allSkillslData?.data && (
+            <AddSkillsWindows data={allSkillslData.data} />
+          )}
         </Box>
         <Box
           display="flex"
@@ -99,12 +97,7 @@ export const DashboardPage = () => {
                 variant="outlined"
                 value={fullName}
                 sx={{ width: 180 }}
-                onChange={(e) => {
-                  setSelectedInput({
-                    ...selectedInput,
-                    fullName: e.target.value,
-                  });
-                }}
+                onChange={(e) => handleInputChange("fullName", e.target.value)}
               />
             </Box>
             <Box sx={{ mr: 0, mb: 2 }}>
@@ -112,7 +105,6 @@ export const DashboardPage = () => {
                 data={allEducationalData?.data}
                 label={t("pages.dashboard.search.certification")}
                 width={180}
-                //TODO: capire perché danno errori (forse tipi sbagliati?)
                 setSelectedInput={setSelectedInput}
                 selectedInput={selectedInput}
                 objKey="certification"
@@ -130,50 +122,50 @@ export const DashboardPage = () => {
             </Box>
           </Box>
           <Box
-            display={"flex"}
-            flexDirection={"row"}
-            justifyContent={"space-between"}
-            flexWrap={"nowrap"}
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            flexWrap="nowrap"
             maxWidth={600}
             mb={2}
             gap={2}
           >
-            <Box display={"flex"} flexDirection={"column"} sx={{ mr: 0 }}>
+            <Box display="flex" flexDirection="column" sx={{ mr: 0 }}>
               <InputSelect
                 selectedInput={selectedInput}
                 setSelectedInput={setSelectedInput}
                 data={allEducationalLevelsData?.data}
                 label={t("pages.dashboard.search.educationalLevels")}
-                objKey={"educationalLevel"}
+                objKey="educationalLevel"
                 width={180}
               />
             </Box>
-            <Box display={"flex"} flexDirection={"column"} sx={{ mr: 0 }}>
+            <Box display="flex" flexDirection="column" sx={{ mr: 0 }}>
               <InputSelect
                 selectedInput={selectedInput}
                 setSelectedInput={setSelectedInput}
                 data={allInstitutesData?.data}
                 label={t("pages.dashboard.search.institute")}
-                objKey={"institute"}
+                objKey="institute"
                 width={180}
               />
             </Box>
-            <Box display={"flex"} flexDirection={"column"} sx={{ mr: 0 }}>
+            <Box display="flex" flexDirection="column" sx={{ mr: 0 }}>
               <InputSelect
                 selectedInput={selectedInput}
                 setSelectedInput={setSelectedInput}
                 data={allCoursessData?.data}
                 label={t("pages.dashboard.search.course")}
-                objKey={"course"}
+                objKey="course"
                 width={180}
               />
             </Box>
           </Box>
           <Box
-            display={"flex"}
-            flexDirection={"row"}
-            justifyContent={"space-between"}
-            flexWrap={"nowrap"}
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            flexWrap="nowrap"
             width={520}
             mb={2}
             position="relative"
@@ -184,11 +176,7 @@ export const DashboardPage = () => {
       </Container>
       <Container
         maxWidth="xl"
-        sx={{
-          ...style.container,
-          p: "0 !important",
-          overflow: "hidden",
-        }}
+        sx={{ ...style.container, p: "0 !important", overflow: "hidden" }}
       >
         <SkillTable />
       </Container>

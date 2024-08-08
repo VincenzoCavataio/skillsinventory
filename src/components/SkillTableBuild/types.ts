@@ -41,7 +41,7 @@ export type TableDataData = {
   educationList: string;
   residenceInfo: string;
   certificationList: string;
-  isAnd: string;
+  isAnd?: string;
 };
 export type TableDataPagination = {
   count: number;

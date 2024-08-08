@@ -15,6 +15,9 @@ const paginationSlice = createSlice({
         state.itemNumber = action.payload.itemNumber;
       }
     },
+    paginationPageStart: (state, action) => {
+      state.pageStart = action.payload;
+    },
     itemPageFilters: (state, action) => {
       if (action.payload.pageStart != state.pageStart) {
         state.pageStart = action.payload.pageStart;
@@ -24,4 +27,5 @@ const paginationSlice = createSlice({
 });
 
 export default paginationSlice.reducer;
-export const { itemNumberFilter, itemPageFilters } = paginationSlice.actions;
+export const { itemNumberFilter, itemPageFilters, paginationPageStart } =
+  paginationSlice.actions;

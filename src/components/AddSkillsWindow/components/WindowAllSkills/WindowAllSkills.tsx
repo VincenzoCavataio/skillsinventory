@@ -1,7 +1,6 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { ResponseElementObjectData } from "../../../../pages/DashboardPage/types";
 import { NEXTRE_ENG } from "../../../../common/commonColors";
-import { IconPicker } from "../../../UserProfile/components/CheckboxList/utils/IconPicker";
 import { t } from "i18next";
 
 type Props = { data: ResponseElementObjectData[] } & {
@@ -9,6 +8,10 @@ type Props = { data: ResponseElementObjectData[] } & {
     React.SetStateAction<ResponseElementObjectData[]>
   >;
 };
+
+//TODO: Capire come fare per non farlo rallentare: (PROBABILEMENTE NON FARLI CARICARE OGNI VOLTA)
+//TODO: import { IconPicker } from "../../../UserProfile/components/CheckboxList/utils/IconPicker";
+//TODO: {/* <Box sx={{ mt: 0.75, ml: 1 }}>{IconPicker(e.name)}</Box> */}
 
 export const WindowAllSkills = ({ data, setMappedData }: Props) => {
   const onClick = (element: ResponseElementObjectData) => {
@@ -60,9 +63,6 @@ export const WindowAllSkills = ({ data, setMappedData }: Props) => {
           }}
           onClick={() => onClick(e)}
         >
-          <Box sx={{ transform: "scale(.9)", mt: 0.75, ml: 1 }}>
-            {IconPicker(e.name)}
-          </Box>
           <Typography variant="button">{e.name}</Typography>
         </li>
       ))}

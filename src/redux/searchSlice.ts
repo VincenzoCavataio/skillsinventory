@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { ReduxStore } from "./types";
 
 const initialState = {
   filters: {},
@@ -16,6 +17,17 @@ const searchSlice = createSlice({
     },
   },
 });
-
+export const searchFiltersSelector = createSelector(
+  (state: ReduxStore) => state,
+  (state: ReduxStore) => state.search?.filters.certification || []
+);
+export const searchFiltersCitySelector = createSelector(
+  (state: ReduxStore) => state,
+  (state: ReduxStore) => state.search?.filters.city || []
+);
+export const searchFiltersNameSelector = createSelector(
+  (state: ReduxStore) => state,
+  (state: ReduxStore) => state.search?.filters.fullName || ""
+);
 export default searchSlice.reducer;
 export const { updateFilter, resetFilters } = searchSlice.actions;

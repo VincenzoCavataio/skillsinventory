@@ -51,10 +51,12 @@ export const SkillAdder = () => {
         marginTop: 2,
         maxWidth: "100%",
         border: `solid 0.5px ${NEXTRE_ENG}`,
+        maxHeight: 400,
+        scroll: "auto",
       }}
       elevation={0}
     >
-      <Table sx={{ minWidth: 650 }} aria-label="skills table">
+      <Table sx={{ minWidth: 650 }} stickyHeader aria-label="sticky table">
         <TableHead>
           <TableRow>
             {skillHeadCells.map((headCell) => (
@@ -73,6 +75,7 @@ export const SkillAdder = () => {
             <TableCell />
           </TableRow>
         </TableHead>
+
         <SkillAdderBody />
       </Table>
     </TableContainer>

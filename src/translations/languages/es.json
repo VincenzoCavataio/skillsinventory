@@ -86,10 +86,11 @@
           "element": "elemento",
           "goToEditMode": "Ir al Modo de Edición",
           "exitFromEditMode": "Salir del Modo de Edición",
+          "noSkillsFound": "No se encontraron habilidades",
           "notFound": {
-            "hardSkills": "LOL",
-            "education": "LOLL",
-            "certificates": "LOL"
+            "hardSkills": "No se encontraron habilidades",
+            "education": "No se encontraron formaciones",
+            "certificates": "No se encontraron certificaciones"
           }
         },
         "informationDetails": {

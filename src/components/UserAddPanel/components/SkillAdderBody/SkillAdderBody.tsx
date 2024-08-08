@@ -6,6 +6,7 @@ import {
   checkboxSkillsSelector,
   removeSkill,
 } from "../../../../redux/checkboxSkillsSelection";
+import { CheckedSkill } from "../../../../redux/types";
 
 export const SkillAdderBody = () => {
   const checkedSkillsFromStore = useSelector(checkboxSkillsSelector);
@@ -15,14 +16,21 @@ export const SkillAdderBody = () => {
   const handleRemoveRow = (id: string, idTemp?: number) => {
     dispatch(removeSkill({ id, idTemp }));
   };
-
+  const mappingSection = (row: CheckedSkill) => {
+    if (row.name === "") {
+      return <ShortTextField defaultValue={row.name} />;
+    } else {
+      return <ShortTextField defaultValue={row.name} disabled />;
+    }
+  };
   return (
     <TableBody>
       {checkedSkillsFromStore.map((row) => (
         <TableRow key={row.idTemp !== undefined ? row.idTemp : row.id}>
           <TableCell align="center">
             <Tooltip title={row.name} placement="left" arrow>
-              <ShortTextField defaultValue={row.name} disabled />
+              {/* <ShortTextField defaultValue={row.name} disabled />  */}
+              {mappingSection(row)}
             </Tooltip>
           </TableCell>
           <TableCell align="center">

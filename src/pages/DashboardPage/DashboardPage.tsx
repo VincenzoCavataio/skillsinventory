@@ -17,7 +17,10 @@ import { InputChecks } from "../../components/InputCheck/InputCheck";
 import { InputSelect } from "../../components/InputSelect/InputSelect";
 import { ButtonsContainer } from "../../components/ButtonsContainer";
 import { AddSkillsWindows } from "../../components/AddSkillsWindow";
-import { updateFilter } from "../../redux/searchSlice";
+import {
+  searchFiltersNameSelector,
+  updateFilter,
+} from "../../redux/searchSlice";
 import { InputChecks2 } from "../../components/InputCheck2";
 import { SkillTable } from "../../components/SkillTableBuild";
 import { useNavigate } from "react-router-dom";
@@ -32,6 +35,7 @@ export const DashboardPage = () => {
   const navigate = useNavigate();
 
   const filterStore = useSelector((state: ReduxStore) => state.search);
+  const fullName = useSelector(searchFiltersNameSelector);
 
   useEffect(() => {
     dispatch(updateFilter({ filters: selectedInput }));
@@ -95,6 +99,7 @@ export const DashboardPage = () => {
                 id="outlined-basic"
                 label={t("pages.dashboard.search.name")}
                 variant="outlined"
+                value={fullName}
                 sx={{ width: 180 }}
                 onChange={(e) => {
                   setSelectedInput({

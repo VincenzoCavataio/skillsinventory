@@ -10,13 +10,13 @@ export const NavigationButton = ({ to }: Props) => {
   const navigate = useNavigate();
 
   const handleClick = (path: string) => {
-    navigate(`/${path ?? ""}`);
+    navigate(`${path ?? ""}`);
   };
   const { t } = useTranslation();
   return (
     <Button
       sx={{ ...commonStyle.colorWhite, width: 300 }}
-      color={"primary"}
+      color="primary"
       variant="contained"
       onClick={() => handleClick(to ?? "")}
     >

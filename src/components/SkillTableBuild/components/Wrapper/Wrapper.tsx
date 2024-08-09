@@ -101,9 +101,7 @@ export const Wrapper = () => {
       {(!rows || rows?.length === 0) && (
         <Box display="flex" justifyContent="center" flexDirection="column">
           <Box
-            align="center"
-            component="th"
-            scope="row"
+            component="span"
             display="flex"
             alignContent="center"
             alignItems="center"

@@ -9,7 +9,6 @@ const App = () => {
   return (
     <div className="App">
       <Routes>
-        <Route path="home" element={<h1>Home Page</h1>} />
         <Route path="" element={<DashboardPage />} />
         <Route path="user/:id" element={<UserPage />} />
         <Route path="login" element={<LoginPage />} />

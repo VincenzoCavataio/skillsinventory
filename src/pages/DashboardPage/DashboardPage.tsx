@@ -47,7 +47,7 @@ export const DashboardPage = () => {
   }, [selectedInput, dispatch]);
 
   useEffect(() => {
-    if (!token) {
+    if (!token?.current) {
       navigate(PAGES.loginPage);
     }
   }, [navigate]);

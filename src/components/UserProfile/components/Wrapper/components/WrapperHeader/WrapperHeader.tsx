@@ -79,7 +79,7 @@ export const WrapperHeader = ({
       editPersonalData2?.workPhoneNumber ?? personalData.workPhoneNumber ?? "",
     id: id,
   };
-  const payload3 = personalData !== undefined && {
+  const PAYLOAD_ADDRESS_API = personalData !== undefined && {
     address:
       editPersonalData3?.residence?.address ??
       personalData.residence?.address ??
@@ -106,49 +106,20 @@ export const WrapperHeader = ({
     longitude: personalData.residence?.longitude,
     id: id,
   };
-  let payload4 = {
+
+  let PAYLOAD_UPDATE_ADDRESS = {
     q: "",
     key: "",
   };
-  if (payload3) {
-    payload4 = {
-      q: encodeURI(
-        `${payload3.addressNumber},${payload3.address},${payload3.zipCode},${payload3.city},${payload3.province},${payload3.nation}`
-      ),
+
+  if (PAYLOAD_ADDRESS_API) {
+    const body = `${PAYLOAD_ADDRESS_API.addressNumber},${PAYLOAD_ADDRESS_API.address},${PAYLOAD_ADDRESS_API.zipCode},${PAYLOAD_ADDRESS_API.city},${PAYLOAD_ADDRESS_API.province},${PAYLOAD_ADDRESS_API.nation}`;
+    const isBodyAvailable = !(body.replace(",", "") === "");
+    PAYLOAD_UPDATE_ADDRESS = {
+      q: encodeURI(isBodyAvailable ? body : ""),
       key: "ef08b2920b9543b196b96a91587b1e61",
     };
   }
-  const handlePayload3 = () => {
-    if (payload3) {
-      payload3.address =
-        editPersonalData3?.residence?.address ??
-        personalData.residence?.address ??
-        "";
-      payload3.addressNumber =
-        editPersonalData3?.residence?.address_number ??
-        personalData.residence?.address_number ??
-        "";
-      payload3.city =
-        editPersonalData3?.residence?.city ??
-        personalData.residence?.city ??
-        "";
-      payload3.nation =
-        editPersonalData3?.residence?.nation ??
-        personalData.residence?.nation ??
-        "";
-      payload3.province =
-        editPersonalData3?.residence?.province ??
-        personalData.residence?.province ??
-        "";
-      payload3.zipCode =
-        editPersonalData3?.residence?.zip_code ??
-        personalData.residence?.zip_code ??
-        "";
-      payload3.latidude = personalData.residence?.latitude;
-      payload3.longitude = personalData.residence?.longitude;
-      payload3.id = id;
-    }
-  };
 
   if (!src) {
     src = FALLBACK_ICON;
@@ -170,20 +141,24 @@ export const WrapperHeader = ({
 
   //TODO: QUESTA E' UNA PORCHERIA. DA NON REPLICARE. SERVE SOLO PER PROVA
   useEffect(() => {
+    const isAddressAvailable = !(
+      PAYLOAD_UPDATE_ADDRESS.q.replace(",", "") === ""
+    );
     if (
       !isEditing &&
       editPersonalData3 &&
       Object.keys(editPersonalData3).length > 1 &&
-      payload3
+      PAYLOAD_ADDRESS_API
     ) {
-      callToLATLONG({
-        endpoint: "https://api.opencagedata.com/geocode/v1/json?",
-        payload: payload4,
-        method: "GET",
-      });
+      !isAddressAvailable &&
+        callToLATLONG({
+          endpoint: "https://api.opencagedata.com/geocode/v1/json?",
+          payload: PAYLOAD_UPDATE_ADDRESS,
+          method: "GET",
+        });
       callToAPI({
         endpoint: "/api/v1/user/updateUserResidence/",
-        payload: payload3,
+        payload: PAYLOAD_ADDRESS_API,
         method: "PUT",
       });
     }

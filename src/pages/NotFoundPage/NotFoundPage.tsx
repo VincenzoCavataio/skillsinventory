@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { NavigationButton } from "../../components/NavigationButton";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import { PAGES } from "../../constants";
 
 export const NotFoundPage = () => {
   const { t } = useTranslation();
@@ -44,7 +45,7 @@ export const NotFoundPage = () => {
         >
           {t("pages.notFound.description")}
         </Typography>
-        <NavigationButton />
+        <NavigationButton to={PAGES.dashboardPage} />
       </Box>
     </Box>
   );

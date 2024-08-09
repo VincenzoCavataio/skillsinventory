@@ -43,7 +43,7 @@ export const IconPicker = (skillName: string) => {
   return match ? (
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    <Box className="iconsStyle">{React.createElement(logos[match])}</Box>
+    <Box>{React.createElement(logos[match])}</Box>
   ) : (
     <></>
   );

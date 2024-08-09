@@ -1,56 +1,63 @@
+import React from "react";
 import { ResponseElementObjectData } from "../../../../pages/DashboardPage/types";
 import { t } from "i18next";
 import { SkillRow } from "../SkillRow";
+import { FixedSizeList as List } from "react-window";
+import { Box } from "@mui/material";
 
-type Props = { data: ResponseElementObjectData[] } & {
+const LIST_PROPS = { height: 150, itemSize: 30, width: 250 };
+
+type Props = {
+  data: ResponseElementObjectData[];
   setMappedData: React.Dispatch<
     React.SetStateAction<ResponseElementObjectData[]>
   >;
 };
 
-//TODO: Capire come fare per non farlo rallentare: (PROBABILEMENTE NON FARLI CARICARE OGNI VOLTA)
-//TODO: import { IconPicker } from "../../../UserProfile/components/CheckboxList/utils/IconPicker";
-//TODO: {/* <Box sx={{ mt: 0.75, ml: 1 }}>{IconPicker(e.name)}</Box> */}
-
 export const WindowAllSkills = ({ data, setMappedData }: Props) => {
-  const onClick = (element: ResponseElementObjectData) => {
-    if (data) {
-      setMappedData(
-        data.map((el: ResponseElementObjectData) =>
+  const onClick = React.useCallback(
+    (element: ResponseElementObjectData) => {
+      setMappedData((prevData) =>
+        prevData.map((el) =>
           el.name === element.name
             ? {
-                name: el.name,
-                id: el.id,
+                ...el,
                 selected: !el.selected,
-                selectedToBeDeleted: el.selectedToBeDeleted,
               }
             : el
         )
       );
-    }
-  };
+    },
+    [setMappedData]
+  );
+
+  if (!data?.length) {
+    return <SkillRow label={t("pages.userPage.info.noSkillsFound")} />;
+  }
+
   return (
-    <ul
-      className="custom-scrollbars"
-      style={{
-        background: "white",
-        width: 250,
-        overflowY: "auto",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "normal",
-        listStyle: "none",
-        paddingLeft: 0,
-        margin: 0,
-        height: "calc( 100% - 30px) ",
-      }}
+    <List
+      height={LIST_PROPS.height}
+      itemCount={data.length}
+      itemSize={LIST_PROPS.itemSize}
+      width={LIST_PROPS.width}
     >
-      {!data?.length && (
-        <SkillRow label={t("pages.userPage.info.noSkillsFound")} />
-      )}
-      {data?.map((e) => (
-        <SkillRow row={e} onClick={onClick} label={e.name} />
-      ))}
-    </ul>
+      {({ index, style }) => {
+        /** More style to let string be on same line */
+        style.whiteSpace = "nowrap";
+        style.width = "100%";
+
+        return (
+          <Box sx={style}>
+            <SkillRow
+              key={data[index].id}
+              row={data[index]}
+              onClick={() => onClick(data[index])}
+              label={data[index].name}
+            />
+          </Box>
+        );
+      }}
+    </List>
   );
 };

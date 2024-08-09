@@ -67,6 +67,29 @@
           "totalResults": "Elements Found"
         }
       },
+      "registerPage": {
+        "regFName": "First Name",
+        "regLName": "Last Name",
+        "regEmail": "Email",
+        "regSelOrg": "Select Organization",
+        "regPNumb": "Personal Phone Number",
+        "regWNumb": "Work Phone Number",
+        "regAddress": "Address",
+        "regAddressNumb": "House Number",
+        "regCity": "City",
+        "regProvince": "Province",
+        "regCreatePw": "Password",
+        "regRepeatPw": "Repeat Password",
+        "regBday": "Birth Date",
+        "regFEmplDate": "First Employement Date",
+        "regActEmplDate": "Actual Employement Date",
+        "regGender": "Gender",
+        "regZipCode": "Zip Code",
+        "regNation": "Nation",
+        "regDriverLic": "Driver license",
+        "regTitle": "Register User",
+        "regButton": "Register"
+      },
       "userPage": {
         "info": {
           "editInfo": "Edit registry",

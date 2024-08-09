@@ -67,6 +67,29 @@
           "totalResults": "Artículos encontrados"
         }
       },
+      "registerPage": {
+        "regFName": "Nombre",
+        "regLName": "Apellido",
+        "regEmail": "Correo Electrónico",
+        "regSelOrg": "Seleccionar Organización",
+        "regPNumb": "Número de Teléfono Personal",
+        "regWNumb": "Número de Teléfono de Trabajo",
+        "regAddress": "Dirección",
+        "regAddressNumb": "Número de Casa",
+        "regCity": "Ciudad",
+        "regProvince": "Provincia",
+        "regCreatePw": "Contraseña",
+        "regRepeatPw": "Repetir Contraseña",
+        "regBday": "Fecha de Nacimiento",
+        "regFEmplDate": "Fecha de Primer Empleo",
+        "regActEmplDate": "Fecha de Empleo Actual",
+        "regGender": "Género",
+        "regZipCode": "Código Postal",
+        "regNation": "Nación",
+        "regDriverLic": "Licencia de Conducir",
+        "regTitle": "Registrar Usuario",
+        "regButton": "Regístrate"
+      },
       "userPage": {
         "info": {
           "editInfo": "Editar registro",

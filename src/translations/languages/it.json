@@ -67,6 +67,29 @@
           "totalResults": "Elementi Trovati"
         }
       },
+      "registerPage": {
+        "regFName": "Nome",
+        "regLName": "Cognome",
+        "regEmail": "Indirizzo Email",
+        "regSelOrg": "Scegli Organizzazione",
+        "regPNumb": "Cellulare privato",
+        "regWNumb": "Cellulare Lavoro",
+        "regAddress": "Indirizzo",
+        "regAddressNumb": "Numero civico",
+        "regCity": "Città",
+        "regProvince": "Provincia",
+        "regCreatePw": "Password",
+        "regRepeatPw": "Ripeti Password",
+        "regBday": "Data di nascita",
+        "regFEmplDate": "Data di primo impiego",
+        "regActEmplDate": "Data di impiego attuale",
+        "regGender": "Sesso",
+        "regZipCode": "Codice Postale",
+        "regNation": "Stato",
+        "regDriverLic": "Patente",
+        "regTitle": "Registra Utente",
+        "regButton": "Registrati"
+      },
       "userPage": {
         "info": {
           "editInfo": "Modifica Anagrafica",

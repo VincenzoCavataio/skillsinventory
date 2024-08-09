@@ -6,6 +6,7 @@ import commonStyle from "../../common/commonStyle";
 
 type Props = { to?: string };
 
+/** Button to navigate to a specific page */
 export const NavigationButton = ({ to }: Props) => {
   const navigate = useNavigate();
 

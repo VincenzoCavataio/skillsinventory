@@ -1,1 +1,0 @@
-export { SliderToggles } from "./SliderToggles";

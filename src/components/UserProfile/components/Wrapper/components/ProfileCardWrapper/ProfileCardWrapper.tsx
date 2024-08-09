@@ -11,7 +11,7 @@ type NAME_AND_POSITION_TYPE = {
   gender: string;
 };
 
-export const Wrapper = () => {
+export const ProfileCardWrapper = () => {
   const userData =
     useSelector((state: ReduxStore) => state.user?.user) ?? undefined;
   const isHidden =

@@ -1,5 +1,13 @@
 import { Button } from "@mui/material";
-import { commonColors } from "../../common/commonColors";
+
+type Props = {
+  label: string;
+  callback: VoidFunction;
+  color: "primary" | "secondary" | "error" | "info" | "warning" | "success";
+  icon: JSX.Element;
+  variant?: "contained" | "outlined" | "text";
+  size?: "small" | "medium" | "large";
+};
 
 export const CustomButton = ({
   label,
@@ -7,20 +15,14 @@ export const CustomButton = ({
   color = "primary",
   icon,
   variant = "contained",
-}: {
-  label: string;
-  callback: VoidFunction;
-  color: "primary" | "secondary" | "error" | "info" | "warning" | "success";
-  icon: JSX.Element;
-  variant?: "contained" | "outlined" | "text";
-}) => {
+  size = "medium",
+}: Props) => {
   return (
     <Button
       color={color}
+      size={size}
       sx={{
-        color: variant !== "outlined" ? "white" : commonColors.primary,
         height: "100%",
-
         background: variant === "outlined" ? "white" : undefined,
       }}
       variant={variant}

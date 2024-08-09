@@ -1,10 +1,11 @@
 import { ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { NEXTRE_ENG, commonColors } from "../../common/commonColors";
+import { NEXTRE_ENG } from "../../common/commonColors";
 import { useState } from "react";
 import { updateAndOr } from "../../redux/andOrSlice";
 import { useDispatch } from "react-redux";
 
+/** Component for the button group of the AND/OR */
 export const ButtonGroupAndOr = () => {
   const [value, setValue] = useState("OR");
 

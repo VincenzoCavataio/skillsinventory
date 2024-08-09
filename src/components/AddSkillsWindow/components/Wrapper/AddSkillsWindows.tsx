@@ -10,7 +10,7 @@ type Props = {
   data: ResponseElementObjectData[];
 };
 
-export const Wrapper = ({ data }: Props) => {
+export const AddSkillsWindows = ({ data }: Props) => {
   const [mappedData, setMappedData] = useState<ResponseElementObjectData[]>([]);
   const [selectedElements, setSelectedElements] = useState<number[]>([]);
 

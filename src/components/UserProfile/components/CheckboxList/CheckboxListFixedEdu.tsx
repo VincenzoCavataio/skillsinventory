@@ -29,7 +29,7 @@ type CheckboxListProps = {
   toggleEdit?: (accordion: AccordionLabel) => void;
 };
 
-/** Component to render skills Checkboxes */
+/** Component to render Educationals Checkboxes */
 export const CheckboxListFixedEdu: React.FC<CheckboxListProps> = ({
   data,
   label,

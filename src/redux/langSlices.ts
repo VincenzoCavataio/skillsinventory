@@ -12,9 +12,11 @@ const langSlice = createSlice({
     },
   },
 });
+
 export const langSelector = createSelector(
   (state: ReduxStore) => state,
   (state: ReduxStore) => state.lang
 );
+
 export default langSlice.reducer;
 export const { selectLang } = langSlice.actions;

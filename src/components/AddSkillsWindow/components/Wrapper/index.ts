@@ -1,1 +1,1 @@
-export { Wrapper } from "./Wrapper";
+export { AddSkillsWindows } from "./AddSkillsWindows";

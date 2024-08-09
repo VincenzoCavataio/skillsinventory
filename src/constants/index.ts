@@ -1,45 +1,25 @@
+enum ENV_TYPE {
+  LOCALHOST = "localhost",
+  DEV = "dev",
+  PROD = "prod",
+}
+
 const BASE_URL_LOCALHOST = import.meta.env.VITE_BASE_URL_LOCALHOST;
 const BASE_URL_DEV = import.meta.env.VITE_BASE_URL_DEV;
 const BASE_URL_PROD = import.meta.env.VITE_BASE_URL_PROD;
-const ENVIRONMENT = import.meta.env.VITE_ENVIRONMENT;
+const ENVIRONMENT: ENV_TYPE = import.meta.env.VITE_ENVIRONMENT;
 
-export const SWITCH_TYPE: Record<string, string> = {
-  from: "from",
-  to: "to",
-  equals: "equals",
-  between: "between",
-};
-
-const URL_MAPPER: Record<string, string> = {
+/** Mapping of ENV type for URL */
+const URL_MAPPER = {
   localhost: BASE_URL_LOCALHOST,
   dev: BASE_URL_DEV,
   prod: BASE_URL_PROD,
 };
 
+/** URL used to make API calls */
 export const URL = `${URL_MAPPER[ENVIRONMENT]}`;
 
-export const MOCK_USER_DATA: Record<string, Record<string, string>> = {
-  generic: {
-    fullName: "Joseph Colombo",
-    position: "Frontend Developer",
-  },
-  details: {
-    fullName: "Joseph Colombo",
-    email: "joseph.colombo.96@gmail.com",
-    firstEmploymentStartDate: "02-05-2016",
-    actualEmploymentStartDate: "04-04-2024",
-    privateNumber: "+39 3453048655",
-    workNumber: "+39 3453048655",
-  },
-};
-
-export const MOCK_USER_DATA_ADDRESS: string[] = [
-  "Via Giuseppe Giuliani, 1",
-  "00185",
-  "Milano",
-  "Italy",
-];
-
+/** Existing pages in the application */
 export const PAGES = {
   dashboardPage: "/",
   userPage: "/user",
@@ -47,26 +27,31 @@ export const PAGES = {
   notFoundPage: "/notFound",
 };
 
+/** Path to male avatar */
 export const MALE_AVATAR = "/not-found-male-avatar.png";
+
+/** Path to female avatar */
 export const FEMALE_AVATAR = "/not-found-female-avatar.png";
 
 export const HIDDEN = "HIDDEN";
 export type HIDDEN_PROP = "HIDDEN";
 
+/** Constant for possible languages */
 export const LANGUAGES = [
   { label: "IT", value: "it" },
   { label: "EN", value: "gb" },
   { label: "ES", value: "es" },
 ];
 
-export const FLAG_URLS: { [key: string]: string } = {
+/** URLs for flags images */
+export const FLAG_URLS = {
   it: "https://flagsapi.com/IT/flat/64.png",
   gb: "https://flagsapi.com/GB/flat/64.png",
   es: "https://flagsapi.com/ES/flat/64.png",
 };
 
 /** Mapping for wrong name icons. To be fixed when data will be cleaned up */
-export const SPECIFIC_SKILL_NAME_MAPPING: Record<string, string> = {
+export const SPECIFIC_SKILL_NAME_MAPPING = {
   "c++": "cplusplus",
   sql: "database",
   "ms-sql": "database",

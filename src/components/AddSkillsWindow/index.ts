@@ -1,1 +1,1 @@
-export { Wrapper as AddSkillsWindows } from "./components/Wrapper";
+export { AddSkillsWindows } from "./components/Wrapper";

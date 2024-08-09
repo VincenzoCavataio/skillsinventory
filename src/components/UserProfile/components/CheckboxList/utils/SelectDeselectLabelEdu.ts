@@ -6,7 +6,7 @@ type Props = {
   checkedEdusStore: CheckedEdu[];
 };
 
-/** It renders the select/deselect elements of skill list selection */
+/** It renders the select/deselect elements of educations list selection */
 export const SelectDeselectLabelEdu = ({
   allChecked,
   checkedEdusStore,

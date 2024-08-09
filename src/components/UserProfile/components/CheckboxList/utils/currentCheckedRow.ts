@@ -1,3 +1,4 @@
+/** Utils to split the string given from BE and return an object with all the skill informations*/
 export const currentCheckedSkillRow = (skill: string) => {
   const SKILL_NAME = skill.split(" Liv ")[0];
   const SKILL_LEVEL = skill.split(" Liv ")[1].split(" exp ")[0].trim();
@@ -15,6 +16,8 @@ export const currentCheckedSkillRow = (skill: string) => {
 
   return CHECKED_SKILL;
 };
+
+/** Utils to split the string given from BE and return an object with all the Educations informations*/
 export const currentCheckedEduRow = (edu: string) => {
   const EDU_COURSE = edu.split(" cour ")[1].split(" inst ")[0].trim();
   const EDU_LEVEL = edu.split(" lev ")[1].split(" cour ")[0].trim();
@@ -34,6 +37,8 @@ export const currentCheckedEduRow = (edu: string) => {
 
   return CHECKED_EDU;
 };
+
+/** Utils to split the string given from BE and return an object with all the Certifications informations*/
 export const currentCheckedCertRow = (cert: string) => {
   const CERT_NAME = cert.split(" name ")[1].split(" isICT ")[0].trim();
   const CERT_ISSUER = cert.split(" issuer ")[1].split(" init_date ")[0].trim();

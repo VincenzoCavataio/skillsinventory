@@ -8,9 +8,11 @@ import commonStyle from "../../common/commonStyle";
 import { useTranslation } from "react-i18next";
 import { LanguageSelect } from "../LanguageSelect";
 
+/** Top navigation bar */
 export const HeaderNavbar = () => {
   const { t } = useTranslation();
   const LOGO_SIZE = 32;
+
   return (
     <AppBar position="relative" sx={{ boxShadow: "none" }}>
       <Toolbar sx={commonStyle.spaceBetween}>

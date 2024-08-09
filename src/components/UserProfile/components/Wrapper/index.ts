@@ -1,1 +1,1 @@
-export { Wrapper } from "./components/Wrapper";
+export { ProfileCardWrapper } from "./components/ProfileCardWrapper";

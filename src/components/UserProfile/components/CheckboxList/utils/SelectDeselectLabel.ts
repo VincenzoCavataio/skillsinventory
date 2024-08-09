@@ -12,6 +12,7 @@ export const SelectDeselectLabel = ({
   checkedSkillsStore,
 }: Props) => {
   const { t } = useTranslation();
+
   return allChecked
     ? `${t(`pages.userPage.info.deselect`)} ${checkedSkillsStore?.length} ${
         checkedSkillsStore?.length > 1

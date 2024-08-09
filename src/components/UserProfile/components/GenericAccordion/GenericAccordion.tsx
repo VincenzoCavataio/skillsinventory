@@ -9,8 +9,11 @@ import { CheckboxListFixedEdu } from "../CheckboxList/CheckboxListFixedEdu";
 import { CheckboxListFixedCert } from "../CheckboxList/CheckboxListFixedCert";
 import SearchOffIcon from "@mui/icons-material/SearchOff";
 
+/** Generic Accordion used to wrap elements in profile page */
 export const GenericAccordion = ({ action, label, state, data }: Props) => {
+  const { t } = useTranslation();
   const isEdit = state[label];
+
   const toggleEdit = (accordion: AccordionLabel) => {
     action((prevState) => ({
       ...prevState,
@@ -45,7 +48,6 @@ export const GenericAccordion = ({ action, label, state, data }: Props) => {
       />
     ),
   };
-  const { t } = useTranslation();
 
   return (
     <Accordion disableGutters sx={{ boxShadow: "none" }}>

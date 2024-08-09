@@ -1,1 +1,1 @@
-export { Wrapper as UserInfoMap } from "./components/Wrapper";
+export { UserInfoMap } from "./components/UserInfoMap";

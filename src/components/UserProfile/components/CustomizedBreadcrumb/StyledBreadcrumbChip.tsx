@@ -2,7 +2,7 @@ import { emphasize, styled } from "@mui/material/styles";
 import Chip from "@mui/material/Chip";
 import { commonColors } from "../../../../common/commonColors";
 
-export const StyledBreadcrumb = styled(Chip)(() => {
+export const StyledBreadcrumbChip = styled(Chip)(() => {
   const { title, white } = commonColors;
   return {
     backgroundColor: white,

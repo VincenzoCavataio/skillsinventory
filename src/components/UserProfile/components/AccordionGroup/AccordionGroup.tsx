@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { ReduxStore, UserSkill } from "../../../../redux/types";
 import { State, StateDelete } from "../GenericAccordion/Types";
 
+/** Wrapper for all the accordions in profile page */
 export const AccordionGroup = () => {
   const userData =
     useSelector((state: ReduxStore) => state.user?.user) ?? undefined;

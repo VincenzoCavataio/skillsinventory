@@ -10,6 +10,7 @@ import { ButtonGroupAndOr } from "../ButtonGroupAndOr";
 import { Box } from "@mui/material";
 import { resetSkills } from "../../redux/skillsSlice";
 
+/** Wrapper for 'reset', and/or and search buttons*/
 export const ButtonsContainer = ({
   setSelectedInput,
 }: {

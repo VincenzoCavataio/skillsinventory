@@ -31,6 +31,8 @@ import { paginationPageStart } from "../../redux/paginationSlice";
 
 export const DashboardPage = () => {
   const { t } = useTranslation();
+  const NameInputRef = useRef<HTMLInputElement>(null);
+
   const [selectedInput, setSelectedInput] = useState<CompiledFieldsWithID>({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -51,6 +53,30 @@ export const DashboardPage = () => {
       navigate(PAGES.loginPage);
     }
   }, [navigate]);
+
+  // TODO: Da capire se tenerlo oppure no. Con CTRL + F si mette in focus l'input 'Nome e Cognome'
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "F3" || (e.ctrlKey && e.key === "f")) {
+        if (
+          NameInputRef.current &&
+          NameInputRef.current !== document.activeElement
+        ) {
+          e.preventDefault();
+          NameInputRef.current.focus();
+        } else {
+          e.preventDefault();
+          return true;
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   const allEducationalData = useApi(allEducationalMetadata(filterStore));
   const allEducationalLevelsData = useApi(allEducationalLevelslMetadata);
@@ -103,6 +129,7 @@ export const DashboardPage = () => {
             <Box sx={{ m: 0, mt: 0 }}>
               <TextField
                 id="outlined-basic"
+                inputRef={NameInputRef}
                 label={t("pages.dashboard.search.name")}
                 variant="outlined"
                 value={fullName}

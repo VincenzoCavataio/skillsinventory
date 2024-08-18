@@ -102,7 +102,7 @@ export const WrapperHeader = ({
       editPersonalData3?.residence?.zip_code ??
       personalData.residence?.zip_code ??
       "",
-    latidude: personalData.residence?.latitude,
+    latitude: personalData.residence?.latitude,
     longitude: personalData.residence?.longitude,
     id: id,
   };

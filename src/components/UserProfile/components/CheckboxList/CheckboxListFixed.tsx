@@ -119,7 +119,9 @@ export const CheckboxListFixed: React.FC<CheckboxListProps> = ({
         const ROW_TO_BE_SHOWN = (
           <Box display="flex">
             <Box alignContent="center" px={1}>
-              {IconPicker(skill.name)}
+              <Box style={{ transform: "scale(1.5)" }} mr={1}>
+                {IconPicker(skill.name)}
+              </Box>
             </Box>
             <Box display="flex" flexDirection="column">
               <Typography ml={1}>{name}</Typography>

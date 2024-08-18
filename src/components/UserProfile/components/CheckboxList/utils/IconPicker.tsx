@@ -2,8 +2,15 @@ import React from "react";
 import * as logos from "devicons-react";
 import { Box } from "@mui/material";
 import { SPECIFIC_SKILL_NAME_MAPPING } from "../../../../../constants";
+import { Code } from "@mui/icons-material";
 
 type SKILL_NAME_MAPPING = string;
+
+const STYLE: React.CSSProperties = {
+  width: 20,
+  display: "flex",
+  justifyContent: "center",
+};
 
 /** Utility function to render the icon for a skill taken from the devicons-react library */
 export const IconPicker = (skillName: SKILL_NAME_MAPPING) => {
@@ -45,9 +52,17 @@ export const IconPicker = (skillName: SKILL_NAME_MAPPING) => {
   });
 
   /** Return the match between given string and the logos with 3 levels of priority and a fallback*/
-  const match = (fullMatch ?? partialMatch ?? startMatch) || "BashOriginal";
+  const match = fullMatch ?? partialMatch ?? startMatch;
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  return <Box>{React.createElement(logos[match])}</Box>;
+  if (match) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return <Box sx={STYLE}>{React.createElement(logos[match])}</Box>;
+  }
+
+  return (
+    <Box sx={STYLE}>
+      <Code fontSize="small" fillOpacity={".6"} />
+    </Box>
+  );
 };

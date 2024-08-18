@@ -18,7 +18,7 @@ import {
 import { CustomListItemButton } from "./CustomCheckbox";
 import { currentCheckedCertRow } from "./utils/currentCheckedRow";
 import { CheckedCert } from "../../../../redux/types";
-import { Close, Delete, Edit } from "@mui/icons-material";
+import { Close, Delete, Edit, WorkspacePremium } from "@mui/icons-material";
 import { AccordionLabel } from "../GenericAccordion/Types";
 import { SelectDeselectLabelCert } from "./utils/SelectDeselectLabelCert";
 
@@ -143,6 +143,7 @@ export const CheckboxListFixedCert: React.FC<CheckboxListProps> = ({
                   />
                 </ListItemIcon>
               )}
+              <WorkspacePremium sx={{ opacity: 0.8, mr: 1 }} />
               <ListItemText primary={ROW_TO_BE_SHOWN} />
             </CustomListItemButton>
             {isEdit && (

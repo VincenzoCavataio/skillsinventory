@@ -18,7 +18,7 @@ import {
 import { CustomListItemButton } from "./CustomCheckbox";
 import { currentCheckedEduRow } from "./utils/currentCheckedRow";
 import { CheckedEdu } from "../../../../redux/types";
-import { Close, Delete, Edit } from "@mui/icons-material";
+import { Close, Delete, Edit, School } from "@mui/icons-material";
 import { AccordionLabel } from "../GenericAccordion/Types";
 import { SelectDeselectLabelEdu } from "./utils/SelectDeselectLabelEdu";
 
@@ -93,7 +93,7 @@ export const CheckboxListFixedEdu: React.FC<CheckboxListProps> = ({
           placement="top"
           arrow
         >
-          <Box>
+          <Box display="flex" alignItems="center">
             {!isEdit ? (
               <Edit
                 onClick={() => toggleEdit && toggleEdit(label)}
@@ -145,6 +145,7 @@ export const CheckboxListFixedEdu: React.FC<CheckboxListProps> = ({
                   />
                 </ListItemIcon>
               )}
+              <School sx={{ opacity: 0.8, mr: 1 }} />
               <ListItemText primary={ROW_TO_BE_SHOWN} />
             </CustomListItemButton>
             {isEdit && (

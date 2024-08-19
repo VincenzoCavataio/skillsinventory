@@ -36,8 +36,14 @@ export const FEMALE_AVATAR = "/not-found-female-avatar.png";
 export const HIDDEN = "HIDDEN";
 export type HIDDEN_PROP = "HIDDEN";
 
+export type LANG_TYPE = "it" | "gb" | "es";
+export type LANG_TYPE_CAPS = "IT" | "EN" | "ES";
+
 /** Constant for possible languages */
-export const LANGUAGES = [
+export const LANGUAGES: {
+  label: LANG_TYPE_CAPS;
+  value: LANG_TYPE;
+}[] = [
   { label: "IT", value: "it" },
   { label: "EN", value: "gb" },
   { label: "ES", value: "es" },

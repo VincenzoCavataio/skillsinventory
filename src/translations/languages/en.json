@@ -87,6 +87,8 @@
           "goToEditMode": "Go to Edit Mode",
           "exitFromEditMode": "Exit from Edit Mode",
           "noSkillsFound": "No Skills Found",
+          "level": "Level",
+          "exp": "Experience",
           "notFound": {
             "hardSkills": "No Skills Found",
             "education": "No Educations Found",

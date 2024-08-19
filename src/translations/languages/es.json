@@ -86,6 +86,8 @@
           "element": "elemento",
           "goToEditMode": "Ir al Modo de Edición",
           "exitFromEditMode": "Salir del Modo de Edición",
+          "level": "Nivel",
+          "exp": "Experiencia",
           "noSkillsFound": "No se encontraron habilidades",
           "notFound": {
             "hardSkills": "No se encontraron habilidades",

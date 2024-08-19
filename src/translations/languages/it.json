@@ -87,6 +87,8 @@
           "exitFromEditMode": "Esci dalla Edit Mode",
           "removeAll": "Rimuovi tutto",
           "noSkillsFound": "Nessuna Skill Trovata",
+          "level": "Livello",
+          "exp": "Esperienza",
           "notFound": {
             "hardSkills": "Nessuna Skill Trovata",
             "education": "Nessuna Istruzione Trovata",

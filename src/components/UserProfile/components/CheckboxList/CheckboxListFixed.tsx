@@ -23,7 +23,6 @@ import { Close, Delete, Edit } from "@mui/icons-material";
 import { AccordionLabel } from "../GenericAccordion/Types";
 import { IconPicker } from "./utils/IconPicker";
 import { SelectDeselectLabel } from "./utils/SelectDeselectLabel";
-// import { SelectDeselectLabel } from "./utils/selectDeselectLabel";
 
 type CheckboxListProps = {
   data?: string[];
@@ -116,6 +115,7 @@ export const CheckboxListFixed: React.FC<CheckboxListProps> = ({
         const IDs = [...checkedSkillsStore.map((skill) => skill.id)];
         const isChecked = IDs.includes(skill.id);
         const { name, level, exp, note } = skill;
+
         const ROW_TO_BE_SHOWN = (
           <Box display="flex">
             <Box alignContent="center" px={1}>
@@ -126,12 +126,16 @@ export const CheckboxListFixed: React.FC<CheckboxListProps> = ({
             <Box display="flex" flexDirection="column">
               <Typography ml={1}>{name}</Typography>
               <Box display="flex" justifyContent="flex-start" ml={1}>
-                <Typography variant="caption">Level: {level}</Typography>
+                <Typography variant="caption">
+                  {t("pages.userPage.info.level")}: {level}
+                </Typography>
                 <Typography sx={{ mx: 1 }} variant="caption">
                   -
                 </Typography>
 
-                <Typography variant="caption">Exp: {exp}</Typography>
+                <Typography variant="caption">
+                  {t("pages.userPage.info.exp")}:{exp}
+                </Typography>
                 {note && (
                   <Tooltip
                     title={<Typography variant="overline">{note}</Typography>}

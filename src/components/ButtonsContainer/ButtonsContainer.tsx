@@ -57,9 +57,7 @@ export const ButtonsContainer = ({
           label={t("common.search")}
           color={"primary"}
           variant="outlined"
-          callback={() => {
-            // submit(true);
-          }}
+          callback={() => {}}
           icon={<SearchIcon />}
         />
       </Box>

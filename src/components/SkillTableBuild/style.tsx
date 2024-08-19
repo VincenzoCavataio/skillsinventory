@@ -5,8 +5,3 @@ export const tableHeaderStyle = {
   textAlign: "center",
   color: commonColors.white,
 };
-// export const tableHeaderStyle2 = {
-//   fontSize: 14,
-//   textAlign: "center",
-//   color: commonColors.white,
-// };

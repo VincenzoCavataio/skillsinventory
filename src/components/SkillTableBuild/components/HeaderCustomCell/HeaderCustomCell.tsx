@@ -105,11 +105,7 @@ export const HeaderCustomCell: React.FC<HeaderCustomCellProps> = ({
               >
                 <Box>{headCell.t}</Box>
                 <Box sx={{ display: "flex", flexDirection: "row" }}>
-                  <IconButton
-                    //bgColor="white"
-                    size="small"
-                    onClick={handleArrowDropUpClick}
-                  >
+                  <IconButton size="small" onClick={handleArrowDropUpClick}>
                     <ArrowDropUpIcon
                       sx={{
                         color: currentSortState?.colorUp ? "#006fb9" : "white",
@@ -148,11 +144,7 @@ export const HeaderCustomCell: React.FC<HeaderCustomCellProps> = ({
             >
               <Box>{headCell.t}</Box>
               <Box sx={{ display: "flex", flexDirection: "row" }}>
-                <IconButton
-                  //bgColor="white"
-                  size="small"
-                  onClick={handleArrowDropUpClick}
-                >
+                <IconButton size="small" onClick={handleArrowDropUpClick}>
                   <ArrowDropUpIcon
                     sx={{
                       color: currentSortState?.colorUp ? "#006fb9" : "white",

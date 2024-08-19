@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Select, MenuItem, Typography, Box } from "@mui/material";
 import { FLAG_URLS, LANG_TYPE, LANGUAGES } from "../../constants";
 import { SelectChangeEvent } from "@mui/material/Select";
+import { ArrowDropDownIcon } from "@mui/x-date-pickers";
 
 const FLAG_SIZE = { select: 32, input: 24 };
 
@@ -32,6 +33,9 @@ export const LanguageSelect = () => {
         "& .MuiOutlinedInput-notchedOutline": { border: "none" },
       }}
       onChange={handleLanguageChange}
+      IconComponent={(props) => (
+        <ArrowDropDownIcon {...props} sx={{ fill: "white" }} />
+      )}
       renderValue={(selected) => (
         <Box
           sx={{

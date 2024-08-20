@@ -49,7 +49,7 @@ export const TableHeaderBuild = () => {
         )}`;
 
   return (
-    <TableHead sx={{ background: commonColors.accentColor }}>
+    <TableHead sx={{ background: commonColors.gray }}>
       <TableRow>
         {HeadCellsData().map((headCell) => (
           <HeaderCustomCell
@@ -83,7 +83,7 @@ export const TableHeaderBuild = () => {
                 boxShadow: "none",
               }}
               onClick={handleDeselectAll}
-              variant="contained"
+              variant="outlined"
             >
               <Download />
             </Button>

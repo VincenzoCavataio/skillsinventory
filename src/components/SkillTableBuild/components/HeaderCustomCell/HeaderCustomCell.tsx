@@ -99,8 +99,9 @@ export const HeaderCustomCell: React.FC<HeaderCustomCellProps> = ({
               <Box
                 sx={{
                   display: "flex",
-                  flexDirection: "column",
+                  flexDirection: "row",
                   alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 <Box>{headCell.t}</Box>

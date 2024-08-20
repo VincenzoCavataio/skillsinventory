@@ -1,1 +1,1 @@
-export { Wrapper as ProfileInfo } from "./components/Wrapper";
+export { ProfileInfo } from "./components/ProfileInfo";

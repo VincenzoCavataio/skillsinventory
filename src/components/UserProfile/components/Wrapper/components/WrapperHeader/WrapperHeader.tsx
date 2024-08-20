@@ -64,8 +64,11 @@ export const WrapperHeader = ({
       editPersonalData2?.actualEmploymentDate ??
       personalData.actualEmploymentDate ??
       null,
-    driverLicense: false,
-
+    driverLicense: !!(
+      editPersonalData2?.driver_license ??
+      personalData.driver_license ??
+      null
+    ),
     firstEmployementDate:
       editPersonalData2?.firstEmploymentDate ??
       personalData?.firstEmploymentDate ??

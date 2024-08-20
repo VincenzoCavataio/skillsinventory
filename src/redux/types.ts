@@ -51,6 +51,13 @@ export type CheckedCert = {
 export type CheckedSkills = { checkedSkills: CheckedSkill[] };
 export type CheckedEdus = { checkedEdus: CheckedEdu[] };
 export type CheckedCerts = { checkedCerts: CheckedCert[] };
+export type LoginErrorData = {
+  error: {
+    value?: string;
+    label?: string;
+    isError?: boolean;
+  };
+};
 
 export type ReduxStore = {
   filters?: Filters;
@@ -67,6 +74,7 @@ export type ReduxStore = {
   checkedSkills: CheckedSkills;
   checkedEdus: CheckedEdus;
   checkedCerts: CheckedCerts;
+  loginStatus: LoginErrorData;
 };
 
 export type RowsManagement = {

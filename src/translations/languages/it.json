@@ -96,6 +96,8 @@
           }
         },
         "informationDetails": {
+          "0": "No",
+          "1": "Si",
           "yes": "Si",
           "no": "No",
           "male": "Maschio",

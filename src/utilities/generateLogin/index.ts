@@ -1,6 +1,9 @@
 import { Dispatch } from "react";
 import { URL } from "../../constants";
 import { t } from "i18next";
+import { setLoginError } from "../../redux/loginStatus";
+import { AnyAction } from "@reduxjs/toolkit";
+
 const ENDPOINT = `${URL}/api/v1/user/login`;
 const ENDPOINT_REFRESHTOKEN = `${URL}/api/v1/user/refreshToken`;
 
@@ -8,7 +11,8 @@ export async function login(
   email: string,
   password: string,
   setToken: Dispatch<string>,
-  setLoading: Dispatch<boolean>
+  setLoading: Dispatch<boolean>,
+  dispatch: Dispatch<AnyAction>
 ) {
   const loginData = { email, password };
 
@@ -32,9 +36,20 @@ export async function login(
     setToken(token);
 
     setLoading(false);
+    dispatch(setLoginError({ value: null, label: null, isError: false }));
   } catch (error) {
-    alert(t("common.loginFail"));
-    setLoading(false);
+    if (error instanceof Error) {
+      dispatch(
+        setLoginError({
+          value: error.message,
+          label: t("common.loginFail"),
+          isError: true,
+        })
+      );
+      setLoading(false);
+    } else {
+      console.error(error);
+    }
   }
 }
 
@@ -42,35 +57,6 @@ export async function login(
 //TODO: Endpoint per refreshToken: http://dev.skillsinventory.api.nextre.org/api/v1/user/refreshToken
 //TODO: Chiamata sarà di tipo post, con body: {refreshToken : $valore}
 
-// import { AxiosResponse } from "axios";
-// export const refreshAccessToken: (
-//   callback: Promise<AxiosResponse<unknown, unknown> | undefined>
-// ) => Promise<void> = async (callback) => {
-//   const refreshTokenFromStorage = localStorage.getItem("refreshToken");
-//   if (!refreshTokenFromStorage) throw new Error("Nessun refresh token trovato");
-
-//   try {
-//     const response = await fetch(ENDPOINT_REFRESHTOKEN, {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify({ refreshToken: refreshTokenFromStorage }),
-//     });
-
-//     if (!response.ok) throw new Error("Errore durante il refresh del token");
-
-//     const { token, refreshToken, role, id } = await response.json();
-//     localStorage.setItem("authToken", token);
-//     localStorage.setItem("refreshToken", refreshToken);
-//     localStorage.setItem("role", role);
-//     localStorage.setItem("id", id);
-
-//     // @ts-expect-error: Unreachable code error
-//     callback && callback();
-//   } catch (error) {
-//     console.error("Errore durante il refresh del token:", error);
-//     throw error;
-//   }
-// };
 export const refreshAccessToken = async (): Promise<void> => {
   const refreshTokenFromStorage = localStorage.getItem("refreshToken");
   if (!refreshTokenFromStorage) throw new Error("Nessun refresh token trovato");
@@ -99,23 +85,7 @@ export const refreshAccessToken = async (): Promise<void> => {
     throw error; // Rilancia l'errore per gestirlo a livelli superiori
   }
 };
-// export const setupTokenInterceptor = () => {
-//   // Interceptor di fetch per controllare la scadenza del token prima di ogni richiesta
-//   fetch.interceptors.request.use(
-//     async (config) => {
-//       const tokenExpirationTime = localStorage.getItem("tokenExpirationTime");
-//       // Controlla se il token è scaduto
-//       if (tokenExpirationTime && new Date().getTime() > parseInt(tokenExpirationTime)) {
-//         await refreshAccessToken(); // Rinfresca il token se è scaduto
-//         config.headers["Authorization"] = `Bearer ${localStorage.getItem("authToken")}`;
-//       }
-//       return config; // Ritorna la configurazione modificata della richiesta
-//     },
-//     (error) => {
-//       return Promise.reject(error); // Rifiuta la promessa in caso di errore
-//     }
-//   );
-// };
+
 export const fetchWithInterceptor = async (
   input: RequestInfo,
   init?: RequestInit

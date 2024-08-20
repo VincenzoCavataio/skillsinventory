@@ -11,6 +11,7 @@ import editProfileSlice from "./editProfileSlice";
 import checkboxSkillsSelection from "./checkboxSkillsSelection";
 import checkboxEdusSelection from "./checkboxEdusSelection";
 import checkboxCertsSelection from "./checkboxCertsSelection";
+import loginStatus from "./loginStatus";
 
 export const store = configureStore({
   reducer: {
@@ -26,5 +27,6 @@ export const store = configureStore({
     checkedSkills: checkboxSkillsSelection,
     checkedEdus: checkboxEdusSelection,
     checkedCerts: checkboxCertsSelection,
+    loginStatus: loginStatus,
   },
 });

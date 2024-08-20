@@ -13,9 +13,15 @@ import { useNavigate } from "react-router-dom";
 import { PAGES } from "../../constants";
 import { login } from "../../utilities/generateLogin";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { loginStatusSelector } from "../../redux/loginStatus";
+import { LoginErrorAlert } from "./LoginErrorAlert";
 
 export const LoginPage = () => {
+  const LoginErrorSelector = useSelector(loginStatusSelector);
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
   //TODO: se fabrizio conferma il formato 'email' nella sezione username possiamo abilitare anche il controllo sulla forma
   const [credentials, setCredentials] = useState({
     email: { value: "", error: false },
@@ -34,9 +40,12 @@ export const LoginPage = () => {
       credentials.email.value,
       credentials.password.value,
       setToken,
-      setLoading
+      setLoading,
+      dispatch
     );
   };
+
+  //TODO: Capire perchè va solo al primo click su 'entra'
   useEffect(() => {
     //TODO: non va bene, se il token esiste ma è scaduto la logica non funziona
     //TODO: 2 possibili strade: 1. fare una chiamata di healtcheck (se 200 ok, se 50X redirect verso login); 2. spostare la logica da localStorage a sessionStorage
@@ -134,6 +143,9 @@ export const LoginPage = () => {
           </Button>
         </Box>
       </Box>
+      {LoginErrorSelector?.error.isError && (
+        <LoginErrorAlert error={LoginErrorSelector?.error} />
+      )}
     </Box>
   );
 };

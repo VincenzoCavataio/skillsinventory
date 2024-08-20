@@ -5,7 +5,7 @@ import { EduAdder } from "../EduAdder";
 import { CertAdder } from "../CertAdder";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useTranslation } from "react-i18next";
-import { NEXTRE_ENG } from "../../../../common/commonColors";
+import { PRIMARY_COLOR } from "../../../../common/commonColors";
 import { useDispatch, useSelector } from "react-redux";
 import { CheckedCert, CheckedEdu, CheckedSkill } from "../../../../redux/types";
 
@@ -145,7 +145,7 @@ export const Wrapper = () => {
           sx={{
             width: "100%",
             marginBottom: 3,
-            backgroundColor: NEXTRE_ENG,
+            backgroundColor: PRIMARY_COLOR,
             color: "white",
             boxShadow: "none",
           }}

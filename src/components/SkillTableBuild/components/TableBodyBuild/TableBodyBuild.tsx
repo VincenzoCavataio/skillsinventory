@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ReduxStore } from "../../../../redux/types";
 import { checkboxMarker } from "../../../../redux/checkboxSlice";
 import { TableDataData } from "../../types";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   rows?: TableDataData[];
@@ -11,6 +12,7 @@ type Props = {
 
 export const TableBodyBuild: React.FC<Props> = ({ rows }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const skillsFilterStore = useSelector((state: ReduxStore) => state.skills);
   const paginationFilterStore = useSelector(
@@ -49,7 +51,7 @@ export const TableBodyBuild: React.FC<Props> = ({ rows }) => {
             <TableCell align="center" component="th" scope="row">
               <Chip
                 label={row.userId}
-                onClick={() => window.open(`${userPage}/${row.userId}`)}
+                onClick={() => navigate(`${userPage}/${row.userId}`)}
               />
             </TableCell>
             <TableCell align="center">{row.lastName}</TableCell>

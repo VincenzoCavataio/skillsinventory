@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { SettingsScheduler } from "../SettingsScheduler";
-import { NEXTRE_ENG } from "../../../../common/commonColors";
+import { PRIMARY_COLOR } from "../../../../common/commonColors";
 type GenericSchedulerProps = {
   org: string;
 };
@@ -15,7 +15,7 @@ export const GenericScheduler: React.FC<GenericSchedulerProps> = ({ org }) => {
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        border: `${NEXTRE_ENG} 2px solid`,
+        border: `${PRIMARY_COLOR} 2px solid`,
         pt: 1.5,
         pb: 1.5,
         minWidth: "350px",

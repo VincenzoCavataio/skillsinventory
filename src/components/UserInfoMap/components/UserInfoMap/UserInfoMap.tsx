@@ -11,7 +11,7 @@ import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import { GeoCenter } from "../../types";
 import "leaflet/dist/leaflet.css";
 import { ArrowDropDownIcon } from "@mui/x-date-pickers";
-import { NEXTRE_ENG } from "../../../../common/commonColors";
+import { PRIMARY_COLOR } from "../../../../common/commonColors";
 import { useTranslation } from "react-i18next";
 import { LatLngExpression } from "leaflet";
 import { MAP_URL, ZOOM_LEVEL } from "../../constants";
@@ -51,7 +51,7 @@ export const UserInfoMap = () => {
   return (
     <Accordion sx={{ boxShadow: "none" }} disabled={!isEnabled}>
       <AccordionSummary
-        expandIcon={<ArrowDropDownIcon sx={{ color: NEXTRE_ENG }} />}
+        expandIcon={<ArrowDropDownIcon sx={{ color: PRIMARY_COLOR }} />}
       >
         <Typography>{t(`pages.userPage.informationDetails.map`)}</Typography>
       </AccordionSummary>

@@ -25,6 +25,7 @@ export const PAGES = {
   userPage: "/user",
   loginPage: "/login",
   notFoundPage: "/notFound",
+  signinPage: "/signin",
 };
 
 /** Path to male avatar */

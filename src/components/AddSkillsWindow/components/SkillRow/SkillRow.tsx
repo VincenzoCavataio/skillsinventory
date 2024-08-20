@@ -1,5 +1,5 @@
 import { Button, Typography } from "@mui/material";
-import { NEXTRE_ENG } from "../../../../common/commonColors";
+import { PRIMARY_COLOR } from "../../../../common/commonColors";
 import { ResponseElementObjectData } from "../../../../pages/DashboardPage/types";
 import { useSelector } from "react-redux";
 import { skillsSelector } from "../../../../redux/skillsSlice";
@@ -21,7 +21,7 @@ export const SkillRow = ({ label, onClick, row }: Props) => {
     .includes(row?.id);
 
   const notSelectedStyle = {
-    background: isSelected ? NEXTRE_ENG : "transparent",
+    background: isSelected ? PRIMARY_COLOR : "transparent",
     color: isSelected ? "white" : "black",
     cursor: isNotSkill ? "default" : "pointer",
     display: "flex",

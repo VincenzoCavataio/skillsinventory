@@ -8,17 +8,34 @@
       "error": "Error",
       "share": "Share",
       "back_home": "Back Home",
+      "back_login": "Back to Login",
       "and": "and",
       "search": "Search",
       "clear": "Reset",
       "login": "Login successful",
-      "loginFail": "Unexpected error during login. Retry."
+      "loginFail": "Unexpected error during login. Retry.",
+      "next": "Next",
+      "end": "Finish",
+      "back": "Back"
     },
     "pages": {
       "loginPage": {
         "emailAddress": "Email Address",
         "register": "SIGN IN",
         "loginButton": "LOGIN"
+      },
+      "signinPage": {
+        "steps": {
+          "credentials": "Credentials",
+          "registry": "Registry",
+          "informations": "Informations",
+          "finalize": "Finalize"
+        },
+        "step1": {
+          "email": "Email",
+          "password": "Password",
+          "confirmPassword": "Confirm Password"
+        }
       },
       "dashboard": {
         "buttonGroup": {

@@ -21,7 +21,7 @@ type Props = {
 /** A Dropdown component that allows the user to select a gender or a driver license status. */
 export const GenderAndDriverLicenseDropdown: FC<Props> = ({ title, data }) => {
   const { t } = useTranslation();
-  const [currentValue, setCurrentValue] = useState<unknown>(data ?? "");
+  const [currentValue, setCurrentValue] = useState<unknown>(data ?? null);
 
   const isActive = useSelector(
     (state: ReduxStore) => state.editManager.isActive
@@ -65,21 +65,24 @@ export const GenderAndDriverLicenseDropdown: FC<Props> = ({ title, data }) => {
           <EditAutocomplete
             disablePortal
             options={autocompleteOptions[title as TitleProps]}
-            renderOption={(props, option) => (
-              <Box component="li" {...props}>
-                {t(`pages.userPage.informationDetails.${option}`)}
-              </Box>
-            )}
+            renderOption={(props, option) => {
+              const { key, ...rest } = props;
+              return (
+                <Box component="li" key={key} {...rest}>
+                  {t(`pages.userPage.informationDetails.${option}`)}
+                </Box>
+              );
+            }}
             sx={{ width: 250 }}
             fullWidth
-            defaultValue={currentValue}
+            value={currentValue}
             onChange={(
               _event: SyntheticEvent<Element, Event>,
               value: unknown
             ) => handleAutocompleteChange(value)}
             renderInput={(params) => (
-              <EditTextField {...params}>
-                {data[title as TitleProps]}
+              <EditTextField key={title} {...params}>
+                {data && data[title as TitleProps]}
               </EditTextField>
             )}
             getOptionLabel={(option) => {

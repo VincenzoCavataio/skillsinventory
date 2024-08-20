@@ -8,17 +8,34 @@
       "error": "Error",
       "share": "Compartir",
       "back_home": "Volver a Inicio",
+      "back_login": "Volver a Login",
       "and": "y",
       "search": "Buscar",
       "clear": "Reset",
       "login": "Inicio de sesión exitoso",
-      "loginFail": "Error inesperado durante el inicio de sesión. Inténtelo de nuevo."
+      "loginFail": "Error inesperado durante el inicio de sesión. Inténtelo de nuevo.",
+      "next": "Adelante",
+      "end": "Fin",
+      "back": "volver"
     },
     "pages": {
       "loginPage": {
         "emailAddress": "Dirección de correo electrónico",
         "register": "REGISTRARSE",
         "loginButton": "ACCEDER"
+      },
+      "signinPage": {
+        "steps": {
+          "credentials": "Credenciales",
+          "registry": "Registro",
+          "informations": "Información",
+          "finalize": "Finalizar"
+        },
+        "step1": {
+          "email": "Email",
+          "password": "Password",
+          "confirmPassword": "Confirmar Password"
+        }
       },
       "dashboard": {
         "buttonGroup": {

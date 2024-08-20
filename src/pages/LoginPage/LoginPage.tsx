@@ -16,6 +16,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { loginStatusSelector } from "../../redux/loginStatus";
 import { LoginErrorAlert } from "./LoginErrorAlert";
+import { HeaderNavbar } from "../../components/HeaderNavbar";
 
 export const LoginPage = () => {
   const LoginErrorSelector = useSelector(loginStatusSelector);
@@ -60,92 +61,99 @@ export const LoginPage = () => {
     });
   };
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      height="100vh"
-    >
+    <Box>
+      <HeaderNavbar />
       <Box
-        width={400}
-        component="form"
-        ref={FORM}
-        onSubmit={onSubmit}
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          px: "3rem",
-          height: "100%",
-          background: "white",
-        }}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="calc(100vh - 65px)"
       >
-        <CardMedia component="img" image={logo} sx={{ mb: 8, width: "100%" }} />
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          id="email"
-          label={t("pages.loginPage.emailAddress")}
-          name="email"
-          autoComplete="email"
-          autoFocus
-          error={credentials.email.error}
-          onChange={onInputChange}
-          sx={{ mb: 2 }}
-        />
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          name="password"
-          onChange={onInputChange}
-          label="Password"
-          type="password"
-          id="password"
-          autoComplete="current-password"
-        />
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          width="100%"
-          textAlign="right"
+        <Box
+          width={400}
+          component="form"
+          ref={FORM}
+          onSubmit={onSubmit}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            px: "3rem",
+            height: "100%",
+            background: "white",
+          }}
         >
-          <Typography
-            component="span"
-            fontSize={15}
-            onClick={() => navigate(PAGES.dashboardPage)}
-            variant="button"
-            color={commonColors.accentColor}
-            mx={0.5}
-            sx={{ cursor: "pointer", textDecoration: "underline" }}
-          >
-            {t("pages.loginPage.register")}
-          </Typography>
-        </Typography>
-        <Box display="flex" justifyContent="center" width="100%">
-          <Button
-            type="submit"
+          <CardMedia
+            component="img"
+            image={logo}
+            sx={{ mb: 8, width: "100%" }}
+          />
+          <TextField
+            margin="normal"
+            required
             fullWidth
-            variant="contained"
-            disabled={
-              credentials.email.value === "" ||
-              credentials.password.value === ""
-            }
-            sx={{ mt: 3, mb: 2, maxWidth: 100, height: 50 }}
+            id="email"
+            label={t("pages.loginPage.emailAddress")}
+            name="email"
+            autoComplete="email"
+            autoFocus
+            error={credentials.email.error}
+            onChange={onInputChange}
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            onChange={onInputChange}
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+          />
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            width="100%"
+            textAlign="right"
           >
-            {isLoading ? (
-              <CircularProgress size={20} color="secondary" />
-            ) : (
-              t("pages.loginPage.loginButton")
-            )}
-          </Button>
+            <Typography
+              component="span"
+              fontSize={15}
+              onClick={() => navigate(PAGES.signinPage)}
+              variant="button"
+              color={commonColors.accentColor}
+              mx={0.5}
+              sx={{ cursor: "pointer", textDecoration: "underline" }}
+            >
+              {t("pages.loginPage.register")}
+            </Typography>
+          </Typography>
+          <Box display="flex" justifyContent="center" width="100%">
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              disabled={
+                credentials.email.value === "" ||
+                credentials.password.value === ""
+              }
+              sx={{ mt: 3, mb: 2, maxWidth: 100, height: 50 }}
+            >
+              {isLoading ? (
+                <CircularProgress size={20} color="secondary" />
+              ) : (
+                t("pages.loginPage.loginButton")
+              )}
+            </Button>
+          </Box>
         </Box>
+        {LoginErrorSelector?.error.isError && (
+          <LoginErrorAlert error={LoginErrorSelector?.error} />
+        )}
       </Box>
-      {LoginErrorSelector?.error.isError && (
-        <LoginErrorAlert error={LoginErrorSelector?.error} />
-      )}
     </Box>
   );
 };

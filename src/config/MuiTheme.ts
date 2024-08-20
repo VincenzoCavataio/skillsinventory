@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material";
-import { commonColors } from "../common/commonColors";
+import { ACCENT_COLOR, commonColors } from "../common/commonColors";
 
 const theme = createTheme(
   {
@@ -30,6 +30,9 @@ const theme = createTheme(
     palette: {
       primary: {
         main: commonColors.accentColor,
+        light: "#42a5f5",
+        dark: ACCENT_COLOR,
+        contrastText: "#fff",
       },
       secondary: {
         main: "#fff",

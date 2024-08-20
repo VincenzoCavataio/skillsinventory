@@ -9,7 +9,7 @@ import {
 import { SkillHeadCells } from "../../types";
 import { SkillAdderBody } from "../SkillAdderBody";
 import { useTranslation } from "react-i18next";
-import { NEXTRE_ENG } from "../../../../common/commonColors";
+import { PRIMARY_COLOR } from "../../../../common/commonColors";
 import { useSelector } from "react-redux";
 import { checkboxSkillsSelector } from "../../../../redux/checkboxSkillsSelection";
 
@@ -50,7 +50,7 @@ export const SkillAdder = () => {
       sx={{
         marginTop: 2,
         maxWidth: "100%",
-        border: `solid 0.5px ${NEXTRE_ENG}`,
+        border: `solid 0.5px ${PRIMARY_COLOR}`,
         maxHeight: 400,
         scroll: "auto",
       }}
@@ -62,7 +62,7 @@ export const SkillAdder = () => {
             {skillHeadCells.map((headCell) => (
               <TableCell
                 sx={{
-                  color: NEXTRE_ENG,
+                  color: PRIMARY_COLOR,
                   fontWeight: "550",
                   fontSize: 14,
                   width: headCell.numeric ? "50px" : undefined,

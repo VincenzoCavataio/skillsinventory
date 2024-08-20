@@ -6,7 +6,7 @@ import {
   TableRow,
   Tooltip,
 } from "@mui/material";
-import { NEXTRE_ENG, commonColors } from "../../../../common/commonColors";
+import { PRIMARY_COLOR, commonColors } from "../../../../common/commonColors";
 import { useDispatch, useSelector } from "react-redux";
 import { ReduxStore } from "../../../../redux/types";
 import { HeaderCustomCell } from "../HeaderCustomCell";
@@ -79,7 +79,7 @@ export const TableHeaderBuild = () => {
             <Button
               sx={{
                 backgroundColor: "white",
-                color: NEXTRE_ENG,
+                color: PRIMARY_COLOR,
                 boxShadow: "none",
               }}
               onClick={handleDeselectAll}

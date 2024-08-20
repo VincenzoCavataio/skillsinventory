@@ -8,17 +8,34 @@
       "error": "Errore",
       "share": "Condividi",
       "back_home": "Torna alla Home",
+      "back_login": "Torna alla Login",
       "and": "e",
       "search": "Cerca",
       "clear": "Reset",
       "login": "Login effettuato con successo",
-      "loginFail": "Errore durante il login. Riprova."
+      "loginFail": "Errore durante il login. Riprova.",
+      "next": "Avanti",
+      "end": "Fine",
+      "back": "Indietro"
     },
     "pages": {
       "loginPage": {
         "emailAddress": "Indirizzo Email",
         "register": "REGISTRATI",
         "loginButton": "ENTRA"
+      },
+      "signinPage": {
+        "steps": {
+          "credentials": "Credentziali",
+          "registry": "Anagrafica",
+          "informations": "Informazioni",
+          "finalize": "Finalizza"
+        },
+        "step1": {
+          "email": "Email",
+          "password": "Password",
+          "confirmPassword": "Conferma Password"
+        }
       },
       "dashboard": {
         "buttonGroup": {

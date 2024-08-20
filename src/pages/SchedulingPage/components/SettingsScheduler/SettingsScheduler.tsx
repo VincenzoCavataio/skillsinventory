@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
-import { NEXTRE_ENG } from "../../../../common/commonColors";
+import { PRIMARY_COLOR } from "../../../../common/commonColors";
 
 export const SettingsScheduler = () => {
   //   const [hour, setHour] = useState<number>(1);
@@ -207,7 +207,7 @@ export const SettingsScheduler = () => {
       <Button
         variant="contained"
         sx={{
-          backgroundColor: NEXTRE_ENG,
+          backgroundColor: PRIMARY_COLOR,
           boxShadow: "none",
           width: "30%",
           ml: "auto",

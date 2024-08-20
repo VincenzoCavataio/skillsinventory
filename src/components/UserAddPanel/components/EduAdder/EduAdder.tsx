@@ -10,7 +10,7 @@ import { EduHeadCells } from "../../types";
 
 import { EduAdderBody } from "../EduAdderBody";
 import { useTranslation } from "react-i18next";
-import { NEXTRE_ENG } from "../../../../common/commonColors";
+import { PRIMARY_COLOR } from "../../../../common/commonColors";
 import { useSelector } from "react-redux";
 import { checkboxEdusSelector } from "../../../../redux/checkboxEdusSelection";
 
@@ -65,7 +65,7 @@ export const EduAdder = () => {
         marginTop: 2,
         maxWidth: "100%",
         overflowX: "auto",
-        border: `solid 0.5px ${NEXTRE_ENG} `,
+        border: `solid 0.5px ${PRIMARY_COLOR} `,
         maxHeight: 400,
         scroll: "auto",
       }}
@@ -80,7 +80,7 @@ export const EduAdder = () => {
             {eduHeadCells.map((headCell) => (
               <TableCell
                 sx={{
-                  color: NEXTRE_ENG,
+                  color: PRIMARY_COLOR,
                   fontWeight: "550",
                   fontSize: 14,
                   width: headCell.checkbox ? "20px" : "187px",

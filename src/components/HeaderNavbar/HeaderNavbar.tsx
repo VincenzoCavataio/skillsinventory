@@ -15,7 +15,10 @@ export const HeaderNavbar = () => {
   const LOGO_SIZE = 32;
 
   return (
-    <AppBar position="relative" sx={{ boxShadow: "none", zIndex: 1 }}>
+    <AppBar
+      position="relative"
+      sx={{ boxShadow: "none", zIndex: 1, bgcolor: "#222" }}
+    >
       <Toolbar sx={commonStyle.spaceBetween}>
         <Box>
           <Typography

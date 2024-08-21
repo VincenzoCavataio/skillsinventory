@@ -134,7 +134,7 @@ export const CheckboxListFixed: React.FC<CheckboxListProps> = ({
                 </Typography>
 
                 <Typography variant="caption">
-                  {t("pages.userPage.info.exp")}:{exp}
+                  {t("pages.userPage.info.exp")}: {exp}
                 </Typography>
                 {note && (
                   <Tooltip

@@ -19,7 +19,7 @@ import { HeaderNavbar } from "../../components/HeaderNavbar";
 import { LoginErrorAlert } from "./LoginErrorAlert";
 import { Login } from "@mui/icons-material";
 
-const LOGO_SIZE = 36;
+const LOGO_SIZE = 72;
 
 export const LoginPage = () => {
   const LoginErrorSelector = useSelector(loginStatusSelector);
@@ -84,11 +84,11 @@ export const LoginPage = () => {
         >
           <Box
             sx={{
-              borderRadius: 2,
               display: "flex",
               justifyContent: "center",
               alignContent: "center",
               alignItems: "center",
+              borderRadius: "1% 0 0 1%",
               overflow: "hidden",
             }}
           >
@@ -100,66 +100,75 @@ export const LoginPage = () => {
                 p: 5,
               }}
             >
-              <Box mb={6}>
+              <Box m={5} mb={9} textAlign="center">
                 <img src={logo} height={LOGO_SIZE} />
               </Box>
-              <Box component="form" ref={FORM} onSubmit={onSubmit}>
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="email"
-                  label={t("pages.loginPage.emailAddress")}
-                  name="email"
-                  autoComplete="email"
-                  autoFocus
-                  error={credentials.email.error}
-                  onChange={onInputChange}
-                  sx={{ mb: 2 }}
-                />
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="password"
-                  onChange={onInputChange}
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                />
-                <Box width="100%" display="flex" justifyContent="end">
-                  <Button
-                    sx={{
-                      mt: 1,
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                    onClick={() => navigate(PAGES.signinPage)}
-                  >
-                    <Typography variant="caption" color="primary">
-                      {t("pages.loginPage.register")}
-                    </Typography>
-                    <Login sx={{ marginLeft: 1 }} fontSize="small" />
-                  </Button>
-                </Box>
-                <Box display="flex" justifyContent="center" width="100%">
-                  <Button
-                    type="submit"
+              <Box
+                component="form"
+                ref={FORM}
+                onSubmit={onSubmit}
+                height="100%"
+                display="flex"
+                justifyContent="center"
+              >
+                <Box>
+                  <TextField
+                    margin="normal"
+                    required
                     fullWidth
-                    variant="contained"
-                    disabled={
-                      credentials.email.value === "" ||
-                      credentials.password.value === ""
-                    }
-                    sx={{ mt: 3, mb: 2, maxWidth: 100, height: 50 }}
-                  >
-                    {isLoading ? (
-                      <CircularProgress size={20} color="secondary" />
-                    ) : (
-                      t("pages.loginPage.loginButton")
-                    )}
-                  </Button>
+                    id="email"
+                    label={t("pages.loginPage.emailAddress")}
+                    name="email"
+                    autoComplete="email"
+                    autoFocus
+                    error={credentials.email.error}
+                    onChange={onInputChange}
+                    sx={{ mb: 2 }}
+                  />
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    name="password"
+                    onChange={onInputChange}
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
+                  />
+                  <Box width="100%" display="flex" justifyContent="end">
+                    <Button
+                      sx={{
+                        mt: 1,
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                      onClick={() => navigate(PAGES.signinPage)}
+                    >
+                      <Typography variant="caption" color="primary">
+                        {t("pages.loginPage.register")}
+                      </Typography>
+                      <Login sx={{ marginLeft: 1 }} fontSize="small" />
+                    </Button>
+                  </Box>
+                  <Box display="flex" justifyContent="center" width="100%">
+                    <Button
+                      type="submit"
+                      fullWidth
+                      variant="contained"
+                      disabled={
+                        credentials.email.value === "" ||
+                        credentials.password.value === ""
+                      }
+                      sx={{ mt: 3, mb: 2, maxWidth: 100, height: 50 }}
+                    >
+                      {isLoading ? (
+                        <CircularProgress size={20} color="secondary" />
+                      ) : (
+                        t("pages.loginPage.loginButton")
+                      )}
+                    </Button>
+                  </Box>
                 </Box>
               </Box>
               {LoginErrorSelector?.error.isError && (
@@ -176,6 +185,8 @@ export const LoginPage = () => {
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
               p: 5,
+              borderRadius: "0 1% 1% 0",
+              overflow: "hidden",
             }}
           />
         </Box>

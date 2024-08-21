@@ -1,5 +1,5 @@
-export const ACCENT_COLOR = "#8CBE2D";
-export const PRIMARY_COLOR = "#000";
+export const ACCENT_COLOR = "#000";
+export const PRIMARY_COLOR = "#8CBE2D";
 
 // export const NEXTRE_DIGITAL = "#006fb9";
 // export const NEXTRE_ENG = "#8CBE2D";

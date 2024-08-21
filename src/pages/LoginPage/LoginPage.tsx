@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
-  CardMedia,
   TextField,
   CircularProgress,
   Typography,
@@ -15,8 +14,12 @@ import { login } from "../../utilities/generateLogin";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { loginStatusSelector } from "../../redux/loginStatus";
-import { LoginErrorAlert } from "./LoginErrorAlert";
+import Background from "../../assets/bg_login.png";
 import { HeaderNavbar } from "../../components/HeaderNavbar";
+import { LoginErrorAlert } from "./LoginErrorAlert";
+import { Login } from "@mui/icons-material";
+
+const LOGO_SIZE = 36;
 
 export const LoginPage = () => {
   const LoginErrorSelector = useSelector(loginStatusSelector);
@@ -64,95 +67,118 @@ export const LoginPage = () => {
     <Box>
       <HeaderNavbar />
       <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        height="calc(100vh - 65px)"
+        sx={{
+          width: "100%",
+          height: "calc(100vh - 65px)",
+          background: commonColors.backgroundGray,
+        }}
       >
         <Box
-          width={400}
-          component="form"
-          ref={FORM}
-          onSubmit={onSubmit}
           sx={{
             display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
             justifyContent: "center",
-            px: "3rem",
+            alignContent: "center",
             height: "100%",
-            background: "white",
+            alignItems: "center",
           }}
         >
-          <CardMedia
-            component="img"
-            image={logo}
-            sx={{ mb: 8, width: "100%" }}
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label={t("pages.loginPage.emailAddress")}
-            name="email"
-            autoComplete="email"
-            autoFocus
-            error={credentials.email.error}
-            onChange={onInputChange}
-            sx={{ mb: 2 }}
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            onChange={onInputChange}
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            width="100%"
-            textAlign="right"
+          <Box
+            sx={{
+              borderRadius: 2,
+              display: "flex",
+              justifyContent: "center",
+              alignContent: "center",
+              alignItems: "center",
+              overflow: "hidden",
+            }}
           >
-            <Typography
-              component="span"
-              fontSize={15}
-              onClick={() => navigate(PAGES.signinPage)}
-              variant="button"
-              color={commonColors.accentColor}
-              mx={0.5}
-              sx={{ cursor: "pointer", textDecoration: "underline" }}
+            <Box
+              sx={{
+                width: 600,
+                height: 600,
+                background: "white",
+                p: 5,
+              }}
             >
-              {t("pages.loginPage.register")}
-            </Typography>
-          </Typography>
-          <Box display="flex" justifyContent="center" width="100%">
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              disabled={
-                credentials.email.value === "" ||
-                credentials.password.value === ""
-              }
-              sx={{ mt: 3, mb: 2, maxWidth: 100, height: 50 }}
-            >
-              {isLoading ? (
-                <CircularProgress size={20} color="secondary" />
-              ) : (
-                t("pages.loginPage.loginButton")
+              <Box mb={6}>
+                <img src={logo} height={LOGO_SIZE} />
+              </Box>
+              <Box component="form" ref={FORM} onSubmit={onSubmit}>
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label={t("pages.loginPage.emailAddress")}
+                  name="email"
+                  autoComplete="email"
+                  autoFocus
+                  error={credentials.email.error}
+                  onChange={onInputChange}
+                  sx={{ mb: 2 }}
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  onChange={onInputChange}
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                />
+                <Box width="100%" display="flex" justifyContent="end">
+                  <Button
+                    sx={{
+                      mt: 1,
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                    onClick={() => navigate(PAGES.signinPage)}
+                  >
+                    <Typography variant="caption" color="primary">
+                      {t("pages.loginPage.register")}
+                    </Typography>
+                    <Login sx={{ marginLeft: 1 }} fontSize="small" />
+                  </Button>
+                </Box>
+                <Box display="flex" justifyContent="center" width="100%">
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    disabled={
+                      credentials.email.value === "" ||
+                      credentials.password.value === ""
+                    }
+                    sx={{ mt: 3, mb: 2, maxWidth: 100, height: 50 }}
+                  >
+                    {isLoading ? (
+                      <CircularProgress size={20} color="secondary" />
+                    ) : (
+                      t("pages.loginPage.loginButton")
+                    )}
+                  </Button>
+                </Box>
+              </Box>
+              {LoginErrorSelector?.error.isError && (
+                <LoginErrorAlert error={LoginErrorSelector?.error} />
               )}
-            </Button>
+            </Box>
           </Box>
+          <Box
+            sx={{
+              width: 400,
+              height: 600,
+              backgroundImage: `url(${Background})`,
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              p: 5,
+            }}
+          />
         </Box>
-        {LoginErrorSelector?.error.isError && (
-          <LoginErrorAlert error={LoginErrorSelector?.error} />
-        )}
       </Box>
     </Box>
   );

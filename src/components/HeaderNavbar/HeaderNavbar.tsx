@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import { Typography } from "@mui/material";
 import logo from "./../../assets/pict.svg";
+import logoWhite from "./../../assets/logoWhite.png";
 import { style } from "./style";
 import commonStyle from "../../common/commonStyle";
 import { useTranslation } from "react-i18next";
@@ -14,7 +15,7 @@ export const HeaderNavbar = () => {
   const LOGO_SIZE = 32;
 
   return (
-    <AppBar position="relative" sx={{ boxShadow: "none" }}>
+    <AppBar position="relative" sx={{ boxShadow: "none", zIndex: 1 }}>
       <Toolbar sx={commonStyle.spaceBetween}>
         <Box>
           <Typography
@@ -23,7 +24,7 @@ export const HeaderNavbar = () => {
             href="/"
             sx={style.headerTitle}
           >
-            <img src={logo} width={LOGO_SIZE} height={LOGO_SIZE} />
+            <img src={logoWhite} height={LOGO_SIZE} />
             <Typography variant="inherit" ml={1}>
               {t("common.title").toUpperCase()}
             </Typography>

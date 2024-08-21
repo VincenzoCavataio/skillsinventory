@@ -1,5 +1,5 @@
 import { Box, IconButton, TableCell } from "@mui/material";
-import { commonColors } from "../../../../common/commonColors";
+import { ACCENT_COLOR, commonColors } from "../../../../common/commonColors";
 import { tableHeaderStyle } from "../../style";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
@@ -104,20 +104,29 @@ export const HeaderCustomCell: React.FC<HeaderCustomCellProps> = ({
                   justifyContent: "center",
                 }}
               >
-                <Box>{headCell.t}</Box>
-                <Box sx={{ display: "flex", flexDirection: "row" }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignContent: "center",
+                    alignItems: "center",
+                  }}
+                >
                   <IconButton size="small" onClick={handleArrowDropUpClick}>
                     <ArrowDropUpIcon
                       sx={{
-                        color: currentSortState?.colorUp ? "#006fb9" : "white",
+                        color: currentSortState?.colorUp
+                          ? ACCENT_COLOR
+                          : "white",
                       }}
                     />
                   </IconButton>
+                  <Box>{headCell.t}</Box>
                   <IconButton size="small" onClick={handleArrowDropDownClick}>
                     <ArrowDropDownIcon
                       sx={{
                         color: currentSortState?.colorDown
-                          ? "#006fb9"
+                          ? ACCENT_COLOR
                           : "white",
                       }}
                     />
@@ -143,19 +152,28 @@ export const HeaderCustomCell: React.FC<HeaderCustomCellProps> = ({
                 alignItems: "center",
               }}
             >
-              <Box>{headCell.t}</Box>
-              <Box sx={{ display: "flex", flexDirection: "row" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignContent: "center",
+                  alignItems: "center",
+                }}
+              >
                 <IconButton size="small" onClick={handleArrowDropUpClick}>
                   <ArrowDropUpIcon
                     sx={{
-                      color: currentSortState?.colorUp ? "#006fb9" : "white",
+                      color: currentSortState?.colorUp ? ACCENT_COLOR : "white",
                     }}
                   />
                 </IconButton>
+                <Box>{headCell.t}</Box>
                 <IconButton size="small" onClick={handleArrowDropDownClick}>
                   <ArrowDropDownIcon
                     sx={{
-                      color: currentSortState?.colorDown ? "#006fb9" : "white",
+                      color: currentSortState?.colorDown
+                        ? ACCENT_COLOR
+                        : "white",
                     }}
                   />
                 </IconButton>

@@ -14,7 +14,7 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Background from "../../../../assets/bg.png";
+import Background from "../../../../assets/bg_signin.png";
 import logo from "../../../../assets/logo.svg";
 import { useTranslation } from "react-i18next";
 
@@ -92,7 +92,7 @@ export const SigninStepper = () => {
                 p: 5,
               }}
             >
-              <Button sx={{ mb: 2, ml: -2 }} onClick={handleNavigate}>
+              <Button sx={{ mb: 2, ml: "-5px" }} onClick={handleNavigate}>
                 <Login
                   sx={{ transform: "scaleX(-1)", marginRight: 1 }}
                   fontSize="small"

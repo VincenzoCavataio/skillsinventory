@@ -28,6 +28,8 @@
         "steps": {
           "credentials": "Credentials",
           "registry": "Registry",
+          "residence": "Residence",
+
           "informations": "Informations",
           "finalize": "Finalize"
         },
@@ -35,6 +37,28 @@
           "email": "Email",
           "password": "Password",
           "confirmPassword": "Confirm Password"
+        },
+        "step2": {
+          "name": "First Name",
+          "surname": "Last Name",
+          "gender": "Gender",
+          "bday": "Birth Date"
+        },
+        "step3": {
+          "address": "Address",
+          "addressNumber": "Address Number",
+          "zipCode": "Zip Code",
+          "city": "City",
+          "province": "Province",
+          "nation": "Nation"
+        },
+        "step4": {
+          "pvtNumber": "Personal Phone Number",
+          "workNumber": "Work Phone Number",
+          "driverLicense": "Driver License",
+          "firstEmploymentDate": "First Employement Date",
+          "actualEmploymentDate": "Actual Employement Date",
+          "organization": "Organization"
         }
       },
       "dashboard": {

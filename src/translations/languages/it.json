@@ -28,6 +28,7 @@
         "steps": {
           "credentials": "Credentziali",
           "registry": "Anagrafica",
+          "residence": "Residenza",
           "informations": "Informazioni",
           "finalize": "Finalizza"
         },
@@ -35,6 +36,28 @@
           "email": "Email",
           "password": "Password",
           "confirmPassword": "Conferma Password"
+        },
+        "step2": {
+          "name": "Nome",
+          "surname": "Cognome",
+          "gender": "Sesso",
+          "bday": "Data di nascita"
+        },
+        "step3": {
+          "address": "Indirizzo",
+          "addressNumber": "Numero Civico",
+          "zipCode": "Codice Postale",
+          "city": "Città",
+          "province": "Provincia",
+          "nation": "Stato"
+        },
+        "step4": {
+          "pvtNumber": "N. Cellulare Privato",
+          "workNumber": "N. Cellulare Lavoro",
+          "driverLicense": "Patente",
+          "firstEmploymentDate": "Data di primo impiego",
+          "actualEmploymentDate": "Data di impiego attuale",
+          "organization": "Organizzazione"
         }
       },
       "dashboard": {

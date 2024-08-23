@@ -17,6 +17,7 @@ import Typography from "@mui/material/Typography";
 import Background from "../../../../assets/bg_signin.png";
 import logo from "../../../../assets/logo.svg";
 import { useTranslation } from "react-i18next";
+import { Step4 } from "../Steps/Step4";
 
 const LOGO_SIZE = 36;
 
@@ -32,7 +33,8 @@ export const SigninStepper = () => {
     () => [
       { title: t("pages.signinPage.steps.credentials"), component: <Step1 /> },
       { title: t("pages.signinPage.steps.registry"), component: <Step2 /> },
-      { title: t("pages.signinPage.steps.informations"), component: <Step3 /> },
+      { title: t("pages.signinPage.steps.residence"), component: <Step3 /> },
+      { title: t("pages.signinPage.steps.informations"), component: <Step4 /> },
       { title: t("pages.signinPage.steps.finalize"), component: <Step3 /> },
     ],
     [t]

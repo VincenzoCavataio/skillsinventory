@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import axios from "axios";
 import { Metadata } from "./types";
 import { t } from "i18next";
-import axios from "axios";
 import { getRefreshToken } from "./getRefreshToken";
 
 /** Custom hook to make an HTTP request */
@@ -9,28 +9,32 @@ const useApi = ({ URL, requestOption }: Metadata) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<unknown>(null);
-  const token = localStorage.getItem("authToken");
 
-  /** Get both token and refresh token from local storage */
-  const currentToken = useRef(localStorage.getItem("authToken"))
-    .current as string;
-  const currentRefreshToken = useRef(localStorage.getItem("refreshToken"))
-    .current as string;
-
-  /** Make a request to the API */
+  /** Function to update the token and make the API request */
   const fetchData = useCallback(async () => {
-    getRefreshToken({ currentToken, currentRefreshToken });
+    const currentToken = localStorage.getItem("authToken") as string;
+    const currentRefreshToken = localStorage.getItem("refreshToken") as string;
+
     setLoading(true);
     try {
+      /** Wait for the token to be updated */
+      await getRefreshToken({ currentToken, currentRefreshToken });
+
+      /** Get the updated token */
+      const updatedToken = localStorage.getItem("authToken");
+
+      /** Make the API request */
       const response = await axios({
         method: requestOption.method,
         url: URL,
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${updatedToken}`,
         },
         data: requestOption.body,
       });
+
+      /** Update the data state with the response data */
       setData(response.data);
     } catch (e) {
       console.error(t("error.responseError"), e);
@@ -38,8 +42,9 @@ const useApi = ({ URL, requestOption }: Metadata) => {
     } finally {
       setLoading(false);
     }
-  }, [URL, requestOption.body, requestOption.method, token]);
+  }, [URL, requestOption.method, requestOption.body]);
 
+  /*** Call the fetchData function when the component mounts */
   useEffect(() => {
     fetchData();
   }, [fetchData]);

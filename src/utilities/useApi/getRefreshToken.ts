@@ -24,8 +24,11 @@ export const getRefreshToken = async ({
     /** Current time */
     const currentTime = new Date();
 
+    /** Check if token is expired */
+    const isExpired = expirationTime.getTime() < currentTime.getTime();
+
     /** If token is expired get a new one by calling the refresh token endpoint */
-    if (expirationTime < currentTime) {
+    if (isExpired) {
       await axios(ENDPOINT_REFRESHTOKEN, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

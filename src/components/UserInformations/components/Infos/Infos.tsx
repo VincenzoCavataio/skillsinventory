@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { commonColors } from "../../../../common/commonColors";
 import {
@@ -99,9 +99,10 @@ export const Infos = ({
     }
   };
   const handleObjectChange =
-    (key: keyof Residence) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    (residenceKey: keyof Residence) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
       const newData = { ...(data as Residence) };
-      newData[key] = e.target.value;
+      newData[residenceKey] = e.target.value;
       dispatch(updateEditPayload({ [title]: newData }));
     };
 
@@ -115,20 +116,25 @@ export const Infos = ({
       <Box flex={1} alignContent="center">
         <Typography variant="body1">{title}:</Typography>
       </Box>
-      <Box flex={2} alignContent="center">
+      <Box
+        flex={2}
+        alignContent="center"
+        display={"flex"}
+        flexDirection={"column"}
+      >
         {isActive ? (
           Object.entries(data as Residence).map(([key, value], index) => (
-            <EditTextField
+            <TextField
               key={index}
+              size="small"
               variant="outlined"
-              fullWidth
-              defaultValue={value}
+              label={placeholders[index] || ""}
+              value={value}
               onChange={handleObjectChange(key as keyof Residence)}
-              sx={{ mb: 1 }}
-              placeholder={placeholders[index] || ""}
+              sx={{ mb: 3, maxWidth: 250 }}
             />
           ))
-        ) : allEmpty === true ? (
+        ) : allEmpty ? (
           <Typography variant="body2">-</Typography>
         ) : (
           <Typography variant="body2">

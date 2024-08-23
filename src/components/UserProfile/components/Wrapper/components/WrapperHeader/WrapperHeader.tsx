@@ -51,37 +51,49 @@ export const WrapperHeader = ({
   );
   const personalData = useSelector((state: ReduxStore) => state.user?.user);
 
-  const payload = personalData !== undefined && {
-    firstName: editPersonalData?.firstName ?? personalData?.firstName ?? "",
-    lastName: editPersonalData?.lastName ?? personalData?.lastName ?? "",
-    email: editPersonalData?.email_login ?? personalData?.email_login ?? "",
-    birthDate: editPersonalData?.birthDate ?? personalData?.birthDate ?? "",
-    id: id,
-  };
+  const payload =
+    personalData !== undefined
+      ? {
+          firstName:
+            editPersonalData?.firstName ?? personalData?.firstName ?? "",
+          lastName: editPersonalData?.lastName ?? personalData?.lastName ?? "",
+          email:
+            editPersonalData?.email_login ?? personalData?.email_login ?? "",
+          birthDate:
+            editPersonalData?.birthDate ?? personalData?.birthDate ?? "",
+          id: id,
+        }
+      : {};
 
-  const payload2 = personalData !== undefined && {
-    actualEmployementDate:
-      editPersonalData2?.actualEmploymentDate ??
-      personalData.actualEmploymentDate ??
-      null,
-    driverLicense: !!(
-      editPersonalData2?.driver_license ??
-      personalData.driver_license ??
-      null
-    ),
-    firstEmployementDate:
-      editPersonalData2?.firstEmploymentDate ??
-      personalData?.firstEmploymentDate ??
-      null,
-    gender: editPersonalData2?.gender ?? personalData.gender ?? null,
-    personalPhoneNumber:
-      editPersonalData2?.personalPhoneNumber ??
-      personalData.personalPhoneNumber ??
-      "",
-    workPhoneNumber:
-      editPersonalData2?.workPhoneNumber ?? personalData.workPhoneNumber ?? "",
-    id: id,
-  };
+  const payload2 =
+    personalData !== undefined
+      ? {
+          actualEmployementDate:
+            editPersonalData2?.actualEmploymentDate ??
+            personalData.actualEmploymentDate ??
+            null,
+          driverLicense: !!(
+            editPersonalData2?.driver_license ??
+            personalData.driver_license ??
+            null
+          ),
+          firstEmployementDate:
+            editPersonalData2?.firstEmploymentDate ??
+            personalData?.firstEmploymentDate ??
+            null,
+          gender: editPersonalData2?.gender ?? personalData.gender ?? null,
+          personalPhoneNumber:
+            editPersonalData2?.personalPhoneNumber ??
+            personalData.personalPhoneNumber ??
+            "",
+          workPhoneNumber:
+            editPersonalData2?.workPhoneNumber ??
+            personalData.workPhoneNumber ??
+            "",
+          id: id,
+        }
+      : {};
+
   const PAYLOAD_ADDRESS_API = personalData !== undefined && {
     address:
       editPersonalData3?.residence?.address ??

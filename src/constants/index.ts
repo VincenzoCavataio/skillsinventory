@@ -64,11 +64,12 @@ export const SPECIFIC_SKILL_NAME_MAPPING = {
   "ms-sql": "database",
   "pl-sql": "database",
   "no-sql": "database",
+  nosql: "database",
   dbms: "database",
   "react.js": "react",
   "node.js": "nodejs",
   aws: "amazonwebservices",
   web: "chrome",
   ".net": "dotnet",
-  adobe: "adobecc",
+  microsoft: "windows",
 };

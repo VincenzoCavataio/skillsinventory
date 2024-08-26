@@ -38,13 +38,15 @@ export const Step4 = () => {
   ];
 
   return (
-    <Box display="flex" flexDirection="row" justifyContent="flex-start">
-      <Box
+    // <Box display="flex" flexDirection="row" justifyContent="flex-start">
+    <Box display="flex" flexDirection="column" justifyContent="flex-start">
+      {/* <Box
         display="flex"
         flexDirection="column"
         justifyContent="space-between"
         sx={{ mr: "100px" }}
-      >
+      > */}
+      <Box display="flex" flexDirection="row" justifyContent="space-between">
         <TextField
           size="small"
           required
@@ -55,20 +57,10 @@ export const Step4 = () => {
           autoComplete="pvtNumber"
           type="number"
           autoFocus
-          sx={{ mb: 3, mt: 3, width: "200px" }}
+          // sx={{ mb: 3, mt: 3, width: "200px" }}
+          sx={{ mb: 3, mt: 3, width: "385px" }}
         />
-        <TextField
-          margin="normal"
-          size="small"
-          fullWidth
-          id="workNumber"
-          label={t("pages.signinPage.step4.workNumber")}
-          name="workNumber"
-          autoComplete="workNumber"
-          type="number"
-          sx={{ mb: 3, mt: 3, width: "200px" }}
-        />
-        <FormControl sx={{ mb: 3, mt: 3, width: "200px" }} size="small">
+        <FormControl sx={{ mb: 3, mt: 3, width: "185px" }} size="small">
           <InputLabel
             sx={{
               zIndex: 999,
@@ -92,33 +84,22 @@ export const Step4 = () => {
           </Select>
         </FormControl>
       </Box>
-      <Box display="flex" flexDirection="column" justifyContent="space-between">
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker
-            label={t("pages.signinPage.step4.firstEmploymentDate")}
-            sx={{ mb: 3, mt: 3, width: "200px" }}
-            slotProps={{
-              textField: {
-                size: "small",
-              },
-            }}
-          />
-        </LocalizationProvider>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker
-            label={t("pages.signinPage.step4.actualEmploymentDate")}
-            sx={{ mb: 3, mt: 3, width: "200px" }}
-            slotProps={{
-              textField: {
-                required: true,
-                size: "small",
-              },
-            }}
-          />
-        </LocalizationProvider>
+      <Box display="flex" flexDirection="row" justifyContent="space-between">
+        <TextField
+          margin="normal"
+          size="small"
+          fullWidth
+          id="workNumber"
+          label={t("pages.signinPage.step4.workNumber")}
+          name="workNumber"
+          autoComplete="workNumber"
+          type="number"
+          sx={{ mb: 3, mt: 3, width: "385px" }}
+        />
+
         <FormControl
           required
-          sx={{ mb: 3, mt: 3, width: "200px" }}
+          sx={{ mb: 3, mt: 3, width: "185px" }}
           size="small"
         >
           <InputLabel
@@ -140,6 +121,31 @@ export const Step4 = () => {
             ))}
           </Select>
         </FormControl>
+      </Box>
+      <Box display="flex" flexDirection="row" justifyContent="space-between">
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DatePicker
+            label={t("pages.signinPage.step4.firstEmploymentDate")}
+            sx={{ mb: 3, mt: 3, width: "285px" }}
+            slotProps={{
+              textField: {
+                size: "small",
+              },
+            }}
+          />
+        </LocalizationProvider>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DatePicker
+            label={t("pages.signinPage.step4.actualEmploymentDate")}
+            sx={{ mb: 3, mt: 3, width: "285px" }}
+            slotProps={{
+              textField: {
+                required: true,
+                size: "small",
+              },
+            }}
+          />
+        </LocalizationProvider>
       </Box>
     </Box>
   );

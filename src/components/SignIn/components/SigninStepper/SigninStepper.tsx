@@ -29,13 +29,20 @@ export const SigninStepper = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
+  const handleReset = useCallback(() => {
+    setActiveStep(0);
+  }, []);
+
   const STEPS = useMemo(
     () => [
       { title: t("pages.signinPage.steps.credentials"), component: <Step1 /> },
       { title: t("pages.signinPage.steps.registry"), component: <Step2 /> },
       { title: t("pages.signinPage.steps.residence"), component: <Step3 /> },
       { title: t("pages.signinPage.steps.informations"), component: <Step4 /> },
-      { title: t("pages.signinPage.steps.finalize"), component: <Step3 /> },
+      {
+        title: t("pages.signinPage.steps.finalize"),
+        component: <LastStep handleReset={handleReset} />,
+      },
     ],
     [t]
   );
@@ -47,10 +54,6 @@ export const SigninStepper = () => {
 
   const handleBack = useCallback(() => {
     setActiveStep((prevStep) => prevStep - 1);
-  }, []);
-
-  const handleReset = useCallback(() => {
-    setActiveStep(0);
   }, []);
 
   const handleNavigate = useCallback(() => {
@@ -103,7 +106,7 @@ export const SigninStepper = () => {
                   {t("common.back_login")}
                 </Typography>
               </Button>
-              <Box mb={6}>
+              <Box mb={9}>
                 <img src={logo} height={LOGO_SIZE} />
               </Box>
               <Stepper activeStep={activeStep} sx={{ mb: 3 }}>

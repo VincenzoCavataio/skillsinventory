@@ -57,46 +57,47 @@ export const Step2 = () => {
           // sx={{ mb: 3, mt: 3, width: "200px" }}
           sx={{ mb: 3, mt: 3 }}
         />
-        {/* </Box>
-      <Box display="flex" flexDirection="column" justifyContent="space-between"> */}
-        <FormControl
-          // sx={{ mb: 3, mt: 3, width: "200px" }}
-          sx={{ mb: 3, mt: 3 }}
-          size="small"
-          required
-        >
-          <InputLabel
+        {/* </Box> */}
+        <Box display="flex" flexDirection="row" justifyContent="space-between">
+          <FormControl
+            sx={{ mb: 3, mt: 3, width: "285px" }}
+            // sx={{ mb: 3, mt: 3 }}
+            size="small"
             required
-            sx={{
-              zIndex: 999,
-              backgroundColor: "white",
-              pl: 1,
-              pr: 1,
-            }}
           >
-            {t("pages.signinPage.step2.gender")}
-          </InputLabel>
-          <Select value={gender} onChange={handleChangeGender} displayEmpty>
-            {GENDERS.map((gender) => (
-              <MenuItem key={gender} value={gender}>
-                {gender}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker
-            label={t("pages.signinPage.step2.bday")}
-            // sx={{ mb: 3, mt: 3, width: "200px" }}
-            sx={{ mb: 3, mt: 3 }}
-            slotProps={{
-              textField: {
-                required: true,
-                size: "small",
-              },
-            }}
-          />
-        </LocalizationProvider>
+            <InputLabel
+              required
+              sx={{
+                zIndex: 999,
+                backgroundColor: "white",
+                pl: 1,
+                pr: 1,
+              }}
+            >
+              {t("pages.signinPage.step2.gender")}
+            </InputLabel>
+            <Select value={gender} onChange={handleChangeGender} displayEmpty>
+              {GENDERS.map((gender) => (
+                <MenuItem key={gender} value={gender}>
+                  {gender}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              label={t("pages.signinPage.step2.bday")}
+              sx={{ mb: 3, mt: 3, width: "285px" }}
+              // sx={{ mb: 3, mt: 3 }}
+              slotProps={{
+                textField: {
+                  required: true,
+                  size: "small",
+                },
+              }}
+            />
+          </LocalizationProvider>
+        </Box>
       </Box>
     </Box>
   );

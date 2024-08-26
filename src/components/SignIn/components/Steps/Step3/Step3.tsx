@@ -5,13 +5,15 @@ export const Step3 = () => {
   const { t } = useTranslation();
 
   return (
-    <Box display="flex" flexDirection="row" justifyContent="flex-start">
-      <Box
+    // <Box display="flex" flexDirection="row" justifyContent="flex-start">
+    <Box display="flex" flexDirection="column" justifyContent="flex-start">
+      {/* <Box
         display="flex"
         flexDirection="column"
         justifyContent="space-between"
         sx={{ mr: "100px" }}
-      >
+      > */}
+      <Box display="flex" flexDirection="row" justifyContent="space-between">
         <TextField
           size="small"
           required
@@ -21,7 +23,8 @@ export const Step3 = () => {
           name="address"
           autoComplete="address"
           autoFocus
-          sx={{ mb: 3, mt: 3, width: "200px" }}
+          // sx={{ mb: 3, mt: 3, width: "200px" }}
+          sx={{ mb: 3, mt: 3, width: "442.5px" }}
         />
         <TextField
           margin="normal"
@@ -33,7 +36,32 @@ export const Step3 = () => {
           name="addressNumber"
           autoComplete="addressNumber"
           type="number"
-          sx={{ mb: 3, mt: 3, width: "200px" }}
+          // sx={{ mb: 3, mt: 3, width: "200px" }}
+          sx={{ mb: 3, mt: 3, width: "127.5px" }}
+        />
+      </Box>
+      <Box display="flex" flexDirection="row" justifyContent="space-between">
+        <TextField
+          size="small"
+          required
+          fullWidth
+          id="city"
+          label={t("pages.signinPage.step3.city")}
+          name="city"
+          autoComplete="city"
+          // sx={{ mb: 3, mt: 3, width: "200px" }}
+          sx={{ mb: 3, mt: 3, width: "285px" }}
+        />
+        <TextField
+          size="small"
+          required
+          fullWidth
+          id="province"
+          label={t("pages.signinPage.step3.province")}
+          name="province"
+          autoComplete="province"
+          // sx={{ mb: 3, mt: 3, width: "200px" }}
+          sx={{ mb: 3, mt: 3, width: "127.5px" }}
         />
         <TextField
           size="small"
@@ -44,30 +72,12 @@ export const Step3 = () => {
           name="zipCode"
           autoComplete="zipCode"
           type="number"
-          sx={{ mb: 3, mt: 3, width: "200px" }}
+          // sx={{ mb: 3, mt: 3, width: "200px" }}
+          // sx={{ mb: 3, mt: 3, width: "185px" }}
+          sx={{ mb: 3, mt: 3, width: "127.5px" }}
         />
       </Box>
       <Box display="flex" flexDirection="column" justifyContent="space-between">
-        <TextField
-          size="small"
-          required
-          fullWidth
-          id="city"
-          label={t("pages.signinPage.step3.city")}
-          name="city"
-          autoComplete="city"
-          sx={{ mb: 3, mt: 3, width: "200px" }}
-        />
-        <TextField
-          size="small"
-          required
-          fullWidth
-          id="province"
-          label={t("pages.signinPage.step3.province")}
-          name="province"
-          autoComplete="province"
-          sx={{ mb: 3, mt: 3, width: "200px" }}
-        />
         <TextField
           size="small"
           required
@@ -76,7 +86,8 @@ export const Step3 = () => {
           label={t("pages.signinPage.step3.nation")}
           name="nation"
           autoComplete="nation"
-          sx={{ mb: 3, mt: 3, width: "200px" }}
+          // sx={{ mb: 3, mt: 3, width: "200px" }}
+          sx={{ mb: 3, mt: 3 }}
         />
       </Box>
     </Box>

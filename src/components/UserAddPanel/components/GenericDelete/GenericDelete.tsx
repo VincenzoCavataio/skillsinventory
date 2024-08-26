@@ -11,7 +11,7 @@ type Props = {
 export const GenericDelete: FC<Props> = ({ row, handleRemove }) => {
   return (
     <Button
-      sx={{ width: "2px", height: "10px" }}
+      sx={{ opacity: 0.8, width: "2px", height: "10px" }}
       onClick={() => handleRemove(row.id)}
       color="error"
     >

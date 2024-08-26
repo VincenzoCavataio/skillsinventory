@@ -60,10 +60,11 @@ export type LoginErrorData = {
 };
 
 export type ReduxStore = {
+  isEditMode: { isActive: boolean };
   filters?: Filters;
   skills?: { skills: Skill[] };
   search?: { filters: Omit<CompiledFieldsWithID, "skill"> };
-  user?: ProfilePageType;
+  user: ProfilePageType;
   pagination: PaginationSettings;
   sorting: { sort: Sorting[] };
   andOrStore: SelectorAndOr;
@@ -109,7 +110,7 @@ export type Filtri = {
   eduLevel: string;
 };
 export type ProfilePageType = {
-  user?: ResponseProfileElementObjectData;
+  user: ResponseProfileElementObjectData;
   alt?: string;
   src?: string;
 };

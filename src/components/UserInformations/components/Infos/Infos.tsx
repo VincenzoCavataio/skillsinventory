@@ -2,7 +2,6 @@ import { Box, TextField, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { commonColors } from "../../../../common/commonColors";
 import {
-  ReduxStore,
   Residence,
   ResponseProfileElementObjectData,
 } from "../../../../redux/types";
@@ -14,6 +13,7 @@ import { updateEditPayload } from "../../../../redux/editProfileSlice";
 import dayjs from "dayjs";
 import { useState } from "react";
 import { validateEmail } from "../../../../utilities/validEmailChecker";
+import { isEditModeSelector } from "../../../../redux/isEditMode";
 
 export const Infos = ({
   title,
@@ -29,9 +29,7 @@ export const Infos = ({
 
   const allEmpty = false;
   const isNullAddress = data && Object.values(data).join("") === "";
-  const isActive = useSelector(
-    (state: ReduxStore) => state.editManager.isActive
-  );
+  const isActive = useSelector(isEditModeSelector);
 
   const dispatch = useDispatch();
   const [isValid, setIsValid] = useState(true);
@@ -189,7 +187,7 @@ export const Infos = ({
               type="number"
               fullWidth
               onChange={handleTextChange2}
-              defaultValue={Array.isArray(data) ? data.join(", ") : data}
+              value={Array.isArray(data) ? data.join(", ") : data}
               InputProps={{
                 inputMode: "none",
               }}

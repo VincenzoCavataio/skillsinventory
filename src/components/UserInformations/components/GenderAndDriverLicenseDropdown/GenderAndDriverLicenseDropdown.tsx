@@ -1,14 +1,12 @@
 import { Box, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { commonColors } from "../../../../common/commonColors";
-import {
-  ReduxStore,
-  ResponseProfileElementObjectData,
-} from "../../../../redux/types";
+import { ResponseProfileElementObjectData } from "../../../../redux/types";
 import { useDispatch, useSelector } from "react-redux";
 import { EditAutocomplete, EditTextField } from "../../style";
 import { updateEditPayload } from "../../../../redux/editProfileSlice";
 import { useState, FC, SyntheticEvent } from "react";
+import { isEditModeSelector } from "../../../../redux/isEditMode";
 
 type DataProps = "male" | "female" | "1" | "0" | "other";
 type TitleProps = "gender" | "driver_license";
@@ -23,9 +21,7 @@ export const GenderAndDriverLicenseDropdown: FC<Props> = ({ title, data }) => {
   const { t } = useTranslation();
   const [currentValue, setCurrentValue] = useState<unknown>(data ?? null);
 
-  const isActive = useSelector(
-    (state: ReduxStore) => state.editManager.isActive
-  );
+  const isActive = useSelector(isEditModeSelector);
 
   const dispatch = useDispatch();
 
@@ -37,7 +33,6 @@ export const GenderAndDriverLicenseDropdown: FC<Props> = ({ title, data }) => {
   const handleAutocompleteChange = (value: unknown) => {
     setCurrentValue(value);
     dispatch(updateEditPayload({ [title]: value }));
-    console.log({ value, title });
   };
 
   const DROPDOWN_CHOICE = {

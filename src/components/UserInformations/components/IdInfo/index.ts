@@ -1,1 +1,0 @@
-export { IdInfo } from "./IdInfo";

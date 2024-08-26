@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { EditMode } from "./types";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { EditMode, ReduxStore } from "./types";
 
 const initialState: EditMode = {
   isActive: false,
@@ -11,9 +11,6 @@ const editProfileSlice = createSlice({
   name: "editProfileSlice",
   initialState,
   reducers: {
-    setEditMode(state, action) {
-      state.isActive = action.payload;
-    },
     updateEditPayload(state, action) {
       if (state.editPayload) {
         state.editPayload = { ...state.editPayload, ...action.payload };
@@ -33,6 +30,11 @@ const editProfileSlice = createSlice({
   },
 });
 
-export const { setEditMode, updateEditPayload, saveChanges, discardChanges } =
+export const editProfileSelector = createSelector(
+  (state: ReduxStore) => state,
+  (state: ReduxStore) => state.editManager.editPayload
+);
+
+export const { updateEditPayload, saveChanges, discardChanges } =
   editProfileSlice.actions;
 export default editProfileSlice.reducer;

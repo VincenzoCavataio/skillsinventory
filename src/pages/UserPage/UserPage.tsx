@@ -8,7 +8,7 @@ import { allUserDataByUserId } from "./UserPage.controller";
 import { PAGES } from "../../constants";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { selectUser } from "../../redux/userSlice";
+import { selectUser } from "../../redux/userDataSlice";
 import { UserAddPanel } from "../../components/UserAddPanel";
 import { UserInfoMap } from "../../components/UserInfoMap";
 import { ProfileCardWrapper } from "../../components/UserProfile";

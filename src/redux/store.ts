@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import skillsSlice from "./skillsSlice";
 import searchSlice from "./searchSlice";
-import userSlice from "./userSlice";
+import userDataSlice from "./userDataSlice";
 import paginationSlice from "./paginationSlice";
 import sortingSlice from "./sortingSlice";
 import andOrSlice from "./andOrSlice";
@@ -12,12 +12,13 @@ import checkboxSkillsSelection from "./checkboxSkillsSelection";
 import checkboxEdusSelection from "./checkboxEdusSelection";
 import checkboxCertsSelection from "./checkboxCertsSelection";
 import loginStatus from "./loginStatus";
+import isEditMode from "./isEditMode";
 
 export const store = configureStore({
   reducer: {
     skills: skillsSlice,
     search: searchSlice,
-    user: userSlice,
+    user: userDataSlice,
     pagination: paginationSlice,
     sorting: sortingSlice,
     andOrStore: andOrSlice,
@@ -28,5 +29,6 @@ export const store = configureStore({
     checkedEdus: checkboxEdusSelection,
     checkedCerts: checkboxCertsSelection,
     loginStatus: loginStatus,
+    isEditMode: isEditMode,
   },
 });

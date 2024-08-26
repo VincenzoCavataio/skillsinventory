@@ -1,16 +1,14 @@
 import { Box, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { commonColors } from "../../../../common/commonColors";
-import {
-  ReduxStore,
-  ResponseProfileElementObjectData,
-} from "../../../../redux/types";
+import { ResponseProfileElementObjectData } from "../../../../redux/types";
 import { useDispatch, useSelector } from "react-redux";
 import { EditDatePicker } from "../../style";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { updateEditPayload } from "../../../../redux/editProfileSlice";
 import dayjs from "dayjs";
+import { isEditModeSelector } from "../../../../redux/isEditMode";
 
 export const Infos4 = ({
   title,
@@ -23,9 +21,7 @@ export const Infos4 = ({
 }) => {
   const { t } = useTranslation();
 
-  const isActive = useSelector(
-    (state: ReduxStore) => state.editManager.isActive
-  );
+  const isActive = useSelector(isEditModeSelector);
 
   const dispatch = useDispatch();
 

@@ -7,10 +7,10 @@ import {
   ResponseProfileElementObjectData,
 } from "../../../../redux/types";
 import { useTranslation } from "react-i18next";
-import { IdInfo } from "../IdInfo";
 import { GenderAndDriverLicenseDropdown } from "../GenderAndDriverLicenseDropdown";
 import { Infos3 } from "../Infos3";
 import { Infos4 } from "../Infos4";
+import { ReadOnlyField } from "../ReadOnlyField";
 
 type KeyObjectType = {
   id: keyof ResponseProfileElementObjectData;
@@ -25,7 +25,6 @@ const KEYS: KeyObjectType[] = [
   { id: "email_login", objType: "txtField" },
   { id: "personalPhoneNumber", objType: "txtField" },
   { id: "driver_license", objType: "autocompleteField" },
-  { id: "birthDate", objType: "dateField" },
   { id: "workPhoneNumber", objType: "txtField" },
   { id: "actualEmploymentDate", objType: "dateField" },
   { id: "firstEmploymentDate", objType: "dateField" },
@@ -71,7 +70,14 @@ export const ProfileInfo = () => {
   //TODO:per la questione degli hidden, controllo ruolo orgadmin perchè se manualmente cambio un mio campo in hidden poi non è modificabile
   return (
     <Box bgcolor="white">
-      <IdInfo data={personalData.id} />
+      <ReadOnlyField
+        label={t(`pages.userPage.informationDetails.id`)}
+        data={personalData.id}
+      />
+      <ReadOnlyField
+        label={t(`pages.userPage.informationDetails.birthDate`)}
+        data={personalData.birthDate}
+      />
       {KEYS.filter((key) => key.id !== "id").map((key: KeyObjectType) => {
         switch (key.objType) {
           case AutocompleteField:

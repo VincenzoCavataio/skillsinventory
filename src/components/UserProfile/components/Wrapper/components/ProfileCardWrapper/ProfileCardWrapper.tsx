@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { WrapperHeader } from "../WrapperHeader";
+import { AvatarControlSection } from "../AvatarControlSection";
 import { AccordionGroup } from "../../../AccordionGroup";
 import { useSelector } from "react-redux";
 import { ReduxStore } from "../../../../../../redux/types";
@@ -36,12 +36,11 @@ export const ProfileCardWrapper = () => {
 
   return (
     <Box display="flex" flexDirection="column" alignItems="center">
-      <WrapperHeader
+      <AvatarControlSection
         id={userData?.id}
         title={position}
         fullName={fullName}
         gender={gender}
-        alt="User Name"
       />
       <AccordionGroup />
     </Box>

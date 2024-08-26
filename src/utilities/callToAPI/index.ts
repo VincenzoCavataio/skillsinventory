@@ -14,7 +14,7 @@ export const callToAPI = ({
 }) => {
   /** Make a call to API */
   const fetchData = async () => {
-    const currentToken = localStorage.getItem("authToken");
+    let currentToken = localStorage.getItem("authToken");
     const currentRefreshToken = localStorage.getItem("refreshToken");
 
     /** Build URL */
@@ -22,8 +22,10 @@ export const callToAPI = ({
 
     /** Get a new token if the current one is expired */
     if (currentToken && currentRefreshToken) {
-      getRefreshToken({ currentToken, currentRefreshToken });
+      await getRefreshToken({ currentToken, currentRefreshToken });
+      currentToken = localStorage.getItem("authToken");
     }
+
     /** Make a call to API */
     try {
       await axios({

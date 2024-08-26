@@ -1,15 +1,13 @@
 import { Box, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { commonColors } from "../../../../common/commonColors";
-import {
-  ReduxStore,
-  ResponseProfileElementObjectData,
-} from "../../../../redux/types";
+import { ResponseProfileElementObjectData } from "../../../../redux/types";
 import { useDispatch, useSelector } from "react-redux";
 import { EditTextField } from "../../style";
 import { updateEditPayload } from "../../../../redux/editProfileSlice";
 import { useState } from "react";
 import { validateEmail } from "../../../../utilities/validEmailChecker";
+import { isEditModeSelector } from "../../../../redux/isEditMode";
 
 export const Infos3 = ({
   title,
@@ -22,9 +20,7 @@ export const Infos3 = ({
 }) => {
   const { t } = useTranslation();
 
-  const isActive = useSelector(
-    (state: ReduxStore) => state.editManager.isActive
-  );
+  const isActive = useSelector(isEditModeSelector);
 
   const dispatch = useDispatch();
   const [isValid, setIsValid] = useState(true);

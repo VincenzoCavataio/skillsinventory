@@ -16,7 +16,12 @@
       "loginFail": "Error inesperado durante el inicio de sesión. Inténtelo de nuevo.",
       "next": "Adelante",
       "end": "Fin",
-      "back": "volver"
+      "back": "volver",
+      "expiredSessionModal": {
+        "title": "Sesión Expirada",
+        "message": "La sesión ha expirado. Por favor inicia sesión para continuar.",
+        "buttonLabel": "Tornar a la página de Login"
+      }
     },
     "pages": {
       "loginPage": {

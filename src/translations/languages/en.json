@@ -16,7 +16,12 @@
       "loginFail": "Unexpected error during login. Retry.",
       "next": "Next",
       "end": "Finish",
-      "back": "Back"
+      "back": "Back",
+      "expiredSessionModal": {
+        "title": "Expired Session",
+        "message": "The current session is expired. Please login again.",
+        "buttonLabel": "Back to Login Page"
+      }
     },
     "pages": {
       "loginPage": {

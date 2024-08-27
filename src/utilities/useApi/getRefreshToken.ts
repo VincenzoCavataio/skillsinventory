@@ -1,6 +1,6 @@
-import { jwtDecode } from "jwt-decode";
-import { URL as BASE_URL } from "../../constants";
 import axios from "axios";
+import { URL as BASE_URL } from "../../constants";
+import { isTokenExpired } from "../isTokenExpired/isTokenExpired";
 
 type Props = {
   currentToken: string;
@@ -15,20 +15,11 @@ export const getRefreshToken = async ({
   if (currentToken) {
     const ENDPOINT_REFRESHTOKEN = `${BASE_URL}/api/v1/user/refreshToken`;
 
-    /** Decode Token informations */
-    const decodedToken = jwtDecode(currentToken as string);
-
-    /** Expiration token time */
-    const expirationTime = new Date(decodedToken.exp! * 1000);
-
-    /** Current time */
-    const currentTime = new Date();
-
     /** Check if token is expired */
-    const isExpired = expirationTime.getTime() < currentTime.getTime();
+    const isCurrentTokenExpired = isTokenExpired({ token: currentToken });
 
-    /** If token is expired get a new one by calling the refresh token endpoint */
-    if (isExpired) {
+    /** If isCurrentTokenExpired is expired get a new one by calling the refresh token endpoint */
+    if (isCurrentTokenExpired) {
       await axios(ENDPOINT_REFRESHTOKEN, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -37,7 +28,7 @@ export const getRefreshToken = async ({
         .then((data) => {
           const { token, refreshToken, role, id } = data.data;
 
-          /** Update local storage informations about currnet user */
+          /** Update local storage informations about current user */
           localStorage.setItem("authToken", token);
           localStorage.setItem("refreshToken", refreshToken);
           localStorage.setItem("role", role);

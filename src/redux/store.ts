@@ -13,6 +13,7 @@ import checkboxEdusSelection from "./checkboxEdusSelection";
 import checkboxCertsSelection from "./checkboxCertsSelection";
 import loginStatus from "./loginStatus";
 import isEditMode from "./isEditMode";
+import showModal from "./showGenericModal";
 
 export const store = configureStore({
   reducer: {
@@ -30,5 +31,6 @@ export const store = configureStore({
     checkedCerts: checkboxCertsSelection,
     loginStatus: loginStatus,
     isEditMode: isEditMode,
+    showModal: showModal,
   },
 });

@@ -28,18 +28,25 @@ import { PAGES } from "../../constants";
 import { CompiledFieldsWithID } from "./types";
 import { ReduxStore } from "../../redux/types";
 import { paginationPageStart } from "../../redux/paginationSlice";
+import { isTokenExpired } from "../../utilities/isTokenExpired/isTokenExpired";
+import {
+  isModalVisibleSelector,
+  showModal,
+} from "../../redux/showGenericModal";
 
 export const DashboardPage = () => {
   const { t } = useTranslation();
   const NameInputRef = useRef<HTMLInputElement>(null);
-
   const [selectedInput, setSelectedInput] = useState<CompiledFieldsWithID>({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const token = useRef(localStorage.getItem("authToken"));
-
   const filterStore = useSelector((state: ReduxStore) => state.search);
   const fullName = useSelector(searchFiltersNameSelector);
+  const isModalVisible = useSelector(isModalVisibleSelector);
+
+  /** If the modal is visible, blur the background */
+  const BLURRED_BG = isModalVisible ? "blur(10px)" : "none";
 
   useEffect(() => {
     if (Object.keys(selectedInput).length) {
@@ -53,6 +60,11 @@ export const DashboardPage = () => {
       navigate(PAGES.loginPage);
     }
   }, [navigate]);
+
+  useEffect(() => {
+    const isRefreshTokenExpired = isTokenExpired({ token: "refreshToken" });
+    dispatch(showModal(isRefreshTokenExpired));
+  }, [dispatch, navigate]);
 
   // TODO: Da capire se tenerlo oppure no. Con CTRL + F si mette in focus l'input 'Nome e Cognome'
   useEffect(() => {
@@ -90,7 +102,7 @@ export const DashboardPage = () => {
   }, []);
 
   return (
-    <Box mb={2}>
+    <Box mb={2} sx={{ filter: BLURRED_BG }}>
       <HeaderNavbar />
       <Container
         maxWidth="xl"

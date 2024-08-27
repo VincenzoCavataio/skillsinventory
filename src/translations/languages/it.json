@@ -16,7 +16,12 @@
       "loginFail": "Errore durante il login. Riprova.",
       "next": "Avanti",
       "end": "Fine",
-      "back": "Indietro"
+      "back": "Indietro",
+      "expiredSessionModal": {
+        "title": "Sessione scaduta",
+        "message": "La sessione è scaduta. Effettua il login per continuare.",
+        "buttonLabel": "Torna alla Login"
+      }
     },
     "pages": {
       "loginPage": {

@@ -8,7 +8,6 @@ import Checkbox from "@mui/material/Checkbox";
 import { useTranslation } from "react-i18next";
 import { CompiledFieldsWithID } from "../../pages/DashboardPage/types";
 import { InputSelectType } from "../InputSelect/types";
-
 import { useSelector } from "react-redux";
 import { searchFiltersSelector } from "../../redux/searchSlice";
 

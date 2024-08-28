@@ -21,10 +21,11 @@ import { Login } from "@mui/icons-material";
 
 const LOGO_SIZE = 72;
 
+/** Page for login */
 export const LoginPage = () => {
-  const LoginErrorSelector = useSelector(loginStatusSelector);
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const LoginErrorSelector = useSelector(loginStatusSelector);
 
   //TODO: se fabrizio conferma il formato 'email' nella sezione username possiamo abilitare anche il controllo sulla forma
   const [credentials, setCredentials] = useState({
@@ -51,8 +52,6 @@ export const LoginPage = () => {
 
   //TODO: Capire perchè va solo al primo click su 'entra'
   useEffect(() => {
-    //TODO: non va bene, se il token esiste ma è scaduto la logica non funziona
-    //TODO: 2 possibili strade: 1. fare una chiamata di healtcheck (se 200 ok, se 50X redirect verso login); 2. spostare la logica da localStorage a sessionStorage
     if (token) navigate(PAGES.dashboardPage);
   }, [navigate, token]);
 

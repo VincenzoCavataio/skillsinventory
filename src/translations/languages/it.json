@@ -13,10 +13,16 @@
       "search": "Cerca",
       "clear": "Reset",
       "login": "Login effettuato con successo",
-      "loginFail": "Errore durante il login. Riprova.",
+      "loginFail": "Errore inaspettato durante il login. Riprova.",
       "next": "Avanti",
       "end": "Fine",
       "back": "Indietro",
+      "modalCloseButton": {
+        "title": "Attenzione",
+        "subtitle": "Vuoi davvero eseguire il logout?",
+        "close": "Chiudi",
+        "logout": "Logout"
+      },
       "expiredSessionModal": {
         "title": "Sessione scaduta",
         "message": "La sessione è scaduta. Effettua il login per continuare.",

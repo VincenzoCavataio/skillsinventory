@@ -17,6 +17,12 @@
       "next": "Adelante",
       "end": "Fin",
       "back": "volver",
+      "modalCloseButton": {
+        "title": "Atención",
+        "subtitle": "¿Realmente desea cerrar la sesión?",
+        "close": "Cerrar",
+        "logout": "Logout"
+      },
       "expiredSessionModal": {
         "title": "Sesión Expirada",
         "message": "La sesión ha expirado. Por favor inicia sesión para continuar.",

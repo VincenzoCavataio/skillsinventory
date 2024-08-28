@@ -7,6 +7,7 @@ import { style } from "./style";
 import commonStyle from "../../common/commonStyle";
 import { useTranslation } from "react-i18next";
 import { LanguageSelect } from "../LanguageSelect";
+import { Logout } from "./Logout";
 
 /** Top navigation bar */
 export const HeaderNavbar = () => {
@@ -32,8 +33,15 @@ export const HeaderNavbar = () => {
             </Typography>
           </Typography>
         </Box>
-        <Box justifyContent={"flex-end"}>
+        <Box
+          justifyContent="flex-end"
+          alignContent="center"
+          alignItems="center"
+          justifyItems="center"
+          display="flex"
+        >
           <LanguageSelect />
+          <Logout />
         </Box>
       </Toolbar>
     </AppBar>

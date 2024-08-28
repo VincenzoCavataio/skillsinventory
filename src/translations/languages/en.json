@@ -17,6 +17,12 @@
       "next": "Next",
       "end": "Finish",
       "back": "Back",
+      "modalCloseButton": {
+        "title": "Warning",
+        "subtitle": "Do you really want to logout?",
+        "close": "Close",
+        "logout": "Logout"
+      },
       "expiredSessionModal": {
         "title": "Expired Session",
         "message": "The current session is expired. Please login again.",

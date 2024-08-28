@@ -56,6 +56,7 @@ export const ExpiredLoginModal: FC = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            borderRadius: 2,
           }}
         >
           <Typography id="server-modal-title" variant="h5" component="h2">
@@ -66,7 +67,7 @@ export const ExpiredLoginModal: FC = () => {
           </Typography>
           <Button
             variant="contained"
-            sx={{ mt: 4 }}
+            sx={{ mt: 4, mb: 1 }}
             onClick={handleNavigationToLogin}
           >
             <Login sx={{ transform: "scaleX(-1)", mr: 1 }} />

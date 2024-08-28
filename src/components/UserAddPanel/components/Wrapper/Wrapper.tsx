@@ -21,6 +21,14 @@ import {
   addEmptyCert,
   checkboxCertsSelector,
 } from "../../../../redux/checkboxCertsSelection";
+import {
+  addEmptySkillDb,
+  dbSkillSelector,
+} from "../../../../redux/addSkillToDbSlice";
+import { userDataSelector } from "../../../../redux/userDataSlice";
+import { SkillPayload } from "../utils/SkillPayload";
+
+import { callToAPIforDB } from "../../../../utilities/callToAPIforDB";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -45,6 +53,8 @@ export const Wrapper = () => {
   const checkedSkillsFromStore = useSelector(checkboxSkillsSelector);
   const checkedEdusFromStore = useSelector(checkboxEdusSelector);
   const checkedCertsFromStore = useSelector(checkboxCertsSelector);
+  const userSelector = useSelector(userDataSelector);
+  const skillForDbSelector = useSelector(dbSkillSelector);
 
   const dispatch = useDispatch();
 
@@ -60,6 +70,7 @@ export const Wrapper = () => {
     };
 
     dispatch(addEmptySkill(skillBlankData));
+    dispatch(addEmptySkillDb(skillBlankData));
   };
 
   const handleEduAddClick = () => {
@@ -92,7 +103,18 @@ export const Wrapper = () => {
 
     dispatch(addEmptyCert(certBlankData));
   };
-
+  const SKILL_PAYLOAD = {
+    user_id: userSelector?.id?.toString(),
+    wordsList: SkillPayload(skillForDbSelector),
+  };
+  console.log(SKILL_PAYLOAD);
+  const handleDbAdding = () => {
+    callToAPIforDB({
+      endpoint: "/api/v1/skill/insertWords",
+      payload: SKILL_PAYLOAD,
+      method: "POST",
+    });
+  };
   return (
     <Box
       display="flex"
@@ -149,6 +171,7 @@ export const Wrapper = () => {
             color: "white",
             boxShadow: "none",
           }}
+          onClick={handleDbAdding}
         >
           {t("pages.userPage.tables.updateProfile")}
         </Button>

@@ -23,6 +23,10 @@ import { Close, Delete, Edit } from "@mui/icons-material";
 import { AccordionLabel } from "../GenericAccordion/Types";
 import { IconPicker } from "./utils/IconPicker";
 import { SelectDeselectLabel } from "./utils/SelectDeselectLabel";
+import {
+  resetCheckedSkillsDb,
+  updateCheckedSkillsDb,
+} from "../../../../redux/addSkillToDbSlice";
 
 type CheckboxListProps = {
   data?: string[];
@@ -45,17 +49,20 @@ export const CheckboxListFixed: React.FC<CheckboxListProps> = ({
   const allChecked = checkedSkillsStore.length > 0;
 
   const handleSelectAll = () => {
-    data?.forEach((skill) =>
-      dispatch(updateCheckedSkills(currentCheckedSkillRow(skill)))
-    );
+    data?.forEach((skill) => {
+      dispatch(updateCheckedSkills(currentCheckedSkillRow(skill)));
+      dispatch(updateCheckedSkillsDb(currentCheckedSkillRow(skill)));
+    });
   };
 
   const handleRemoveAll = () => {
     dispatch(resetCheckedSkills());
+    dispatch(resetCheckedSkillsDb());
   };
 
   const handleSkillRowChange = (skill: CheckedSkill) => {
     dispatch(updateCheckedSkills(skill));
+    dispatch(updateCheckedSkillsDb(skill));
   };
 
   const parsedData = data?.map((skill) => currentCheckedSkillRow(skill));

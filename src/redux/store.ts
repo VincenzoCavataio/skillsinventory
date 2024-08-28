@@ -14,6 +14,7 @@ import checkboxCertsSelection from "./checkboxCertsSelection";
 import loginStatus from "./loginStatus";
 import isEditMode from "./isEditMode";
 import showModal from "./showGenericModal";
+import addSkillToDbSlice from "./addSkillToDbSlice";
 
 export const store = configureStore({
   reducer: {
@@ -32,5 +33,6 @@ export const store = configureStore({
     loginStatus: loginStatus,
     isEditMode: isEditMode,
     showModal: showModal,
+    toDbSkills: addSkillToDbSlice,
   },
 });

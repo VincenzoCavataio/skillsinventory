@@ -7,18 +7,64 @@ import {
   removeSkill,
 } from "../../../../redux/checkboxSkillsSelection";
 import { CheckedSkill } from "../../../../redux/types";
+import {
+  removeSkillDb,
+  updateSkillExp,
+  updateSkillLevel,
+  updateSkillName,
+  updateSkillNote,
+} from "../../../../redux/addSkillToDbSlice";
 
 export const SkillAdderBody = () => {
   const checkedSkillsFromStore = useSelector(checkboxSkillsSelector);
 
   const dispatch = useDispatch();
+  const handleUpdateSkillName = (
+    id: string,
+    idTemp: number | undefined,
+    name: string
+  ) => {
+    dispatch(updateSkillName({ id, idTemp, name }));
+  };
+
+  const handleUpdateSkillLevel = (
+    id: string,
+    idTemp: number | undefined,
+    level: string
+  ) => {
+    dispatch(updateSkillLevel({ id, idTemp, level }));
+  };
+
+  const handleUpdateSkillExp = (
+    id: string,
+    idTemp: number | undefined,
+    exp: string
+  ) => {
+    dispatch(updateSkillExp({ id, idTemp, exp }));
+  };
+
+  const handleUpdateSkillNote = (
+    id: string,
+    idTemp: number | undefined,
+    note: string
+  ) => {
+    dispatch(updateSkillNote({ id, idTemp, note }));
+  };
 
   const handleRemoveRow = (id: string, idTemp?: number) => {
     dispatch(removeSkill({ id, idTemp }));
+    dispatch(removeSkillDb({ id, idTemp }));
   };
   const mappingSection = (row: CheckedSkill) => {
     if (row.name === "") {
-      return <ShortTextField defaultValue={row.name} />;
+      return (
+        <ShortTextField
+          defaultValue={row.name}
+          onChange={(e) =>
+            handleUpdateSkillName(row.id, row.idTemp, e.target.value)
+          }
+        />
+      );
     } else {
       return <ShortTextField defaultValue={row.name} disabled />;
     }
@@ -38,6 +84,9 @@ export const SkillAdderBody = () => {
               type="number"
               inputProps={{ min: 1, max: 5 }}
               defaultValue={row.level}
+              onChange={(e) =>
+                handleUpdateSkillLevel(row.id, row.idTemp, e.target.value)
+              }
             />
           </TableCell>
           <TableCell align="center">
@@ -45,10 +94,18 @@ export const SkillAdderBody = () => {
               type="number"
               inputProps={{ min: 1 }}
               defaultValue={row.exp}
+              onChange={(e) =>
+                handleUpdateSkillExp(row.id, row.idTemp, e.target.value)
+              }
             />
           </TableCell>
           <TableCell align="center">
-            <ShortTextField defaultValue={row.note} />
+            <ShortTextField
+              defaultValue={row.note}
+              onChange={(e) =>
+                handleUpdateSkillNote(row.id, row.idTemp, e.target.value)
+              }
+            />
           </TableCell>
           <TableCell align="center">
             <GenericDelete

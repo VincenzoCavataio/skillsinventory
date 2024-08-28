@@ -73,6 +73,7 @@ export type ReduxStore = {
   editManager: EditMode;
   rowsManager: RowsManagement;
   checkedSkills: CheckedSkills;
+  toDbSkills: CheckedSkills;
   checkedEdus: CheckedEdus;
   checkedCerts: CheckedCerts;
   loginStatus: LoginErrorData;

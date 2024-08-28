@@ -117,7 +117,6 @@ export const AvatarControlSection: FC<Props> = ({
       longitude: payloadFieldResidencesGenerator("longitude"),
     },
   };
-
   /** Call to API to update the user data */
   useEffect(() => {
     if (PAYLOAD.residenceData?.id && !isEditMode) {

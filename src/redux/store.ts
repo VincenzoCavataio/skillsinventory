@@ -14,6 +14,9 @@ import checkboxCertsSelection from "./checkboxCertsSelection";
 import loginStatus from "./loginStatus";
 import isEditMode from "./isEditMode";
 import showModal from "./showGenericModal";
+import addSkillToBeSentSlice from "./addSkillToBeSentSlice";
+import addEducationToBeSentSlice from "./addEducationToBeSentSlice";
+import addCertificationToBeSentSlice from "./addCertificationToBeSentSlice";
 
 export const store = configureStore({
   reducer: {
@@ -32,5 +35,8 @@ export const store = configureStore({
     loginStatus: loginStatus,
     isEditMode: isEditMode,
     showModal: showModal,
+    toBeSentSkills: addSkillToBeSentSlice,
+    toBeSentEducation: addEducationToBeSentSlice,
+    toBeSentCertification: addCertificationToBeSentSlice,
   },
 });

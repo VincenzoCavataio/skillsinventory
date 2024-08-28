@@ -50,6 +50,12 @@ export const DashboardPage = () => {
   const BLURRED_BG = isModalVisible ? "blur(10px)" : "none";
 
   useEffect(() => {
+    if (!token?.current) {
+      navigate(PAGES.loginPage);
+    }
+  }, [navigate]);
+
+  useEffect(() => {
     if (Object.keys(selectedInput).length) {
       dispatch(paginationPageStart(1));
       dispatch(updateFilter({ filters: selectedInput }));
@@ -57,16 +63,12 @@ export const DashboardPage = () => {
   }, [selectedInput, dispatch]);
 
   useEffect(() => {
-    if (!token?.current) {
-      navigate(PAGES.loginPage);
+    if (refreshToken.current) {
+      const isRefreshTokenExpired = isTokenExpired({
+        token: refreshToken.current!,
+      });
+      dispatch(showModal(isRefreshTokenExpired));
     }
-  }, [navigate]);
-
-  useEffect(() => {
-    const isRefreshTokenExpired = isTokenExpired({
-      token: refreshToken.current!,
-    });
-    dispatch(showModal(isRefreshTokenExpired));
   }, [dispatch, navigate]);
 
   // TODO: Da capire se tenerlo oppure no. Con CTRL + F si mette in focus l'input 'Nome e Cognome'

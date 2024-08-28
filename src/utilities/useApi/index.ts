@@ -15,32 +15,34 @@ const useApi = ({ URL, requestOption }: Metadata) => {
     const currentToken = localStorage.getItem("authToken") as string;
     const currentRefreshToken = localStorage.getItem("refreshToken") as string;
 
-    setLoading(true);
-    try {
-      /** Wait for the token to be updated */
-      await getRefreshToken({ currentToken, currentRefreshToken });
+    if (currentRefreshToken && currentToken) {
+      setLoading(true);
+      try {
+        /** Wait for the token to be updated */
+        await getRefreshToken({ currentToken, currentRefreshToken });
 
-      /** Get the updated token */
-      const updatedToken = localStorage.getItem("authToken");
+        /** Get the updated token */
+        const updatedToken = localStorage.getItem("authToken");
 
-      /** Make the API request */
-      const response = await axios({
-        method: requestOption.method,
-        url: URL,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${updatedToken}`,
-        },
-        data: requestOption.body,
-      });
+        /** Make the API request */
+        const response = await axios({
+          method: requestOption.method,
+          url: URL,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${updatedToken}`,
+          },
+          data: requestOption.body,
+        });
 
-      /** Update the data state with the response data */
-      setData(response.data);
-    } catch (e) {
-      console.error(t("error.responseError"), e);
-      setError(e);
-    } finally {
-      setLoading(false);
+        /** Update the data state with the response data */
+        setData(response.data);
+      } catch (e) {
+        console.error(t("error.responseError"), e);
+        setError(e);
+      } finally {
+        setLoading(false);
+      }
     }
   }, [URL, requestOption.method, requestOption.body]);
 

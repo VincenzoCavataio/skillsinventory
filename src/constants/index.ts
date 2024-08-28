@@ -1,3 +1,6 @@
+/** This file contains all the important constants used in the application */
+
+/** Type of environment */
 enum ENV_TYPE {
   LOCALHOST = "localhost",
   DEV = "dev",

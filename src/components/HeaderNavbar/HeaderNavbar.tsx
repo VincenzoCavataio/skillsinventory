@@ -2,7 +2,6 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import { Typography } from "@mui/material";
-import logo from "./../../assets/pict.svg";
 import logoWhite from "./../../assets/logoWhite.png";
 import { style } from "./style";
 import commonStyle from "../../common/commonStyle";

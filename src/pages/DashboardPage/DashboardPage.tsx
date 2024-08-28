@@ -44,6 +44,7 @@ export const DashboardPage = () => {
   const filterStore = useSelector((state: ReduxStore) => state.search);
   const fullName = useSelector(searchFiltersNameSelector);
   const isModalVisible = useSelector(isModalVisibleSelector);
+  const refreshToken = useRef(localStorage.getItem("refreshToken"));
 
   /** If the modal is visible, blur the background */
   const BLURRED_BG = isModalVisible ? "blur(10px)" : "none";
@@ -62,7 +63,9 @@ export const DashboardPage = () => {
   }, [navigate]);
 
   useEffect(() => {
-    const isRefreshTokenExpired = isTokenExpired({ token: "refreshToken" });
+    const isRefreshTokenExpired = isTokenExpired({
+      token: refreshToken.current!,
+    });
     dispatch(showModal(isRefreshTokenExpired));
   }, [dispatch, navigate]);
 

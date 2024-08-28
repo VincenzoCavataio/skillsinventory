@@ -3,6 +3,9 @@ import { generateRequestOpt } from "../../utilities/generateRequestOpt/";
 
 const URL = `${BASEURL}/api/v1/cv-record/getAllEducational`;
 
+// eslint-disable-next-line
+//@ts-ignore
+
 export const allEducationalMetadata = (filters) => {
   return {
     URL,

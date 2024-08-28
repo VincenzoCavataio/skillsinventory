@@ -10,42 +10,37 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   itemNumberFilter,
   itemPageFilters,
+  paginationSelector,
 } from "../../../../redux/paginationSlice";
-import { ReduxStore } from "../../../../redux/types";
 import { SmallTextField } from "./style";
 import { useTranslation } from "react-i18next";
 import { commonColors } from "../../../../common/commonColors";
 
+/** Component for building pagination controls in a table. */
 export const PaginationBuild: React.FC<PaginationBuildProps> = ({
   totalRowsNumber,
 }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const { itemNumber, pageStart } = useSelector(
-    (state: ReduxStore) => state.pagination
-  );
+  /** Extracts item number and page start from Redux store. */
+  const { itemNumber, pageStart } = useSelector(paginationSelector);
 
+  /** Handles the change in items per page input. */
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(itemNumberFilter({ itemNumber: Number(event.target.value) }));
   };
 
+  /** Handles the change in pagination page. */
   const handlePageChange = (
     _event: React.ChangeEvent<unknown>,
     value: number
   ) => {
-    dispatch(itemPageFilters({ pageStart: Number(value) }));
+    dispatch(itemPageFilters({ pageStart: value }));
   };
 
-  let count: number = 0;
-
-  if (totalRowsNumber) {
-    count = Math.ceil(totalRowsNumber / itemNumber);
-  }
-
-  const elementsPerPage: string = t(
-    "pages.dashboard.headerTable.paginationOverTable"
-  );
+  /** Calculates the total number of pages. */
+  const count = totalRowsNumber ? Math.ceil(totalRowsNumber / itemNumber) : 0;
 
   return (
     <TableContainer component={Paper}>
@@ -53,9 +48,9 @@ export const PaginationBuild: React.FC<PaginationBuildProps> = ({
         height="40px"
         pb={2}
         display="flex"
-        flexDirection={"row"}
-        justifyContent={"flex-end"}
-        alignItems={"center"}
+        flexDirection="row"
+        justifyContent="flex-end"
+        alignItems="center"
         bgcolor={commonColors.backgroundGray}
       >
         <Typography
@@ -65,7 +60,7 @@ export const PaginationBuild: React.FC<PaginationBuildProps> = ({
             paddingRight: "10px",
           }}
         >
-          {elementsPerPage}
+          {t("pages.dashboard.headerTable.paginationOverTable")}
         </Typography>
         <SmallTextField
           sx={{ width: 54, height: 32, backgroundColor: "white" }}

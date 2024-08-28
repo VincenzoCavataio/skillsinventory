@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Sorting } from "./types";
+
 type Props = {
   sort: Sorting[];
 };
@@ -16,39 +17,37 @@ const initialState: Props = {
 };
 
 const sortingSlice = createSlice({
-  name: "searchSlice",
+  name: "sortingSlice",
   initialState,
   reducers: {
     updateSortUp: (state, action) => {
       const { label, order } = action.payload;
 
-      state.sort = state.sort.map((item) => {
-        if (item.label === label) {
-          return {
-            ...item,
-            order: item.order === order ? "" : order,
-            colorUp: !item.colorUp,
-            colorDown: false,
-          };
-        } else {
-          return { ...item, order: "", colorUp: false, colorDown: false };
-        }
-      });
+      state.sort = state.sort.map((item) =>
+        item.label === label
+          ? {
+              ...item,
+              order: item.order === order ? "" : order,
+              colorUp: !item.colorUp,
+              colorDown: false,
+            }
+          : { ...item, order: "", colorUp: false, colorDown: false }
+      );
     },
+
     updateSortDown: (state, action) => {
       const { label, order } = action.payload;
-      state.sort = state.sort.map((item) => {
-        if (item.label === label) {
-          return {
-            ...item,
-            order: item.order === order ? "" : order,
-            colorDown: !item.colorDown,
-            colorUp: false,
-          };
-        } else {
-          return { ...item, order: "", colorUp: false, colorDown: false };
-        }
-      });
+
+      state.sort = state.sort.map((item) =>
+        item.label === label
+          ? {
+              ...item,
+              order: item.order === order ? "" : order,
+              colorDown: !item.colorDown,
+              colorUp: false,
+            }
+          : { ...item, order: "", colorUp: false, colorDown: false }
+      );
     },
   },
 });

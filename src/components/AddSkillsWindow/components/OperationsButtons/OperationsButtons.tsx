@@ -8,8 +8,12 @@ import {
 import { ResponseElementObjectData } from "../../../../pages/DashboardPage/types";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteSkills, insertSkills } from "../../../../redux/skillsSlice";
-import { ReduxStore, Skill } from "../../../../redux/types";
+import {
+  deleteSkills,
+  insertSkills,
+  skillsSelector,
+} from "../../../../redux/skillsSlice";
+import { Skill } from "../../../../redux/types";
 import { useTranslation } from "react-i18next";
 import { Triangle } from "../Triangle/Triangle";
 
@@ -24,30 +28,43 @@ type Props = {
 
 type Operators = "<" | ">" | "=" | ">=" | "<=";
 
+/** Component for handling skill operations and selection. */
 export const OperationsButtons = ({
   data,
   setMappedData,
   selectedElements,
   setSelectedElements,
 }: Props) => {
+  /** Translation hook for multi-language support. */
   const { t } = useTranslation();
-  const LEVELS = [1, 2, 3, 4, 5];
-  const OPERATORS = ["=", ">", "<", ">=", "<="];
 
+  /** Skill levels available for selection. */
+  const LEVELS = [1, 2, 3, 4, 5];
+
+  /** Operators available for selection. */
+  const OPERATORS: Operators[] = ["=", ">", "<", ">=", "<="];
+
+  /** State to manage selected operator for skills. */
   const [operator, setOperator] = useState<Operators>("=");
+
+  /** State to manage selected level for skills. */
   const [level, setLevel] = useState<number>(1);
+
+  /** State to manage selected skills. */
   const [selectedSkills, setSelectedSkills] = useState<Skill[]>([]);
 
-  const skillsInStore = useSelector((state: ReduxStore) => state.skills);
+  /** Retrieve skills from Redux store. */
+  const skillsInStore = useSelector(skillsSelector);
 
+  /** Update selected skills based on data, level, and operator. */
   useEffect(() => {
     setSelectedSkills(
       data
         .filter((skill) => skill.selected)
         .map((skill) => ({
           name: skill.name,
-          level: level,
-          operator: operator,
+          level,
+          operator,
           id: skill.id,
           selected: false,
           selectedToBeDeleted: false,
@@ -55,16 +72,20 @@ export const OperationsButtons = ({
     );
   }, [data, level, operator]);
 
+  /** Dispatch hook for triggering Redux actions. */
   const dispatch = useDispatch();
 
+  /** Handle change in operator selection. */
   const handleChangeOperator = (event: SelectChangeEvent<Operators>) => {
     setOperator(event.target.value as Operators);
   };
 
+  /** Handle change in level selection. */
   const handleChangeLevel = (event: SelectChangeEvent<string>) => {
     setLevel(Number(event.target.value));
   };
 
+  /** Add selected skills to the Redux store. */
   const addToStore = () => {
     const resetSelectedData: ResponseElementObjectData[] = data.map(
       (element) => ({
@@ -78,17 +99,14 @@ export const OperationsButtons = ({
     setMappedData(resetSelectedData);
   };
 
+  /** Remove selected skills from the Redux store. */
   const removeFromStore = () => {
     const updatedSkills = skillsInStore?.skills.filter(
       (skill) => skill.id && !selectedElements.includes(skill.id)
     );
 
     setSelectedElements([]);
-    dispatch(
-      deleteSkills({
-        skills: updatedSkills,
-      })
-    );
+    dispatch(deleteSkills({ skills: updatedSkills }));
   };
 
   return (
@@ -141,10 +159,8 @@ export const OperationsButtons = ({
       <Box
         display="flex"
         width={100}
-        justifyContent={"space-between"}
-        sx={{
-          transform: "scale(.7)",
-        }}
+        justifyContent="space-between"
+        sx={{ transform: "scale(.7)" }}
       >
         <Triangle action={removeFromStore} direction="left" />
         <Triangle action={addToStore} direction="right" />

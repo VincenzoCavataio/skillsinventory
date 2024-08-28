@@ -29,7 +29,6 @@ export const GenericAccordion = ({ action, label, state, data }: Props) => {
         toggleEdit={toggleEdit}
       />
     ),
-
     education: (
       <CheckboxListFixedEdu
         data={data}
@@ -38,7 +37,6 @@ export const GenericAccordion = ({ action, label, state, data }: Props) => {
         toggleEdit={toggleEdit}
       />
     ),
-
     certificates: (
       <CheckboxListFixedCert
         data={data}

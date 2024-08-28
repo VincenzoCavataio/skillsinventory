@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { PaginationSettings } from "./types";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { PaginationSettings, ReduxStore } from "./types";
 
 const initialState: PaginationSettings = {
   itemNumber: 20,
@@ -25,6 +25,11 @@ const paginationSlice = createSlice({
     },
   },
 });
+
+export const paginationSelector = createSelector(
+  (state: ReduxStore) => state,
+  (state: ReduxStore) => state.pagination
+);
 
 export default paginationSlice.reducer;
 export const { itemNumberFilter, itemPageFilters, paginationPageStart } =

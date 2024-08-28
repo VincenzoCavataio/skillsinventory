@@ -14,9 +14,6 @@ import checkboxCertsSelection from "./checkboxCertsSelection";
 import loginStatus from "./loginStatus";
 import isEditMode from "./isEditMode";
 import showModal from "./showGenericModal";
-import addSkillToDbSlice from "./addSkillToDbSlice";
-import addEducationToDbSlice from "./addEducationToDbSlice";
-import addCertificationToDbSlice from "./addCertificationToDbSlice";
 import addSkillToBeSentSlice from "./addSkillToBeSentSlice";
 import addEducationToBeSentSlice from "./addEducationToBeSentSlice";
 import addCertificationToBeSentSlice from "./addCertificationToBeSentSlice";
@@ -38,9 +35,6 @@ export const store = configureStore({
     loginStatus: loginStatus,
     isEditMode: isEditMode,
     showModal: showModal,
-    toDbSkills: addSkillToDbSlice,
-    toDbEducation: addEducationToDbSlice,
-    toDbCertification: addCertificationToDbSlice,
     toBeSentSkills: addSkillToBeSentSlice,
     toBeSentEducation: addEducationToBeSentSlice,
     toBeSentCertification: addCertificationToBeSentSlice,

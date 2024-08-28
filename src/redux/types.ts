@@ -73,11 +73,11 @@ export type ReduxStore = {
   editManager: EditMode;
   rowsManager: RowsManagement;
   checkedSkills: CheckedSkills;
-  toDbSkills: CheckedSkills;
+  toBeSentSkills: CheckedSkills;
   checkedEdus: CheckedEdus;
-  toDbEducation: CheckedEdus;
+  toBeSentEducation: CheckedEdus;
   checkedCerts: CheckedCerts;
-  toDbCertification: CheckedCerts;
+  toBeSentCertification: CheckedCerts;
   loginStatus: LoginErrorData;
   showModal: { isModalVisible: boolean };
 };

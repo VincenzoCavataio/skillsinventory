@@ -22,9 +22,9 @@ import { Close, Delete, Edit, WorkspacePremium } from "@mui/icons-material";
 import { AccordionLabel } from "../GenericAccordion/Types";
 import { SelectDeselectLabelCert } from "./utils/SelectDeselectLabelCert";
 import {
-  resetCheckedCertificationDb,
-  updateCheckedCertificationsDb,
-} from "../../../../redux/addCertificationToDbSlice";
+  resetCheckedCertificationToBeSent,
+  updateCheckedCertificationsToBeSent,
+} from "../../../../redux/addCertificationToBeSentSlice";
 
 type CheckboxListProps = {
   data?: string[];
@@ -49,18 +49,20 @@ export const CheckboxListFixedCert: React.FC<CheckboxListProps> = ({
   const handleSelectAll = () => {
     data?.forEach((cert) => {
       dispatch(updateCheckedCerts(currentCheckedCertRow(cert)));
-      dispatch(updateCheckedCertificationsDb(currentCheckedCertRow(cert)));
+      dispatch(
+        updateCheckedCertificationsToBeSent(currentCheckedCertRow(cert))
+      );
     });
   };
 
   const handleRemoveAll = () => {
     dispatch(resetCheckedCerts());
-    dispatch(resetCheckedCertificationDb());
+    dispatch(resetCheckedCertificationToBeSent());
   };
 
   const handleCertRowChange = (cert: CheckedCert) => {
     dispatch(updateCheckedCerts(cert));
-    dispatch(updateCheckedCertificationsDb(cert));
+    dispatch(updateCheckedCertificationsToBeSent(cert));
   };
 
   const parsedData = data?.map((cert) => currentCheckedCertRow(cert));

@@ -5,8 +5,8 @@ const initialState: CheckedSkills = {
   checkedSkills: [],
 };
 
-const addSkillToDbSlice = createSlice({
-  name: "addSkillToDbSlice",
+const addSkillToBeSentSlice = createSlice({
+  name: "addSkillToBeSentSlice",
   initialState,
   reducers: {
     updateSkillName: (state, action) => {
@@ -20,19 +20,11 @@ const addSkillToDbSlice = createSlice({
         }
       } else {
         const skill = state.checkedSkills.find((skill) => skill.id === id);
-        // console.log(skill);
+
         if (skill) {
           skill.name = name;
         }
       }
-
-      // const skill = state.checkedSkills.find(
-      //   (skill) => skill.id === id || skill.idTemp === idTemp
-      // );
-      // // console.log(skill);
-      // if (skill) {
-      //   skill.name = name;
-      // }
     },
     updateSkillLevel: (state, action) => {
       const { id, idTemp, level } = action.payload;
@@ -45,17 +37,11 @@ const addSkillToDbSlice = createSlice({
         }
       } else {
         const skill = state.checkedSkills.find((skill) => skill.id === id);
-        // console.log(skill);
+
         if (skill) {
           skill.level = level;
         }
       }
-      // const skill = state.checkedSkills.find(
-      //   (skill) => skill.id === id || skill.idTemp === idTemp
-      // );
-      // if (skill) {
-      //   skill.level = level;
-      // }
     },
     updateSkillExp: (state, action) => {
       const { id, idTemp, exp } = action.payload;
@@ -68,17 +54,11 @@ const addSkillToDbSlice = createSlice({
         }
       } else {
         const skill = state.checkedSkills.find((skill) => skill.id === id);
-        // console.log(skill);
+
         if (skill) {
           skill.exp = exp;
         }
       }
-      // const skill = state.checkedSkills.find(
-      //   (skill) => skill.id === id || skill.idTemp === idTemp
-      // );
-      // if (skill) {
-      //   skill.exp = exp;
-      // }
     },
     updateSkillNote: (state, action) => {
       const { id, idTemp, note } = action.payload;
@@ -91,19 +71,13 @@ const addSkillToDbSlice = createSlice({
         }
       } else {
         const skill = state.checkedSkills.find((skill) => skill.id === id);
-        // console.log(skill);
+
         if (skill) {
           skill.note = note;
         }
       }
-      // const skill = state.checkedSkills.find(
-      //   (skill) => skill.id === id || skill.idTemp === idTemp
-      // );
-      // if (skill) {
-      //   skill.note = note;
-      // }
     },
-    updateCheckedSkillsDb: (state, action) => {
+    updateCheckedSkillsToBeSent: (state, action) => {
       const IDs = [...state.checkedSkills.map((skill) => skill.id)];
       if (IDs.includes(action.payload.id)) {
         state.checkedSkills = state.checkedSkills.filter(
@@ -113,7 +87,7 @@ const addSkillToDbSlice = createSlice({
         state.checkedSkills = [...state.checkedSkills, action.payload];
       }
     },
-    removeSkillDb: (state, action) => {
+    removeSkillToBeSent: (state, action) => {
       state.checkedSkills = state.checkedSkills.filter((skill) => {
         if (action.payload.idTemp !== undefined) {
           return skill.idTemp !== action.payload.idTemp;
@@ -122,17 +96,17 @@ const addSkillToDbSlice = createSlice({
         }
       });
     },
-    resetCheckedSkillsDb: (state) => {
+    resetCheckedSkillsToBeSent: (state) => {
       state.checkedSkills = initialState.checkedSkills;
     },
-    addEmptySkillDb: (state, action) => {
+    addEmptySkillToBeSent: (state, action) => {
       state.checkedSkills = [...state.checkedSkills, action.payload];
     },
   },
 });
-export const dbSkillSelector = createSelector(
+export const toBeSentSkillSelector = createSelector(
   (state: ReduxStore) => state,
-  (state: ReduxStore) => state.toDbSkills.checkedSkills
+  (state: ReduxStore) => state.toBeSentSkills.checkedSkills
 );
 
 export const {
@@ -140,10 +114,10 @@ export const {
   updateSkillLevel,
   updateSkillExp,
   updateSkillNote,
-  updateCheckedSkillsDb,
-  removeSkillDb,
-  resetCheckedSkillsDb,
-  addEmptySkillDb,
-} = addSkillToDbSlice.actions;
+  updateCheckedSkillsToBeSent,
+  removeSkillToBeSent,
+  resetCheckedSkillsToBeSent,
+  addEmptySkillToBeSent,
+} = addSkillToBeSentSlice.actions;
 
-export default addSkillToDbSlice.reducer;
+export default addSkillToBeSentSlice.reducer;

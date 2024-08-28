@@ -5,8 +5,8 @@ const initialState: CheckedEdus = {
   checkedEdus: [],
 };
 
-const addEducationToDbSlice = createSlice({
-  name: "addEducationToDbSlice",
+const addEducationToBeSentSlice = createSlice({
+  name: "addEducationToBeSentSlice",
   initialState,
   reducers: {
     updateEducationCourse: (state, action) => {
@@ -57,30 +57,7 @@ const addEducationToDbSlice = createSlice({
         education.it = it;
       }
     },
-    // updateEducationIt: (state, action) => {
-    //   const { id, idTemp, it } = action.payload;
-    //   if (idTemp) {
-    //     const education = state.checkedEdus.find(
-    //       (education) => education.idTemp === idTemp
-    //     );
-    //     if (education && education.it === "0") {
-    //       //   education.it = it;
 
-    //       education.it = "1";
-    //     }
-
-    //   } else {
-    //     const education = state.checkedEdus.find(
-    //       (education) => education.id === id
-    //     );
-
-    //     // if (education) {
-    //     if (education && education.it === "1") {
-    //       //   education.it = it;
-    //       education.it = "0";
-    //     }
-    //   }
-    // },
     updateEducationInstitute: (state, action) => {
       const { id, idTemp, institute } = action.payload;
       if (idTemp) {
@@ -119,7 +96,7 @@ const addEducationToDbSlice = createSlice({
         }
       }
     },
-    updateCheckedEducationDb: (state, action) => {
+    updateCheckedEducationToBeSent: (state, action) => {
       const IDs = [...state.checkedEdus.map((edu) => edu.id)];
       if (IDs.includes(action.payload.id)) {
         state.checkedEdus = state.checkedEdus.filter(
@@ -129,7 +106,7 @@ const addEducationToDbSlice = createSlice({
         state.checkedEdus = [...state.checkedEdus, action.payload];
       }
     },
-    removeEducationDb: (state, action) => {
+    removeEducationToBeSent: (state, action) => {
       state.checkedEdus = state.checkedEdus.filter((edu) => {
         if (action.payload.idTemp !== undefined) {
           return edu.idTemp !== action.payload.idTemp;
@@ -138,29 +115,29 @@ const addEducationToDbSlice = createSlice({
         }
       });
     },
-    resetCheckedEducationDb: (state) => {
+    resetCheckedEducationToBeSent: (state) => {
       state.checkedEdus = initialState.checkedEdus;
     },
-    addEmptyEducationDb: (state, action) => {
+    addEmptyEducationToBeSent: (state, action) => {
       state.checkedEdus = [...state.checkedEdus, action.payload];
     },
   },
 });
 
-export const dbEducationSelector = createSelector(
+export const toBeSentEducationSelector = createSelector(
   (state: ReduxStore) => state,
-  (state: ReduxStore) => state.toDbEducation.checkedEdus
+  (state: ReduxStore) => state.toBeSentEducation.checkedEdus
 );
 
-export default addEducationToDbSlice.reducer;
+export default addEducationToBeSentSlice.reducer;
 export const {
   updateEducationCourse,
   updateEducationLevel,
   updateEducationIt,
   updateEducationCity,
   updateEducationInstitute,
-  updateCheckedEducationDb,
-  removeEducationDb,
-  resetCheckedEducationDb,
-  addEmptyEducationDb,
-} = addEducationToDbSlice.actions;
+  updateCheckedEducationToBeSent,
+  removeEducationToBeSent,
+  resetCheckedEducationToBeSent,
+  addEmptyEducationToBeSent,
+} = addEducationToBeSentSlice.actions;

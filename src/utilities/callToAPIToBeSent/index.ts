@@ -3,7 +3,7 @@ import { URL as BASEURL } from "../../constants";
 import { getRefreshToken } from "../useApi/getRefreshToken";
 
 /** Generic function to make a call to API */
-export const callToAPIforDB = ({
+export const callToAPIToBeSent = ({
   endpoint,
   payload,
   method,

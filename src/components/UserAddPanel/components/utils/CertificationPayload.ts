@@ -1,5 +1,6 @@
 import { CheckedCert } from "../../../../redux/types";
 
+/** Converts an array of certifications into a formatted string payload. */
 export const CertificationPayload = (certifications: CheckedCert[]) => {
   return certifications
     .map((certification) => {
@@ -14,5 +15,3 @@ export const CertificationPayload = (certifications: CheckedCert[]) => {
     })
     .join("");
 };
-//{"user_id":"10420","wordsList":"Testing Certificate^§0**TestingCode§£1£§Testing Issuer&$2024-08-11$&2024-08-31|CERTIFICATO TEST^§101**2 CODICE TEST§£1£§2 EMITTENTE TEST&$2024-08-08$&2024-09-03|"}
-//{"user_id":"10420","wordsList":"Testing Certificate^§0**TestingCode§£1£§Testing Issuer&$2024-08-11$&2024-08-31|CERTIFICATO TEST^§101**2 CODICE TEST§£1£§2 EMITTENTE TEST&$2024-08-08$&2024-09-03|"}

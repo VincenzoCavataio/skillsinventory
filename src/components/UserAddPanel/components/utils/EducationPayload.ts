@@ -1,5 +1,6 @@
 import { CheckedEdu } from "../../../../redux/types";
 
+/** Converts an array of educations into a formatted string payload. */
 export const EducationPayload = (educations: CheckedEdu[]) => {
   return educations
     .map((education) => {

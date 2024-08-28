@@ -1,5 +1,6 @@
 import { CheckedSkill } from "../../../../redux/types";
 
+/** Converts an array of skills into a formatted string payload. */
 export const SkillPayload = (skills: CheckedSkill[]) => {
   return skills
     .map((skill) => {

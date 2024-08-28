@@ -17,6 +17,9 @@ import showModal from "./showGenericModal";
 import addSkillToDbSlice from "./addSkillToDbSlice";
 import addEducationToDbSlice from "./addEducationToDbSlice";
 import addCertificationToDbSlice from "./addCertificationToDbSlice";
+import addSkillToBeSentSlice from "./addSkillToBeSentSlice";
+import addEducationToBeSentSlice from "./addEducationToBeSentSlice";
+import addCertificationToBeSentSlice from "./addCertificationToBeSentSlice";
 
 export const store = configureStore({
   reducer: {
@@ -38,5 +41,8 @@ export const store = configureStore({
     toDbSkills: addSkillToDbSlice,
     toDbEducation: addEducationToDbSlice,
     toDbCertification: addCertificationToDbSlice,
+    toBeSentSkills: addSkillToBeSentSlice,
+    toBeSentEducation: addEducationToBeSentSlice,
+    toBeSentCertification: addCertificationToBeSentSlice,
   },
 });

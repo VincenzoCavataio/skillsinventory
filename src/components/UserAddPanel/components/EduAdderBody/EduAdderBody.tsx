@@ -7,20 +7,22 @@ import {
   removeEdu,
 } from "../../../../redux/checkboxEdusSelection";
 import {
-  dbEducationSelector,
-  removeEducationDb,
+  removeEducationToBeSent,
+  toBeSentEducationSelector,
   updateEducationCity,
   updateEducationCourse,
   updateEducationInstitute,
   updateEducationIt,
   updateEducationLevel,
-} from "../../../../redux/addEducationToDbSlice";
+} from "../../../../redux/addEducationToBeSentSlice";
 
+/** Component to render the body of the education adder table, allowing users to input education details and handle updates and deletions. */
 export const EduAdderBody = () => {
   const dispatch = useDispatch();
   const checkedEdusFromStore = useSelector(checkboxEdusSelector);
-  const educationForDbSelector = useSelector(dbEducationSelector);
+  const educationToBeSentSelector = useSelector(toBeSentEducationSelector);
 
+  /** Updates the course field of a specific education entry. */
   const handleUpdateEducationCourse = (
     id: string,
     idTemp: number | undefined,
@@ -29,6 +31,7 @@ export const EduAdderBody = () => {
     dispatch(updateEducationCourse({ id, idTemp, course }));
   };
 
+  /** Updates the level field of a specific education entry. */
   const handleUpdateEducationLevel = (
     id: string,
     idTemp: number | undefined,
@@ -37,6 +40,7 @@ export const EduAdderBody = () => {
     dispatch(updateEducationLevel({ id, idTemp, level }));
   };
 
+  /** Updates the "IT" field of a specific education entry. */
   const handleUpdateEducationIt = (
     id: string,
     idTemp: number | undefined,
@@ -45,6 +49,8 @@ export const EduAdderBody = () => {
     const itValue = checked ? "1" : "0";
     dispatch(updateEducationIt({ id, idTemp, it: itValue }));
   };
+
+  /** Updates the city field of a specific education entry. */
   const handleUpdateEducationCity = (
     id: string,
     idTemp: number | undefined,
@@ -52,6 +58,8 @@ export const EduAdderBody = () => {
   ) => {
     dispatch(updateEducationCity({ id, idTemp, city }));
   };
+
+  /** Updates the institute field of a specific education entry. */
   const handleUpdateEducationInstitute = (
     id: string,
     idTemp: number | undefined,
@@ -60,9 +68,10 @@ export const EduAdderBody = () => {
     dispatch(updateEducationInstitute({ id, idTemp, institute }));
   };
 
+  /** Removes an education row from both the checked list and the to-be-sent list. */
   const handleRemoveRow = (id: string, idTemp?: number) => {
     dispatch(removeEdu({ id, idTemp }));
-    dispatch(removeEducationDb({ id, idTemp }));
+    dispatch(removeEducationToBeSent({ id, idTemp }));
   };
 
   type OptionType = {
@@ -74,17 +83,20 @@ export const EduAdderBody = () => {
     { label: "Bachelor" },
     { label: "Master" },
   ];
+
+  /** Retrieves the value of the checkbox indicating whether the education entry is in the IT field. */
   const getCheckboxValue = (id: string, idTemp?: number) => {
     if (idTemp) {
-      const foundEdu = educationForDbSelector.find(
+      const foundEdu = educationToBeSentSelector.find(
         (edu) => edu.idTemp === idTemp
       );
       return foundEdu ? foundEdu.it === "1" : false;
     } else {
-      const foundEdu = educationForDbSelector.find((edu) => edu.id === id);
+      const foundEdu = educationToBeSentSelector.find((edu) => edu.id === id);
       return foundEdu ? foundEdu.it === "1" : false;
     }
   };
+  //TODO: controllare label e option che si spaccano
   return (
     <TableBody>
       {checkedEdusFromStore.map((row) => (
@@ -143,13 +155,10 @@ export const EduAdderBody = () => {
           <TableCell align="center">
             <Checkbox
               sx={{ padding: 0 }}
-              // checked={!!(row.it === "1")}
               checked={getCheckboxValue(row.id, row.idTemp)}
               onChange={(e, value) => {
-                console.log(value, row);
                 handleUpdateEducationIt(row.id, row.idTemp, value);
               }}
-              // value={educationForDbSelector}
             />
           </TableCell>
           <TableCell align="center">

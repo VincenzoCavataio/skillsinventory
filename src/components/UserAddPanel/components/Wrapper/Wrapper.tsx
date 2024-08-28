@@ -22,22 +22,22 @@ import {
   checkboxCertsSelector,
 } from "../../../../redux/checkboxCertsSelection";
 import {
-  addEmptySkillDb,
-  dbSkillSelector,
-} from "../../../../redux/addSkillToDbSlice";
+  addEmptySkillToBeSent,
+  toBeSentSkillSelector,
+} from "../../../../redux/addSkillToBeSentSlice";
 import { userDataSelector } from "../../../../redux/userDataSlice";
 import { SkillPayload } from "../utils/SkillPayload";
 
-import { callToAPIforDB } from "../../../../utilities/callToAPIforDB";
+import { callToAPIToBeSent } from "../../../../utilities/callToAPIToBeSent";
 import {
-  addEmptyEducationDb,
-  dbEducationSelector,
-} from "../../../../redux/addEducationToDbSlice";
+  addEmptyEducationToBeSent,
+  toBeSentEducationSelector,
+} from "../../../../redux/addEducationToBeSentSlice";
 import { EducationPayload } from "../utils/EducationPayload";
 import {
-  addEmptyCertificationDb,
-  dbCertificationSelector,
-} from "../../../../redux/addCertificationToDbSlice";
+  addEmptyCertificationToBeSent,
+  toBeSentCertificationSelector,
+} from "../../../../redux/addCertificationToBeSentSlice";
 import { CertificationPayload } from "../utils/CertificationPayload";
 
 const VisuallyHiddenInput = styled("input")({
@@ -55,6 +55,7 @@ let skillEmptyRows: number = 0;
 let eduEmptyRows: number = 0;
 let certEmptyRows: number = 0;
 
+/** Component that wraps the skill, education, and certification adders, along with file upload and API submission functionalities. */
 export const Wrapper = () => {
   const { t } = useTranslation();
   const skillAdd: string = t("pages.userPage.tables.addSkills");
@@ -64,12 +65,15 @@ export const Wrapper = () => {
   const checkedEdusFromStore = useSelector(checkboxEdusSelector);
   const checkedCertsFromStore = useSelector(checkboxCertsSelector);
   const userSelector = useSelector(userDataSelector);
-  const skillForDbSelector = useSelector(dbSkillSelector);
-  const educationForDbSelector = useSelector(dbEducationSelector);
-  const certificationForDbSelector = useSelector(dbCertificationSelector);
+  const skillToBeSentSelector = useSelector(toBeSentSkillSelector);
+  const educationToBeSentSelector = useSelector(toBeSentEducationSelector);
+  const certificationToBeSentSelector = useSelector(
+    toBeSentCertificationSelector
+  );
 
   const dispatch = useDispatch();
 
+  /** Handles the click event to add a new empty skill row. */
   const handleSkillAddClick = () => {
     skillEmptyRows++;
     const skillBlankData: CheckedSkill = {
@@ -82,9 +86,10 @@ export const Wrapper = () => {
     };
 
     dispatch(addEmptySkill(skillBlankData));
-    dispatch(addEmptySkillDb(skillBlankData));
+    dispatch(addEmptySkillToBeSent(skillBlankData));
   };
 
+  /** Handles the click event to add a new empty education row. */
   const handleEduAddClick = () => {
     eduEmptyRows++;
     const eduBlankData: CheckedEdu = {
@@ -98,9 +103,10 @@ export const Wrapper = () => {
     };
 
     dispatch(addEmptyEdu(eduBlankData));
-    dispatch(addEmptyEducationDb(eduBlankData));
+    dispatch(addEmptyEducationToBeSent(eduBlankData));
   };
 
+  /** Handles the click event to add a new empty certification row. */
   const handleCertAddClick = () => {
     certEmptyRows++;
     const certBlankData: CheckedCert = {
@@ -115,33 +121,34 @@ export const Wrapper = () => {
     };
 
     dispatch(addEmptyCert(certBlankData));
-    dispatch(addEmptyCertificationDb(certBlankData));
+    dispatch(addEmptyCertificationToBeSent(certBlankData));
   };
   const SKILL_PAYLOAD = {
     user_id: userSelector?.id?.toString(),
-    wordsList: SkillPayload(skillForDbSelector),
+    wordsList: SkillPayload(skillToBeSentSelector),
   };
   const EDUCATION_PAYLOAD = {
     user_id: userSelector?.id?.toString(),
-    wordsList: EducationPayload(educationForDbSelector),
+    wordsList: EducationPayload(educationToBeSentSelector),
   };
   const CERTIFICATION_PAYLOAD = {
     user_id: userSelector?.id?.toString(),
-    wordsList: CertificationPayload(certificationForDbSelector),
+    wordsList: CertificationPayload(certificationToBeSentSelector),
   };
-  console.log(SKILL_PAYLOAD, EDUCATION_PAYLOAD, CERTIFICATION_PAYLOAD);
-  const handleDbAdding = () => {
-    callToAPIforDB({
+
+  /** Handles the submission of skills, education, and certifications to the API. */
+  const handleAdd = () => {
+    callToAPIToBeSent({
       endpoint: "/api/v1/skill/insertWords",
       payload: SKILL_PAYLOAD,
       method: "POST",
     });
-    callToAPIforDB({
+    callToAPIToBeSent({
       endpoint: "/api/v1/educational/insertUserEducational",
       payload: EDUCATION_PAYLOAD,
       method: "POST",
     });
-    callToAPIforDB({
+    callToAPIToBeSent({
       endpoint: "/api/v1/certificate/insertUserCertificates",
       payload: CERTIFICATION_PAYLOAD,
       method: "POST",
@@ -203,7 +210,7 @@ export const Wrapper = () => {
             color: "white",
             boxShadow: "none",
           }}
-          onClick={handleDbAdding}
+          onClick={handleAdd}
         >
           {t("pages.userPage.tables.updateProfile")}
         </Button>

@@ -17,23 +17,27 @@ import {
 import dayjs from "dayjs";
 import { dateFormatByLanguage } from "../../../../utilities/dateFormatByLanguage";
 import {
-  dbCertificationSelector,
-  removeCertificationsDb,
+  removeCertificationsToBeSent,
+  toBeSentCertificationSelector,
   updateCertificationCode,
   updateCertificationExpDate,
   updateCertificationIssuer,
   updateCertificationIt,
   updateCertificationName,
   updateCertificationReleaseDate,
-} from "../../../../redux/addCertificationToDbSlice";
+} from "../../../../redux/addCertificationToBeSentSlice";
 import { CheckedCert } from "../../../../redux/types";
 
+/** Component to render the body of the certification adder table, allowing users to input certification details and handle updates and deletions. */
 export const CertAdderBody = () => {
   const checkedCertsFromStore = useSelector(checkboxCertsSelector);
-  const certificationForDbSelector = useSelector(dbCertificationSelector);
+  const certificationToBeSentSelector = useSelector(
+    toBeSentCertificationSelector
+  );
 
   const dispatch = useDispatch();
 
+  /** Updates the name field of a specific certification entry. */
   const handleUpdateCertificationName = (
     id: string,
     idTemp: number | undefined,
@@ -42,6 +46,7 @@ export const CertAdderBody = () => {
     dispatch(updateCertificationName({ id, idTemp, name }));
   };
 
+  /** Updates the issuer field of a specific certification entry. */
   const handleUpdateCertificationIssuer = (
     id: string,
     idTemp: number | undefined,
@@ -50,6 +55,7 @@ export const CertAdderBody = () => {
     dispatch(updateCertificationIssuer({ id, idTemp, issuer }));
   };
 
+  /** Updates the "IT" field of a specific certification entry. */
   const handleUpdateCertificationIt = (
     id: string,
     idTemp: number | undefined,
@@ -58,6 +64,8 @@ export const CertAdderBody = () => {
     const itValue = checked ? "1" : "0";
     dispatch(updateCertificationIt({ id, idTemp, it: itValue }));
   };
+
+  /** Updates the code field of a specific certification entry. */
   const handleUpdateCertificationCode = (
     id: string,
     idTemp: number | undefined,
@@ -65,6 +73,8 @@ export const CertAdderBody = () => {
   ) => {
     dispatch(updateCertificationCode({ id, idTemp, code }));
   };
+
+  /** Updates the expiration date field of a specific certification entry. */
   const handleUpdateCertificationExpDate = (
     id: string,
     idTemp: number | undefined,
@@ -72,6 +82,8 @@ export const CertAdderBody = () => {
   ) => {
     dispatch(updateCertificationExpDate({ id, idTemp, expDate }));
   };
+
+  /** Updates the release date field of a specific certification entry. */
   const handleUpdateCertificationReleaseDate = (
     id: string,
     idTemp: number | undefined,
@@ -80,23 +92,28 @@ export const CertAdderBody = () => {
     dispatch(updateCertificationReleaseDate({ id, idTemp, releaseDate }));
   };
 
+  /** Removes a certification row from both the checked list and the to-be-sent list. */
   const handleRemoveRow = (id: string, idTemp?: number) => {
     dispatch(removeCert({ id, idTemp }));
-    dispatch(removeCertificationsDb({ id, idTemp }));
+    dispatch(removeCertificationsToBeSent({ id, idTemp }));
   };
+
+  /** Retrieves the value of the checkbox indicating whether the certification entry is in the IT field. */
   const getCheckboxValue = (id: string, idTemp?: number) => {
     if (idTemp) {
-      const foundCertification = certificationForDbSelector.find(
+      const foundCertification = certificationToBeSentSelector.find(
         (certification) => certification.idTemp === idTemp
       );
       return foundCertification ? foundCertification.it === "1" : false;
     } else {
-      const foundCertification = certificationForDbSelector.find(
+      const foundCertification = certificationToBeSentSelector.find(
         (certification) => certification.id === id
       );
       return foundCertification ? foundCertification.it === "1" : false;
     }
   };
+
+  /**  Maps the certification name input to a `ShortTextField` component if the name is empty; otherwise, it returns a disabled `ShortTextField`. */
   const mappingSection = (row: CheckedCert) => {
     if (row.name === "") {
       return (
@@ -111,6 +128,8 @@ export const CertAdderBody = () => {
       return <ShortTextField defaultValue={row.name} disabled />;
     }
   };
+
+  /**  Maps the IT checkbox input to a `Checkbox` component based on whether the certification is temporary or not. */
   const mappingSectionCheckbox = (row: CheckedCert) => {
     if (row.idTemp) {
       return (
@@ -118,7 +137,6 @@ export const CertAdderBody = () => {
           sx={{ padding: 0 }}
           checked={getCheckboxValue(row.id, row.idTemp)}
           onChange={(e, value) => {
-            console.log(value, row);
             handleUpdateCertificationIt(row.id, row.idTemp, value);
           }}
         />
@@ -196,17 +214,7 @@ export const CertAdderBody = () => {
               }
             />
           </TableCell>
-          <TableCell align="center">
-            {/* <Checkbox
-              sx={{ padding: 0 }}
-              checked={getCheckboxValue(row.id, row.idTemp)}
-              onChange={(e, value) => {
-                console.log(value, row);
-                handleUpdateCertificationIt(row.id, row.idTemp, value);
-              }}
-            /> */}
-            {mappingSectionCheckbox(row)}
-          </TableCell>
+          <TableCell align="center">{mappingSectionCheckbox(row)}</TableCell>
           <TableCell align="center">
             <GenericDelete
               handleRemove={() => handleRemoveRow(row.id, row.idTemp)}

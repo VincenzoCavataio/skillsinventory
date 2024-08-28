@@ -21,6 +21,10 @@ import { CheckedEdu } from "../../../../redux/types";
 import { Close, Delete, Edit, School } from "@mui/icons-material";
 import { AccordionLabel } from "../GenericAccordion/Types";
 import { SelectDeselectLabelEdu } from "./utils/SelectDeselectLabelEdu";
+import {
+  resetCheckedEducationDb,
+  updateCheckedEducationDb,
+} from "../../../../redux/addEducationToDbSlice";
 
 type CheckboxListProps = {
   data?: string[];
@@ -43,17 +47,20 @@ export const CheckboxListFixedEdu: React.FC<CheckboxListProps> = ({
   const allChecked = checkedEduStore.length > 0;
 
   const handleSelectAll = () => {
-    data?.forEach((edu) =>
-      dispatch(updateCheckedEdus(currentCheckedEduRow(edu)))
-    );
+    data?.forEach((edu) => {
+      dispatch(updateCheckedEdus(currentCheckedEduRow(edu)));
+      dispatch(updateCheckedEducationDb(currentCheckedEduRow(edu)));
+    });
   };
 
   const handleRemoveAll = () => {
     dispatch(resetCheckedEdus());
+    dispatch(resetCheckedEducationDb());
   };
 
   const handleEduRowChange = (edu: CheckedEdu) => {
     dispatch(updateCheckedEdus(edu));
+    dispatch(updateCheckedEducationDb(edu));
   };
 
   const parsedData = data?.map((edu) => currentCheckedEduRow(edu));

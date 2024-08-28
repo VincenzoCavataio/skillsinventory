@@ -15,6 +15,7 @@ import loginStatus from "./loginStatus";
 import isEditMode from "./isEditMode";
 import showModal from "./showGenericModal";
 import addSkillToDbSlice from "./addSkillToDbSlice";
+import addEducationToDbSlice from "./addEducationToDbSlice";
 
 export const store = configureStore({
   reducer: {
@@ -34,5 +35,6 @@ export const store = configureStore({
     isEditMode: isEditMode,
     showModal: showModal,
     toDbSkills: addSkillToDbSlice,
+    toDbEducation: addEducationToDbSlice,
   },
 });

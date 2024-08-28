@@ -75,6 +75,7 @@ export type ReduxStore = {
   checkedSkills: CheckedSkills;
   toDbSkills: CheckedSkills;
   checkedEdus: CheckedEdus;
+  toDbEducation: CheckedEdus;
   checkedCerts: CheckedCerts;
   loginStatus: LoginErrorData;
   showModal: { isModalVisible: boolean };

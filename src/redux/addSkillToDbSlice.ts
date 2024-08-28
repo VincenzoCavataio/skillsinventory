@@ -11,40 +11,97 @@ const addSkillToDbSlice = createSlice({
   reducers: {
     updateSkillName: (state, action) => {
       const { id, idTemp, name } = action.payload;
-      const skill = state.checkedSkills.find(
-        (skill) => skill.id === id || skill.idTemp === idTemp
-      );
-      console.log(skill);
-      if (skill) {
-        skill.name = name;
+      if (idTemp) {
+        const skill = state.checkedSkills.find(
+          (skill) => skill.idTemp === idTemp
+        );
+        if (skill) {
+          skill.name = name;
+        }
+      } else {
+        const skill = state.checkedSkills.find((skill) => skill.id === id);
+        // console.log(skill);
+        if (skill) {
+          skill.name = name;
+        }
       }
+
+      // const skill = state.checkedSkills.find(
+      //   (skill) => skill.id === id || skill.idTemp === idTemp
+      // );
+      // // console.log(skill);
+      // if (skill) {
+      //   skill.name = name;
+      // }
     },
     updateSkillLevel: (state, action) => {
       const { id, idTemp, level } = action.payload;
-      const skill = state.checkedSkills.find(
-        (skill) => skill.id === id || skill.idTemp === idTemp
-      );
-      if (skill) {
-        skill.level = level;
+      if (idTemp) {
+        const skill = state.checkedSkills.find(
+          (skill) => skill.idTemp === idTemp
+        );
+        if (skill) {
+          skill.level = level;
+        }
+      } else {
+        const skill = state.checkedSkills.find((skill) => skill.id === id);
+        // console.log(skill);
+        if (skill) {
+          skill.level = level;
+        }
       }
+      // const skill = state.checkedSkills.find(
+      //   (skill) => skill.id === id || skill.idTemp === idTemp
+      // );
+      // if (skill) {
+      //   skill.level = level;
+      // }
     },
     updateSkillExp: (state, action) => {
       const { id, idTemp, exp } = action.payload;
-      const skill = state.checkedSkills.find(
-        (skill) => skill.id === id || skill.idTemp === idTemp
-      );
-      if (skill) {
-        skill.exp = exp;
+      if (idTemp) {
+        const skill = state.checkedSkills.find(
+          (skill) => skill.idTemp === idTemp
+        );
+        if (skill) {
+          skill.exp = exp;
+        }
+      } else {
+        const skill = state.checkedSkills.find((skill) => skill.id === id);
+        // console.log(skill);
+        if (skill) {
+          skill.exp = exp;
+        }
       }
+      // const skill = state.checkedSkills.find(
+      //   (skill) => skill.id === id || skill.idTemp === idTemp
+      // );
+      // if (skill) {
+      //   skill.exp = exp;
+      // }
     },
     updateSkillNote: (state, action) => {
       const { id, idTemp, note } = action.payload;
-      const skill = state.checkedSkills.find(
-        (skill) => skill.id === id || skill.idTemp === idTemp
-      );
-      if (skill) {
-        skill.note = note;
+      if (idTemp) {
+        const skill = state.checkedSkills.find(
+          (skill) => skill.idTemp === idTemp
+        );
+        if (skill) {
+          skill.note = note;
+        }
+      } else {
+        const skill = state.checkedSkills.find((skill) => skill.id === id);
+        // console.log(skill);
+        if (skill) {
+          skill.note = note;
+        }
       }
+      // const skill = state.checkedSkills.find(
+      //   (skill) => skill.id === id || skill.idTemp === idTemp
+      // );
+      // if (skill) {
+      //   skill.note = note;
+      // }
     },
     updateCheckedSkillsDb: (state, action) => {
       const IDs = [...state.checkedSkills.map((skill) => skill.id)];

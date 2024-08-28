@@ -29,6 +29,11 @@ import { userDataSelector } from "../../../../redux/userDataSlice";
 import { SkillPayload } from "../utils/SkillPayload";
 
 import { callToAPIforDB } from "../../../../utilities/callToAPIforDB";
+import {
+  addEmptyEducationDb,
+  dbEducationSelector,
+} from "../../../../redux/addEducationToDbSlice";
+import { EducationPayload } from "../utils/EducationPayload";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -55,6 +60,7 @@ export const Wrapper = () => {
   const checkedCertsFromStore = useSelector(checkboxCertsSelector);
   const userSelector = useSelector(userDataSelector);
   const skillForDbSelector = useSelector(dbSkillSelector);
+  const educationForDbSelector = useSelector(dbEducationSelector);
 
   const dispatch = useDispatch();
 
@@ -86,6 +92,7 @@ export const Wrapper = () => {
     };
 
     dispatch(addEmptyEdu(eduBlankData));
+    dispatch(addEmptyEducationDb(eduBlankData));
   };
 
   const handleCertAddClick = () => {
@@ -107,7 +114,11 @@ export const Wrapper = () => {
     user_id: userSelector?.id?.toString(),
     wordsList: SkillPayload(skillForDbSelector),
   };
-  console.log(SKILL_PAYLOAD);
+  const EDUCATION_PAYLOAD = {
+    user_id: userSelector?.id?.toString(),
+    wordsList: EducationPayload(educationForDbSelector),
+  };
+  console.log(SKILL_PAYLOAD, EDUCATION_PAYLOAD);
   const handleDbAdding = () => {
     callToAPIforDB({
       endpoint: "/api/v1/skill/insertWords",

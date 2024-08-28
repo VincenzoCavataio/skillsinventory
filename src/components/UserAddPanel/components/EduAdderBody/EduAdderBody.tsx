@@ -7,6 +7,7 @@ import {
   removeEdu,
 } from "../../../../redux/checkboxEdusSelection";
 import {
+  dbEducationSelector,
   removeEducationDb,
   updateEducationCity,
   updateEducationCourse,
@@ -18,6 +19,7 @@ import {
 export const EduAdderBody = () => {
   const dispatch = useDispatch();
   const checkedEdusFromStore = useSelector(checkboxEdusSelector);
+  const educationForDbSelector = useSelector(dbEducationSelector);
 
   const handleUpdateEducationCourse = (
     id: string,
@@ -68,11 +70,21 @@ export const EduAdderBody = () => {
   };
 
   const options: OptionType[] = [
-    { label: "Diploma superiore" },
+    { label: "Diploma Superiore" },
     { label: "Bachelor" },
     { label: "Master" },
   ];
-
+  const getCheckboxValue = (id: string, idTemp?: number) => {
+    if (idTemp) {
+      const foundEdu = educationForDbSelector.find(
+        (edu) => edu.idTemp === idTemp
+      );
+      return foundEdu ? foundEdu.it === "1" : false;
+    } else {
+      const foundEdu = educationForDbSelector.find((edu) => edu.id === id);
+      return foundEdu ? foundEdu.it === "1" : false;
+    }
+  };
   return (
     <TableBody>
       {checkedEdusFromStore.map((row) => (
@@ -129,23 +141,16 @@ export const EduAdderBody = () => {
             />
           </TableCell>
           <TableCell align="center">
-            {row.it === "1" ? (
-              <Checkbox
-                sx={{ padding: 0 }}
-                checked={true}
-                // onChange={(e) =>
-                //   handleUpdateEducationIt(row.id, row.idTemp, e.target.checked)
-                // }
-              />
-            ) : (
-              <Checkbox
-                sx={{ padding: 0 }}
-                checked={false}
-                // onChange={(e) =>
-                //   handleUpdateEducationIt(row.id, row.idTemp, e.target.checked)
-                // }
-              />
-            )}
+            <Checkbox
+              sx={{ padding: 0 }}
+              // checked={!!(row.it === "1")}
+              checked={getCheckboxValue(row.id, row.idTemp)}
+              onChange={(e, value) => {
+                console.log(value, row);
+                handleUpdateEducationIt(row.id, row.idTemp, value);
+              }}
+              // value={educationForDbSelector}
+            />
           </TableCell>
           <TableCell align="center">
             <GenericDelete

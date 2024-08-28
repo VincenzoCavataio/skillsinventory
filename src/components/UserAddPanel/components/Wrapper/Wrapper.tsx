@@ -34,6 +34,11 @@ import {
   dbEducationSelector,
 } from "../../../../redux/addEducationToDbSlice";
 import { EducationPayload } from "../utils/EducationPayload";
+import {
+  addEmptyCertificationDb,
+  dbCertificationSelector,
+} from "../../../../redux/addCertificationToDbSlice";
+import { CertificationPayload } from "../utils/CertificationPayload";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -61,6 +66,7 @@ export const Wrapper = () => {
   const userSelector = useSelector(userDataSelector);
   const skillForDbSelector = useSelector(dbSkillSelector);
   const educationForDbSelector = useSelector(dbEducationSelector);
+  const certificationForDbSelector = useSelector(dbCertificationSelector);
 
   const dispatch = useDispatch();
 
@@ -85,7 +91,7 @@ export const Wrapper = () => {
       id: "",
       course: "",
       level: "",
-      it: "",
+      it: "0",
       institute: "",
       city: "",
       idTemp: eduEmptyRows,
@@ -109,6 +115,7 @@ export const Wrapper = () => {
     };
 
     dispatch(addEmptyCert(certBlankData));
+    dispatch(addEmptyCertificationDb(certBlankData));
   };
   const SKILL_PAYLOAD = {
     user_id: userSelector?.id?.toString(),
@@ -118,11 +125,25 @@ export const Wrapper = () => {
     user_id: userSelector?.id?.toString(),
     wordsList: EducationPayload(educationForDbSelector),
   };
-  console.log(SKILL_PAYLOAD, EDUCATION_PAYLOAD);
+  const CERTIFICATION_PAYLOAD = {
+    user_id: userSelector?.id?.toString(),
+    wordsList: CertificationPayload(certificationForDbSelector),
+  };
+  console.log(SKILL_PAYLOAD, EDUCATION_PAYLOAD, CERTIFICATION_PAYLOAD);
   const handleDbAdding = () => {
     callToAPIforDB({
       endpoint: "/api/v1/skill/insertWords",
       payload: SKILL_PAYLOAD,
+      method: "POST",
+    });
+    callToAPIforDB({
+      endpoint: "/api/v1/educational/insertUserEducational",
+      payload: EDUCATION_PAYLOAD,
+      method: "POST",
+    });
+    callToAPIforDB({
+      endpoint: "/api/v1/certificate/insertUserCertificates",
+      payload: CERTIFICATION_PAYLOAD,
       method: "POST",
     });
   };

@@ -49,23 +49,38 @@ const addEducationToDbSlice = createSlice({
     },
     updateEducationIt: (state, action) => {
       const { id, idTemp, it } = action.payload;
-      if (idTemp) {
-        const education = state.checkedEdus.find(
-          (education) => education.idTemp === idTemp
-        );
-        if (education) {
-          education.it = it;
-        }
-      } else {
-        const education = state.checkedEdus.find(
-          (education) => education.id === id
-        );
+      const education = idTemp
+        ? state.checkedEdus.find((education) => education.idTemp === idTemp)
+        : state.checkedEdus.find((education) => education.id === id);
 
-        if (education) {
-          education.it = it;
-        }
+      if (education) {
+        education.it = it;
       }
     },
+    // updateEducationIt: (state, action) => {
+    //   const { id, idTemp, it } = action.payload;
+    //   if (idTemp) {
+    //     const education = state.checkedEdus.find(
+    //       (education) => education.idTemp === idTemp
+    //     );
+    //     if (education && education.it === "0") {
+    //       //   education.it = it;
+
+    //       education.it = "1";
+    //     }
+
+    //   } else {
+    //     const education = state.checkedEdus.find(
+    //       (education) => education.id === id
+    //     );
+
+    //     // if (education) {
+    //     if (education && education.it === "1") {
+    //       //   education.it = it;
+    //       education.it = "0";
+    //     }
+    //   }
+    // },
     updateEducationInstitute: (state, action) => {
       const { id, idTemp, institute } = action.payload;
       if (idTemp) {

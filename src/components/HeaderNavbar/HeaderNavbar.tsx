@@ -2,7 +2,7 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import { Typography } from "@mui/material";
-import logoWhite from "./../../assets/logoWhite.png";
+import logoWhite from "./../../assets/pict.svg";
 import { style } from "./style";
 import commonStyle from "../../common/commonStyle";
 import { useTranslation } from "react-i18next";

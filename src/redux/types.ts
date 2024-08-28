@@ -1,5 +1,5 @@
 import { CertRowType, EduRowType } from "../components/UserAddPanel/types";
-import { HIDDEN_PROP } from "../constants";
+import { HIDDEN_PROP, LANG_TYPE } from "../constants";
 import { CompiledFieldsWithID } from "../pages/DashboardPage/types";
 
 /** QUANDO BE FIXA CAMBIAMO IN SOLO STRING */
@@ -68,7 +68,7 @@ export type ReduxStore = {
   pagination: PaginationSettings;
   sorting: { sort: Sorting[] };
   andOrStore: SelectorAndOr;
-  lang: string;
+  langManager: { lang: LANG_TYPE };
   checkboxManager: number[];
   editManager: EditMode;
   rowsManager: RowsManagement;

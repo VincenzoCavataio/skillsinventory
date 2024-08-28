@@ -15,7 +15,7 @@ const langSlice = createSlice({
 
 export const langSelector = createSelector(
   (state: ReduxStore) => state,
-  (state: ReduxStore) => state.lang
+  (state: ReduxStore) => state.langManager.lang
 );
 
 export default langSlice.reducer;

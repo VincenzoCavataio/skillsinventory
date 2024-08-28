@@ -20,6 +20,8 @@ export const LogoutModal: React.FC<Props> = ({ handleClose }) => {
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("refreshToken");
+    localStorage.removeItem("id");
+    localStorage.removeItem("role");
     navigate(PAGES.loginPage);
   };
 

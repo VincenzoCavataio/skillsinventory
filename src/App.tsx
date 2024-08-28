@@ -9,7 +9,7 @@ import { SigninStepper } from "./components/SignIn/components";
 import { ExpiredLoginModal } from "./components/ExpiredLoginModal";
 import { useDispatch, useSelector } from "react-redux";
 import { isModalVisibleSelector, showModal } from "./redux/showGenericModal";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { isTokenExpired } from "./utilities/isTokenExpired/isTokenExpired";
 import { PAGES } from "./constants";
 
@@ -17,7 +17,7 @@ import { PAGES } from "./constants";
 const App = () => {
   const dispatch = useDispatch();
   const isModalVisible = useSelector(isModalVisibleSelector);
-  const refreshToken = useRef(localStorage.getItem("refreshToken"));
+  const refreshToken = localStorage.getItem("refreshToken");
   const token = localStorage.getItem("authToken");
   const navigate = useNavigate();
 
@@ -26,17 +26,18 @@ const App = () => {
 
   /** If the refresh token is expired, show the expired login modal */
   useEffect(() => {
-    if (refreshToken.current) {
+    if (refreshToken) {
       const isRefreshTokenExpired = isTokenExpired({
-        token: refreshToken.current!,
+        token: refreshToken!,
       });
       dispatch(showModal(isRefreshTokenExpired));
     }
-  }, [dispatch]);
+  }, [dispatch, refreshToken]);
 
-  /** If the token is expired, redirect to the login page */
+  /** If the token does not exists, redirect to the login page */
   useEffect(() => {
-    if (!token) {
+    if (!token && location.pathname !== PAGES.signinPage) {
+      console.log(location.pathname);
       navigate(PAGES.loginPage);
     }
   }, [navigate, token]);

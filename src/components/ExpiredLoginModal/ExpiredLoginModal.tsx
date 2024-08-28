@@ -23,6 +23,10 @@ export const ExpiredLoginModal: FC = () => {
 
   /** Function to handle the navigation to the login page */
   const handleNavigationToLogin = () => {
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("id");
+    localStorage.removeItem("role");
     dispatch(showModal(false));
     navigate(PAGES.loginPage);
   };

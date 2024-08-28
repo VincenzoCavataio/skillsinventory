@@ -35,6 +35,7 @@ export const getRefreshToken = async ({
           localStorage.setItem("id", id);
         })
         .catch((err) => {
+          window.location.href = "/login";
           console.error(err);
         });
     }

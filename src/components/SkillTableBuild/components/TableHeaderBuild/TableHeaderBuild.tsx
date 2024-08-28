@@ -1,3 +1,4 @@
+import React, { useMemo } from "react";
 import {
   Box,
   Button,
@@ -8,45 +9,44 @@ import {
 } from "@mui/material";
 import { PRIMARY_COLOR, commonColors } from "../../../../common/commonColors";
 import { useDispatch, useSelector } from "react-redux";
-import { ReduxStore } from "../../../../redux/types";
 import { HeaderCustomCell } from "../HeaderCustomCell";
 import { Delete, Download } from "@mui/icons-material";
 import { HeadCellsData } from "./HeadCells";
-import { checkboxMarker } from "../../../../redux/checkboxSlice";
+import {
+  checkboxManagerSelector,
+  checkboxMarker,
+} from "../../../../redux/checkboxSlice";
 import { useTranslation } from "react-i18next";
+import { skillsSelector } from "../../../../redux/skillsSlice";
 
 export const TableHeaderBuild = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const skillsFilterStore = useSelector((state: ReduxStore) => state.skills);
-  const allSkillsFilter = skillsFilterStore?.skills.map(
-    (skill) => `${skill.id};${skill.operator}${skill.level}`
-  );
-  const checkboxState = useSelector(
-    (state: ReduxStore) => state.checkboxManager
+  const skillsFilterStore = useSelector(skillsSelector);
+  const checkboxState = useSelector(checkboxManagerSelector);
+
+  const allSkillsFilter = useMemo(
+    () =>
+      skillsFilterStore?.skills.map(
+        (skill) => `${skill.id};${skill.operator}${skill.level}`
+      ) || [],
+    [skillsFilterStore]
   );
 
-  let visible: number;
+  const visible = allSkillsFilter.length;
+
+  const TOOLTIP_MESSAGE = `${checkboxState.length} ${
+    checkboxState.length > 1
+      ? t("pages.dashboard.headerTable.selectedElements")
+      : t("pages.dashboard.headerTable.selectedElement")
+  }`;
+
   const handleDeselectAll = () => {
     checkboxState.forEach((id) => {
       dispatch(checkboxMarker(id));
     });
   };
-  if (allSkillsFilter) {
-    visible = allSkillsFilter.length;
-  } else {
-    visible = 0;
-  }
-
-  const TOOLTIP_MESSAGE =
-    checkboxState.length > 1
-      ? `${checkboxState.length} ${t(
-          "pages.dashboard.headerTable.selectedElements"
-        )}`
-      : `${checkboxState.length} ${t(
-          "pages.dashboard.headerTable.selectedElement"
-        )}`;
 
   return (
     <TableHead sx={{ background: commonColors.accentColor }}>

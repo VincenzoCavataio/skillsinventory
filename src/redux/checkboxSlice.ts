@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { ReduxStore } from "./types";
 
 const initialState: number[] = [];
 
@@ -17,6 +18,11 @@ const checkboxSlice = createSlice({
     },
   },
 });
+
+export const checkboxManagerSelector = createSelector(
+  (state: ReduxStore) => state,
+  (state: ReduxStore) => state.checkboxManager
+);
 
 export default checkboxSlice.reducer;
 export const { checkboxMarker } = checkboxSlice.actions;

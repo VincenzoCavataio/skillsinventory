@@ -14,10 +14,10 @@ import { Login } from "@mui/icons-material";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
 
-/** Generic Modal with a title, a message and a button */
+/** A Modal component that displays a title, a message and a button to navigate to the login page */
 export const ExpiredLoginModal: FC = () => {
-  const dispatch = useDispatch();
   const isModalVisible = useSelector(isModalVisibleSelector);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
 

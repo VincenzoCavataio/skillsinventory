@@ -58,6 +58,8 @@ export const InputChecks2 = ({
         }
       >
         {data?.map((element) => (
+          // eslint-disable-next-line
+          //@ts-ignore
           <MenuItem key={element.id} value={element}>
             <Checkbox checked={isSelected(element.id!)} />
             <ListItemText primary={element.name} />

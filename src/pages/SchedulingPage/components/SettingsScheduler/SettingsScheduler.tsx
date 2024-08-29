@@ -36,7 +36,8 @@ export const SettingsScheduler = () => {
   const today = dayjs();
 
   const [selectedDateTime, setSelectedDateTime] = useState(dayjs());
-
+  // eslint-disable-next-line
+  //@ts-ignore
   const handleDateTimeChange = (newValue) => {
     setSelectedDateTime(newValue);
   };

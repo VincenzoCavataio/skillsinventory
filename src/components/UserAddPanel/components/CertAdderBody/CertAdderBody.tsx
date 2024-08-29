@@ -136,7 +136,7 @@ export const CertAdderBody = () => {
         <Checkbox
           sx={{ padding: 0 }}
           checked={getCheckboxValue(row.id, row.idTemp)}
-          onChange={(e, value) => {
+          onChange={(_, value) => {
             handleUpdateCertificationIt(row.id, row.idTemp, value);
           }}
         />

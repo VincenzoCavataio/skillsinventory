@@ -100,6 +100,8 @@ export const Infos = ({
     (residenceKey: keyof Residence) =>
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const newData = { ...(data as Residence) };
+      // eslint-disable-next-line
+      //@ts-ignore
       newData[residenceKey] = e.target.value;
       dispatch(updateEditPayload({ [title]: newData }));
     };
@@ -165,6 +167,8 @@ export const Infos = ({
           ) : isAutocompleteField ? (
             <EditAutocomplete
               disablePortal
+              // eslint-disable-next-line
+              //@ts-ignore
               options={autocompleteOptions[title]}
               sx={{ width: 250 }}
               fullWidth

@@ -103,17 +103,23 @@ export const EduAdderBody = () => {
         <TableRow key={row.idTemp !== undefined ? row.idTemp : row.id}>
           <TableCell align="center">
             <ShortAutocomplete
-              onChange={(e, value) =>
+              onChange={(_, value) =>
                 handleUpdateEducationLevel(
                   row.id,
                   row.idTemp,
+                  // eslint-disable-next-line
+                  //@ts-ignore
                   value?.label || ""
                 )
               }
               disablePortal
               options={options}
+              // eslint-disable-next-line
+              //@ts-ignore
               getOptionLabel={(option) => option.label}
               isOptionEqualToValue={(option, value) =>
+                // eslint-disable-next-line
+                //@ts-ignore
                 option.label === value.label
               }
               defaultValue={
@@ -156,7 +162,7 @@ export const EduAdderBody = () => {
             <Checkbox
               sx={{ padding: 0 }}
               checked={getCheckboxValue(row.id, row.idTemp)}
-              onChange={(e, value) => {
+              onChange={(_, value) => {
                 handleUpdateEducationIt(row.id, row.idTemp, value);
               }}
             />

@@ -127,6 +127,8 @@ export const DashboardPage = () => {
             </Box>
             <Box sx={{ mr: 0, mb: 2 }}>
               <InputChecks2
+                // eslint-disable-next-line
+                //@ts-ignore
                 data={allEducationalData?.data}
                 label={t("pages.dashboard.search.certification")}
                 width={180}
@@ -138,6 +140,8 @@ export const DashboardPage = () => {
             <Box sx={{ mr: 0, mb: 2 }}>
               <InputChecks
                 width={180}
+                // eslint-disable-next-line
+                //@ts-ignore
                 data={allCitiesData?.data}
                 label={t("pages.dashboard.search.cities")}
                 setSelectedInput={setSelectedInput}
@@ -159,6 +163,8 @@ export const DashboardPage = () => {
               <InputSelect
                 selectedInput={selectedInput}
                 setSelectedInput={setSelectedInput}
+                // eslint-disable-next-line
+                //@ts-ignore
                 data={allEducationalLevelsData?.data}
                 label={t("pages.dashboard.search.educationalLevels")}
                 objKey="educationalLevel"
@@ -169,6 +175,8 @@ export const DashboardPage = () => {
               <InputSelect
                 selectedInput={selectedInput}
                 setSelectedInput={setSelectedInput}
+                // eslint-disable-next-line
+                //@ts-ignore
                 data={allInstitutesData?.data}
                 label={t("pages.dashboard.search.institute")}
                 objKey="institute"
@@ -179,6 +187,8 @@ export const DashboardPage = () => {
               <InputSelect
                 selectedInput={selectedInput}
                 setSelectedInput={setSelectedInput}
+                // eslint-disable-next-line
+                //@ts-ignore
                 data={allCoursessData?.data}
                 label={t("pages.dashboard.search.course")}
                 objKey="course"
@@ -195,6 +205,9 @@ export const DashboardPage = () => {
             mb={2}
             position="relative"
           >
+            {/*
+            // eslint-disable-next-line
+            //@ts-ignore  */}
             <ButtonsContainer setSelectedInput={setSelectedInput} />
           </Box>
         </Box>

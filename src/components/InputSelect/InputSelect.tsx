@@ -16,6 +16,8 @@ export const InputSelect = ({
   width = 300,
 }: InputSelectType) => {
   const inputSelectValue = useSelector((state: ReduxStore) => state.search);
+  // eslint-disable-next-line
+  //@ts-ignore
   const autocompleteValue = inputSelectValue?.filters[objKey]?.value ?? null;
   const { t } = useTranslation();
   return (

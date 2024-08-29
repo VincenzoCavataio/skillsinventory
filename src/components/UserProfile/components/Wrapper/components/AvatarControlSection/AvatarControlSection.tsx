@@ -115,8 +115,10 @@ export const AvatarControlSection: FC<Props> = ({
       province: payloadFieldResidencesGenerator("province"),
       latitude: payloadFieldResidencesGenerator("latitude"),
       longitude: payloadFieldResidencesGenerator("longitude"),
+      zip_code: payloadFieldResidencesGenerator("zip_code"),
     },
   };
+
   /** Call to API to update the user data */
   useEffect(() => {
     if (PAYLOAD.residenceData?.id && !isEditMode) {

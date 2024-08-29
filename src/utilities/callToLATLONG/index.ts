@@ -7,11 +7,10 @@ export const callToLATLONG = ({
   method,
 }: {
   endpoint: string;
-  payload: unknown;
+  payload: { q: string; key: string };
   method: "GET";
 }) => {
   const fetchData = async () => {
-    const token = localStorage.getItem("authToken");
     const URL = `${endpoint}q=${payload.q}&key=${payload.key}`;
     try {
       await axios({

@@ -25,6 +25,10 @@ import {
   resetCheckedEducationToBeSent,
   updateCheckedEducationToBeSent,
 } from "../../../../redux/addEducationToBeSentSlice";
+import { useState } from "react";
+import { userDataSelector } from "../../../../redux/userDataSlice";
+import { ConfirmModal } from "./utils/ConfirmModal";
+import { callToAPI } from "../../../../utilities/callToAPI";
 
 type CheckboxListProps = {
   data?: string[];
@@ -44,7 +48,14 @@ export const CheckboxListFixedEdu: React.FC<CheckboxListProps> = ({
   const dispatch = useDispatch();
 
   const checkedEduStore = useSelector(checkboxEdusSelector);
+  const userIdStore = useSelector(userDataSelector);
+
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedEducationId, setSelectedEducationId] = useState<string | null>(
+    null
+  );
   const allChecked = checkedEduStore.length > 0;
+  const userId = userIdStore.id;
 
   const handleSelectAll = () => {
     data?.forEach((edu) => {
@@ -64,7 +75,22 @@ export const CheckboxListFixedEdu: React.FC<CheckboxListProps> = ({
   };
 
   const parsedData = data?.map((edu) => currentCheckedEduRow(edu));
+  const handleDelete = (rowId: string) => {
+    setSelectedEducationId(rowId);
+    setOpenModal(true);
+  };
 
+  const confirmDelete = (confirmed: boolean) => {
+    if (confirmed && selectedEducationId) {
+      callToAPI({
+        endpoint: `/api/v1/educational/deleteUserEducationals?id=${selectedEducationId}&userId=${userId}`,
+        payload: { id: selectedEducationId, userId },
+        method: "DELETE",
+        reload: true,
+      });
+    }
+    setOpenModal(false);
+  };
   return (
     <Box>
       <Box
@@ -75,7 +101,7 @@ export const CheckboxListFixedEdu: React.FC<CheckboxListProps> = ({
           position: "sticky",
           top: 0,
           bgcolor: "white",
-          zIndex: 9999,
+          zIndex: 9,
           py: "2px",
           width: "100%",
         }}
@@ -159,12 +185,13 @@ export const CheckboxListFixedEdu: React.FC<CheckboxListProps> = ({
               <Delete
                 color="error"
                 sx={{ opacity: 0.8, cursor: "pointer", zIndex: 99, pl: 2 }}
-                onClick={alert}
+                onClick={() => handleDelete(edu.id)}
               />
             )}
           </ListItem>
         );
       })}
+      <ConfirmModal open={openModal} handleClose={confirmDelete} />
     </Box>
   );
 };

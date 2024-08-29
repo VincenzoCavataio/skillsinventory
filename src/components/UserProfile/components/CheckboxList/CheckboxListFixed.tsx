@@ -27,6 +27,10 @@ import {
   resetCheckedSkillsToBeSent,
   updateCheckedSkillsToBeSent,
 } from "../../../../redux/addSkillToBeSentSlice";
+import { userDataSelector } from "../../../../redux/userDataSlice";
+import { useState } from "react";
+import { ConfirmModal } from "./utils/ConfirmModal";
+import { callToAPI } from "../../../../utilities/callToAPI";
 
 type CheckboxListProps = {
   data?: string[];
@@ -46,8 +50,12 @@ export const CheckboxListFixed: React.FC<CheckboxListProps> = ({
   const dispatch = useDispatch();
 
   const checkedSkillsStore = useSelector(checkboxSkillsSelector);
+  const userIdStore = useSelector(userDataSelector);
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedSkillId, setSelectedSkillId] = useState<string | null>(null);
   const allChecked = checkedSkillsStore.length > 0;
-
+  const userId = userIdStore.id;
+  console.log(checkedSkillsStore, userIdStore.id);
   const handleSelectAll = () => {
     data?.forEach((skill) => {
       dispatch(updateCheckedSkills(currentCheckedSkillRow(skill)));
@@ -66,6 +74,22 @@ export const CheckboxListFixed: React.FC<CheckboxListProps> = ({
   };
 
   const parsedData = data?.map((skill) => currentCheckedSkillRow(skill));
+  const handleDelete = (rowId: string) => {
+    setSelectedSkillId(rowId);
+    setOpenModal(true);
+  };
+
+  const confirmDelete = (confirmed: boolean) => {
+    if (confirmed && selectedSkillId) {
+      callToAPI({
+        endpoint: `/api/v1/skill/deleteUserSkills?id=${selectedSkillId}&userId=${userId}`,
+        payload: { id: selectedSkillId, userId },
+        method: "DELETE",
+        reload: true,
+      });
+    }
+    setOpenModal(false);
+  };
 
   return (
     <Box>
@@ -77,7 +101,7 @@ export const CheckboxListFixed: React.FC<CheckboxListProps> = ({
           position: "sticky",
           top: 0,
           bgcolor: "white",
-          zIndex: 9999,
+          zIndex: 9,
           py: "2px",
           width: "100%",
         }}
@@ -183,12 +207,13 @@ export const CheckboxListFixed: React.FC<CheckboxListProps> = ({
               <Delete
                 color="error"
                 sx={{ opacity: 0.8, cursor: "pointer", zIndex: 99, pl: 2 }}
-                onClick={alert}
+                onClick={() => handleDelete(skill.id)}
               />
             )}
           </ListItem>
         );
       })}
+      <ConfirmModal open={openModal} handleClose={confirmDelete} />
     </Box>
   );
 };

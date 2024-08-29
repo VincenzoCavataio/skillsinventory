@@ -7,10 +7,12 @@ export const callToAPI = ({
   endpoint,
   payload,
   method,
+  reload,
 }: {
   endpoint: string;
   payload: Record<string, unknown>;
   method: "GET" | "POST" | "PUT" | "DELETE";
+  reload?: boolean;
 }) => {
   /** Make a call to API */
   const fetchData = async () => {
@@ -18,7 +20,7 @@ export const callToAPI = ({
     const currentRefreshToken = localStorage.getItem("refreshToken");
 
     /** Build URL */
-    const URL = `${BASEURL}${endpoint}${payload.id}`;
+    const URL = `${BASEURL}${endpoint}`;
 
     /** Get a new token if the current one is expired */
     if (currentToken && currentRefreshToken) {
@@ -37,6 +39,9 @@ export const callToAPI = ({
         },
         data: payload,
       });
+      if (reload) {
+        window.location.reload();
+      }
     } catch (e) {
       console.error(e);
     }

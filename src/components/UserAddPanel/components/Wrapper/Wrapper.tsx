@@ -28,7 +28,6 @@ import {
 import { userDataSelector } from "../../../../redux/userDataSlice";
 import { SkillPayload } from "../utils/SkillPayload";
 
-import { callToAPIToBeSent } from "../../../../utilities/callToAPIToBeSent";
 import {
   addEmptyEducationToBeSent,
   toBeSentEducationSelector,
@@ -39,6 +38,7 @@ import {
   toBeSentCertificationSelector,
 } from "../../../../redux/addCertificationToBeSentSlice";
 import { CertificationPayload } from "../utils/CertificationPayload";
+import { callToAPI } from "../../../../utilities/callToAPI";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -138,20 +138,23 @@ export const Wrapper = () => {
 
   /** Handles the submission of skills, education, and certifications to the API. */
   const handleAdd = () => {
-    callToAPIToBeSent({
+    callToAPI({
       endpoint: "/api/v1/skill/insertWords",
       payload: SKILL_PAYLOAD,
       method: "POST",
+      reload: true,
     });
-    callToAPIToBeSent({
+    callToAPI({
       endpoint: "/api/v1/educational/insertUserEducational",
       payload: EDUCATION_PAYLOAD,
       method: "POST",
+      reload: true,
     });
-    callToAPIToBeSent({
+    callToAPI({
       endpoint: "/api/v1/certificate/insertUserCertificates",
       payload: CERTIFICATION_PAYLOAD,
       method: "POST",
+      reload: true,
     });
   };
   return (

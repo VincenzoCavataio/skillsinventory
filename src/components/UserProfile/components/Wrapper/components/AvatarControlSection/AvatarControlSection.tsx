@@ -37,7 +37,6 @@ export const AvatarControlSection: FC<Props> = ({
 }) => {
   /** I18n initialization */
   const { t } = useTranslation();
-
   /** Dispatch from redux */
   const dispatch = useDispatch();
 
@@ -87,7 +86,7 @@ export const AvatarControlSection: FC<Props> = ({
   if (!src) {
     src = FALLBACK_ICON;
   }
-
+  console.log(id);
   /** Generated payload to send to API for all 3 fields */
   const PAYLOAD = {
     personalData: {
@@ -121,7 +120,7 @@ export const AvatarControlSection: FC<Props> = ({
   useEffect(() => {
     if (PAYLOAD.residenceData?.id && !isEditMode) {
       callToAPI({
-        endpoint: "/api/v1/user/updateUserResidence/",
+        endpoint: `/api/v1/user/updateUserResidence/${id}`,
         payload: PAYLOAD.residenceData,
         method: "PUT",
       });
@@ -129,7 +128,7 @@ export const AvatarControlSection: FC<Props> = ({
 
     if (PAYLOAD.personalData?.id && !isEditMode) {
       callToAPI({
-        endpoint: "/api/v1/user/updateUserData/",
+        endpoint: `/api/v1/user/updateUserData/${id}`,
         payload: PAYLOAD.personalData,
         method: "PUT",
       });
@@ -137,7 +136,7 @@ export const AvatarControlSection: FC<Props> = ({
 
     if (PAYLOAD.privatedData?.id && !isEditMode) {
       callToAPI({
-        endpoint: "/api/v1/user/updateUserPrivateData/",
+        endpoint: `/api/v1/user/updateUserPrivateData/${id}`,
         payload: PAYLOAD.privatedData,
         method: "PUT",
       });
@@ -147,6 +146,7 @@ export const AvatarControlSection: FC<Props> = ({
     PAYLOAD.privatedData,
     PAYLOAD.residenceData,
     isEditMode,
+    id,
   ]);
   return (
     <Box

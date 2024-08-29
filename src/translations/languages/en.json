@@ -123,6 +123,12 @@
             "certificates": "No Certifications Found"
           }
         },
+        "deleteModal": {
+          "confirm": "Do you confirm the deletion?",
+          "consequences": "Removing this data will permanently delete it from your profile.",
+          "cancel": "CANCEL",
+          "delete": "DELETE"
+        },
         "informationDetails": {
           "0": "No",
           "1": "Yes",

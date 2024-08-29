@@ -123,6 +123,12 @@
             "certificates": "No se encontraron certificaciones"
           }
         },
+        "deleteModal": {
+          "confirm": "¿Confirmas la eliminación?",
+          "consequences": "La eliminación de este dato lo eliminará definitivamente de tu perfil.",
+          "cancel": "CANCELAR",
+          "delete": "ELIMINAR"
+        },
         "informationDetails": {
           "0": "No",
           "1": "Si",

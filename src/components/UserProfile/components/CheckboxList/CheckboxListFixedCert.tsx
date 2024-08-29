@@ -25,6 +25,10 @@ import {
   resetCheckedCertificationToBeSent,
   updateCheckedCertificationsToBeSent,
 } from "../../../../redux/addCertificationToBeSentSlice";
+import { ConfirmModal } from "./utils/ConfirmModal";
+import { useState } from "react";
+import { userDataSelector } from "../../../../redux/userDataSlice";
+import { callToAPI } from "../../../../utilities/callToAPI";
 
 type CheckboxListProps = {
   data?: string[];
@@ -44,6 +48,12 @@ export const CheckboxListFixedCert: React.FC<CheckboxListProps> = ({
   const dispatch = useDispatch();
 
   const checkedCertStore = useSelector(checkboxCertsSelector);
+  const userIdStore = useSelector(userDataSelector);
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedCertificationId, setSelectedCertificationId] = useState<
+    string | null
+  >(null);
+  const userId = userIdStore.id;
   const allChecked = checkedCertStore.length > 0;
 
   const handleSelectAll = () => {
@@ -66,7 +76,22 @@ export const CheckboxListFixedCert: React.FC<CheckboxListProps> = ({
   };
 
   const parsedData = data?.map((cert) => currentCheckedCertRow(cert));
+  const handleDelete = (rowId: string) => {
+    setSelectedCertificationId(rowId);
+    setOpenModal(true);
+  };
 
+  const confirmDelete = (confirmed: boolean) => {
+    if (confirmed && selectedCertificationId) {
+      callToAPI({
+        endpoint: `/api/v1/certificate/deleteCertificates?id=${selectedCertificationId}&userId=${userId}`,
+        payload: { id: selectedCertificationId, userId },
+        method: "DELETE",
+        reload: true,
+      });
+    }
+    setOpenModal(false);
+  };
   return (
     <Box>
       <Box
@@ -77,7 +102,7 @@ export const CheckboxListFixedCert: React.FC<CheckboxListProps> = ({
           position: "sticky",
           top: 0,
           bgcolor: "white",
-          zIndex: 9999,
+          zIndex: 9,
           py: "2px",
           width: "100%",
         }}
@@ -159,12 +184,13 @@ export const CheckboxListFixedCert: React.FC<CheckboxListProps> = ({
               <Delete
                 color="error"
                 sx={{ opacity: 0.8, cursor: "pointer", zIndex: 99, pl: 2 }}
-                onClick={alert}
+                onClick={() => handleDelete(cert.id)}
               />
             )}
           </ListItem>
         );
       })}
+      <ConfirmModal open={openModal} handleClose={confirmDelete} />
     </Box>
   );
 };

@@ -10,7 +10,7 @@ import {
 import { PRIMARY_COLOR, commonColors } from "../../../../common/commonColors";
 import { useDispatch, useSelector } from "react-redux";
 import { HeaderCustomCell } from "../HeaderCustomCell";
-import { Delete, Download } from "@mui/icons-material";
+import { Cancel, Download } from "@mui/icons-material";
 import { HeadCellsData } from "./HeadCells";
 import {
   checkboxManagerSelector,
@@ -64,7 +64,7 @@ export const TableHeaderBuild = () => {
               <Box display="flex" alignItems="center">
                 {TOOLTIP_MESSAGE}
                 <Box ml={1}>
-                  <Delete
+                  <Cancel
                     style={{ cursor: "pointer" }}
                     fontSize="small"
                     onClick={handleDeselectAll}

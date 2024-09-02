@@ -28,7 +28,10 @@ export const PaginationBuild: React.FC<PaginationBuildProps> = ({
 
   /** Handles the change in items per page input. */
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(itemNumberFilter({ itemNumber: Number(event.target.value) }));
+    /** Control to avoid crash due to page = 0 */
+    if (Number(event.target.value) > 0) {
+      dispatch(itemNumberFilter({ itemNumber: Number(event.target.value) }));
+    }
   };
 
   /** Handles the change in pagination page. */

@@ -101,7 +101,7 @@ export const CheckboxListFixed: React.FC<CheckboxListProps> = ({
           position: "sticky",
           top: 0,
           bgcolor: "white",
-          zIndex: 9,
+          zIndex: 20,
           py: "2px",
           width: "100%",
         }}
@@ -206,7 +206,7 @@ export const CheckboxListFixed: React.FC<CheckboxListProps> = ({
             {isEdit && (
               <Delete
                 color="error"
-                sx={{ opacity: 0.8, cursor: "pointer", zIndex: 99, pl: 2 }}
+                sx={{ opacity: 0.8, cursor: "pointer", zIndex: 19, pl: 2 }}
                 onClick={() => handleDelete(skill.id)}
               />
             )}

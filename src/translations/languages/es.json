@@ -92,7 +92,9 @@
           "selectedElement": "Artículo seleccionado",
           "selectedElements": "Artículos seleccionados",
           "totalResult": "Artículo encontrado",
-          "totalResults": "Artículos encontrados"
+          "totalResults": "Artículos encontrados",
+          "noResults": "No se han encontrado resultados.",
+          "noResultsDescription": "Editar los filtros para realizar una nueva búsqueda"
         }
       },
       "userPage": {

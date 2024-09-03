@@ -92,7 +92,9 @@
           "selectedElement": "Elemento Selezionato",
           "selectedElements": "Elementi Selezionati",
           "totalResult": "Elemento Trovato",
-          "totalResults": "Elementi Trovati"
+          "totalResults": "Elementi Trovati",
+          "noResults": "Nessun Risultato",
+          "noResultsDescription": "Modifica i filtri per fare una nuova ricerca"
         }
       },
       "userPage": {

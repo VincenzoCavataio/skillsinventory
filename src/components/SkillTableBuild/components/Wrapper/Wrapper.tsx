@@ -9,8 +9,10 @@ import { PaginationBuild } from "../PaginationBuild";
 import { generatePayloadForTableFilter } from "../../../../utilities/generatePayloadForTableFilter";
 import { TableDataData, TableDataResponse } from "../../types";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import { useTranslation } from "react-i18next";
 
 export const Wrapper = () => {
+  const { t } = useTranslation();
   const filterStore = useSelector((state: ReduxStore) => state.search);
   const skillsFilterStore = useSelector((state: ReduxStore) => state.skills);
   const paginationFilterStore = useSelector(
@@ -116,12 +118,12 @@ export const Wrapper = () => {
               alignItems="center"
             >
               <Typography variant="h5" mr={2}>
-                Nessun risultato trovato
+                {t("pages.dashboard.headerTable.noResults")}
               </Typography>
               <ErrorOutlineIcon fontSize="large" sx={{ ml: -1 }} />
             </Box>
             <Typography variant="subtitle2" mt={1} mb={2}>
-              Modifica i filtri per fare una nuova ricerca
+              {t("pages.dashboard.headerTable.noResultsDescription")}
             </Typography>
           </Box>
         </Box>

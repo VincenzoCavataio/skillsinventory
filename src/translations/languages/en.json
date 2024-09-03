@@ -92,7 +92,9 @@
           "selectedElement": "Selected Element",
           "selectedElements": "Selected Elements",
           "totalResult": "Element Found",
-          "totalResults": "Elements Found"
+          "totalResults": "Elements Found",
+          "noResults": "No Results",
+          "noResultsDescription": "Edit the filters to make a new search"
         }
       },
       "userPage": {

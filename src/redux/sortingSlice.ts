@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { Sorting } from "./types";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { ReduxStore, Sorting } from "./types";
 
 type Props = {
   sort: Sorting[];
@@ -51,6 +51,11 @@ const sortingSlice = createSlice({
     },
   },
 });
+
+export const sortingSelector = createSelector(
+  (state: ReduxStore) => state,
+  (state: ReduxStore) => state.sorting
+);
 
 export default sortingSlice.reducer;
 export const { updateSortUp, updateSortDown } = sortingSlice.actions;

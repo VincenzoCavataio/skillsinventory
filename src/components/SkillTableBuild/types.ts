@@ -29,6 +29,8 @@ export type PaginationBuildProps = {
 
 export type TableDataResponse = {
   data?: TableDataData[];
+  error?: string;
+  loading?: boolean;
   pagination?: TableDataPagination;
 };
 export type TableDataData = {

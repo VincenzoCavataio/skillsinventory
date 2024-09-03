@@ -1,106 +1,100 @@
-import { Box, Paper, Table, TableContainer, Typography } from "@mui/material";
+import {
+  Box,
+  CircularProgress,
+  Paper,
+  Table,
+  TableContainer,
+  Typography,
+} from "@mui/material";
 import { TableHeaderBuild } from "../TableHeaderBuild";
 import useApi from "../../../../utilities/useApi";
 import { allTabledata } from "../../SkillsTable.controller";
 import { useSelector } from "react-redux";
-import { ReduxStore } from "../../../../redux/types";
 import { TableBodyBuild } from "../TableBodyBuild";
 import { PaginationBuild } from "../PaginationBuild";
 import { generatePayloadForTableFilter } from "../../../../utilities/generatePayloadForTableFilter";
-import { TableDataData, TableDataResponse } from "../../types";
+import { TableDataResponse } from "../../types";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import { useTranslation } from "react-i18next";
+import { searchSelector } from "../../../../redux/searchSlice";
+import { skillsSelector } from "../../../../redux/skillsSlice";
+import { paginationSelector } from "../../../../redux/paginationSlice";
+import { andOrSelector } from "../../../../redux/andOrSlice";
+import { sortingSelector } from "../../../../redux/sortingSlice";
 
+/** Wrapper for Main table on Dashboard Page */
 export const Wrapper = () => {
+  /** Hook for translations */
   const { t } = useTranslation();
-  const filterStore = useSelector((state: ReduxStore) => state.search);
-  const skillsFilterStore = useSelector((state: ReduxStore) => state.skills);
-  const paginationFilterStore = useSelector(
-    (state: ReduxStore) => state.pagination
-  );
-  const sortingFilterStore = useSelector((state: ReduxStore) => state.sorting);
-  const andOrFilter = useSelector((state: ReduxStore) => state.andOrStore);
 
+  /** Selectors */
+  const filterStore = useSelector(searchSelector);
+  const skillsFilterStore = useSelector(skillsSelector);
+  const paginationFilterStore = useSelector(paginationSelector);
+  const sortingFilterStore = useSelector(sortingSelector);
+  const andOrFilter = useSelector(andOrSelector).andOr;
+
+  /** All certifications IDs for payload builder */
   const allCertificationsID =
     filterStore?.filters?.certification?.map(
       (certification) => certification.id
     ) ?? [];
+
+  /** All skills IDs, operator and level for payload builder */
   const allSkillsFilter = skillsFilterStore?.skills.map(
     (skill) => `${skill.id};${skill.operator}${skill.level}`
   );
+
+  /** Pagination items metadata for payload builder */
   const paginationFilterNumber = paginationFilterStore?.itemNumber;
+
+  /** Pagination pagestart metadata for payload builder */
   const paginationFilterPage = paginationFilterStore?.pageStart;
+
+  /** Pagination page sorting metadata for payload builder */
   const sortingManagementFilter = sortingFilterStore.sort.map(
     (sort) => `${sort.order}`
   );
 
-  const andOrSelectorFilter = andOrFilter.andOr;
+  /** Response from useApi to fill filtered Table */
+  const tableDataResponse: {
+    data: TableDataResponse | null;
+    loading: boolean;
+    error: unknown;
+  } = useApi(
+    allTabledata(
+      generatePayloadForTableFilter({
+        filterStore,
+        allCertificationsID,
+        allSkillsFilter,
+        paginationFilterNumber,
+        paginationFilterPage,
+        sortingManagementFilter,
+        andOrSelectorFilter: andOrFilter,
+      })
+    )
+  );
 
-  function createData(
-    userId: string,
-    lastName: string,
-    firstName: string,
-    skillsList: string[] | undefined,
-    skillsRanking: string | undefined,
-    anniEsperienza: string | undefined,
-    educationList: string,
-    residenceInfo: string,
-    certificationList: string
-  ) {
-    return {
-      userId,
-      lastName,
-      firstName,
-      skillsList,
-      skillsRanking,
-      anniEsperienza,
-      educationList,
-      residenceInfo,
-      certificationList,
-    };
-  }
+  /** All rows to be displayed */
+  const ROWS = tableDataResponse?.data ? tableDataResponse?.data?.data : [];
 
-  const tableDataResponse: TableDataResponse =
-    useApi(
-      allTabledata(
-        generatePayloadForTableFilter({
-          filterStore,
-          allCertificationsID,
-          allSkillsFilter,
-          paginationFilterNumber,
-          paginationFilterPage,
-          sortingManagementFilter,
-          andOrSelectorFilter,
-        })
-      )
-    ).data ?? {};
+  /** Loading parameter from useApi  */
+  const isLoading = !!tableDataResponse?.loading;
 
-  const rows = tableDataResponse
-    ? tableDataResponse?.data?.map((data: TableDataData) =>
-        createData(
-          data.userId,
-          data.lastName,
-          data.firstName,
-          data.skillsList,
-          data.skillsRanking,
-          data.anniEsperienza,
-          data.educationList,
-          data.residenceInfo,
-          data.certificationList
-        )
-      )
-    : [];
+  /** Check if there are no results */
+  const noResults = !ROWS || ROWS?.length === 0;
 
-  const TOTAL_ROW_COUNT = tableDataResponse?.pagination?.count ?? 0;
+  /** Total number of rows for pagination */
+  const TOTAL_ROW_COUNT = tableDataResponse?.data?.pagination?.count ?? 0;
 
   return (
     <TableContainer component={Paper}>
       <PaginationBuild totalRowsNumber={TOTAL_ROW_COUNT} />
       <Table sx={{ minWidth: 650 }} aria-label="skills table">
         <TableHeaderBuild />
-        <TableBodyBuild rows={rows} />
+        <TableBodyBuild rows={ROWS} />
       </Table>
-      {(!rows || rows?.length === 0) && (
+      {noResults && (
         <Box display="flex" justifyContent="center" flexDirection="column">
           <Box
             component="span"
@@ -111,20 +105,25 @@ export const Wrapper = () => {
             flexDirection="column"
             p={6}
           >
-            <Box
-              display="flex"
-              flexDirection="row"
-              alignContent="center"
-              alignItems="center"
-            >
-              <Typography variant="h5" mr={2}>
-                {t("pages.dashboard.headerTable.noResults")}
-              </Typography>
-              <ErrorOutlineIcon fontSize="large" sx={{ ml: -1 }} />
-            </Box>
-            <Typography variant="subtitle2" mt={1} mb={2}>
-              {t("pages.dashboard.headerTable.noResultsDescription")}
-            </Typography>
+            {!isLoading && (
+              <>
+                <Box
+                  display="flex"
+                  flexDirection="row"
+                  alignContent="center"
+                  alignItems="center"
+                >
+                  <Typography variant="h5" mr={2}>
+                    {t("pages.dashboard.headerTable.noResults")}
+                  </Typography>
+                  <ErrorOutlineIcon fontSize="large" sx={{ ml: -1 }} />
+                </Box>
+                <Typography variant="subtitle2" mt={1} mb={2}>
+                  {t("pages.dashboard.headerTable.noResultsDescription")}
+                </Typography>
+              </>
+            )}
+            {isLoading && <CircularProgress />}
           </Box>
         </Box>
       )}

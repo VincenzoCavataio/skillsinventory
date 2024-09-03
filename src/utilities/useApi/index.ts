@@ -8,7 +8,7 @@ import { getRefreshToken } from "./getRefreshToken";
 const useApi = ({ URL, requestOption }: Metadata) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<unknown>(null);
+  const [error, setError] = useState<unknown>("");
 
   /** Function to update the token and make the API request */
   const fetchData = useCallback(async () => {

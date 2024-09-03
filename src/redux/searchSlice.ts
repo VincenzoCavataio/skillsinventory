@@ -17,6 +17,12 @@ const searchSlice = createSlice({
     },
   },
 });
+
+export const searchSelector = createSelector(
+  (state: ReduxStore) => state,
+  (state: ReduxStore) => state.search
+);
+
 export const searchFiltersSelector = createSelector(
   (state: ReduxStore) => state,
   (state: ReduxStore) => state.search?.filters.certification || []
